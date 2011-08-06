@@ -11,17 +11,11 @@ module HtmlSelectorsHelpers
     when "the page"
       "html > body"
 
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
-    #  when /^the (notice|error|info) flash$/
-    #    ".flash.#{$1}"
+    when "the content area"
+      "body #content"
 
-    # You can also return an array to use a different selector
-    # type, like:
-    #
-    #  when /the header/
-    #    [:xpath, "//header"]
+    when "the header"
+      [:xpath, "//header"]
 
     # This allows you to provide a quoted selector as the scope
     # for "within" steps as was previously the default for the

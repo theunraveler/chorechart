@@ -20,6 +20,9 @@ module NavigationHelpers
     when /^my user page$/i
       '/account'
 
+    when /^my groups page$/i
+      '/groups'
+
     else
       begin
         page_name =~ /^the (.*) page$/

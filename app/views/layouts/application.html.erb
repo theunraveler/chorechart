@@ -8,12 +8,28 @@
 </head>
 <body>
 
-  <div id="flash">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
+  <header>
+    <h1>Chorechart</h1>
+    <div id="project-selector">
+      <%= render 'shared/project_selector' %>
+    </div>
+    <div id="user-info">
+      <%= render 'shared/user_info' %>
+    </div>
+  </header>
 
-  <%= yield %>
+  <section id="container">
+    <% if notice || alert %>
+      <div id="flash">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
+    <div id="content">
+      <%= yield %>
+    </div>
+  </section>
 
 </body>
 </html>

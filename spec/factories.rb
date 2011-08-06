@@ -7,4 +7,8 @@ factory :user do
   confirmed_at Time.now
 end
 
+factory :group do
+  name 'A New Group'
+end
+
 end
