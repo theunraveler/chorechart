@@ -10,9 +10,11 @@
 
   <header>
     <h1>Chorechart</h1>
-    <div id="project-selector">
-      <%= render 'shared/project_selector' %>
-    </div>
+    <% if user_signed_in? %>
+      <div id="group-selector">
+        <%= render 'shared/group_selector' %>
+      </div>
+    <% end %>
     <div id="user-info">
       <%= render 'shared/user_info' %>
     </div>
@@ -20,7 +22,7 @@
 
   <section id="container">
     <% if notice || alert %>
-      <div id="flash">
+     <div id="flash">
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
       </div>

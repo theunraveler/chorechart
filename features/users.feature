@@ -16,4 +16,25 @@ Feature: Users
     And I enter my credentials
     Then I should be taken to my user page
     And I should see "Welcome, test"
-    And I should see the flash message "Signed in successfully."
+    And I should see the flash message "Logged in successfully. Welcome."
+    And I should see my username within the header
+
+  Scenario: Avatar
+    Given I am logged in as "testuser"
+    Then I should see my avatar within the header
+
+  Scenario: Logging out
+    Given I am logged in as "testuser"
+    When I click on "Log out"
+    Then I should be taken to the home page
+    And I should see the flash message "Logged out successfully. See you next time."
+    And I should not see my username within the header
+    And I should see "Register" within the header
+    And I should see "Log in" within the header
+
+  Scenario: Deleting account
+    Given I am logged in as "testuser"
+    When I click on "My Account"
+    And I click on "Delete my account"
+    Then I should be taken to the home page
+    And my account should be deleted

@@ -27,3 +27,20 @@ When /^I enter my credentials$/ do
   fill_in('Password', :with => @password) 
   click_button('Sign in')
 end
+  
+Then /^I should see my username$/ do
+  Then %{I should see "#{@user.username}"}
+end
+
+Then /^I should not see my username$/ do
+  Then %{I should not see "#{@user.username}"}
+end
+
+Then /^I should see my avatar$/ do
+  hash = Digest::MD5.hexdigest(@user.email.strip)
+  page.body.should include(%{src="http://www.gravatar.com/avatar/#{hash}})
+end
+
+Then /^my account should be deleted$/ do
+  User.where(:id => @user.id).empty?
+end

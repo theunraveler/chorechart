@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110806040513) do
+ActiveRecord::Schema.define(:version => 20110806190640) do
 
   create_table "chores", :force => true do |t|
     t.string   "name"
@@ -28,12 +28,15 @@ ActiveRecord::Schema.define(:version => 20110806040513) do
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "group_id"
-    t.boolean  "is_admin"
-    t.boolean  "is_editor"
-    t.boolean  "is_participant"
+    t.boolean  "is_admin",       :default => false
+    t.boolean  "is_editor",      :default => false
+    t.boolean  "is_participant", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "memberships", ["group_id"], :name => "memberships_group_id_fk"
+  add_index "memberships", ["user_id"], :name => "memberships_user_id_fk"
 
   create_table "users", :force => true do |t|
     t.string   "username"
@@ -64,5 +67,8 @@ ActiveRecord::Schema.define(:version => 20110806040513) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_foreign_key "memberships", "groups", :name => "memberships_group_id_fk", :dependent => :delete
+  add_foreign_key "memberships", "users", :name => "memberships_user_id_fk", :dependent => :delete
 
 end

@@ -5,16 +5,16 @@ Feature: Groups
 
   Scenario: Viewing my groups
     Given I am logged in as "test_user"
-    And I have the following groups:
+    And the following groups exist:
       | Group Name      |
       | Home            |
       | Company Office  |
       | Art Space       |
     When I click "My Groups"
     Then I should be on my groups page
-    And I should see all of my groups
+    And I should only see my groups
 
-  Scenario: Creating an account
+  Scenario: Creating a group
     Given I am logged in as "test_user"
     When I go to my groups page
     And I click on "Create a group"

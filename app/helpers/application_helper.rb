@@ -8,4 +8,8 @@ module ApplicationHelper
     image_tag(url, :alt => user.name || user.username) 
   end
 
+  def icon_tag(name, size = 32)
+    image_tag("icons/#{size}/#{name}.png")
+  end
+
 end

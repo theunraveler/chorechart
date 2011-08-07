@@ -1,0 +1,10 @@
+<h3>Invite users to <%= @group.name %></h3>
+
+<% form_for @group do |group_form| %>
+  <% group_form.fields_for :memberships do |membership_form| %>
+    <%= membership_form.label :user_id %>
+    <%= membership_form.text_field :user_id %>
+  <% end %>
+
+  <%= group_form.submit %> 
+<% end %>

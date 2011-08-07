@@ -40,6 +40,7 @@ module Chorechart
     config.filter_parameters += [:password]
 
     # So things can mail
+    config.action_mailer.smtp_settings = { :address => 'localhost', :port => 25 }
     config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   end
 end

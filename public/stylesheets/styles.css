@@ -1,0 +1,4 @@
+header { clear: both; }
+header #user-info { float: right; width: 160px; }
+header #user-info .user-image { float: left; }
+header #user-info .user-menu { float: right; }

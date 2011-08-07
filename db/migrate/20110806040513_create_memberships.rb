@@ -3,9 +3,9 @@ class CreateMemberships < ActiveRecord::Migration
     create_table :memberships do |t|
       t.integer :user_id
       t.integer :group_id
-      t.boolean :is_admin
-      t.boolean :is_editor
-      t.boolean :is_participant
+      t.boolean :is_admin, :default => false
+      t.boolean :is_editor, :default => false
+      t.boolean :is_participant, :default => false
 
       t.timestamps
     end

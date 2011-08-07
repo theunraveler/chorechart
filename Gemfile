@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'schedule_atts', :git => 'git://github.com/ableGray/Schedule-Attributes.git'
 gem 'escape_utils'
+gem "cancan"
+gem 'foreigner'
 
 # Use unicorn as the web server
 # gem 'unicorn'
