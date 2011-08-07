@@ -1,0 +1,22 @@
+<%= form_for [@group, @membership] do |f| %>
+  <% if @membership.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@membership.errors.count, "error") %> prohibited this membership from being saved:</h2>
+
+      <ul>
+      <% @membership.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-item">
+    <%= f.text_field :user_id %>
+    <%= f.check_box :is_admin %><%= f.label :is_admin, "Admin" %>
+    <%= f.check_box :is_editor %><%= f.label :is_editor, "Editor" %>
+    <%= f.check_box :is_participant %><%= f.label :is_participant, "Participant" %>
+    <%= f.submit "Add user" %>
+  </div>
+
+<% end %>

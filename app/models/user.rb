@@ -11,8 +11,26 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :name
+  attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me, :name
 
   # Validations
   validates_presence_of :username, :email
+  validates_uniqueness_of :username, :email
+
+  scope :find_by_login, lambda { |login| where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]) }
+
+  def update_with_password(params={})
+    params.delete(:current_password)
+    self.update_without_password(params)
+  end
+
+  protected
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    login = conditions.delete(:login)
+    puts login
+    where(conditions).find_by_login(login).first
+  end
+
 end

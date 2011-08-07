@@ -1,7 +1,7 @@
 Chorechart::Application.routes.draw do
 
   resources :groups, :shallow => true do 
-    resources :memberships
+    resources :memberships, :only => [:index, :create, :update, :destroy]
   end
 
   resources :chores
