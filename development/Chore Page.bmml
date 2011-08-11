@@ -1,0 +1,51 @@
+<mockup version="1.0" skin="sketch" measuredW="1167" measuredH="618" mockupW="1032" mockupH="597">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="135" y="21" w="1032" h="597" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Chorechart%0Ahttp%3A//chorechart.com</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::HRule" x="135" y="135" w="1032" h="-1" measuredW="100" measuredH="5" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="150" y="107" w="-1" h="-1" measuredW="77" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Chorechart</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Icon" x="1094" y="105" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>ContactIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="1118" y="106" w="34" h="21" measuredW="33" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>jake</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::ComboBox" x="1010" y="105" w="-1" h="-1" measuredW="69" measuredH="23" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>up</state>
+        <text>Home</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="963" y="106" w="-1" h="-1" measuredW="47" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Group%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::DataGrid" x="290" y="213" w="721" h="314" measuredW="214" measuredH="236" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hasHeader>true</hasHeader>
+        <hLines>true</hLines>
+        <selectedIndex>-1</selectedIndex>
+        <text>%2CJake%2C%20Jaim%27ee%0AMonday%2CDishes%5CrTrash%2CCat%20box%5CrLaundry%0ATuesday%2C%2C%0AWednesday%0AThursday%0AFriday%0ASaturday%0ASunday</text>
+        <vLines>true</vLines>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Title" x="290" y="155" w="-1" h="-1" measuredW="317" measuredH="37" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>28</size>
+        <text>Week%20of%20August%209%2C%202011</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

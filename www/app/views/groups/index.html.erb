@@ -1,0 +1,49 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", groups_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_group_path %></li>
+    </ul>
+  </div>          
+  <div class="content">          
+    <h2 class="title">My Groups</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>             
+          <th>
+            <%= t("activerecord.attributes.group.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+          </th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @groups.each do |group| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= link_to group.name, group_path(group) %>
+          </td>
+          <td class="last">
+            <% if can? :invite, group %>
+              <%= link_to "Manage Users", group_memberships_path(group) %> |
+            <% end %>
+            <% if can? :edit, group %>
+              <%= link_to "Manage Chores", group_chores_path(group) %> |
+            <% end %>
+            <% if can? :edit, group %>
+              <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_group_path(group) %> |
+            <% end %>
+            <% if can? :destroy, group %>
+              <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", group_path(group), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+            <% end %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

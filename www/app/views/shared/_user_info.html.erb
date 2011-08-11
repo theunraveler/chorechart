@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+  <div class="user-image">
+    <%= avatar_image(current_user, 40) %>
+  </div>
+  <div class="user-menu">
+    Hello, <%= current_user.username %>
+    <ul>
+      <li><%= link_to "My Groups", groups_path %></li>
+      <li><%= link_to "My Account", edit_user_registration_path %></li>
+      <li><%= link_to "Log out", destroy_user_session_path %></li>
+    </ul>
+  </div>
+<% else %>
+  <ul class="no-user-menu">
+    <li><%= link_to "Log in", new_user_session_path %></li>
+    <li><%= link_to "Register", new_user_registration_path %></li>
+  </ul>
+<% end %>
+
