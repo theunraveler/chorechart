@@ -1,35 +1,24 @@
 class ChoresController < ApplicationController
-  # GET /chores
-  # GET /chores.xml
-  def index
-    @chores = Chore.all
+  respond_to :html
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @chores }
-    end
+  # GET /chores
+  def index
+    @group = Group.find(params[:group_id])
+    @chores = Chore.all
+    respond_with @chores
   end
 
   # GET /chores/1
-  # GET /chores/1.xml
   def show
     @chore = Chore.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @chore }
-    end
+    respond_with @chore
   end
 
   # GET /chores/new
-  # GET /chores/new.xml
   def new
+    @group = Group.find(params[:group_id])
     @chore = Chore.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @chore }
-    end
+    respond_with @chore
   end
 
   # GET /chores/1/edit
@@ -38,7 +27,6 @@ class ChoresController < ApplicationController
   end
 
   # POST /chores
-  # POST /chores.xml
   def create
     @chore = Chore.new(params[:chore])
 
@@ -54,7 +42,6 @@ class ChoresController < ApplicationController
   end
 
   # PUT /chores/1
-  # PUT /chores/1.xml
   def update
     @chore = Chore.find(params[:id])
 

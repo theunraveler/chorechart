@@ -1,10 +1,11 @@
 class CreateChores < ActiveRecord::Migration
   def self.up
     create_table :chores do |t|
+      t.integer :group_id
       t.string :name
-      t.string :schedule_yaml
-
+      t.text :schedule_yaml
       t.timestamps
+
     end
   end
 

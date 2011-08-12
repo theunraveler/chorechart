@@ -1,32 +1,21 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
-      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", chores_path  %></li>
-      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_chore_path %></li>
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", group_chores_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_group_chore_path %></li>
     </ul>
   </div>          
   <div class="content">          
-    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Chores</h2>
+    <h2 class="title">Chores for <%= @group.name %></h2>
     <div class="inner">
       <table class="table">
-        <tr>             
-          <th class="first">ID</th>
-                    <th>
-            <%= t("activerecord.attributes.chore.name", :default => t("activerecord.labels.name", :default => "Name")) %>
-          </th>
-                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
-          <th class="last">&nbsp;</th>
-        </tr>
         <% @chores.each do |chore| -%>
         <tr class="<%= cycle("odd", "even") %>">
           <td>
-            <%= chore.id %>
-          </td>
-                    <td>
             <%= link_to chore.name, chore_path(chore) %>
           </td>
-                    <td>
-            <%= chore.created_at %>
+          <td>
+            <%= chore.schedule.to_s %>
           </td>
           <td class="last">
             <%= link_to "#{t("web-app-theme.show", :default => "Show")}", chore_path(chore) %> |

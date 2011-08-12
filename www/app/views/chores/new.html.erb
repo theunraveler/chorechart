@@ -1,14 +1,14 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
-      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", chores_path  %></li>
-      <li class="active"><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_chore_path %></li>
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", group_chores_path  %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_group_chore_path %></li>
     </ul>
   </div>          
   <div class="content">            
-    <h2 class="title"><%= t("web-app-theme.new", :default => "New")%>  Chore</h2>
+    <h2 class="title"><%= t("web-app-theme.new", :default => "New")%> Chore for <%= @group.name %></h2>
     <div class="inner">
-      <%= form_for :chore, :url => chores_path, :html => { :class => :form } do |f| -%>
+      <%= form_for :chore, :url => group_chores_path, :html => { :class => :form } do |f| -%>
         <%= render :partial => "form", :locals => {:f => f} %>
       <% end -%>
     </div>

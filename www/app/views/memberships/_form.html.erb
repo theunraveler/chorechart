@@ -12,11 +12,13 @@
   <% end %>
 
   <div class="form-item">
-    <%= f.text_field :user_id %>
+    <%= f.text_field :user_id, :placeholder => 'Username or email' %>
     <%= f.check_box :is_admin %><%= f.label :is_admin, "Admin" %>
     <%= f.check_box :is_editor %><%= f.label :is_editor, "Editor" %>
     <%= f.check_box :is_participant %><%= f.label :is_participant, "Participant" %>
-    <%= f.submit "Add user" %>
+    <div class="actions">
+      <%= f.submit "Add user" %>
+    </div>
   </div>
 
 <% end %>

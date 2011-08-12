@@ -1,20 +1,26 @@
 
-  <div class="group">
-    <%= f.label :name, t("activerecord.attributes.chore.name", :default => "Name"), :class => :label %>
-    <%= f.text_field :name, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
-  </div>
+<div class="group">
+  <%= f.label :name, t("activerecord.attributes.chore.name", :default => "Name"), :class => :label %>
+  <%= f.text_field :name, :class => 'text_field' %>
+  <span class="description">Ex: a simple text</span>
+</div>
 
-  <div class="group">
-    <%= f.label :schedule_yaml, t("activerecord.attributes.chore.schedule_yaml", :default => "Schedule yaml"), :class => :label %>
-    <%= f.text_field :schedule_yaml, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
-  </div>
+<%= field_set_tag 'Schedule' do %>
+  <%= f.fields_for :schedule_attributes do |schedule| %>
+    <%= schedule.hidden_field :repeat, :value => 1 %>
+    <p>Every <%= schedule.number_field :interval, :min => 1 %> <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week']]) %></p>
+    <p>On
+    <% Date::DAYNAMES.each do |day| %>
+      <%= schedule.check_box day.downcase.to_sym %>
+      <%= schedule.label day.downcase.to_sym %>
+    <% end %></p>
+  <% end %>
+<% end %>
         
 <div class="group navform wat-cf">
   <button class="button" type="submit">
     <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
   </button>
   <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
-	<%= link_to t("web-app-theme.cancel", :default => "Cancel"), chores_path, :class => "text_button_padding link_button" %>
+	<%= link_to t("web-app-theme.cancel", :default => "Cancel"), group_chores_path, :class => "text_button_padding link_button" %>
 </div>

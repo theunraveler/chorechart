@@ -5,7 +5,6 @@ Chorechart::Application.routes.draw do
     resources :chores
   end
 
-
   devise_for :users, 
     :path => '', 
     :path_names => { 
