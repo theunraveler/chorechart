@@ -2,7 +2,7 @@ Chorechart::Application.routes.draw do
 
   resources :groups, :shallow => true do 
     resources :memberships, :only => [:index, :create, :update, :destroy]
-    resources :chores
+    resources :chores, :except => :show
   end
 
   devise_for :users, 

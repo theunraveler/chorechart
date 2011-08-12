@@ -5,7 +5,6 @@ class CreateChores < ActiveRecord::Migration
       t.string :name
       t.text :schedule_yaml
       t.timestamps
-
     end
   end
 

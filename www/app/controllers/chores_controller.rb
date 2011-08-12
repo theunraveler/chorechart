@@ -4,20 +4,13 @@ class ChoresController < ApplicationController
   # GET /chores
   def index
     @group = Group.find(params[:group_id])
-    @chores = Chore.all
+    @chores = Chore.where(:group_id => @group.id)
     respond_with @chores
-  end
-
-  # GET /chores/1
-  def show
-    @chore = Chore.find(params[:id])
-    respond_with @chore
   end
 
   # GET /chores/new
   def new
-    @group = Group.find(params[:group_id])
-    @chore = Chore.new
+    @chore = Chore.new(:group_id => params[:group_id])
     respond_with @chore
   end
 
@@ -28,11 +21,11 @@ class ChoresController < ApplicationController
 
   # POST /chores
   def create
-    @chore = Chore.new(params[:chore])
+    @chore = Chore.new(params[:chore].merge({:group_id => params[:group_id]}))
 
     respond_to do |format|
       if @chore.save
-        format.html { redirect_to(@chore, :notice => 'Chore was successfully created.') }
+        format.html { redirect_to(group_chores_path(@chore.group), :notice => 'Chore was successfully created.') }
         format.xml  { render :xml => @chore, :status => :created, :location => @chore }
       else
         format.html { render :action => "new" }
@@ -47,7 +40,7 @@ class ChoresController < ApplicationController
 
     respond_to do |format|
       if @chore.update_attributes(params[:chore])
-        format.html { redirect_to(@chore, :notice => 'Chore was successfully updated.') }
+        format.html { redirect_to(group_chores_path(@chore.group), :notice => 'Chore was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

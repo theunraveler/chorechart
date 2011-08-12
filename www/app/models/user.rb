@@ -24,6 +24,14 @@ class User < ActiveRecord::Base
     self.update_without_password(params)
   end
 
+  def first_name
+    name.split.first unless name.nil?
+  end
+
+  def last_name
+    name.split.last unless name.nil?
+  end
+
   protected
 
   def self.find_for_database_authentication(warden_conditions)

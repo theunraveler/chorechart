@@ -13,11 +13,14 @@
 ActiveRecord::Schema.define(:version => 20110806190640) do
 
   create_table "chores", :force => true do |t|
+    t.integer  "group_id"
     t.string   "name"
-    t.string   "schedule_yaml"
+    t.text     "schedule_yaml"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "chores", ["group_id"], :name => "chores_group_id_fk"
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -67,6 +70,8 @@ ActiveRecord::Schema.define(:version => 20110806190640) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_foreign_key "chores", "groups", :name => "chores_group_id_fk", :dependent => :delete
 
   add_foreign_key "memberships", "groups", :name => "memberships_group_id_fk", :dependent => :delete
   add_foreign_key "memberships", "users", :name => "memberships_user_id_fk", :dependent => :delete

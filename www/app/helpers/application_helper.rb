@@ -12,4 +12,16 @@ module ApplicationHelper
     image_tag("icons/#{size}/#{name}.png")
   end
 
+  def format_date(date)
+    date.strftime('%D')
+  end
+
+  def fuzzy_date(date)
+    days = (date.to_date - Date.today).to_i
+    return 'today'     if days >= 0 and days < 1
+    return 'tomorrow'  if days >= 1 and days < 2
+    return "in #{days} days"      if days < 7
+    return format_date(date)
+  end
+
 end
