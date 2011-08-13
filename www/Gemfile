@@ -13,6 +13,7 @@ gem 'escape_utils'
 gem "cancan"
 gem 'foreigner'
 gem 'capistrano'
+gem "meta_where"
 
 group :development do
   gem 'web-app-theme'

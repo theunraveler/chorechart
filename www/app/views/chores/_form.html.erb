@@ -6,9 +6,12 @@
 </div>
 
 <%= field_set_tag 'Schedule' do %>
-  <%= f.fields_for :schedule_attributes do |schedule| %>
+  <%= f.fields_for :schedule_attributes, @chore.schedule_attributes do |schedule| %>
     <%= schedule.hidden_field :repeat, :value => 1 %>
-    <p>Every <%= schedule.number_field :interval, :min => 1 %> <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week']]) %></p>
+    <p>
+      Every <%= schedule.number_field :interval, :min => 1 %> 
+      <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week']], @chore.schedule_attributes.interval_unit) %>
+    </p>
     <p>On
     <% Date::DAYNAMES.each do |day| %>
       <%= schedule.check_box day.downcase.to_sym %>
@@ -16,7 +19,7 @@
     <% end %></p>
   <% end %>
 <% end %>
-        
+
 <div class="group navform wat-cf">
   <button class="button" type="submit">
     <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>

@@ -30,12 +30,15 @@
         </div>
         <div id="footer">
           <div class="block">
-            <p>Copyright &copy; <%= Time.now.year %> Web App.</p>
+            <p>Copyright &copy; <%= Time.now.year %> <a href="http://github.com/theunraveler">theunraveler</a></p>
           </div>      
         </div>
       </div>
       <div id="sidebar">
         <%= yield :sidebar %>
+        <% if user_signed_in? %>
+          <%= render 'shared/user_chores' %>
+        <% end %>
       </div>
     </div>    
   </div>

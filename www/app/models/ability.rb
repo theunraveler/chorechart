@@ -19,5 +19,10 @@ class Ability
       membership.is_admin?
     end
 
+    can :destroy, Membership do |membership|
+      user_membership = Membership.find_by_user_id_and_group_id(user.id, membership.group.id)
+      membership.group.memberships.count != 1 && user_membership.is_admin?
+    end
+
   end
 end

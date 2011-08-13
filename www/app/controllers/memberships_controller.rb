@@ -17,7 +17,7 @@ class MembershipsController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
     params[:membership][:group_id] = @group.id
-    user = User.find_by_login(params[:membership][:user_id])
+    user = User.find_by_login(params[:membership][:user_id]).first
     params[:membership][:user_id] = user.id
     @membership = Membership.new(params[:membership])
 
@@ -56,7 +56,7 @@ class MembershipsController < ApplicationController
     @membership.destroy
 
     respond_to do |format|
-      format.html { redirect_to(memberships_url) }
+      format.html { redirect_to(group_memberships_url(@membership.group)) }
       format.xml  { head :ok }
     end
   end

@@ -1,14 +1,18 @@
 <h2 class="title">Manage Users for <%= @group.name %></h2>
 
 <div class="inner">
-  <table>
+  <table class="table">
   <% @memberships.each do |membership| %>
-    <tr>
+    <tr class="<%= cycle "odd", "even" %>">
       <td><%= membership.user.email %></td>
-      <td><%= link_to 'Remove', membership, :confirm => "Are you sure you want to remove #{membership.user.username} from this group?", :method => :delete %></td>
+      <% if can? :destroy, membership %>
+        <td><%= link_to 'Remove', membership, :confirm => "Are you sure you want to remove #{membership.user.username} from this group?", :method => :delete %></td>
+      <% end %>
     </tr>
   <% end %>
+    <tr>
+      <td colspan="2"><%= render 'form' %></td>
+    <tr>
   </table>
 
-  <%= render 'form' %>
 </div>

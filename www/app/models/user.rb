@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :email
   validates_uniqueness_of :username, :email
 
-  scope :find_by_login, lambda { |login| where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]) }
+  named_scope :find_by_login, lambda { |login| where({:username => login.downcase} | {:email => login.downcase}) }
 
   def update_with_password(params={})
     params.delete(:current_password)

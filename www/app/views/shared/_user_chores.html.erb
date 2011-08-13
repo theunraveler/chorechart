@@ -1,0 +1,10 @@
+<div class="block">
+  <h3>My Chores</h3>
+  <div class="content">
+    <p>
+      <% (0...5).each do |num| %>
+        <p><%= fuzzy_date(Date.today + num.day) %></p>
+      <% end %>
+    </p>
+  </div>
+</div>
