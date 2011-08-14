@@ -179,7 +179,7 @@ DEPENDENCIES
   foreigner
   jquery-rails
   meta_where
-  mysql2 (~> 0.2.6)
+  mysql2 (< 0.3)
   rails (= 3.0.9)
   rake
   rspec-rails
