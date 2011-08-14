@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20110806190640) do
   create_table "chores", :force => true do |t|
     t.integer  "group_id"
     t.string   "name"
-    t.text     "schedule_yaml"
+    t.text     "schedule_yaml", :limit => 2147483647
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,11 +65,6 @@ ActiveRecord::Schema.define(:version => 20110806190640) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
-
-  create_table "weeks", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   add_foreign_key "chores", "groups", :name => "chores_group_id_fk", :dependent => :delete
 

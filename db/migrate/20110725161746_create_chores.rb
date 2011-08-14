@@ -3,7 +3,7 @@ class CreateChores < ActiveRecord::Migration
     create_table :chores do |t|
       t.integer :group_id
       t.string :name
-      t.text :schedule_yaml
+      t.text :schedule_yaml, :limit => 4294967295
       t.timestamps
     end
   end
