@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
     assignments.select { |a| a.date == date }
   end
 
+  def to_s
+    first_name || username
+  end
+
   protected
 
   def self.find_for_database_authentication(warden_conditions)

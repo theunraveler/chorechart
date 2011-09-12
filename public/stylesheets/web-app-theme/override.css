@@ -1,3 +1,5 @@
+.clearer { clear: both; }
+
 /* Override here any style defined by web-app-theme */
 header {
   height: 60px;
@@ -93,3 +95,33 @@ header h1 a:link, header h1 a:active, header h1 a:hover, header h1 a:visited {
   margin-bottom: 15px;
 }
 
+h2 {
+  float: left;
+}
+
+#chore-breakdown .user-thumb {
+  float: left;
+  padding-right: 5px; 
+}
+
+.content .pagination {
+  float: right;
+  width: 271px;
+  margin: 15px; 
+}
+.pagination span.disabled {
+  color: #999;
+}
+
+.block#my-chores .empty-chore-message {
+  font-style: italic;
+  padding-left: 20px;
+}
+.block#my-chores ul {
+  padding-left: 20px;
+}
+.block#my-chores ul li {
+  background-image: none;
+  list-style-type: disc;
+  border-bottom: none;
+}

@@ -1,14 +1,16 @@
-<div class="block">
+<div id="my-chores" class="block">
   <h3>My Chores</h3>
-    <p>
-      <% (0...5).each do |num| %>
-        <% date = Date.today + num.day %>
-        <p><%= fuzzy_date(date) %></p>
-        <ul>
-          <% current_user.get_chores_for_date(date).each do |assignment| %>
-            <li><%= assignment.chore.name %></li>
-          <% end %>
-        </ul>
-      <% end %>
-    </p>
+  <% (Date.today...Date.today.advance(:days => 5)).each do |date| %>
+    <% chores = current_user.get_chores_for_date(date) %>
+    <p class="date-header"><%= fuzzy_date(date) %></p>
+    <% if chores.empty? %>
+      <span class="empty-chore-message">Nothing! Have fun!</span>
+    <% else %>
+      <ul>
+        <% chores.each do |assignment| %>
+          <li><%= assignment.chore.name %> in <%= link_to assignment.chore.group.name, assignment.chore.group %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
 </div>

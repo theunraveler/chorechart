@@ -3,7 +3,7 @@
     <%= avatar_image(current_user, 40) %>
   </div>
   <div class="user-menu">
-    Hello, <%= current_user.first_name || current_user.username %>
+    Hello, <%= current_user %>
     <ul>
       <li><%= link_to "My Groups", groups_path %></li>
       <li><%= link_to "My Account", edit_user_registration_path %></li>

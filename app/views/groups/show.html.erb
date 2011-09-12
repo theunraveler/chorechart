@@ -1,24 +1,46 @@
 <div class="block">
   <div class="content">
     <div class="inner">
-      <h2 class="title"><%= @group.name %></h2>
-      <table>
-        <% @group.get_chores_for_week.each do |date, assignments| %>
-          <tr>
-            <td><%= date %></td>
-            <td><ul>
-              <% assignments.each do |assignment| %>
-                <li><%= assignment.chore.name %></li>
-              <% end %>
-            </ul></td>
+      <% if in_current_week?(@week) %>
+        <h2 class="title"><%= @group.name %> for this week</h2>
+      <% else %>
+        <h2 class="title"><%= @group.name %> for the week of <%= format_date(@week.to_time) %></h2>
+      <% end %>
+      <div class="pagination">
+        <div class="previous-week"><%= link_to '« Previous week', group_path(@group, :week => @week.advance(:weeks => -1)), :class => 'prev_page' %></div>
+        <% if in_current_week?(@week) %>
+          <div class="this-week"><span class="disabled">This week</span></div>
+        <% else %>
+          <div class="this-week"><%= link_to 'This week', group_path(@group) %></div>
+        <% end %>
+        <div class="next-week"><%= link_to 'Next week »', group_path(@group, :week => @week.next_week), :class => 'next_page' %></div>
+      </div>
+      <div class="clearer"></div>
+      <table id="chore-breakdown" class="table">
+        <tr>
+          <th></th>
+          <% @group.users.each do |user| %>
+            <th>
+              <div class="user-thumb"><%= avatar_image(user, 24) %></div>
+              <div class="user-name"><%= user %></div>
+            </th>
+          <% end %>
+        </tr>
+        <% (@week..@week.end_of_week).each do |date| %>
+          <tr<%= ' class="today"' if Date.today == date %>>
+            <td><%= format_date(date.to_time, :style => :medium) %></td>
+            <% @group.users.each do |user| %>
+              <td>
+                <ul>
+                <% @chores.select { |a| a.user == user && a.date == date }.each do |assignment| %> 
+                  <li><%= assignment.chore.name %></li>
+                <% end %>
+                </ul>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </table>
-      <% if can? :update, @group %>
-        <div class="wat-cf">
-          <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_group_path(@group), :class => "button" %> 
-        </div>
-      <% end %>
     </div>
   </div>
 </div>
