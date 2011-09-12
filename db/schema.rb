@@ -10,11 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110806190640) do
+ActiveRecord::Schema.define(:version => 20110912164535) do
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "chore_id",                       :null => false
+    t.integer  "user_id",                        :null => false
+    t.date     "date",                           :null => false
+    t.boolean  "is_complete", :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assignments", ["chore_id"], :name => "assignments_chore_id_fk"
+  add_index "assignments", ["user_id"], :name => "assignments_user_id_fk"
 
   create_table "chores", :force => true do |t|
     t.integer  "group_id"
-    t.string   "name"
+    t.string   "name",                                :default => "", :null => false
+    t.integer  "difficulty",                                          :null => false
     t.text     "schedule_yaml", :limit => 2147483647
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -65,6 +78,9 @@ ActiveRecord::Schema.define(:version => 20110806190640) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
+
+  add_foreign_key "assignments", "chores", :name => "assignments_chore_id_fk", :dependent => :delete
+  add_foreign_key "assignments", "users", :name => "assignments_user_id_fk", :dependent => :delete
 
   add_foreign_key "chores", "groups", :name => "chores_group_id_fk", :dependent => :delete
 

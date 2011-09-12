@@ -16,8 +16,8 @@
     <p><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %></p>
 
-    <%= avatar_image resource %>
-    <a href="http://gravatar.com/emails">Change your Gravatar</a>
+    <%= avatar_image resource %><br />
+    <a class="external" href="http://gravatar.com/emails">Change your Gravatar</a>
 
     <p><%= f.submit "Update" %></p>
   <% end %>

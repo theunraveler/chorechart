@@ -14,6 +14,7 @@
         <table class="table">
           <tr>
             <th></th>
+            <th>Difficulty</th>
             <th>Repeats</th>
             <th>Next Occurrence</th>
             <th></th>
@@ -22,6 +23,9 @@
           <tr class="<%= cycle("odd", "even") %>">
             <td>
               <%= chore.name %>
+            </td>
+            <td>
+              <%= chore.difficulty %>
             </td>
             <td>
               <%= chore.schedule.to_s %>

@@ -6,7 +6,7 @@ class Ability
 
     can :create, Group
     can :read, Group, :id => user.group_ids 
-    can :edit, Group do |group|
+    can :update, Group do |group|
       membership = Membership.find_by_user_id_and_group_id(user.id, group.id)
       membership.is_admin?
     end

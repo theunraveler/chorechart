@@ -56,7 +56,7 @@ class ChoresController < ApplicationController
     @chore.destroy
 
     respond_to do |format|
-      format.html { redirect_to(chores_url) }
+      format.html { redirect_to(group_chores_url(@chore.group)) }
       format.xml  { head :ok }
     end
   end

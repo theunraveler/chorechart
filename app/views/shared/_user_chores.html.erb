@@ -1,10 +1,14 @@
 <div class="block">
   <h3>My Chores</h3>
-  <div class="content">
     <p>
       <% (0...5).each do |num| %>
-        <p><%= fuzzy_date(Date.today + num.day) %></p>
+        <% date = Date.today + num.day %>
+        <p><%= fuzzy_date(date) %></p>
+        <ul>
+          <% current_user.get_chores_for_date(date).each do |assignment| %>
+            <li><%= assignment.chore.name %></li>
+          <% end %>
+        </ul>
       <% end %>
     </p>
-  </div>
 </div>

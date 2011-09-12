@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   # Associations
   has_many :memberships
   has_many :groups, :through => :memberships
+  has_many :assignments
+  has_many :chores, :through => :assignments
 
   attr_accessor :login
 
@@ -30,6 +32,10 @@ class User < ActiveRecord::Base
 
   def last_name
     name.split.last unless name.nil?
+  end
+
+  def get_chores_for_date(date)
+    assignments.select { |a| a.date == date }
   end
 
   protected
