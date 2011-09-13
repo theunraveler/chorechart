@@ -16,11 +16,7 @@
     </header>    
     <div id="wrapper" class="wat-cf">
       <div id="flash">
-        <% flash.each do |type, message| -%>
-          <div class="message <%= type %>">
-            <p><%= message %></p>
-          </div>
-        <% end -%>
+        <%= render 'shared/flash', :flash => flash %>
       </div>
       <div id="main">
         <div class="block">

@@ -30,6 +30,7 @@ class GroupsController < ApplicationController
         @group.add_user(current_user, 'admin')
         format.html { redirect_to(groups_url, :notice => "Group #{@group.name} created.") }
       else
+        flash.now[:error] = @group.errors
         format.html { render :action => "new" }
       end
     end
@@ -41,6 +42,7 @@ class GroupsController < ApplicationController
       if @group.update_attributes(params[:group])
         format.html { redirect_to(@group, :notice => 'Group was successfully updated.') }
       else
+        flash.now[:error] = @group.errors
         format.html { render :action => "edit" }
       end
     end

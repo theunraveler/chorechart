@@ -1,15 +1,12 @@
 class MembershipsController < ApplicationController
-  # GET /memberships
-  # GET /memberships.xml
+  respond_to :html
+
   def index
     @group = Group.find(params[:group_id])
     @memberships = Membership.find_all_by_group_id(@group.id)
     @membership = Membership.new
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @memberships }
-    end
+    respond_with @memberships
   end
 
   # POST /memberships
@@ -24,11 +21,10 @@ class MembershipsController < ApplicationController
     respond_to do |format|
       if @membership.save
         format.html { redirect_to(group_memberships_url(@group), :notice => "User #{user.email} has been added to the group.") }
-        format.xml  { render :xml => @membership, :status => :created, :location => @membership }
       else
+        flash.now[:error] = @membership.errors        
         @memberships = Membership.all
         format.html { render :action => "index" }
-        format.xml  { render :xml => @membership.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -43,6 +39,7 @@ class MembershipsController < ApplicationController
         format.html { redirect_to(@membership, :notice => 'Membership was successfully updated.') }
         format.xml  { head :ok }
       else
+        flash.now[:error] = @membership.errors        
         format.html { render :action => "edit" }
         format.xml  { render :xml => @membership.errors, :status => :unprocessable_entity }
       end

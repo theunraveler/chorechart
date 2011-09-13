@@ -28,6 +28,7 @@ class ChoresController < ApplicationController
         format.html { redirect_to(group_chores_path(@chore.group), :notice => 'Chore was successfully created.') }
         format.xml  { render :xml => @chore, :status => :created, :location => @chore }
       else
+        flash.now[:error] = @chore.errors
         format.html { render :action => "new" }
         format.xml  { render :xml => @chore.errors, :status => :unprocessable_entity }
       end
@@ -43,6 +44,7 @@ class ChoresController < ApplicationController
         format.html { redirect_to(group_chores_path(@chore.group), :notice => 'Chore was successfully updated.') }
         format.xml  { head :ok }
       else
+        flash.now[:error] = @chore.errors
         format.html { render :action => "edit" }
         format.xml  { render :xml => @chore.errors, :status => :unprocessable_entity }
       end

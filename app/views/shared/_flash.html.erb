@@ -1,0 +1,16 @@
+<% flash.each do |type, message| %>
+  <div class="message <%= type %>">
+    <% if message.instance_of? ActiveModel::Errors %>
+      <p>
+        <%= pluralize(message.count, 'error') %> prevented this item from being saved:
+        <ul> 
+          <% message.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </p>
+    <% else %>
+      <p><%= message %></p>
+    <% end %>
+  </div>
+<% end %>
