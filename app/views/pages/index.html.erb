@@ -1,8 +1,17 @@
 <div class="block">
   <div class="content">
     <div class="inner">
-      <h2 class="title">Welcome to Chorechart!</h2>
-      <p>Chorechart is a collaborative chore list for adults.</p>
+      <h2 class="title">Welcome to <%= Rails.application.config.app_name %>!</h2>
+      <p><%= Rails.application.config.app_name %> is a collaborative chore list for adults.</p>
+      <p>This is not a silly little chore chart to keep kids on top of their chores (though it could be used for that, I guess). Rather, <%= Rails.application.config.app_name %> is a sophisticated chore manager for groups of adults to manage collective responsibilities.</p>
+      <p>
+        <%= Rails.application.config.app_name %> is perfect for
+        <ul>
+          <li>Housemates</li>
+          <li>Collective workspaces (coworking)</li>
+          <li>...and many others!</li>
+        </ul>
+      </p>
       <p><%= link_to "Register Now!", new_user_registration_path %></p>
     </div>
   </div>
