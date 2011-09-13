@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :groups, :through => :memberships
   has_many :assignments
   has_many :chores, :through => :assignments
+  has_many :authentications
 
   attr_accessor :login
 

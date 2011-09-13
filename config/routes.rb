@@ -1,5 +1,7 @@
 Chorechart::Application.routes.draw do
 
+  match '/auth/:provider/callback' => 'authentications#create'
+
   resources :groups, :shallow => true do 
     resources :memberships, :only => [:index, :create, :update, :destroy]
     resources :chores, :except => :show
@@ -14,6 +16,10 @@ Chorechart::Application.routes.draw do
       :sign_up => 'create' 
     } do
     get 'dashboard', :to => 'users#dashboard', :as => :user_root
+  end
+
+  scope '/account' do 
+    resources :authentications
   end
 
   root :to => "pages#index"

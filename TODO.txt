@@ -1,0 +1,10 @@
+Features
+========
+
+1. Names!!
+  * 
+2. Blocks for the dashboard
+  * Feedback form
+  * Tutorial
+3. Prinatable month view for group
+4. OmniAuth for Twitter, Facebook, OpenID, Github, Stack Overflow
