@@ -95,7 +95,7 @@ header h1 a:link, header h1 a:active, header h1 a:hover, header h1 a:visited {
   margin-bottom: 15px;
 }
 
-h2 {
+#group-chores-page h2 {
   float: left;
 }
 
@@ -124,4 +124,9 @@ h2 {
   background-image: none;
   list-style-type: disc;
   border-bottom: none;
+}
+.block#my-chores ul li a {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  margin: 0;
+  border-bottom: 1px dashed #777;
 }

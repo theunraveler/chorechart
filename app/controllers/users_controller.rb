@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   respond_to :html
 
-  def show
+  def dashboard
     @user = current_user
     respond_with @user
   end

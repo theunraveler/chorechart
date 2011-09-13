@@ -1,5 +1,5 @@
 <div class="block">
-  <div class="content">
+  <div id="group-chores-page" class="content">
     <div class="inner">
       <% if in_current_week?(@week) %>
         <h2 class="title"><%= @group.name %> for this week</h2>
@@ -22,7 +22,11 @@
           <% @group.users.each do |user| %>
             <th>
               <div class="user-thumb"><%= avatar_image(user, 24) %></div>
-              <div class="user-name"><%= user %></div>
+              <% if (user == current_user) %>
+                <div class="user-name">You</div>
+              <% else %>
+                <div class="user-name"><%= user %></div>
+              <% end %>
             </th>
           <% end %>
         </tr>

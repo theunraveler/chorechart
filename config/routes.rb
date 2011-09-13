@@ -13,7 +13,7 @@ Chorechart::Application.routes.draw do
       :registration => 'account', 
       :sign_up => 'create' 
     } do
-    get 'account', :to => 'users#show', :as => :user_root
+    get 'dashboard', :to => 'users#dashboard', :as => :user_root
   end
 
   root :to => "pages#index"

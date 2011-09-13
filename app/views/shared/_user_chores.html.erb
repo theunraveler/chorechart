@@ -1,10 +1,10 @@
 <div id="my-chores" class="block">
-  <h3>My Chores</h3>
+  <h3>Your Chores</h3>
   <% (Date.today...Date.today.advance(:days => 5)).each do |date| %>
     <% chores = current_user.get_chores_for_date(date) %>
     <p class="date-header"><%= fuzzy_date(date) %></p>
     <% if chores.empty? %>
-      <span class="empty-chore-message">Nothing! Have fun!</span>
+      <span class="empty-chore-message">Nothing! Enjoy your day off!</span>
     <% else %>
       <ul>
         <% chores.each do |assignment| %>
