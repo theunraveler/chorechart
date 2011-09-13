@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  controller.authorize_resource
+  
   index do
     column :username
     column :name

@@ -1,4 +1,6 @@
 ActiveAdmin.register Assignment do
+  controller.authorize_resource
+  
   index do
     column :user_id
     column :chore_id
