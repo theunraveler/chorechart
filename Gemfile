@@ -13,6 +13,7 @@ gem "cancan"
 gem 'foreigner'
 gem 'capistrano'
 gem "meta_where"
+gem 'activeadmin'
 
 group :development do
   gem 'web-app-theme'

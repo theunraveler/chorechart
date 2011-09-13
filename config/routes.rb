@@ -1,6 +1,6 @@
 Chorechart::Application.routes.draw do
 
-  match '/auth/:provider/callback' => 'authentications#create'
+  ActiveAdmin.routes(self)
 
   resources :groups, :shallow => true do 
     resources :memberships, :only => [:index, :create, :update, :destroy]
@@ -18,6 +18,7 @@ Chorechart::Application.routes.draw do
     get 'dashboard', :to => 'users#dashboard', :as => :user_root
   end
 
+  match '/auth/:provider/callback' => 'authentications#create'
   scope '/account' do 
     resources :authentications
   end
