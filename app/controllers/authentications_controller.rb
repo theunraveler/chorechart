@@ -3,6 +3,7 @@ class AuthenticationsController < ApplicationController
 
   def index
     @authentications = user_signed_in? ? current_user.authentications : []
+    @providers = @authentications.collect { |a| a.provider }
     respond_with @authentications
   end
 

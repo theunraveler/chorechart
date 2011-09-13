@@ -27,6 +27,7 @@
               <% else %>
                 <div class="user-name"><%= user %></div>
               <% end %>
+              <div class="user-points">(Workload: <%= user_points_for_week(user, @week) %>)</div>
             </th>
           <% end %>
         </tr>

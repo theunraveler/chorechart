@@ -1,5 +1,8 @@
 .clearer { clear: both; }
 
+.columns .column { width: 48%; }
+.column.left { float: left; }
+.column.right { float: right; }
 /* Override here any style defined by web-app-theme */
 header {
   height: 60px;
