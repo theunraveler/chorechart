@@ -4,8 +4,10 @@ class CreateAuthentications < ActiveRecord::Migration
       t.integer :user_id
       t.string :provider
       t.string :uid
-
       t.timestamps
+    end
+    change_table :authentications do |t|
+      t.foreign_key :users, :dependent => :delete
     end
   end
 

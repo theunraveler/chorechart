@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20110913042845) do
     t.datetime "updated_at"
   end
 
+  add_index "authentications", ["user_id"], :name => "authentications_user_id_fk"
+
   create_table "chores", :force => true do |t|
     t.integer  "group_id"
     t.string   "name",                                :default => "", :null => false
@@ -89,6 +91,8 @@ ActiveRecord::Schema.define(:version => 20110913042845) do
 
   add_foreign_key "assignments", "chores", :name => "assignments_chore_id_fk", :dependent => :delete
   add_foreign_key "assignments", "users", :name => "assignments_user_id_fk", :dependent => :delete
+
+  add_foreign_key "authentications", "users", :name => "authentications_user_id_fk", :dependent => :delete
 
   add_foreign_key "chores", "groups", :name => "chores_group_id_fk", :dependent => :delete
 

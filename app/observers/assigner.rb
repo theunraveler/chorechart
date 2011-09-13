@@ -1,5 +1,21 @@
 class Assigner < ActiveRecord::Observer
-  observe :chore, :group
+  observe :chore, :membership
+
+  def after_create(object)
+    self.class.destroy_assignments_for_group(object.group)
+  end
+
+  def after_update(object)
+    self.class.destroy_assignments_for_group(object.group)
+  end
+
+  def after_destroy(object)
+    self.class.destroy_assignments_for_group(object.group)
+  end
+
+  def self.destroy_assignments_for_group(group)
+    Assignment.destroy_all(:chore => group.chores)
+  end
 
   def self.create_schedule_for_week(group, week)
     users = group.users
