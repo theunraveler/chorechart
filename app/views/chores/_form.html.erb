@@ -8,6 +8,7 @@
   <%= f.label :difficulty, t("activerecord.attributes.chore.difficulty", :default => "Difficulty"), :class => :label %>
   <div id="difficulty-slider"></div>
   <div id="difficulty-text"></div>
+  <span class="description">Difficulty can correspond to the length of time a chore takes or the undesirability/inconvenience of a chore. This ensures that, when chores are being assigned, "Feeding the cats" does not bear the same weight as "Cleaning the toilet", for instance.</span>
   <%= f.hidden_field :difficulty %>
 </div>
 
