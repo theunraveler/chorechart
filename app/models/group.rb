@@ -16,6 +16,8 @@ class Group < ActiveRecord::Base
   def get_assignments_for_week(date = Date.today)
     if (assigns = _fetch_assignments_for_week(date)).empty? && should_have_assignments?(date)
       Assigner.create_schedule_for_week(self, date)
+      # Reload data from the DB so we don't get stale data
+      reload
       assigns = _fetch_assignments_for_week(date)
     end
     return assigns

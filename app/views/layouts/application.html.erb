@@ -15,9 +15,11 @@
       </nav>
     </header>    
     <div id="wrapper" class="wat-cf">
-      <div id="flash">
-        <%= render 'shared/flash', :flash => flash %>
-      </div>
+      <% if !flash.empty? %>
+        <div id="flash">
+          <%= render 'shared/flash', :flash => flash %>
+        </div>
+      <% end %>
       <div id="main">
         <div class="block">
           <div class="content">

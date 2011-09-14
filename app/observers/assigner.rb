@@ -17,8 +17,11 @@ class Assigner < ActiveRecord::Observer
     Assignment.destroy_all(:chore => group.chores)
   end
 
+  # Needs some refactoring.
   def self.create_schedule_for_week(group, week)
     users = group.users
+    points = {}
+    users.each { |u| points[u.id] = 0 } 
     chores = group.chores
     occurrences = []
 
@@ -32,7 +35,14 @@ class Assigner < ActiveRecord::Observer
     end
 
     occurrences.each do |occurrence|
-      Assignment.create(:chore => occurrence[:chore], :user => users.sample, :date => occurrence[:date])
+      if points.values.all? { |p| p == 0 }
+        lowest_user = users.sample
+      else
+        lowest_points = points.key(points.values.min)
+        lowest_user = users.select { |u| u.id = lowest_points }.first
+      end
+      points[lowest_user.id] += occurrence[:chore].difficulty
+      Assignment.create(:chore => occurrence[:chore], :user => lowest_user, :date => occurrence[:date])
     end
   end
 end

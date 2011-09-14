@@ -10,6 +10,11 @@
       <%= image_tag 'services/facebook_64.png', :size => '64x64', :alt => 'Facebook' %>Facebook
     </a>  
   <% end %>
+  <% if !providers.include?('github') %>        
+    <a href="/auth/github" class="auth_provider">  
+      <%= image_tag 'services/github_64.png', :size => '64x64', :alt => 'Github' %>Github
+    </a>  
+  <% end %>
   <% if !providers.include?('google') %>
     <a href="/auth/google" class="auth_provider">
       <%= image_tag 'services/google_64.png', :size => '64x64', :alt => 'Google' %>Google

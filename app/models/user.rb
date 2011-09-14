@@ -39,6 +39,22 @@ class User < ActiveRecord::Base
     assignments.select { |a| a.date == date }
   end
 
+  def self.new_from_omniauth(auth)
+    case auth['provider']
+      when 'twitter'
+        account_details = auth['user_info']
+        self.new({:username => account_details['nickname'], :name => account_details['name']})
+      when 'facebook'
+        account_details = auth['user_info']
+        self.new({:email => account_details['email'], :username => account_details['nickname'], :name => account_details['name']})
+      when 'github'
+        account_details = auth['user_info']
+        self.new({:email => account_details['email'], :username => account_details['nickname'], :name => account_details['name']})
+      else
+        self.new
+    end  
+  end
+
   def to_s
     first_name || username
   end

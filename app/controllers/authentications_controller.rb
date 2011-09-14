@@ -13,10 +13,25 @@ class AuthenticationsController < ApplicationController
     if authentication  
       flash[:notice] = 'Logged in successfully.'
       sign_in_and_redirect(:user, authentication.user)
-    else  
+    elsif current_user
       current_user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
       flash[:notice] = 'Authentication successfully added'
       redirect_to authentications_url
+    else
+      user = User.new_from_omniauth(omniauth)
+      user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+      begin
+        user.save!
+        flash[:notice] = "Signed in successfully."
+        sign_in_and_redirect(:user, user)
+      rescue ActiveRecord::RecordInvalid
+        if !user.errors[:email].empty?
+          flash[:error] = 'Looks like you already have an account! Try logging in with that, then add your account.'
+        else
+          flash[:error] = user.errors
+        end
+        redirect_to new_user_session_path
+      end
     end
   end
 
@@ -26,4 +41,5 @@ class AuthenticationsController < ApplicationController
     flash[:notice] = 'Successfully destroyed authentication.'  
     redirect_to authentications_url
   end
+
 end
