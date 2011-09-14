@@ -34,7 +34,7 @@ class Assigner < ActiveRecord::Observer
       end
     end
 
-    occurrences.each do |occurrence|
+    occurrences.shuffle.each do |occurrence|
       if points.values.all? { |p| p == 0 }
         lowest_user = users.sample
       else
