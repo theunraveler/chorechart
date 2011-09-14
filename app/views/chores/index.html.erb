@@ -25,7 +25,7 @@
               <%= chore.name %>
             </td>
             <td>
-              <%= chore.difficulty %>
+              <%= ChoresHelper::DIFFICULTY[chore.difficulty] %>
             </td>
             <td>
               <%= chore.schedule.to_s %>
