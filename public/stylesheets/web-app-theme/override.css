@@ -187,3 +187,5 @@ header h1 a:link, header h1 a:active, header h1 a:hover, header h1 a:visited {
   text-align: center;
   margin-bottom: 10px;
 }
+
+#difficulty-slider { width: 400px; }

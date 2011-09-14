@@ -6,7 +6,9 @@
 
 <div class="group">
   <%= f.label :difficulty, t("activerecord.attributes.chore.difficulty", :default => "Difficulty"), :class => :label %>
-  <%= f.number_field :difficulty, :in => (1..5), :class => 'text_field' %>
+  <div id="difficulty-slider"></div>
+  <div id="difficulty-text"></div>
+  <%= f.hidden_field :difficulty %>
 </div>
 
 <%= field_set_tag 'Schedule' do %>
