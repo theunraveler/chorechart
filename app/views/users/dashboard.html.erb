@@ -4,20 +4,9 @@
 
       <h2 class="title">Dashboard</h2>
 
-      <div class="pane">
-        <h3 class="title">Today in...</h3>
-        <% @user.groups.each do |group| %>
-          <div class="column">
-            <h4><%= group %></h4>
-            <ul>
-              <% group.assignments_for(Date.today).each do |assignment| %>
-                <li><%= assignment.chore %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+      <div class="content">
+        <p>Coming soon...</p>
       </div>
-
     </div>
   </div>
 </div>
