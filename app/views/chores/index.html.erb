@@ -1,3 +1,5 @@
+<% content_for :page_title, "Chores for #{@group}" %>
+
 <div class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
@@ -6,7 +8,7 @@
     </ul>
   </div>          
   <div class="content">          
-    <h2 class="title">Chores for <%= @group.name %></h2>
+    <h2 class="title">Chores for <%= @group %></h2>
     <div class="inner">
       <% if @chores.empty? %>
         <p>This group has no chores. <%= link_to "Add a new chore", new_group_chore_path(@group) %>.</p>
@@ -22,7 +24,7 @@
           <% @chores.each do |chore| -%>
           <tr class="<%= cycle("odd", "even") %>">
             <td>
-              <%= chore.name %>
+              <%= chore %>
             </td>
             <td>
               <%= ChoresHelper::DIFFICULTY[chore.difficulty] %>

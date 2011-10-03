@@ -1,10 +1,12 @@
+<% content_for :page_title, @group %>
+
 <div class="block">
   <div id="group-chores-page" class="content">
     <div class="inner">
       <% if in_current_week?(@week) %>
-        <h2 class="title"><%= @group.name %> for this week</h2>
+        <h2 class="title"><%= @group %> for this week</h2>
       <% else %>
-        <h2 class="title"><%= @group.name %> for the week of <%= format_date(@week.to_time) %></h2>
+        <h2 class="title"><%= @group %> for the week of <%= format_date(@week.to_time) %></h2>
       <% end %>
       <div class="pagination">
         <div class="previous-week"><%= link_to '« Previous week', group_path(@group, :week => @week.advance(:weeks => -1)), :class => 'prev_page' %></div>
@@ -38,7 +40,7 @@
               <td>
                 <ul>
                 <% @chores.select { |a| a.user == user && a.date == date }.each do |assignment| %> 
-                  <li><%= assignment.chore.name %></li>
+                  <li><%= assignment.chore %></li>
                 <% end %>
                 </ul>
               </td>

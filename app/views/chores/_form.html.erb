@@ -20,10 +20,12 @@
       <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week']], @chore.schedule_attributes.interval_unit) %>
     </p>
     <p id="day-selection">On
-    <% Date::DAYNAMES.each do |day| %>
-      <%= schedule.check_box day.downcase.to_sym %>
-      <%= schedule.label day.downcase.to_sym %>
-    <% end %></p>
+      <% Date::DAYNAMES.each do |day| %>
+        <%= schedule.check_box day.downcase.to_sym %>
+        <%= schedule.label day.downcase.to_sym %>
+      <% end %>
+      <br /><span class="description">If no days are checked, today's day will be assumed.</span>
+    </p>
   <% end %>
 <% end %>
 
