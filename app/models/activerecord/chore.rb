@@ -6,4 +6,8 @@ class Chore < ActiveRecord::Base
 
   validates_presence_of :name
   validates_inclusion_of :difficulty, :in => 1..5
+
+  def to_s
+    name
+  end
 end

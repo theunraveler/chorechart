@@ -12,26 +12,30 @@ class Group < ActiveRecord::Base
     memberships.create({ :user_id => user.id, :group_id => id, role => true })
   end
 
-  # Get a list of chores for the week
-  def assignments_for_week(date = Date.today)
-    assigns = assignments.find_all_by_date(date.beginning_of_week..date.end_of_week)
-    if assigns.empty? && should_have_assignments?(date)
-      Assigner.create_schedule_for_week(self, date)
+  # Get a list of chores for the day
+  def assignments_for(start = Date.today, finish = Date.today)
+    assigns = assignments.find_all_by_date(start..finish)
+    if assigns.empty? && should_have_assignments?(start, finish)
+      Assigner.create_schedule_for(self, start, finish)
       # Reload data from the DB so we don't get stale data
       reload
-      assigns = assignments_for_week(date)
+      assigns = assignments_for(start, finish)
     end
     return assigns
   end
 
   # Determine if a group should have assignments for a given week.
-  def should_have_assignments?(date)
+  def should_have_assignments?(start, finish)
     chores.each do |chore|
-      if !chore.schedule.occurrences_between(date.beginning_of_week.to_time, date.end_of_week.advance(:days => 1).to_time).empty?
+      if !chore.schedule.occurrences_between(start.to_time, finish.advance(:days => 1).to_time).empty?
         return true
       end
     end
     return false
+  end
+
+  def to_s
+    name
   end
 
 end

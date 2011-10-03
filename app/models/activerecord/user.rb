@@ -35,8 +35,12 @@ class User < ActiveRecord::Base
     name.split.last unless name.nil?
   end
 
-  def get_chores_for_date(date)
-    assignments.select { |a| a.date == date }
+  def assignments_for(start = Date.today, finish = Date.today)
+    assigns = []
+    groups.each do |group|
+      assigns += group.assignments_for(start, finish)
+    end
+    assigns.select { |a| a.user == self }
   end
 
   def self.new_from_omniauth(auth)

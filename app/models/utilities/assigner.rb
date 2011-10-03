@@ -18,7 +18,7 @@ class Assigner < ActiveRecord::Observer
   end
 
   # Needs some refactoring.
-  def self.create_schedule_for_week(group, week)
+  def self.create_schedule_for(group, start, finish)
     users = group.users
     points = {}
     users.each { |u| points[u.id] = 0 } 
@@ -26,7 +26,7 @@ class Assigner < ActiveRecord::Observer
     occurrences = []
 
     chores.each do |chore|
-      chore.schedule.occurrences_between(week.to_time, week.end_of_week.advance(:days => 1).to_time).each do |occurrence|
+      chore.schedule.occurrences_between(start.to_time, finish.advance(:days => 1).to_time).each do |occurrence|
         occurrences << {
           :date => occurrence.to_date,
           :chore => chore
