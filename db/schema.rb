@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110913202633) do
+ActiveRecord::Schema.define(:version => 20111003045453) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -82,9 +82,8 @@ ActiveRecord::Schema.define(:version => 20110913202633) do
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "name"
-    t.string   "email",                                 :default => "",    :null => false
-    t.boolean  "is_admin",                              :default => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

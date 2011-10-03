@@ -15,7 +15,7 @@ Feature: Users
     When I go to the login page
     And I enter my credentials
     Then I should be taken to my user page
-    And I should see "Welcome, test"
+    And I should see "Hello, test"
     And I should see the flash message "Logged in successfully. Welcome."
     And I should see my username within the header
 
@@ -34,7 +34,7 @@ Feature: Users
 
   Scenario: Deleting account
     Given I am logged in as "testuser"
-    When I click on "My Account"
+    When I click on "Your Account"
     And I click on "Delete my account"
     Then I should be taken to the home page
     And my account should be deleted

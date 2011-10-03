@@ -10,7 +10,7 @@ Feature: Groups
       | Home            |
       | Company Office  |
       | Art Space       |
-    When I click "My Groups"
+    When I click "Your Groups"
     Then I should be on my groups page
     And I should only see my groups
 

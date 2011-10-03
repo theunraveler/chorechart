@@ -1,7 +1,5 @@
 Chorechart::Application.routes.draw do
 
-  ActiveAdmin.routes(self)
-
   resources :groups, :shallow => true do 
     resources :memberships, :only => [:index, :create, :update, :destroy]
     resources :chores, :except => :show
