@@ -1,33 +1,44 @@
-<div class="block">
-  <div id="user-dashboard-page" class="content">
+<!-- "Today in..." pane -->
+<div id="today-in" class="block">
+  <div class="content">
+    <h2 class="title">Today in...</h3>
     <div class="inner">
+      <div class="columns wat-cf">
+        <% @user.groups.each do |group| %>
+          <div class="column <%= cycle('left', 'right', :name => 'colors') %>">
+            <table class="table">
 
-      <!-- "Today in..." pane -->
-      <div id="today-in" class="pane">
-        <h2 class="title">Today in...</h3>
-        <div class="columns wat-cf">
-          <% @user.groups.each do |group| %>
-            <div class="column <%= cycle('left', 'right', :name => 'colors') %>">
-              <table class="table">
-                <tr><th colspan="2"><%= group %></th></tr>
-                <% group.assignments_for(Date.today).group_by(&:user).each do |user, assignments| %>
-                  <tr class="<%= cycle('odd', 'even', :name => 'rows') %>">
-                    <td>
-                      <div class="user-thumb"><%= avatar_image(user, 24) %></div>
-                      <div class="user-name"><%= user == @user ? 'You' : user %></div>
-                    </td>
-                    <td><ul><% assignments.each do |assignment| %>
-                      <li><%= assignment.chore %></li>
-                    <% end %></ul></td>
-                  </tr>
-                <% end %>
-              </table>
-              <div><%= link_to "This week in #{group} &rarr;".html_safe, group %></div>
-            </div>
-          <% end %>
-        </div>
+              <tr><th colspan="2"><%= group %></th></tr>
+              <% grouped_assignments = group.assignments_for(Date.today).group_by(&:user) %>
+              <!-- Don't forget users that have no assignments for the day -->
+              <% group.users.select { |u| !grouped_assignments.has_key?(u) }.each do |empty_user| %>
+                <% grouped_assignments[empty_user] = [] %>
+              <% end %>
+              <% grouped_assignments.each do |user, assignments| %>
+                <tr class="<%= cycle('odd', 'even', :name => 'rows') %>">
+                  <td>
+                    <div class="user-thumb"><%= avatar_image(user, 24) %></div>
+                    <div class="user-name"><%= user == @user ? 'You' : user %></div>
+                  </td>
+                  <td>
+                    <% if assignments.empty? %>
+                      <em>None</em>
+                    <% else %>
+                    <ul>
+                      <% assignments.each do |assignment| %>
+                        <li><%= assignment.chore %></li>
+                      <% end %>
+                    </ul>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+              
+            </table>
+            <div><%= link_to "This week in #{group} &rarr;".html_safe, group %></div>
+          </div>
+        <% end %>
       </div>
-
     </div>
   </div>
 </div>
