@@ -1,8 +1,12 @@
 class Group < ActiveRecord::Base
-  has_many :memberships, :dependent => :destroy
+
+  # Associations
+  with_options :dependent => :destroy do |a|
+    a.has_many :memberships
+    a.has_many :chores
+    a.has_many :assignments, :through => :chores
+  end
   has_many :users, :through => :memberships
-  has_many :chores, :dependent => :destroy
-  has_many :assignments, :through => :chores, :dependent => :destroy
 
   validates_presence_of :name
 

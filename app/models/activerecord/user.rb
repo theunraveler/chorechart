@@ -5,11 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Associations
-  has_many :memberships, :dependent => :destroy
+  with_options :dependent => :destroy do |a|
+    a.has_many :memberships
+    a.has_many :assignments
+    a.has_many :authentications
+  end
   has_many :groups, :through => :memberships
-  has_many :assignments, :dependent => :destroy
   has_many :chores, :through => :assignments
-  has_many :authentications, :dependent => :destroy
 
   attr_accessor :login
 
