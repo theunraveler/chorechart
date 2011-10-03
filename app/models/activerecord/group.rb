@@ -13,13 +13,13 @@ class Group < ActiveRecord::Base
   end
 
   # Get a list of chores for the week
-  def get_assignments_for_week(date = Date.today)
-    assigns = _fetch_assignments_for_week(date)
+  def assignments_for_week(date = Date.today)
+    assigns = assignments.find_all_by_date(date.beginning_of_week..date.end_of_week)
     if assigns.empty? && should_have_assignments?(date)
       Assigner.create_schedule_for_week(self, date)
       # Reload data from the DB so we don't get stale data
       reload
-      assigns = _fetch_assignments_for_week(date)
+      assigns = assignments_for_week(date)
     end
     return assigns
   end
@@ -34,10 +34,4 @@ class Group < ActiveRecord::Base
     return false
   end
 
-  private
-
-  # TODO: Refactor; this doesn't scale.
-  def _fetch_assignments_for_week(date)
-    assignments.select { |a| (date.beginning_of_week..date.end_of_week).include?(a.date) }
-  end
 end

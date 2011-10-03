@@ -24,9 +24,5 @@ class Ability
       membership.group.memberships.count != 1 && user_membership.is_admin?
     end
 
-    if user.is_admin?
-      can :manage, :all 
-    end
-
   end
 end
