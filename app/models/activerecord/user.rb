@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     a.has_many :assignments
     a.has_many :authentications
   end
-  has_many :groups, :through => :memberships
+  has_many :groups, :through => :memberships, :include => [:users]
   has_many :chores, :through => :assignments
 
   attr_accessor :login
@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   def assignments_for(start = Date.today, finish = Date.today)
     assigns = []
     groups.each do |group|
-      assigns += group.assignments_for(start, finish)
+      assigns += group.assignments_for(start, finish, [:user])
     end
     assigns.select { |a| a.user == self }
   end
@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
         self.new({:email => account_details['email'], :username => account_details['nickname'], :name => account_details['name']})
       else
         self.new
-    end  
+    end
   end
 
   def to_s

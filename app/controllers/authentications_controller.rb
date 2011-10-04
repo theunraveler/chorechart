@@ -10,7 +10,7 @@ class AuthenticationsController < ApplicationController
   def create
     omniauth = request.env['omniauth.auth']
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
-    if authentication  
+    if authentication
       flash[:notice] = 'Logged in successfully.'
       sign_in_and_redirect(:user, authentication.user)
     elsif current_user
@@ -36,8 +36,8 @@ class AuthenticationsController < ApplicationController
   end
 
   def destroy
-    @authentication = current_user.authentications.find(params[:id])  
-    @authentication.destroy  
+    @authentication = current_user.authentications.find(params[:id])
+    @authentication.destroy
     flash[:notice] = 'Successfully destroyed authentication.'  
     redirect_to authentications_url
   end

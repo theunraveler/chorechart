@@ -5,7 +5,7 @@ class Ability
     user ||= User.new.readonly!
 
     can :create, Group
-    can :read, Group, :id => user.group_ids 
+    can :read, Group, :id => user.group_ids
     can :update, Group do |group|
       membership = Membership.find_by_user_id_and_group_id(user.id, group.id)
       membership.is_admin?

@@ -22,7 +22,7 @@ class MembershipsController < ApplicationController
       if @membership.save
         format.html { redirect_to(group_memberships_url(@group), :notice => "User #{user.email} has been added to the group.") }
       else
-        flash.now[:error] = @membership.errors        
+        flash.now[:error] = @membership.errors
         @memberships = Membership.all
         format.html { render :action => "index" }
       end

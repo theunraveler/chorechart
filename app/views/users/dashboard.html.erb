@@ -9,7 +9,7 @@
             <table class="table">
 
               <tr><th colspan="2"><%= group %></th></tr>
-              <% grouped_assignments = group.assignments_for(Date.today).group_by(&:user) %>
+              <% grouped_assignments = group.assignments_for(Date.today, Date.today, [:user, :chore]).group_by(&:user) %>
               <!-- Don't forget users that have no assignments for the day -->
               <% group.users.select { |u| !grouped_assignments.has_key?(u) }.each do |empty_user| %>
                 <% grouped_assignments[empty_user] = [] %>

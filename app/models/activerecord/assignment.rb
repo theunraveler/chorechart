@@ -1,4 +1,4 @@
 class Assignment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :chore
+  belongs_to :chore, :include => [:group]
 end

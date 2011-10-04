@@ -21,7 +21,7 @@ class Assigner < ActiveRecord::Observer
   def self.create_schedule_for(group, start, finish)
     users = group.users
     points = {}
-    users.each { |u| points[u.id] = 0 } 
+    users.each { |u| points[u.id] = 0 }
     chores = group.chores
     occurrences = []
 

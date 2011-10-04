@@ -17,6 +17,8 @@ gem "meta_where"
 
 group :development do
   gem 'web-app-theme'
+  gem 'rails_best_practices'
+  gem 'bullet'
 end
 
 group :test do
