@@ -34,7 +34,7 @@ Feature: Users
 
   Scenario: Deleting account
     Given I am logged in as "testuser"
-    When I click on "Your Account"
+    When I click on "Account"
     And I click on "Delete my account"
     Then I should be taken to the home page
     And my account should be deleted

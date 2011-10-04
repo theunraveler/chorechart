@@ -3,8 +3,8 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
-      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", group_chores_path  %></li>
-      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_group_chore_path %></li>
+      <li class="first active"><%= link_to "Chores for #{@group}", group_chores_path  %></li>
+      <li><%= link_to "New Chore", new_group_chore_path %></li>
     </ul>
   </div>          
   <div class="content">          
@@ -43,6 +43,7 @@
           <% end -%>
         </table>
       <% end %>
+      <%= link_to "&larr; Back to Your Groups".html_safe, groups_path %>
     </div>
   </div>
 </div>

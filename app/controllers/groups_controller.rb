@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         @group.add_user(current_user, 'admin')
-        format.html { redirect_to(groups_url, :notice => "Group #{@group.name} created.") }
+        format.html { redirect_to(groups_url, :notice => "Group #{@group} created.") }
       else
         flash.now[:error] = @group.errors
         format.html { render :action => "new" }
@@ -40,7 +40,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update_attributes(params[:group])
-        format.html { redirect_to(@group, :notice => 'Group was successfully updated.') }
+        format.html { redirect_to(groups_url, :notice => "Group #{@group} was successfully updated.") }
       else
         flash.now[:error] = @group.errors
         format.html { render :action => "edit" }

@@ -11,4 +11,7 @@ factory :group do
   name 'A New Group'
 end
 
+factory :membership do
+end
+
 end

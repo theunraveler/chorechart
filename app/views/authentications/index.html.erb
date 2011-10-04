@@ -1,12 +1,12 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
-      <li class="first"><%= link_to 'Edit', edit_user_registration_path %></li>
-      <li class="active last"><%= link_to 'Authentications', authentications_path %></li>
+      <li class="first"><%= link_to 'Edit Your Account', edit_user_registration_path %></li>
+      <li class="active last"><%= link_to 'Third-Party Services', authentications_path %></li>
     </ul>
   </div>  
   <div id="authentications-page" class="content">
-    <h2 class="title">Sign in</h2>
+    <h2 class="title">Manage Third-Party Services</h2>
     <div class="inner">
       <% if !@authentications.empty? %>
         <% unless @authentications.empty? %>

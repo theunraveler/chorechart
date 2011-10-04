@@ -1,9 +1,9 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
-      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", group_chores_path(@chore.group)  %></li>
-      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_group_chore_path(@chore.group) %></li>
-      <li class="active"><%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_chore_path %></li>
+      <li class="first"><%= link_to "Chores for #{@chore.group}", group_chores_path(@chore.group)  %></li>
+      <li><%= link_to "New Chore", new_group_chore_path(@chore.group) %></li>
+      <li class="active"><%= link_to "Edit #{@chore}", edit_chore_path %></li>
     </ul>
   </div>          
   <div class="content">            
