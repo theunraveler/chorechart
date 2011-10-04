@@ -1,14 +1,14 @@
 <div id="my-chores" class="block">
   <h3>Your Chores</h3>
-  <% (Date.today...Date.today.advance(:days => 5)).each do |date| %>
-    <% assignments = current_user.assignments_for(date, date) %>
-    <p class="date-header"><%= fuzzy_date(date) %></p>
+  <% week = current_user.assignments_for(Date.today, Date.today.advance(:days => 5)).group_by(&:date) %>
+  <% week.sort.each do |day, assignments| %>
+    <p class="date-header"><%= fuzzy_date(day) %></p>
     <% if assignments.empty? %>
       <span class="empty-chore-message">Nothing! Enjoy your day off!</span>
     <% else %>
       <ul>
         <% assignments.each do |assignment| %>
-          <li><%= assignment.chore.name %> in <%= link_to assignment.chore.group.name, assignment.chore.group %></li>
+          <li><%= assignment.chore %> in <%= link_to assignment.chore.group, assignment.chore.group %></li>
         <% end %>
       </ul>
     <% end %>
