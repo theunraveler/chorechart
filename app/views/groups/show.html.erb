@@ -1,53 +1,47 @@
 <% content_for :page_title, @group %>
 
-<div class="block">
-  <div id="group-chores-page" class="content">
-    <div class="inner">
-      <% if in_current_week?(@week) %>
-        <h2 class="title"><%= @group %> for this week</h2>
-      <% else %>
-        <h2 class="title"><%= @group %> for the week of <%= format_date(@week.to_time) %></h2>
-      <% end %>
-      <div class="pagination">
-        <div class="previous-week"><%= link_to '« Previous week', group_path(@group, :week => @week.advance(:weeks => -1)), :class => 'prev_page' %></div>
-        <% if in_current_week?(@week) %>
-          <div class="this-week"><span class="disabled">This week</span></div>
-        <% else %>
-          <div class="this-week"><%= link_to 'This week', group_path(@group) %></div>
-        <% end %>
-        <div class="next-week"><%= link_to 'Next week »', group_path(@group, :week => @week.next_week), :class => 'next_page' %></div>
-      </div>
-      <div class="clearer"></div>
-      <table id="chore-breakdown" class="table">
-        <tr>
-          <th></th>
-          <% @group.users.each do |user| %>
-            <th>
-              <div class="user-thumb"><%= avatar_image(user, 24) %></div>
-              <% if (user == current_user) %>
-                <div class="user-name">You</div>
-              <% else %>
-                <div class="user-name"><%= user %></div>
-              <% end %>
-              <div class="user-points">(Workload: <%= user_points_for_week(user, @week) %>)</div>
-            </th>
-          <% end %>
-        </tr>
-        <% (@week..@week.end_of_week).each do |date| %>
-          <tr<%= ' class="today"' if Date.today == date %>>
-            <td><%= format_date(date.to_time, :style => :medium) %></td>
-            <% @group.users.each do |user| %>
-              <td>
-                <ul>
-                <% @chores.select { |a| a.user == user && a.date == date }.each do |assignment| %> 
-                  <li><%= assignment.chore %></li>
-                <% end %>
-                </ul>
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
-      </table>
-    </div>
+<div class="page-header">
+  <% if in_current_week?(@week) %>
+    <h1><%= @group %> for this week</h1>
+  <% else %>
+    <h1><%= @group %> for the week of <%= format_date(@week.to_time) %></h1>
+  <% end %>
+  <div class="pagination pull-right">
+    <ul>
+      <li class="previous-week"><%= link_to '« Previous week', group_path(@group, :week => @week.advance(:weeks => -1)), :class => 'prev' %></li>
+      <li class="this-week<%= ' disabled' if in_current_week?(@week) %>"><%= link_to 'This week', group_path(@group) %></li>
+      <li class="next-week"><%= link_to 'Next week »', group_path(@group, :week => @week.next_week), :class => 'next' %></li>
+    </ul>
   </div>
 </div>
+
+<table id="chore-breakdown" class="zebra-striped">
+  <tr>
+    <th></th>
+    <% @group.users.each do |user| %>
+      <th>
+        <div class="user-thumb"><%= avatar_image(user, 24) %></div>
+        <% if (user == current_user) %>
+          <div class="user-name">You</div>
+        <% else %>
+          <div class="user-name"><%= user %></div>
+        <% end %>
+        <div class="user-points">(Workload: <%= user_points_for_week(user, @week) %>)</div>
+      </th>
+    <% end %>
+  </tr>
+  <% (@week..@week.end_of_week).each do |date| %>
+    <tr<%= ' class="today"' if Date.today == date %>>
+      <td><%= format_date(date.to_time, :style => :medium) %></td>
+      <% @group.users.each do |user| %>
+        <td>
+          <ul>
+          <% @chores.select { |a| a.user == user && a.date == date }.each do |assignment| %> 
+            <li><%= assignment.chore %></li>
+          <% end %>
+          </ul>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

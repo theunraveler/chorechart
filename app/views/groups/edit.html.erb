@@ -1,19 +1,15 @@
 <% content_for :page_title, "Edit #{@group}" %>
 
-<div class="block">
-  <div class="secondary-navigation">
-    <ul class="wat-cf">
-      <li class="first"><%= link_to "Your Groups", groups_path  %></li>
-      <li><%= link_to "New Group", new_group_path %></li>
-      <li class="active"><%= link_to "Edit #{@group}", edit_group_path %></li>
-    </ul>
-  </div>          
-  <div class="content">            
-    <h2 class="title"><%= t("web-app-theme.edit", :default => "Edit") %> <%= @group %></h2>
-    <div class="inner">
-      <%= form_for @group, :url => group_path(@group), :html => { :class => :form } do |f| -%>
-        <%= render :partial => "form", :locals => {:f => f} %>
-      <% end -%>
-    </div>
-  </div>
+<ul class="tabs">
+  <li class="first"><%= link_to "Your Groups", groups_path  %></li>
+  <li><%= link_to "New Group", new_group_path %></li>
+  <li class="active"><%= link_to "Edit #{@group}", edit_group_path %></li>
+</ul>
+
+<div class="page-header">            
+  <h1><%= t("web-app-theme.edit", :default => "Edit") %> <%= @group %></h1>
 </div>
+
+<%= form_for @group, :url => group_path(@group), :html => { :class => :form } do |f| -%>
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end -%>

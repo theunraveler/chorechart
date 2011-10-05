@@ -1,49 +1,45 @@
 <% content_for :page_title, "Chores for #{@group}" %>
 
-<div class="block">
-  <div class="secondary-navigation">
-    <ul class="wat-cf">
-      <li class="first active"><%= link_to "Chores for #{@group}", group_chores_path  %></li>
-      <li><%= link_to "New Chore", new_group_chore_path %></li>
-    </ul>
-  </div>          
-  <div class="content">          
-    <h2 class="title">Chores for <%= @group %></h2>
-    <div class="inner">
-      <% if @chores.empty? %>
-        <p>This group has no chores. <%= link_to "Add a new chore", new_group_chore_path(@group) %>.</p>
-      <% else %>
-        <table class="table">
-          <tr>
-            <th></th>
-            <th>Difficulty</th>
-            <th>Repeats</th>
-            <th>Next Occurrence</th>
-            <th></th>
-          </tr>
-          <% @chores.each do |chore| -%>
-          <tr class="<%= cycle("odd", "even") %>">
-            <td>
-              <%= chore %>
-            </td>
-            <td>
-              <%= ChoresHelper::DIFFICULTY[chore.difficulty] %>
-            </td>
-            <td>
-              <%= chore.schedule.to_s %>
-            </td>
-            <td>
-              <%= fuzzy_date(chore.schedule.next_occurrence) %>
-            </td>
-            <td class="last">
-              <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_chore_path(chore) %> |
-              <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", chore_path(chore), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
-            </td>
-          </tr>          
-          <% end -%>
-        </table>
-      <% end %>
-      <%= link_to "&larr; Back to Your Groups".html_safe, groups_path %>
-    </div>
-  </div>
+<ul class="tabs">
+  <li class="first active"><%= link_to "Chores for #{@group}", group_chores_path  %></li>
+  <li><%= link_to "New Chore", new_group_chore_path %></li>
+</ul>
+
+<div class="page-header">          
+  <h1>Chores for <%= @group %></h1>
 </div>
+
+<% if @chores.empty? %>
+  <p>This group has no chores. <%= link_to "Add a new chore", new_group_chore_path(@group) %>.</p>
+<% else %>
+  <table class="table">
+    <tr>
+      <th></th>
+      <th>Difficulty</th>
+      <th>Repeats</th>
+      <th>Next Occurrence</th>
+      <th></th>
+    </tr>
+    <% @chores.each do |chore| -%>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td>
+        <%= chore %>
+      </td>
+      <td>
+        <%= ChoresHelper::DIFFICULTY[chore.difficulty] %>
+      </td>
+      <td>
+        <%= chore.schedule.to_s %>
+      </td>
+      <td>
+        <%= fuzzy_date(chore.schedule.next_occurrence) %>
+      </td>
+      <td class="last">
+        <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_chore_path(chore) %> |
+        <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", chore_path(chore), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </td>
+    </tr>          
+    <% end -%>
+  </table>
+<% end %>
+<%= link_to "&larr; Back to Your Groups".html_safe, groups_path %>

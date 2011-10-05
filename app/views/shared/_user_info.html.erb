@@ -1,16 +1,18 @@
 <% if user_signed_in? %>
-  <div class="user-image">
-    <%= avatar_image(current_user, 40) %>
+  <div class="pull-right">
+    <%= avatar_image(current_user, 36) %>
   </div>
-  <div class="user-menu">
-    Hello, <%= current_user %>
-    <ul>
-      <li><%= link_to "Dashboard", user_root_path %></li>
-      <li><%= link_to "Manage Groups", groups_path %></li>
-      <li><%= link_to "Account", edit_user_registration_path %></li>
-      <li><%= link_to "Log out", destroy_user_session_path %></li>
-    </ul>
-  </div>
+  <ul class="nav secondary-nav">
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="#">Hello, <%= current_user %></a>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Dashboard", user_root_path %></li>
+        <li><%= link_to "Manage Groups", groups_path %></li>
+        <li><%= link_to "Account", edit_user_registration_path %></li>
+        <li><%= link_to "Log out", destroy_user_session_path %></li>
+      </ul>
+    </li>
+  </ul>
 <% else %>
   <ul class="no-user-menu">
     <li><%= link_to "Log in", new_user_session_path %></li>

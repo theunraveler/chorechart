@@ -1,42 +1,38 @@
 <% content_for :page_title, 'Your groups' %>
 
-<div class="block">
-  <div class="secondary-navigation">
-    <ul class="wat-cf">
-      <li class="first active"><%= link_to "Your Groups", groups_path  %></li>
-      <li><%= link_to "New Group", new_group_path %></li>
-    </ul>
-  </div>          
-  <div class="content">          
-    <h2 class="title">Your Groups</h2>
-    <div class="inner">
-      <% if @groups.empty? %>
-        <p>You currently have no groups. <%= link_to "Create a new group", new_group_path %>.</p>
-      <% else %>
-        <table class="table">
-          <% @groups.each do |group| -%>
-          <tr class="<%= cycle("odd", "even") %>">
-            <td>
-              <%= link_to group.name, group_path(group) %>
-            </td>
-            <td class="last">
-              <% if can? :invite, group %>
-                <%= link_to "Manage Users", group_memberships_path(group) %> |
-              <% end %>
-              <% if can? :edit, group %>
-                <%= link_to "Manage Chores", group_chores_path(group) %> |
-              <% end %>
-              <% if can? :edit, group %>
-                <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_group_path(group) %> |
-              <% end %>
-              <% if can? :destroy, group %>
-                <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", group_path(group), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
-              <% end %>
-            </td>
-          </tr>          
-          <% end -%>
-        </table>
-      <% end %>
-    </div>
-  </div>
+<ul class="tabs">
+  <li class="first active"><%= link_to "Your Groups", groups_path  %></li>
+  <li><%= link_to "New Group", new_group_path %></li>
+</ul>
+
+<div class="page-header">          
+  <h1>Your Groups</h1>
 </div>
+
+<% if @groups.empty? %>
+  <p>You currently have no groups. <%= link_to "Create a new group", new_group_path %>.</p>
+<% else %>
+  <table class="table">
+    <% @groups.each do |group| -%>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td>
+        <%= link_to group.name, group_path(group) %>
+      </td>
+      <td class="last">
+        <% if can? :invite, group %>
+          <%= link_to "Manage Users", group_memberships_path(group) %> |
+        <% end %>
+        <% if can? :edit, group %>
+          <%= link_to "Manage Chores", group_chores_path(group) %> |
+        <% end %>
+        <% if can? :edit, group %>
+          <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_group_path(group) %> |
+        <% end %>
+        <% if can? :destroy, group %>
+          <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", group_path(group), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+        <% end %>
+      </td>
+    </tr>          
+    <% end -%>
+  </table>
+<% end %>

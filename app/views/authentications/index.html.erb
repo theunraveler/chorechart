@@ -1,34 +1,29 @@
-<div class="block">
-  <div class="secondary-navigation">
-    <ul class="wat-cf">
-      <li class="first"><%= link_to 'Edit Your Account', edit_user_registration_path %></li>
-      <li class="active last"><%= link_to 'Third-Party Services', authentications_path %></li>
-    </ul>
-  </div>  
-  <div id="authentications-page" class="content">
-    <h2 class="title">Manage Third-Party Services</h2>
-    <div class="inner">
-      <% if !@authentications.empty? %>
-        <% unless @authentications.empty? %>
-          <p>You can sign in to this account using:</p>
-          <div class="authentications">
-            <% for authentication in @authentications %>
-              <div class="authentication">
-                <%= image_tag "services/#{authentication.provider}_32.png", :size => '32x32' %>
-                <div class="provider"><%= authentication.provider.titleize %></div>
-                <div class="uid"><%= authentication.uid %></div>
-                <%= link_to "X", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
-              </div>
-            <% end %>
-            <div class="clear"></div>
-          </div>
-        <% end %>
-        <p>Add another service to sign in with:</p>
-      <% else %>
-        <p>Sign in through one of these services:</p>
-      <% end %>
+<ul class="tabs">
+  <li class="first"><%= link_to 'Edit Your Account', edit_user_registration_path %></li>
+  <li class="active last"><%= link_to 'Third-Party Services', authentications_path %></li>
+</ul>
 
-      <%= render 'providers', :providers => @providers %>
-    </div>
-  </div>
+<div class="page-header">
+  <h1>Manage Third-Party Services</h1>
 </div>
+
+<% if !@authentications.empty? %>
+  <% unless @authentications.empty? %>
+    <p>You can sign in to this account using:</p>
+    <div class="authentications">
+      <% for authentication in @authentications %>
+        <div class="authentication span<%= 12 / @authentications.count %>">
+          <%= image_tag "services/#{authentication.provider}_32.png", :size => '32x32' %>
+          <div class="provider"><%= authentication.provider.titleize %></div>
+          <div class="uid"><%= authentication.uid %></div>
+          <%= link_to "X", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <p>Add another service to sign in with:</p>
+<% else %>
+  <p>Sign in through one of these services:</p>
+<% end %>
+
+<%= render 'providers', :providers => @providers %>
