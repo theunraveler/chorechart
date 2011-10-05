@@ -4,14 +4,7 @@
   <span class="description">Ex: Home, Office, etc.</span>
 </div>
         
-<div class="group navform wat-cf">
-  <button class="button" type="submit">
-    <% if f.object.new_record? %>  
-      <%= image_tag("web-app-theme/icons/tick.png", :alt => "Create group") %> Create group
-    <% else %>
-      <%= image_tag("web-app-theme/icons/tick.png", :alt => "Save") %> Save
-    <% end %>
-  </button>
-  <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
-	<%= link_to t("web-app-theme.cancel", :default => "Cancel"), groups_path, :class => "text_button_padding link_button" %>
+<div class="well">
+  <button class="btn primary" type="submit"><%= f.object.new_record? ? "Create group" : "Save" %></button>
+	<%= link_to "Cancel", groups_path, :class => "btn" %>
 </div>
