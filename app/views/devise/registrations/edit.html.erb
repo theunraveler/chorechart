@@ -10,20 +10,38 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+  <div class="clearfix">
+    <%= f.label :email %>
+    <div class="input">
+      <%= f.email_field :email, :class => 'xlarge' %>
+    </div>
+  </div>
 
-  <p><%= f.label :name %><br />
-  <%= f.text_field :name %></p>
+  <div class="clearfix">
+    <%= f.label :name %>
+    <div class="input">
+      <%= f.text_field :name, :class => 'xlarge' %>
+    </div>
+  </div>
 
-  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></p>
+  <div class="clearfix">
+    <%= f.label :password %>
+    <div class="input">
+      <%= f.password_field :password, :class => 'xlarge' %>
+    </div>
+  </div>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+  <div class="clearfix">
+    <%= f.label :password_confirmation %>
+    <div class="input">
+      <%= f.password_field :password_confirmation, :class => 'xlarge' %>
+    </div>
+  </div>
 
-  <%= avatar_image resource %><br />
-  <a class="external" href="http://gravatar.com/emails">Change your Gravatar</a>
+  <div class="clearfix">
+    <%= avatar_image resource %>
+    <a class="external" href="http://gravatar.com/emails">Change your Gravatar</a>
+  </div>
 
   <div class="well">
     <%= f.submit "Update", :class => 'btn primary' %>

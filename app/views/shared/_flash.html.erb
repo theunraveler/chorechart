@@ -1,5 +1,6 @@
 <% flash.each do |type, message| %>
-  <div class="message <%= type %>">
+  <div class="alert-message <%= flash_type(type) %> fade in" data-alert="alert">
+    <a class="close" href="javascript:void(0);">x</a>
     <% if message.instance_of? ActiveModel::Errors %>
       <p>
         <%= pluralize(message.count, 'error') %> prevented this item from being saved:

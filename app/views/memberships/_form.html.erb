@@ -1,10 +1,10 @@
 <%= form_for [@group, @membership] do |f| %>
 
-  <div class="group">
-    <%= f.text_field :user_id, :class => 'text_field', :placeholder => 'Username or email' %>
-    <%= f.check_box :is_admin %><%= f.label :is_admin, 'Admin', :class => 'checkbox' %>
-    <%= f.check_box :is_editor %><%= f.label :is_editor, 'Editor', :class => 'checkbox' %>
-    <%= f.check_box :is_participant %><%= f.label :is_participant, 'Participant', :class => 'checkbox' %>
+  <div class="clearfix">
+    <%= f.text_field :user_id, :class => 'xlarge', :placeholder => 'Username or email' %>
+    <%= f.check_box :is_admin %><%= f.label :is_admin, 'Admin' %>
+    <%= f.check_box :is_editor %><%= f.label :is_editor, 'Editor' %>
+    <%= f.check_box :is_participant %><%= f.label :is_participant, 'Participant' %>
     <%= f.submit "Add user" %>
   </div>
 

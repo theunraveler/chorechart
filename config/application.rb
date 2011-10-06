@@ -42,7 +42,7 @@ module Chorechart
 
     # JavaScript files you want as :defaults (application.js is always included).
     config.action_view.javascript_expansions = {
-      :defaults => %w( jquery jquery-ui jquery_ujs bootstrap/bootstrap-dropdown.js)
+      :defaults => %w( jquery jquery-ui jquery_ujs bootstrap/bootstrap-dropdown.js bootstrap/bootstrap-alerts.js)
     }
 
     # Configure the default encoding used in templates for Ruby 1.9.

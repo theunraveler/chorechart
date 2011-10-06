@@ -38,4 +38,13 @@ module ApplicationHelper
     date.beginning_of_week == Date.today.beginning_of_week
   end
 
+  def flash_type(type)
+    types = {
+      :notice => 'success',
+      :warning => 'warning',
+      :error => 'error'
+    }
+    types[type]
+  end
+
 end
