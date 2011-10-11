@@ -1,0 +1,12 @@
+<ul class="nav secondary-nav">
+  <li class="dropdown">
+    <a class="dropdown-toggle" href="javascript:void(0);">
+      <span class="user-thumb pull-left"><%= avatar_image(current_user, 24) %></span>
+      <span class="user-greeting">Hello, <%= current_user %></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to "Edit Account", edit_user_registration_path %></li>
+      <li><%= link_to "Log out", destroy_user_session_path %></li>
+    </ul>
+  </li>
+</ul>

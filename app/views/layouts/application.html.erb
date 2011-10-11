@@ -15,9 +15,18 @@
     <div class="fill">
       <div class="container">
         <a class="brand" href="/"><%= Rails.application.config.app_name %></a>
-        <nav id="user-navigation">
-          <%= render 'shared/user_info' %>
-        </nav>
+        <% if user_signed_in? %>
+          <nav id="main-navigation">
+            <%= render 'shared/main_nav' %>
+          </nav>
+          <nav id="user-navigation">
+            <%= render 'shared/user_nav' %>
+          </nav>
+        <% else %>
+          <nav id="user-navigation">
+            <%= render 'shared/anon_nav' %>
+          </nav>
+        <% end %>
       </div>
     </div>
   </header>    

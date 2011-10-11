@@ -20,13 +20,9 @@
     <th></th>
     <% @group.users.each do |user| %>
       <th>
-        <div class="user-thumb"><%= avatar_image(user, 24) %></div>
-        <% if (user == current_user) %>
-          <div class="user-name">You</div>
-        <% else %>
-          <div class="user-name"><%= user %></div>
-        <% end %>
-        <div class="user-points">(Workload: <%= user_points_for_week(user, @week) %>)</div>
+        <div class="user-thumb pull-left"><%= avatar_image(user, 24) %></div>
+        <div class="user-name"><%= user == current_user ? 'You' : user %></div>
+        <div class="user-points"><small>Workload: <%= user_points_for_week(user, @week) %></small></div>
       </th>
     <% end %>
   </tr>

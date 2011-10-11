@@ -1,33 +1,30 @@
-<div class="block">
-  <div class="secondary-navigation">
-    <ul class="wat-cf">
-      <li class="first"><%= link_to 'Log in', new_user_session_path %></li>
-      <li class="last active"><%= link_to 'Register', new_user_registration_path %></li>
-    </ul>
-  </div>  
-  <div class="content">
-    <h2 class="title">Create an Account</h2>
+<ul class="tabs">
+  <li class="first"><%= link_to 'Log in', new_user_session_path %></li>
+  <li class="last active"><%= link_to 'Register', new_user_registration_path %></li>
+</ul>
 
-    <div class="inner">
-      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
-
-        <p><%= f.label :username %><br />
-        <%= f.text_field :username %></p>
-
-        <p><%= f.label :email %><br />
-        <%= f.email_field :email %></p>
-
-        <p><%= f.label :password %><br />
-        <%= f.password_field :password %></p>
-
-        <p><%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation %></p>
-
-        <p><%= f.submit "Sign up" %></p>
-      <% end %>
-
-      <%= render :partial => "devise/shared/links" %>
-    </div>
-  </div>
+<div class="page-header">
+  <h1>Create an Account</h1>
 </div>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <p><%= f.label :username %><br />
+  <%= f.text_field :username %></p>
+
+  <p><%= f.label :email %><br />
+  <%= f.email_field :email %></p>
+
+  <p><%= f.label :password %><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+  <div class="well">
+    <%= f.submit "Sign up", :class => 'btn primary' %>
+  </div>
+
+  <%= render :partial => "devise/shared/links" %>
+<% end %>
