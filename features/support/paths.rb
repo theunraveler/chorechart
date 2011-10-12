@@ -17,7 +17,7 @@ module NavigationHelpers
     when /^the login page$/i
       new_user_session_path
 
-    when /^my user page$/i
+    when /^the dashboard$/i
       '/dashboard'
 
     when /^my groups page$/i
