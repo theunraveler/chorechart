@@ -1,6 +1,6 @@
 <div id="my-chores" class="block">
   <h3>Your Chores</h3>
-  <% week = current_user.assignments_for(Date.today, Date.today.advance(:days => 5)).group_by(&:date) %>
+  <% week = current_user.assignments_for(Date.today, Date.today.advance(:days => 4)).group_by(&:date) %>
   <% week.sort.each do |day, assignments| %>
     <div class="page-header"><p><%= fuzzy_date(day) %></p></div>
     <% if assignments.empty? %>
