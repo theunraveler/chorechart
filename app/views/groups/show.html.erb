@@ -8,36 +8,40 @@
   <% end %>
   <div class="pagination pull-right">
     <ul>
-      <li class="previous-week"><%= link_to '« Previous week', group_path(@group, :week => @week.advance(:weeks => -1)), :class => 'prev' %></li>
+      <li class="previous-week prev"><%= link_to '« Previous week', group_path(@group, :week => @week.advance(:weeks => -1)), :class => 'prev' %></li>
       <li class="this-week<%= ' disabled' if in_current_week?(@week) %>"><%= link_to 'This week', group_path(@group) %></li>
-      <li class="next-week"><%= link_to 'Next week »', group_path(@group, :week => @week.next_week), :class => 'next' %></li>
+      <li class="next-week next"><%= link_to 'Next week »', group_path(@group, :week => @week.next_week), :class => 'next' %></li>
     </ul>
   </div>
 </div>
 
 <table id="chore-breakdown" class="zebra-striped">
-  <tr>
-    <th></th>
-    <% @group.users.each do |user| %>
-      <th>
-        <div class="user-thumb pull-left"><%= avatar_image(user, 24) %></div>
-        <div class="user-name"><%= user == current_user ? 'You' : user %></div>
-        <div class="user-points"><small>Workload: <%= user_points_for_week(user, @week) %></small></div>
-      </th>
-    <% end %>
-  </tr>
-  <% (@week..@week.end_of_week).each do |date| %>
-    <tr<%= ' class="today"' if Date.today == date %>>
-      <td><%= format_date(date.to_time, :style => :medium) %></td>
+  <thead>
+    <tr>
+      <th></th>
       <% @group.users.each do |user| %>
-        <td>
-          <ul>
-          <% @chores.select { |a| a.user == user && a.date == date }.each do |assignment| %> 
-            <li><%= assignment.chore %></li>
-          <% end %>
-          </ul>
-        </td>
+        <th>
+          <div class="user-thumb pull-left"><%= avatar_image(user, 32) %></div>
+          <div class="user-name"><%= user == current_user ? 'You' : user %></div>
+          <div class="user-points"><small>Workload: <%= user_points_for_week(user, @week) %></small></div>
+        </th>
       <% end %>
     </tr>
-  <% end %>
+  <thead>
+  <tbody>
+    <% (@week..@week.end_of_week).each do |date| %>
+      <tr<%= ' class="today"' if Date.today == date %>>
+        <td><%= format_date(date.to_time, :style => :medium) %></td>
+        <% @group.users.each do |user| %>
+          <td>
+            <ul>
+            <% @chores.select { |a| a.user == user && a.date == date }.each do |assignment| %> 
+              <li><%= assignment.chore %></li>
+            <% end %>
+            </ul>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

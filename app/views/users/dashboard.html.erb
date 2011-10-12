@@ -6,33 +6,35 @@
   <% @user.groups.each do |group| %>
     <div class="span6">
       <table class="zebra-striped">
-
-        <tr><th colspan="2"><%= group %></th></tr>
-        <% grouped_assignments = group.assignments_for(Date.today, Date.today, [:user, :chore]).group_by(&:user) %>
-        <!-- Don't forget users that have no assignments for the day -->
-        <% group.users.select { |u| !grouped_assignments.has_key?(u) }.each do |empty_user| %>
-          <% grouped_assignments[empty_user] = [] %>
-        <% end %>
-        <% grouped_assignments.each do |user, assignments| %>
-          <tr class="<%= cycle('odd', 'even', :name => 'rows') %>">
-            <td>
-              <div class="user-thumb"><%= avatar_image(user, 24) %></div>
-              <div class="user-name"><%= user == @user ? 'You' : user %></div>
-            </td>
-            <td>
-              <% if assignments.empty? %>
-                <em>None</em>
-              <% else %>
-              <ul>
-                <% assignments.each do |assignment| %>
-                  <li><%= assignment.chore %></li>
+        <thead>
+          <tr><th colspan="2"><%= group %></th></tr>
+        </thead>
+        <tbody>
+          <% grouped_assignments = group.assignments_for(Date.today, Date.today, [:user, :chore]).group_by(&:user) %>
+          <!-- Don't forget users that have no assignments for the day -->
+          <% group.users.select { |u| !grouped_assignments.has_key?(u) }.each do |empty_user| %>
+            <% grouped_assignments[empty_user] = [] %>
+          <% end %>
+          <% grouped_assignments.each do |user, assignments| %>
+            <tr class="<%= cycle('odd', 'even', :name => 'rows') %>">
+              <td>
+                <div class="user-thumb"><%= avatar_image(user, 24) %></div>
+                <div class="user-name"><%= user == @user ? 'You' : user %></div>
+              </td>
+              <td>
+                <% if assignments.empty? %>
+                  <em>None</em>
+                <% else %>
+                <ul>
+                  <% assignments.each do |assignment| %>
+                    <li><%= assignment.chore %></li>
+                  <% end %>
+                </ul>
                 <% end %>
-              </ul>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-        
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
       <p><%= link_to "This week in #{group} &rarr;".html_safe, group %></p>
     </div>

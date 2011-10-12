@@ -12,34 +12,38 @@
 <% if @chores.empty? %>
   <p>This group has no chores. <%= link_to "Add a new chore", new_group_chore_path(@group) %>.</p>
 <% else %>
-  <table class="table">
-    <tr>
-      <th></th>
-      <th>Difficulty</th>
-      <th>Repeats</th>
-      <th>Next Occurrence</th>
-      <th></th>
-    </tr>
-    <% @chores.each do |chore| -%>
-    <tr class="<%= cycle("odd", "even") %>">
-      <td>
-        <%= chore %>
-      </td>
-      <td>
-        <%= ChoresHelper::DIFFICULTY[chore.difficulty] %>
-      </td>
-      <td>
-        <%= chore.schedule.to_s %>
-      </td>
-      <td>
-        <%= fuzzy_date(chore.schedule.next_occurrence) %>
-      </td>
-      <td class="last">
-        <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_chore_path(chore) %> |
-        <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", chore_path(chore), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
-      </td>
-    </tr>          
-    <% end -%>
+  <table class="zebra-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Difficulty</th>
+        <th>Repeats</th>
+        <th>Next Occurrence</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @chores.each do |chore| -%>
+      <tr class="<%= cycle("odd", "even") %>">
+        <td>
+          <%= chore %>
+        </td>
+        <td>
+          <%= ChoresHelper::DIFFICULTY[chore.difficulty] %>
+        </td>
+        <td>
+          <%= chore.schedule.to_s %>
+        </td>
+        <td>
+          <%= fuzzy_date(chore.schedule.next_occurrence) %>
+        </td>
+        <td class="last">
+          <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_chore_path(chore) %> |
+          <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", chore_path(chore), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+        </td>
+      </tr>          
+      <% end -%>
+    </tbody>
   </table>
 <% end %>
 

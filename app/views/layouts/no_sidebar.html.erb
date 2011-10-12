@@ -32,21 +32,13 @@
   </header>    
   <div id="wrapper" class="container">
     <div class="row">
-      <div id="main" class="span12">
+      <div id="main">
         <% if !flash.empty? %>
           <div id="flash">
             <%= render 'shared/flash', :flash => flash %>
           </div>
         <% end %>
         <%= yield %>
-      </div>
-      <div id="sidebar" class="span4">
-        <%= yield :sidebar %>
-        <% if user_signed_in? %>
-          <div class="well">
-            <%= render 'shared/user_chores' %>
-          </div>
-        <% end %>
       </div>
     </div>
   </div>    

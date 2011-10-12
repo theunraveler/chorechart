@@ -7,26 +7,28 @@
   <h1>Log In Using</h1>
 </div>
 
-<div class="span5">
-  <h3>&hellip;your <%= Rails.application.config.app_name %> account</h3>
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <p><%= f.label :login %><br />
-    <%= f.text_field :login %></p>
+<div class="row">
+  <div class="span6">
+    <h3>&hellip;your <%= Rails.application.config.app_name %> account</h3>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <p><%= f.label :login %><br />
+      <%= f.text_field :login %></p>
 
-    <p><%= f.label :password %><br />
-    <%= f.password_field :password %></p>
+      <p><%= f.label :password %><br />
+      <%= f.password_field :password %></p>
 
-    <% if devise_mapping.rememberable? %>
-      <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+      <% if devise_mapping.rememberable? %>
+        <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+      <% end %>
+
+      <p><%= f.submit "Sign in" %></p>
     <% end %>
 
-    <p><%= f.submit "Sign in" %></p>
-  <% end %>
+    <%= render :partial => "devise/shared/links" %>
+  </div>
 
-  <%= render :partial => "devise/shared/links" %>
-</div>
-
-<div class="span5">
-  <h3 class="title">&hellip;one of the following services</h3>
-  <%= render 'authentications/providers' %>
+  <div class="span6">
+    <h3 class="title">&hellip;one of the following services</h3>
+    <%= render 'authentications/providers' %>
+  </div>
 </div>
