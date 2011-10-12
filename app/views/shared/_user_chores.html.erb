@@ -2,7 +2,7 @@
   <h3>Your Chores</h3>
   <% week = current_user.assignments_for(Date.today, Date.today.advance(:days => 5)).group_by(&:date) %>
   <% week.sort.each do |day, assignments| %>
-    <p class="date-header"><%= fuzzy_date(day) %></p>
+    <div class="page-header"><p><%= fuzzy_date(day) %></p></div>
     <% if assignments.empty? %>
       <span class="empty-chore-message">Nothing! Enjoy your day off!</span>
     <% else %>
