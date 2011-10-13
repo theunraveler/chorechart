@@ -1,10 +1,5 @@
 <% content_for :page_title, "Chores for #{@group}" %>
 
-<ul class="tabs">
-  <li class="first active"><%= link_to "Chores for #{@group}", group_chores_path  %></li>
-  <li><%= link_to "New Chore", new_group_chore_path %></li>
-</ul>
-
 <div class="page-header">          
   <h1>Chores for <%= @group %></h1>
 </div>
@@ -24,7 +19,7 @@
     </thead>
     <tbody>
       <% @chores.each do |chore| -%>
-      <tr class="<%= cycle("odd", "even") %>">
+      <tr>
         <td>
           <%= chore %>
         </td>
@@ -38,8 +33,8 @@
           <%= fuzzy_date(chore.schedule.next_occurrence) %>
         </td>
         <td class="last">
-          <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_chore_path(chore) %> |
-          <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", chore_path(chore), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+          <%= link_to "Edit", edit_chore_path(chore) %> |
+          <%= link_to "Delete", chore_path(chore), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
         </td>
       </tr>          
       <% end -%>

@@ -1,0 +1,46 @@
+<ul class="tabs">
+  <li class="first"><%= link_to 'Log in', new_user_session_path %></li>
+  <li class="last active"><%= link_to 'Register', new_user_registration_path %></li>
+</ul>
+
+<div class="page-header">
+  <h1>Create an Account</h1>
+</div>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="clearfix">
+    <%= f.label :username %>
+    <div class="input">
+      <%= f.text_field :username, :class => 'xlarge' %>
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <%= f.label :email %>
+    <div class="input">
+      <%= f.email_field :email, :class => 'xlarge' %>
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <%= f.label :password %>
+    <div class="input">
+      <%= f.password_field :password, :class => 'xlarge' %>
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <%= f.label :password_confirmation %>
+    <div class="input">
+      <%= f.password_field :password_confirmation, :class => 'xlarge' %>
+    </div>
+  </div>
+  
+  <div class="well">
+    <%= f.submit "Sign up", :class => 'btn primary' %>
+  </div>
+
+  <%= render :partial => "devise/shared/links" %>
+<% end %>

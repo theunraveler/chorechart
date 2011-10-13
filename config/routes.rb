@@ -12,6 +12,10 @@ Chorechart::Application.routes.draw do
       :sign_out => 'logout', 
       :registration => 'account', 
       :sign_up => 'create' 
+    },
+    :controllers => {
+      :sessions => 'sessions',
+      :registrations => 'registrations'
     } do
     get 'dashboard', :to => 'users#dashboard', :as => :user_root
   end

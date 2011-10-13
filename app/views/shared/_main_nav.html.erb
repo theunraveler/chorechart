@@ -1,8 +1,21 @@
 <ul class="nav">
-  <li><%= link_to 'Dashboard', user_root_path %></li>
-  <% first_five = current_user.groups.take(5) %>
-  <% first_five.each do |group| %>
-    <li><%= link_to group, group %></li>
+  <%= active_list_link 'Dashboard', user_root_path %>
+  <% current_user.groups.take(3).each do |group| %>
+    <%= active_list_link group, group %>
   <% end %>
-  <% # TODO: "More groups..." downdown menu for groups > 5 %>
+
+  <% if current_user.groups.count > 4 %>
+    <li class="groups-dropdown">
+      <a href="javascript:void(0);" class="dropdown-toggle">More...</a>
+      <ul class="dropdown-menu">
+        <% current_user.groups[3..-1].each do |group| %>
+          <%= active_list_link group, group %>
+        <% end %>
+        <li class="divider"></li>
+        <%= active_list_link 'Manage Groups...', groups_path %>
+      </ul>
+    </li>
+  <% else %>
+    <%= active_list_link 'Manage Groups...', groups_path %>
+  <% end %>
 </ul>

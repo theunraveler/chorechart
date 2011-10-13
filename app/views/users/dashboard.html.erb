@@ -40,4 +40,10 @@
       <p><%= link_to "This week in #{group} &rarr;".html_safe, group %></p>
     </div>
   <% end %>
+
+  <% if @user.groups.empty? %>
+    <div class="span12">
+      <p>You currently have no groups. <%= link_to 'Create a new group', new_group_path %>.</p>
+    </div>
+  <% end %>
 </div>

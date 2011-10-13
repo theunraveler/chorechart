@@ -1,21 +1,20 @@
 <% content_for :page_title, 'Your groups' %>
 
-<ul class="tabs">
-  <li class="first active"><%= link_to "Your Groups", groups_path  %></li>
-  <li><%= link_to "New Group", new_group_path %></li>
-</ul>
-
 <div class="page-header">          
-  <h1>Your Groups</h1>
+  <h1 class="pull-left">Your Groups</h1>
+  <div class="pull-right">
+    <%= link_to 'Create a group', new_group_path, :class => 'btn primary' %>
+  </div>
+  <div class="clearer"></div>
 </div>
 
 <% if @groups.empty? %>
   <p>You currently have no groups. <%= link_to "Create a new group", new_group_path %>.</p>
 <% else %>
-  <table class="table">
+  <table class="zebra-striped">
     <tbody>
       <% @groups.each do |group| -%>
-      <tr class="<%= cycle("odd", "even") %>">
+      <tr>
         <td>
           <%= link_to group.name, group_path(group) %>
         </td>
@@ -38,3 +37,4 @@
     </tbody>
   </table>
 <% end %>
+

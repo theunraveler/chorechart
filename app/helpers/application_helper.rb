@@ -8,10 +8,6 @@ module ApplicationHelper
     image_tag(url, :alt => user.name || user.username)
   end
 
-  def icon_tag(name, size = 32)
-    image_tag("icons/#{size}/#{name}.png")
-  end
-
   def format_date(date, options = {})
     defaults = {
       :style => :short
@@ -45,6 +41,11 @@ module ApplicationHelper
       :error => 'error'
     }
     types[type]
+  end
+
+  def active_list_link(text, link)
+    options = current_page?(link) ? { :class => 'active' } : {}
+    content_tag :li, link_to(text, link), options
   end
 
 end
