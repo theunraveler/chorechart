@@ -1,11 +1,28 @@
 <%= form_for [@group, @membership] do |f| %>
 
   <div class="clearfix">
-    <%= f.text_field :user_id, :class => 'xlarge', :placeholder => 'Username or email' %>
-    <%= f.check_box :is_admin %><%= f.label :is_admin, 'Admin' %>
-    <%= f.check_box :is_editor %><%= f.label :is_editor, 'Editor' %>
-    <%= f.check_box :is_participant %><%= f.label :is_participant, 'Participant' %>
-    <%= f.submit "Add user" %>
+    <%= f.label :user_id, 'Username or email' %>
+    <div class="input">
+      <%= f.text_field :user_id, :class => 'xlarge' %>
+    </div>
   </div>
+
+  <div class="clearfix">
+    <%= label_tag 'Roles in group' %>
+    <div class="input">
+      <ul class="inputs-list">
+        <li><%= f.check_box :is_admin %><%= f.label :is_admin, 'Admin' %></li>
+        <li><%= f.check_box :is_editor %><%= f.label :is_editor, 'Editor' %></li>
+        <li><%= f.check_box :is_participant %><%= f.label :is_participant, 'Participant' %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <div class="input">
+      <%= f.submit "Add user", :class => 'btn primary' %>
+    </div>
+  </div>
+    
 
 <% end %>

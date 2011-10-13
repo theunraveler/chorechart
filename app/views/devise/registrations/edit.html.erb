@@ -39,14 +39,17 @@
   </div>
 
   <div class="clearfix">
-    <%= avatar_image resource %>
-    <a class="external" href="http://gravatar.com/emails">Change your Gravatar</a>
+    <%= label_tag 'Image' %>
+    <div class="input">
+      <%= avatar_image resource %><br />
+      <a class="external" href="http://gravatar.com/emails">Click here to change your Gravatar</a>
+    </div>
   </div>
 
   <div class="well">
     <%= f.submit "Update", :class => 'btn primary' %>
+    <%= link_to "Cancel", :back, :class => 'btn' %>
+    <%= link_to "Delete my account", registration_path(resource_name), :confirm => "Are you sure you want to delete your account? All of your data will be lost.", :method => :delete, :class => 'btn danger pull-right' %>
   </div>
 <% end %>
 
-<h3>Delete account</h3>
-<p>Staying on top of my chores is not for me. <%= link_to "Delete my account", registration_path(resource_name), :confirm => "Are you sure you want to delete your account? All of your data will be lost.", :method => :delete, :class => 'btn danger' %></p>

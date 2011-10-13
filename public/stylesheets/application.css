@@ -1,7 +1,23 @@
+html { overflow-y: auto; }
 body { padding-top: 60px; }
 th small { color: #BFBFBF; }
+.inputs-list label { display: inline; padding-left: 8px; }
 
 .topbar { position:absolute; }
 .secondary-nav .user-thumb { padding-right: 7px; }
 
+.crud-links .tabs { border: none; }
+.crud-links .tabs > li > a { 
+  border: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.crud-links .tabs > li.open > a { 
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+}
+
+.pagination.pull-left { margin-top: 0; }
 #chore-breakdown .user-thumb { padding-right: 10px; padding-top: 2px; }

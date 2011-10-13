@@ -47,4 +47,5 @@
   </table>
 <% end %>
 
-<p><%= link_to "&larr; Back to Your Groups".html_safe, groups_path %></p>
+<p><%= link_to "&larr; Back to #{@group}".html_safe, @group %></p>
+
