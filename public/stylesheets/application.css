@@ -5,8 +5,11 @@ body { padding-top: 80px; }
 th small { color: #BFBFBF; }
 .inputs-list label { display: inline; padding-left: 8px; }
 
-.topbar { position:absolute; }
+.topbar { position: absolute; }
+.topbar a.brand:hover { text-decoration: none; }
 .secondary-nav .user-thumb { padding-right: 7px; }
+.secondary-nav.no-user-menu { margin: 8px 8px 0 0; color: #909090; }
+.secondary-nav.no-user-menu a { display: inline; padding: 5px 14px 6px; }
 
 .page-header .pull-right { margin-top: 5px; }
 .crud-links .tabs { border: none; }
@@ -21,6 +24,9 @@ th small { color: #BFBFBF; }
   -moz-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
 }
+.crud-links .tabs > li.open > a:hover { color: #808080; }
 
 .pagination.pull-left { margin-top: 0; }
 #chore-breakdown .user-thumb { padding-right: 10px; padding-top: 2px; }
+
+#my-chores .label a { color: #FFFFFF; }

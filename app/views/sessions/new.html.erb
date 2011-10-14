@@ -4,12 +4,12 @@
 </ul>
 
 <div class="page-header">
-  <h1>Log In Using</h1>
+  <h1>Log In Using&hellip;</h1>
 </div>
 
 <div class="row">
   <div class="span8">
-    <h3>&hellip;your <%= Rails.application.config.app_name %> account</h3>
+    <h2>your Chorechart account</h2>
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
       <div class="clearfix">
         <%= f.label :login %>
@@ -44,7 +44,7 @@
   </div>
 
   <div class="span8">
-    <h3 class="title">&hellip;one of the following services</h3>
+    <h2>one of the following services</h2>
     <%= render 'authentications/providers' %>
   </div>
 </div>

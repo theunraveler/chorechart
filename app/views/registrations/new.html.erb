@@ -4,43 +4,55 @@
 </ul>
 
 <div class="page-header">
-  <h1>Create an Account</h1>
+  <h1>Create an Account&hellip;</h1>
 </div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="row">
+  <div class="span8">
+    <h2>you luddite</h2>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-  <div class="clearfix">
-    <%= f.label :username %>
-    <div class="input">
-      <%= f.text_field :username, :class => 'xlarge' %>
-    </div>
+      <div class="clearfix">
+        <%= f.label :username %>
+        <div class="input">
+          <%= f.text_field :username, :class => 'xlarge' %>
+        </div>
+      </div>
+
+      <div class="clearfix">
+        <%= f.label :email %>
+        <div class="input">
+          <%= f.email_field :email, :class => 'xlarge' %>
+        </div>
+      </div>
+
+      <div class="clearfix">
+        <%= f.label :password %>
+        <div class="input">
+          <%= f.password_field :password, :class => 'xlarge' %>
+        </div>
+      </div>
+
+      <div class="clearfix">
+        <%= f.label :password_confirmation %>
+        <div class="input">
+          <%= f.password_field :password_confirmation, :class => 'xlarge' %>
+        </div>
+      </div>
+      
+      <div class="actions">
+        <%= f.submit "Register", :class => 'btn primary' %>
+        <%= render :partial => "devise/shared/links" %>
+      </div>
+    <% end %>
   </div>
 
-  <div class="clearfix">
-    <%= f.label :email %>
-    <div class="input">
-      <%= f.email_field :email, :class => 'xlarge' %>
-    </div>
+  <div class="span8">
+    <h2>you social butterfly</h2>
+    <%= render 'authentications/providers' %>
   </div>
+</div>
 
-  <div class="clearfix">
-    <%= f.label :password %>
-    <div class="input">
-      <%= f.password_field :password, :class => 'xlarge' %>
-    </div>
-  </div>
+      
 
-  <div class="clearfix">
-    <%= f.label :password_confirmation %>
-    <div class="input">
-      <%= f.password_field :password_confirmation, :class => 'xlarge' %>
-    </div>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit "Register", :class => 'btn primary' %>
-    <%= render :partial => "devise/shared/links" %>
-  </div>
-
-<% end %>

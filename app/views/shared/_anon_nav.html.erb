@@ -1,5 +1,4 @@
-<ul class="nav secondary-nav no-user-menu">
-  <li><%= link_to "Log in", new_user_session_path %></li>
-  <li><%= link_to "Register", new_user_registration_path %></li>
-</ul>
+<div class="nav secondary-nav no-user-menu">
+  Already have an account? <%= link_to "Log in", new_user_session_path, :class => 'btn success' %>
+</div>
 

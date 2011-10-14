@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/ableGray/Schedule-Attributes.git
+  remote: git://github.com/theunraveler/Schedule-Attributes.git
   revision: 17b57559c62beb2c0013a6a720cba2a00f78b1e6
   specs:
     schedule_atts (0.0.1)
