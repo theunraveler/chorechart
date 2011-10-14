@@ -38,9 +38,9 @@
     </div>
   </div>
   
-  <div class="well">
-    <%= f.submit "Sign up", :class => 'btn primary' %>
+  <div class="actions">
+    <%= f.submit "Register", :class => 'btn primary' %>
+    <%= render :partial => "devise/shared/links" %>
   </div>
 
-  <%= render :partial => "devise/shared/links" %>
 <% end %>

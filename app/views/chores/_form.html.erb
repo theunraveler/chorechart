@@ -9,7 +9,7 @@
 <div class="clearfix">
   <%= f.label :difficulty %>
   <div class="input">
-    <div id="difficulty-slider"></div>
+    <div id="difficulty-slider" class="input-xlarge"></div>
     <div id="difficulty-text"></div>
     <span class="help-block">Difficulty can correspond to the length of time a chore takes or the undesirability/inconvenience of a chore. This ensures that, when chores are being assigned, "Feeding the cats" does not bear the same weight as "Cleaning the toilet", for instance.</span>
     <%= f.hidden_field :difficulty %>
@@ -20,20 +20,31 @@
   <%= f.fields_for :schedule_attributes, @chore.schedule_attributes do |schedule| %>
     <%= schedule.hidden_field :repeat, :value => 1 %>
     <div class="clearfix">
-      Every <%= schedule.number_field :interval, :min => 1 %> 
-      <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week']], @chore.schedule_attributes.interval_unit) %>
+      <label>Every</label>
+      <div class="input">
+        <%= schedule.number_field :interval, :min => 1 %> 
+        <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week']], @chore.schedule_attributes.interval_unit) %>
+      </div>
     </div>
-    <p id="day-selection">On
-      <% Date::DAYNAMES.each do |day| %>
-        <%= schedule.check_box day.downcase.to_sym %>
-        <%= schedule.label day.downcase.to_sym %>
-      <% end %>
-      <span class="help-block">If no days are checked, today's day will be assumed.</span>
+    <div id="day-selection" class="clearfix">
+      <label>On</label>
+      <div class="input">
+        <ul class="inputs-list">
+          <% Date::DAYNAMES.each do |day| %>
+            <li>
+              <%= schedule.check_box day.downcase.to_sym %>
+              <%= schedule.label day.downcase.to_sym %>
+            </li>
+          <% end %>
+        </ul>
+        <span class="help-block">If no days are checked, today's day will be assumed.</span>
+      </div>
+    </div>
     </p>
   <% end %>
 <% end %>
 
-<div class="well">
+<div class="actions">
   <button class="btn primary" type="submit">Save</button>
 	<%= link_to "Cancel", group_chores_path(@chore.group), :class => "btn" %>
 </div>

@@ -13,7 +13,7 @@ $(document).ready(function() {
  */
 var choreFormConditional = function() {
 	var selectField = $('select[name="chore[schedule_attributes][interval_unit]"]');
-	var dayContainer = $('p#day-selection');
+	var dayContainer = $('#day-selection');
 	// Hide or show initially.
 	if (selectField.val() !== 'week') {
 		dayContainer.hide();
