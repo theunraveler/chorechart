@@ -1,8 +1,3 @@
-<ul class="tabs">
-  <li class="first"><%= link_to "Chores for #{@chore.group}", group_chores_path  %></li>
-  <li class="active"><%= link_to "New Chore", new_group_chore_path %></li>
-</ul>
-
 <div class="page-header">            
   <h1><%= t("web-app-theme.new", :default => "New")%> Chore for <%= @chore.group %></h1>
 </div>

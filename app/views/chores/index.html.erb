@@ -1,7 +1,11 @@
 <% content_for :page_title, "Chores for #{@group}" %>
 
 <div class="page-header">          
-  <h1>Chores for <%= @group %></h1>
+  <h1 class="pull-left">Chores for <%= @group %></h1>
+  <div class="pull-right">
+    <%= link_to 'Create a chore', new_group_chore_path(@group), :class => 'btn primary' %>
+  </div>
+  <div class="clearer"></div>
 </div>
 
 <% if @chores.empty? %>

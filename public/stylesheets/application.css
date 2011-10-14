@@ -1,7 +1,7 @@
 .clearer { clear: both; }
 
 html { overflow-y: auto; }
-body { padding-top: 60px; }
+body { padding-top: 80px; }
 th small { color: #BFBFBF; }
 .inputs-list label { display: inline; padding-left: 8px; }
 
@@ -24,5 +24,3 @@ th small { color: #BFBFBF; }
 
 .pagination.pull-left { margin-top: 0; }
 #chore-breakdown .user-thumb { padding-right: 10px; padding-top: 2px; }
-
-#difficulty-slider { }

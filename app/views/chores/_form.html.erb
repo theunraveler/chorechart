@@ -22,7 +22,7 @@
     <div class="clearfix">
       <label>Every</label>
       <div class="input">
-        <%= schedule.number_field :interval, :min => 1 %> 
+        <%= schedule.number_field :interval, :min => 1, :class => 'mini' %> 
         <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week']], @chore.schedule_attributes.interval_unit) %>
       </div>
     </div>
