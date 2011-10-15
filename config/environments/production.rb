@@ -1,7 +1,8 @@
 Chorechart::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-4036676-6'
+  # Google Analytics
+  config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-26335505-1'
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
