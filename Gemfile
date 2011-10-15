@@ -13,6 +13,7 @@ gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.
 gem 'escape_utils'
 gem "cancan"
 gem 'foreigner'
+gem 'meta_where'
 gem 'prawn'
 
 group :development do
