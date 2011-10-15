@@ -28,6 +28,7 @@ group :test do
   gem 'cucumber', '1.0.3'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'timecop'
 end
 
 group :development, :test do
