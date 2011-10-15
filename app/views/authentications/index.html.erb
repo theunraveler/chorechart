@@ -10,8 +10,8 @@
 <% if !@authentications.empty? %>
   <% unless @authentications.empty? %>
     <h3>You can sign in to this account using:</h3>
-    <div class="row">
-      <% for authentication in @authentications %>
+    <div id="my-authentications" class="row">
+      <% @authentications.each do |authentication| %>
         <div class="span4">
           <%= link_to "x", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "close" %>
           <div class="pull-left">

@@ -43,7 +43,7 @@
 
   <% if @user.groups.empty? %>
     <div class="span12">
-      <p>You currently have no groups. <%= link_to 'Create a new group', new_group_path %>.</p>
+      <p>You currently have no groups. <%= link_to 'Create a new group', new_group_path, :class => 'btn primary' %></p>
     </div>
   <% end %>
 </div>

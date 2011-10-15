@@ -9,6 +9,9 @@
   <%= stylesheet_link_tag :defaults %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+  <% if content_for? :page_head %>
+    <%= yield :page_head %>
+  <% end %>
 </head>
 <body>
   <header class="topbar" data-dropdown="dropdown">
