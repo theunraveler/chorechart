@@ -3,7 +3,7 @@
     <li class="crud-dropdown">
       <a href="#" class="dropdown-toggle">Manage</a>
       <ul class="dropdown-menu">
-        <li><a href="javascript:window.print();">Print</a></li>
+        <li><%= link_to 'Print (PDF)', group_path(group, :format => :pdf) %></li>
         <% if can? :edit, group %>
           <li><%= link_to 'Edit Group', edit_group_path(group) %></li>
         <% end %>

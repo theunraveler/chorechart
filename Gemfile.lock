@@ -9,6 +9,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    Ascii85 (1.0.1)
     abstract (1.0.0)
     actionmailer (3.0.9)
       actionpack (= 3.0.9)
@@ -100,10 +101,6 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    meta_where (1.0.4)
-      activerecord (~> 3.0.0)
-      activesupport (~> 3.0.0)
-      arel (~> 2.0.7)
     mime-types (1.16)
     multi_json (1.0.3)
     multi_xml (0.4.1)
@@ -127,7 +124,12 @@ GEM
       faraday (~> 0.7.4)
       multi_json (~> 1.0.3)
     orm_adapter (0.0.5)
+    pdf-reader (0.10.0)
+      Ascii85 (~> 1.0.0)
     polyglot (0.3.2)
+    prawn (0.12.0)
+      pdf-reader (>= 0.9.0)
+      ttfunk (~> 1.0.2)
     progressbar (0.9.1)
     rack (1.2.4)
     rack-mount (0.6.14)
@@ -194,6 +196,7 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    ttfunk (1.0.3)
     tzinfo (0.3.30)
     uniform_notifier (1.0.1)
     warden (1.0.6)
@@ -217,11 +220,11 @@ DEPENDENCIES
   factory_girl_rails
   foreigner
   jquery-rails
-  meta_where
   mysql2 (< 0.3)
   oa-core
   oa-oauth
   oa-openid
+  prawn
   rails (= 3.0.9)
   rails_best_practices
   rake (= 0.8.7)

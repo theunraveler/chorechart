@@ -38,6 +38,35 @@ class Group < ActiveRecord::Base
     return false
   end
 
+  def to_pdf(week, week_chores)
+    header = users.collect(&:to_s).unshift('')
+    data = []
+
+    (week..week.end_of_week).each do |date|
+      row = []
+      row << date.strftime('%A, %B %d')
+
+      users.each do |user|
+        string = String.new
+        week_chores.select { |a| a.user == user && a.date == date }.each do |assignment|
+          string << "#{assignment.chore}\n\n"
+        end
+        row << string
+      end
+      data << row
+    end
+
+    Prawn::Document.new(:page_layout => :landscape) do |pdf|
+      pdf.pad(20) do
+        pdf.text("#{self} for the week of #{week.strftime('%B %d')}", :align => :center, :size => 24)
+      end
+
+      pdf.table(data.unshift(header), :header => true, :width => pdf.bounds.width) do
+        row(0).style(:font_style => :bold, :background_color => 'cccccc')
+      end
+    end.render
+  end
+
   def to_s
     name
   end
