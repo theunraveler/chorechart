@@ -37,7 +37,7 @@ module Chorechart
 
     # CSS files you want as :defaults
     config.action_view.stylesheet_expansions = {
-      :defaults => %w( jquery-ui/Aristo/Aristo.css bootstrap/bootstrap.css application.css )
+      :defaults => %w( jquery-ui/aristo/aristo.css bootstrap/bootstrap.css application.css )
     }
 
     # JavaScript files you want as :defaults (application.js is always included).
