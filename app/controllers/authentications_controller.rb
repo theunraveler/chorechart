@@ -13,7 +13,7 @@ class AuthenticationsController < ApplicationController
     if authentication
       sign_in_and_redirect(:user, authentication.user)
     elsif current_user  
-      current_user.apply_omniauth(omniauth)
+      current_user.apply_omniauth(omniauth).save!
       flash[:notice] = "Authentication successfully added."
       redirect_to authentications_url
     else  
