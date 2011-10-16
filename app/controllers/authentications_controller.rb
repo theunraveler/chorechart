@@ -8,29 +8,23 @@ class AuthenticationsController < ApplicationController
   end
 
   def create
-    omniauth = request.env['omniauth.auth']
-    authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+    omniauth = request.env["omniauth.auth"]
+    authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])  
     if authentication
-      flash[:notice] = 'Logged in successfully.'
       sign_in_and_redirect(:user, authentication.user)
-    elsif current_user
-      current_user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
-      flash[:notice] = 'Authentication successfully added'
+    elsif current_user  
+      current_user.apply_omniauth(omniauth)
+      flash[:notice] = "Authentication successfully added."
       redirect_to authentications_url
-    else
-      user = User.new_from_omniauth(omniauth)
-      user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
-      begin
-        user.save!
-        flash[:notice] = "Signed in successfully."
-        sign_in_and_redirect(:user, user)
-      rescue ActiveRecord::RecordInvalid
-        if !user.errors[:email].empty?
-          flash[:error] = 'Looks like you already have an account! Try logging in with that, then add your account.'
-        else
-          flash[:error] = user.errors
-        end
-        redirect_to new_user_session_path
+    else  
+      user = User.new
+      user.apply_omniauth(omniauth, true)
+      if user.save  
+        sign_in_and_redirect(:user, user)  
+      else  
+        session[:omniauth] = omniauth.except('extra')  
+        session[:rebuild_user] = true
+        redirect_to new_user_registration_url  
       end
     end
   end
@@ -38,7 +32,7 @@ class AuthenticationsController < ApplicationController
   def destroy
     @authentication = current_user.authentications.find(params[:id])
     @authentication.destroy
-    flash[:notice] = 'Successfully destroyed authentication.'  
+    flash[:notice] = 'Successfully removed authentication.'  
     redirect_to authentications_url
   end
 

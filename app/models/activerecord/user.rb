@@ -44,21 +44,31 @@ class User < ActiveRecord::Base
     assigns.select { |a| a.user == self }
   end
 
-  def self.new_from_omniauth(auth)
-    case auth['provider']
-      when 'twitter'
-        account_details = auth['user_info']
-        self.new({:username => account_details['nickname'], :name => account_details['name']})
-      when 'facebook'
-        account_details = auth['user_info']
-        self.new({:email => account_details['email'], :username => account_details['nickname'], :name => account_details['name']})
-      when 'github'
-        account_details = auth['user_info']
-        self.new({:email => account_details['email'], :username => account_details['nickname'], :name => account_details['name']})
-      else
-        self.new
+  def apply_omniauth(omniauth, overwrite = false)
+    if overwrite
+      case omniauth['provider']
+        when 'twitter'
+          account_details = omniauth['user_info']
+          self.username = account_details['nickname']
+          self.name = account_details['name']
+        when 'facebook'
+          account_details = omniauth['user_info']
+          self.email = account_details['email']
+          self.username = account_details['nickname']
+          self.name = account_details['name']
+        when 'github'
+          account_details = omniauth['user_info']
+          email = account_details['email']
+          username = account_details['nickname']
+          name = account_details['name']
+      end
     end
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
   end
+
+  def password_required?  
+    (authentications.empty? || !password.blank?) && super  
+  end 
 
   def to_s
     first_name || username

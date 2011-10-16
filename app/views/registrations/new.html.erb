@@ -4,12 +4,16 @@
 </ul>
 
 <div class="page-header">
-  <h1>Create an Account&hellip;</h1>
+  <% if session[:omniauth] %>
+    <h1>Almost there&hellip;</h1>
+  <% else %>
+    <h1>Create an Account&hellip;</h1>
+  <% end %>
 </div>
 
 <div class="row">
-  <div class="span8">
-    <h2>you luddite</h2>
+  <div class="span<%= session[:omniauth] ? '16' : '8' %>">
+    <%= '<h2>you luddite</h2>'.html_safe if !session[:omniauth] %>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
@@ -27,19 +31,21 @@
         </div>
       </div>
 
-      <div class="clearfix">
-        <%= f.label :password %>
-        <div class="input">
-          <%= f.password_field :password, :class => 'xlarge' %>
+      <% if @user.password_required? %>
+        <div class="clearfix">
+          <%= f.label :password %>
+          <div class="input">
+            <%= f.password_field :password, :class => 'xlarge' %>
+          </div>
         </div>
-      </div>
 
-      <div class="clearfix">
-        <%= f.label :password_confirmation %>
-        <div class="input">
-          <%= f.password_field :password_confirmation, :class => 'xlarge' %>
+        <div class="clearfix">
+          <%= f.label :password_confirmation %>
+          <div class="input">
+            <%= f.password_field :password_confirmation, :class => 'xlarge' %>
+          </div>
         </div>
-      </div>
+      <% end %>
       
       <div class="actions">
         <%= f.submit "Register", :class => 'btn primary' %>
@@ -48,10 +54,12 @@
     <% end %>
   </div>
 
-  <div class="span8">
-    <h2>you social butterfly</h2>
-    <%= render 'authentications/providers' %>
-  </div>
+  <% if !session[:omniauth] %>
+    <div class="span8">
+      <h2>you social butterfly</h2>
+      <%= render 'authentications/providers' %>
+    </div>
+  <% end %>
 </div>
 
       
