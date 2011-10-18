@@ -12,7 +12,10 @@ module HtmlSelectorsHelpers
       "html > body"
 
     when "the content area"
-      "body #main .content"
+      "body #wrapper #main"
+
+    when "the content area table"
+      "body #wrapper #main table"
 
     when "the header"
       'header'

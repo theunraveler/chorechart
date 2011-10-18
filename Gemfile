@@ -27,6 +27,7 @@ group :test do
   gem 'capybara'
   gem 'cucumber-rails'
   gem 'cucumber', '1.0.3'
+  gem 'launchy'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'timecop'

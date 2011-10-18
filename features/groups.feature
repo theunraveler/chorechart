@@ -17,7 +17,7 @@ Feature: Groups
   Scenario: Creating a group
     Given I am logged in as "test_user"
     When I go to my groups page
-    And I click on "New Group"
+    And I click on "Create a group"
     And I fill in the following:
       | Name | New Test Group |
     And I press "Create group"
@@ -32,10 +32,24 @@ Feature: Groups
       | Home            |
       | Company Office  |
       | Art Space       |
+    And I am on my groups page
     When I edit the group with name "Company Office"
     And I fill in "Name" with "Company Kitchen"
     And I press "Save"
     Then I should be taken to my groups page
     And I should see the flash message "Group Company Kitchen was successfully updated."
     And "Company Kitchen" should be among my groups
+    And "Company Office" should not be among my groups
+
+  Scenario: Deleting a group
+    Given I am logged in as "test_user"
+    And I own the following groups:
+      | Group Name      |
+      | Home            |
+      | Company Office  |
+      | Art Space       |
+    And I am on my groups page
+    When I delete the group with name "Company Office"
+    Then I should be taken to my groups page
+    And I should see the flash message "Group Company Office deleted."
     And "Company Office" should not be among my groups

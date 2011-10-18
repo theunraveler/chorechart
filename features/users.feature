@@ -29,7 +29,6 @@ Feature: Users
     Then I should be taken to the home page
     And I should see the flash message "Logged out successfully. See you next time."
     And I should not see my username within the header
-    And I should see "Register" within the header
     And I should see "Log in" within the header
 
   Scenario: Deleting account

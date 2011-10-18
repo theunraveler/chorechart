@@ -10,6 +10,9 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
+    when /the new chores page/
+      new_chores_path
+
 
     when /^the user registration page$/i
       new_user_registration_path
@@ -22,6 +25,16 @@ module NavigationHelpers
 
     when /^my groups page$/i
       '/groups'
+
+    # Simple object pages
+    when /^the (.*) page for "([^"]*)"$/i
+      object = $1.classify.constantize.find_by_name($2)
+      self.send("#{$1}_path", object)
+
+    # Nested resources
+    when /^the (.*) page for the (.*) "([^"]*)"$/i
+      object = $2.classify.constantize.find_by_name($3)
+      self.send("#{$2}_#{$1.pluralize}_path", object)
 
     else
       begin
