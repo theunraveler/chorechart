@@ -3,8 +3,8 @@ Chorechart::Application.routes.draw do
   resources :groups, :shallow => true do 
     resources :memberships, :only => [:index, :create, :update, :destroy]
     resources :chores, :except => :show
+    resources :invitations, :only => [:new, :create, :destroy]
   end
-  get '/groups/:id/invite', :to => 'groups#invite', :as => :group_invite
 
   devise_for :users, 
     :path => '', 

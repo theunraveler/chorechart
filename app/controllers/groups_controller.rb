@@ -60,10 +60,4 @@ class GroupsController < ApplicationController
       format.html { redirect_to(groups_url, :notice => "Group #{@group.name} deleted.") }
     end
   end
-
-  def invite
-    respond_to do |format|
-      format.html
-    end
-  end
 end

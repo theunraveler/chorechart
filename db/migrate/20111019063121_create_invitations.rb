@@ -7,6 +7,11 @@ class CreateInvitations < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_foreign_key(:invitations, :groups, :dependent => :delete)    
+    add_index :invitations, :email
+    add_index :invitations, :group_id
+    add_index :invitations, [:group_id, :email]
   end
 
   def self.down

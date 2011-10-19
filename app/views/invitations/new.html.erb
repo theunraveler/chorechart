@@ -1,0 +1,20 @@
+<div class="page-header">
+  <h1>Invite users to <%= @group %></h1>
+</div>
+
+<%= form_for @invitation, :url => group_invitations_path do |f| %>
+
+  <div class="clearfix">
+    <%= f.label :email, 'Email' %>
+    <div class="input">
+      <%= f.email_field :email, :class => 'xlarge' %>
+    </div>
+  </div>
+
+  <%= f.hidden_field :group_id, :value => @group.id %>
+
+  <div class="actions">
+    <%= f.submit 'Invite user', :class => 'btn primary' %> 
+  </div>
+
+<% end %>

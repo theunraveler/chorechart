@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :email
   validates_uniqueness_of :username, :email
 
+  # Callbacks
+  after_create :process_pending_invitations
+
   scope :find_by_login, lambda { |login| where({:username => login.downcase} | {:email => login.downcase}) }
 
   def update_with_password(params={})
@@ -80,6 +83,14 @@ class User < ActiveRecord::Base
     conditions = warden_conditions.dup
     login = conditions.delete(:login)
     where(conditions).find_by_login(login).first
+  end
+
+  def process_pending_invitations
+    invites = Invitations.find_all_by_email(email)
+    invites.each do |invite|
+      memberships.create({:group_id => invite.group_id})
+      invite.destroy
+    end
   end
 
 end

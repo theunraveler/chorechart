@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111011024831) do
+ActiveRecord::Schema.define(:version => 20111019063121) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "chore_id",                       :null => false
@@ -50,6 +50,18 @@ ActiveRecord::Schema.define(:version => 20111011024831) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "invitations", :force => true do |t|
+    t.string   "email"
+    t.integer  "group_id"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invitations", ["email"], :name => "index_invitations_on_email"
+  add_index "invitations", ["group_id", "email"], :name => "index_invitations_on_group_id_and_email"
+  add_index "invitations", ["group_id"], :name => "index_invitations_on_group_id"
 
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"
@@ -91,6 +103,8 @@ ActiveRecord::Schema.define(:version => 20111011024831) do
   add_foreign_key "authentications", "users", :name => "authentications_user_id_fk", :dependent => :delete
 
   add_foreign_key "chores", "groups", :name => "chores_group_id_fk", :dependent => :delete
+
+  add_foreign_key "invitations", "groups", :name => "invitations_group_id_fk", :dependent => :delete
 
   add_foreign_key "memberships", "groups", :name => "memberships_group_id_fk", :dependent => :delete
   add_foreign_key "memberships", "users", :name => "memberships_user_id_fk", :dependent => :delete

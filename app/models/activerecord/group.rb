@@ -5,6 +5,7 @@ class Group < ActiveRecord::Base
     a.has_many :memberships
     a.has_many :chores
     a.has_many :assignments, :through => :chores
+    a.has_many :invitations
   end
   has_many :users, :through => :memberships
 
