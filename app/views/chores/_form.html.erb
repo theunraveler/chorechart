@@ -45,6 +45,6 @@
 <% end %>
 
 <div class="actions">
-  <button class="btn primary" type="submit">Save</button>
+  <button class="btn primary" type="submit"><%= f.object.new_record? ? 'Create chore' : 'Save' %></button>
 	<%= link_to "Cancel", group_chores_path(@chore.group), :class => "btn" %>
 </div>
