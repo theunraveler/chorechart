@@ -61,4 +61,9 @@ class GroupsController < ApplicationController
     end
   end
 
+  def invite
+    respond_to do |format|
+      format.html
+    end
+  end
 end

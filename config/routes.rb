@@ -4,6 +4,7 @@ Chorechart::Application.routes.draw do
     resources :memberships, :only => [:index, :create, :update, :destroy]
     resources :chores, :except => :show
   end
+  get '/groups/:id/invite', :to => 'groups#invite', :as => :group_invite
 
   devise_for :users, 
     :path => '', 

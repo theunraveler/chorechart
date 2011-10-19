@@ -17,16 +17,23 @@ class MembershipsController < ApplicationController
     @group = Group.find(params[:group_id])
     params[:membership][:group_id] = @group.id
     user = User.find_by_login(params[:membership][:user_id]).first
-    params[:membership][:user_id] = user.id
-    @membership = Membership.new(params[:membership])
-
-    respond_to do |format|
-      if @membership.save
-        format.html { redirect_to(group_memberships_url(@group), :notice => "User #{user.email} has been added to the group.") }
-      else
-        flash.now[:error] = @membership.errors
-        @memberships = Membership.all
-        format.html { render :action => "index" }
+    # TODO: Do something if the user doesn't exist!
+    if user
+      params[:membership][:user_id] = user.id
+      @membership = Membership.new(params[:membership])
+      respond_to do |format|
+        if @membership.save
+          format.html { redirect_to(group_memberships_url(@group), :notice => "User #{user.email} has been added to the group.") }
+        else
+          flash.now[:error] = @membership.errors
+          @memberships = Membership.all
+          format.html { render :action => "index" }
+        end
+      end
+    else
+      notice = render_to_string(:partial => "invite_user", :locals => { :user => params[:membership][:user_id], :group => @group })
+      respond_to do |format|
+        format.html { redirect_to(group_memberships_url(@group), :flash => { :warning => notice }) }
       end
     end
   end
