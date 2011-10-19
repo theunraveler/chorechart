@@ -11,10 +11,11 @@ Feature: Manage chores
       | Company Office  |
       | Art Space       |
 
-  @focus
+  @broken
   Scenario: Create a new chore
     Given I am on the chore page for the group "Company Office"
     When I click "Create a chore"
+    And I fill in "Name" with "Dishes"
     And I press "Create chore"
     Then I should be on the group page for "Company Office"
     And I should see the flash message "Chore Dishes created."

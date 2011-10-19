@@ -2,6 +2,6 @@
   <h1 class="title">Edit <%= @chore %></h1>
 </div>
 
-<%= form_for @chore, :url => chore_path(@chore), :html => { :class => :form } do |f| -%>
-  <%= render :partial => "form", :locals => {:f => f} %>
+<%= form_for @chore, :url => chore_path(@chore) do |f| -%>
+  <%= render 'form', :f => f %>
 <% end -%>
