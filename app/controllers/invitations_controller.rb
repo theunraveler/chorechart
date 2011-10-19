@@ -13,7 +13,7 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if @invitation.save
-        format.html { redirect_to(group_memberships_path(@group), :notice => "<em>#{@invitation.email}</em> has been invited to the group <em>#{@group}</em>.") }
+        format.html { redirect_to(group_memberships_path(@group), :notice => "<em>#{@invitation.email}</em> has been invited to the group <em>#{@group}</em>.".html_safe) }
       else
         flash.now[:error] = @invitation.errors
         format.html { render :action => "new" }
@@ -21,4 +21,13 @@ class InvitationsController < ApplicationController
     end
   end
 
+  def destroy
+    @invitation = Invitation.find(params[:id])
+    @invitation.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(group_memberships_url(@invitation.group), :notice => "Invitation for <em>#{@invitation}</em> has been cancelled.".html_safe) }
+    end
+
+  end
 end
