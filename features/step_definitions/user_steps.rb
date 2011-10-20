@@ -3,9 +3,13 @@ Given /^I do not have a user account already$/ do
 end
 
 Given /^I have a user account with username "([^"]*)" and password "([^"]*)"$/ do |username, password|
-  User.find_by_username(username).try(:delete)
+  Given %{there is no user account for the username "#{username}"}
   @user = FactoryGirl.create(:user, :username => username, :password => password)
   @password = password
+end
+
+Given /^there is no user account for the (.*) "([^"]*)"$/ do |property, value|
+  User.send("find_by_#{property.gsub(' ', '_')}", value).try(:delete)
 end
 
 Given /^I am logged in as "([^"]*)"$/ do |user|

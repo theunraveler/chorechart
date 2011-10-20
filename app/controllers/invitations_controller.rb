@@ -13,8 +13,8 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if @invitation.save
-        Notifier.invite(@invitation.email, @group, current_user)
-        format.html { redirect_to(group_memberships_path(@group), :notice => "<em>#{@invitation.email}</em> has been invited to the group <em>#{@group}</em>.".html_safe) }
+        Notifier.invite(@invitation.email, @group, current_user).deliver
+        format.html { redirect_to(group_memberships_path(@group), :notice => "<em>#{@invitation.email}</em> has been invited to join your group <em>#{@group}</em>.".html_safe) }
       else
         flash.now[:error] = @invitation.errors
         format.html { render :action => "new" }

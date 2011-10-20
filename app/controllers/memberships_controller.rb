@@ -18,7 +18,6 @@ class MembershipsController < ApplicationController
     @group = Group.find(params[:group_id])
     params[:membership][:group_id] = @group.id
     user = User.find_by_login(params[:membership][:user_id]).first
-    # TODO: Do something if the user doesn't exist!
     if user
       params[:membership][:user_id] = user.id
       @membership = Membership.new(params[:membership])

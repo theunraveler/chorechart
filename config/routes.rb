@@ -12,7 +12,7 @@ Chorechart::Application.routes.draw do
       :sign_in => 'login', 
       :sign_out => 'logout', 
       :registration => 'account', 
-      :sign_up => 'create' 
+      :sign_up => 'register' 
     },
     :controllers => {
       :sessions => 'sessions',

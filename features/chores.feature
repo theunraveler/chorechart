@@ -17,6 +17,6 @@ Feature: Manage chores
     When I click "Create a chore"
     And I fill in "Name" with "Dishes"
     And I press "Create chore"
-    Then I should be on the group page for "Company Office"
+    Then I should be on the chores page for the group "Company Office"
     And I should see the flash message "Chore Dishes created."
     And I should see "Laundry" within the content area table

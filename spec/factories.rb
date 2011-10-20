@@ -13,4 +13,7 @@ end
 factory :membership do
 end
 
+factory :invitation do
+end
+
 end
