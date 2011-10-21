@@ -4,7 +4,6 @@ class MembershipsController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @memberships = Membership.find_all_by_group_id(@group.id)
-    @invitations = @group.invitations
     @membership = Membership.new
     # This doesn't scale
     @user_autocomplete = User.all.keep_if { |u| !@group.users.include?(u) }
@@ -27,6 +26,7 @@ class MembershipsController < ApplicationController
         else
           flash.now[:error] = @membership.errors
           @memberships = Membership.all
+          @user_autocomplete = User.all.keep_if { |u| !@group.users.include?(u) }
           format.html { render :action => "index" }
         end
       end

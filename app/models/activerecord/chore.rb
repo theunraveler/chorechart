@@ -4,7 +4,7 @@ class Chore < ActiveRecord::Base
   belongs_to :group
   has_many :assignments, :dependent => :destroy
 
-  validates_presence_of :name
+  validates :name, :presence => true, :uniqueness => {:scope => :group}
   validates_inclusion_of :difficulty, :in => 1..5
 
   before_create :add_default_date

@@ -31,7 +31,14 @@ Feature: Invite users to groups
     Then "user-doesnt-exist@test.com" should receive an invitation email
     And I should see "/account/register" in the email body
 
-  @focus
+  @wip
   Scenario: User is automatically added to a group when registering
     Given there is a pending invitation for "user-doesnt-exist@test.com" to join the group "Company Office"
 
+  @bogus @focus
+  Scenario: Invites must be valid email addresses
+    Given I am on the new invitation page for the group "Company Office"
+    When I fill in "Email" with "not-and-email"
+    And I press "Invite user"
+    Then I should see "Email is not a valid email address"
+    And "not-an-email" should not have an invitation for the group "Company Office"

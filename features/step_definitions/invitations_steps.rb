@@ -15,3 +15,7 @@ Then /^"([^"]*)" should receive an invitation email$/ do |email|
   Then %{I should see "Join Chorechart!" in the email subject}
 end
 
+Then /^"([^"]*)" should not have an invitation for the group "([^"]*)"$/ do |email, group_name|
+  group = Group.find_by_name(group_name)
+  Invitation.find_all_by_email_and_group_id(email, group.id).empty?
+end
