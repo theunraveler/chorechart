@@ -14,7 +14,7 @@ class Assigner < ActiveRecord::Observer
   end
 
   def self.destroy_assignments_for_group(group)
-    Assignment.destroy_all(:chore_id => group.chores.collect(&:id))
+    Assignment.delete_all(:chore_id => group.chores.collect(&:id))
   end
 
   # Needs some refactoring.
@@ -34,6 +34,7 @@ class Assigner < ActiveRecord::Observer
       end
     end
 
+    assignments = []
     occurrences.shuffle.each do |occurrence|
       if points.values.all? { |p| p == 0 }
         lowest_user = users.sample
@@ -42,7 +43,8 @@ class Assigner < ActiveRecord::Observer
         lowest_user = users.select { |u| u.id = lowest_points }.first
       end
       points[lowest_user.id] += occurrence[:chore].difficulty
-      Assignment.create(:chore => occurrence[:chore], :user => lowest_user, :date => occurrence[:date])
+      assignments << Assignment.new(:chore => occurrence[:chore], :user => lowest_user, :date => occurrence[:date])
     end
+    Assignment.import assignments
   end
 end

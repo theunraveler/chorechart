@@ -21,16 +21,14 @@ class ChoresController < ApplicationController
 
   # POST /chores
   def create
-    @chore = Chore.new(params[:chore].merge({:group_id => params[:group_id]}))
+    @chore = Chore.new(params[:chore])
 
     respond_to do |format|
       if @chore.save
         format.html { redirect_to(group_chores_path(@chore.group), :notice => "Chore <em>#{@chore}</em> was successfully created.".html_safe) }
-        format.xml  { render :xml => @chore, :status => :created, :location => @chore }
       else
         flash.now[:error] = @chore.errors
         format.html { render :action => "new" }
-        format.xml  { render :xml => @chore.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -42,11 +40,9 @@ class ChoresController < ApplicationController
     respond_to do |format|
       if @chore.update_attributes(params[:chore])
         format.html { redirect_to(group_chores_path(@chore.group), :notice => 'Chore was successfully updated.') }
-        format.xml  { head :ok }
       else
         flash.now[:error] = @chore.errors
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @chore.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -59,7 +55,6 @@ class ChoresController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(group_chores_url(@chore.group)) }
-      format.xml  { head :ok }
     end
   end
 end

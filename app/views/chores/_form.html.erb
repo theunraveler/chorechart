@@ -30,10 +30,10 @@
       <label>On</label>
       <div class="input">
         <ul class="inputs-list">
-          <% Date::DAYNAMES.each do |day| %>
+          <% Date::DAYNAMES.map(&:downcase).map(&:to_sym).each do |day| %>
             <li>
-              <%= schedule.check_box day.downcase.to_sym %>
-              <%= schedule.label day.downcase.to_sym %>
+              <%= schedule.check_box day %>
+              <%= schedule.label day %>
             </li>
           <% end %>
         </ul>
@@ -43,6 +43,8 @@
     </p>
   <% end %>
 <% end %>
+
+<%= f.hidden_field :group_id, :value => @chore.group.id %>
 
 <div class="actions">
   <button class="btn primary" type="submit"><%= f.object.new_record? ? 'Create chore' : 'Save' %></button>

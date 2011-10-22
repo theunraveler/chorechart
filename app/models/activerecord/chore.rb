@@ -7,15 +7,24 @@ class Chore < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => {:scope => :group}
   validates_inclusion_of :difficulty, :in => 1..5
 
-  before_create :add_default_date
+  # Overridden from ScheduleAttributes
+  def schedule_attributes=(options)
+    # Weekly tasks need a day.
+    has_day = false
+    Date::DAYNAMES.map(&:downcase).map(&:to_sym).each do |day|
+      if options[day] === '1'
+        has_day = true
+      end
+    end
+    if !has_day
+      today = Date.today.strftime('%A').downcase.to_sym
+      options[today] = '1'
+    end
+
+    super(options)
+  end
 
   def to_s
     name
-  end
-
-  private
-
-  def add_default_date
-    # TODO: Add default date
   end
 end

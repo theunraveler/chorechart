@@ -12,3 +12,8 @@ end
 Then /^I should see the following chores:$/ do |expected_chores_table|
   expected_chores_table.diff!(tableish('table tr', 'td,th'))
 end
+
+Then /^I should see a weekly rule for today's day$/ do
+  today = Date.today.strftime('%A').pluralize
+  Then %{I should see "Weekly on #{today}"}
+end

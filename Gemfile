@@ -15,12 +15,7 @@ gem "cancan"
 gem 'foreigner'
 gem 'meta_where'
 gem 'prawn'
-
-group :development do
-  gem 'web-app-theme'
-  gem 'rails_best_practices'
-  gem 'bullet'
-end
+gem "activerecord-import", ">= 0.2.0"
 
 group :test do
   gem 'rspec-rails'
