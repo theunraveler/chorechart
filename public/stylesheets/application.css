@@ -9,7 +9,7 @@ th small { color: #BFBFBF; }
 .topbar a.brand:hover { text-decoration: none; }
 .secondary-nav .user-thumb { padding-right: 7px; }
 .secondary-nav.no-user-menu { margin: 8px 8px 0 0; color: #909090; }
-.secondary-nav.no-user-menu a { display: inline; padding: 5px 14px 6px; }
+.secondary-nav.no-user-menu a { display: inline; }
 
 .page-header .pull-right { margin-top: 5px; }
 .crud-links .tabs { border: none; }

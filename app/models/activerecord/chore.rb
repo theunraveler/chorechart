@@ -16,6 +16,6 @@ class Chore < ActiveRecord::Base
   private
 
   def add_default_date
-    puts self.to_s
+    # TODO: Add default date
   end
 end

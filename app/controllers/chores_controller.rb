@@ -10,7 +10,7 @@ class ChoresController < ApplicationController
 
   # GET /chores/new
   def new
-    @chore = Chore.new(:group_id => params[:group_id])
+    @chore = Chore.new(:group_id => params[:group_id], :difficulty => 1)
     respond_with @chore
   end
 
@@ -25,7 +25,7 @@ class ChoresController < ApplicationController
 
     respond_to do |format|
       if @chore.save
-        format.html { redirect_to(group_chores_path(@chore.group), :notice => 'Chore was successfully created.') }
+        format.html { redirect_to(group_chores_path(@chore.group), :notice => "Chore <em>#{@chore}</em> was successfully created.".html_safe) }
         format.xml  { render :xml => @chore, :status => :created, :location => @chore }
       else
         flash.now[:error] = @chore.errors
