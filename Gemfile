@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.9'
 
 gem 'rake', '0.8.7'
-gem 'mysql2', '< 0.3'
 gem 'jquery-rails'
 gem 'devise'
 gem 'oa-core', :require => 'omniauth/core'
@@ -13,7 +12,6 @@ gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.
 gem 'escape_utils'
 gem "cancan"
 gem 'foreigner'
-gem 'meta_where'
 gem 'prawn'
 gem "activerecord-import", ">= 0.2.0"
 
@@ -31,6 +29,7 @@ end
 
 group :development, :test do
   gem 'thin'
+  gem 'mysql2', '< 0.3'
 end
 
 group :production do

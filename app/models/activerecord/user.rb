@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   # Callbacks
   after_create :process_pending_invitations
 
-  scope :find_by_login, lambda { |login| where({:username => login.downcase} | {:email => login.downcase}) }
+  scope :find_by_login, lambda { |login| where('username = ? OR email = ?', login.downcase, login.downcase) }
 
   def update_with_password(params={})
     params.delete(:current_password)

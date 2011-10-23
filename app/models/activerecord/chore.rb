@@ -4,7 +4,7 @@ class Chore < ActiveRecord::Base
   belongs_to :group
   has_many :assignments, :dependent => :destroy
 
-  validates :name, :presence => true, :uniqueness => {:scope => :group}
+  validates :name, :presence => true, :uniqueness => {:scope => :group_id}
   validates_inclusion_of :difficulty, :in => 1..5
 
   # Overridden from ScheduleAttributes

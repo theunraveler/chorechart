@@ -5,7 +5,7 @@ class Invitation < ActiveRecord::Base
   # Validations
   validates :email, :presence => true,
                     :email => true,
-                    :uniqueness => { :scope => :group, :message => 'already has a pending invitation for this group' }
+                    :uniqueness => { :scope => :group_id, :message => 'already has a pending invitation for this group' }
 
   def to_s
     email
