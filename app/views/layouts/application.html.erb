@@ -2,9 +2,9 @@
 <html>
 <head>
   <% if content_for? :page_title %>
-    <title><%= yield :page_title %> | <%= Rails.application.config.app_name %></title>
+    <title><%= yield :page_title %> | Chorechart</title>
   <% else %>
-    <title><%= Rails.application.config.app_name %></title>
+    <title>Chorechart</title>
   <% end %>
   <%= stylesheet_link_tag :defaults %>
   <%= javascript_include_tag :defaults %>
@@ -16,8 +16,8 @@
 <body>
   <header class="topbar" data-dropdown="dropdown">
     <div class="fill">
-      <div class="container">
-        <a class="brand" href="/"><%= Rails.application.config.app_name %></a>
+      <div class="container-fluid">
+        <a class="brand" href="/">Chorechart</a>
         <% if user_signed_in? %>
           <nav id="main-navigation">
             <%= render 'shared/main_nav' %>
