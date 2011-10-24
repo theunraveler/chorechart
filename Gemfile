@@ -16,6 +16,7 @@ gem 'prawn'
 gem "activerecord-import", ">= 0.2.0"
 
 group :test do
+  gem 'simplecov', :require => false
   gem 'rspec-rails'
   gem 'capybara'
   gem 'cucumber-rails'

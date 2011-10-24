@@ -1,4 +1,5 @@
 .bundle
+coverage
 log/*.log
 tmp/
 webrat-*.html

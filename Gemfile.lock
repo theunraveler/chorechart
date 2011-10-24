@@ -183,6 +183,10 @@ GEM
       ffi (= 1.0.9)
       json_pure
       rubyzip
+    simplecov (0.5.4)
+      multi_json (~> 1.0.3)
+      simplecov-html (~> 0.5.3)
+    simplecov-html (0.5.3)
     term-ansicolor (1.0.7)
     thin (1.2.11)
       daemons (>= 1.0.9)
@@ -227,5 +231,6 @@ DEPENDENCIES
   rake (= 0.8.7)
   rspec-rails
   schedule_atts!
+  simplecov
   thin
   timecop
