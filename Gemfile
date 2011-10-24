@@ -17,9 +17,7 @@ gem "activerecord-import", ">= 0.2.0"
 
 group :test do
   gem 'simplecov', :require => false
-  gem 'rspec-rails'
   gem 'capybara'
-  gem 'cucumber-rails'
   gem 'cucumber', '1.0.3'
   gem 'email_spec'    
   gem 'launchy'
@@ -31,6 +29,8 @@ end
 group :development, :test do
   gem 'thin'
   gem 'mysql2', '< 0.3'
+  gem 'rspec-rails'  
+  gem 'cucumber-rails'
 end
 
 group :production do
