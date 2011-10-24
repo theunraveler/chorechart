@@ -7,7 +7,6 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'oa-core', :require => 'omniauth/core'
 gem 'oa-oauth', :require => 'omniauth/oauth'
-gem 'oa-openid', :require => 'omniauth/openid'
 gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.git'
 gem 'escape_utils'
 gem "cancan"
