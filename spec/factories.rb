@@ -10,6 +10,9 @@ factory :group do
   name 'A New Group'
 end
 
+factory :chore do
+end
+
 factory :membership do
 end
 

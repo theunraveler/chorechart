@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   
   describe "last name" do
-    before(:all) do
+    before(:each) do
       @user = FactoryGirl.create(:user, :name => 'Benjamin Franklin')
     end
 
@@ -14,10 +14,6 @@ describe User do
     it "should return nil if the user has no name" do
       @user.name = ''
       @user.last_name.should be_nil
-    end
-
-    after(:all) do
-      @user.delete
     end
   end
 

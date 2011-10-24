@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.pdf { send_data @group.to_pdf(@week, @chores), :type => Mime::PDF, :filename => "#{@group}-#{@week}.pdf" }
+      format.pdf { send_data @group.to_pdf(@week), :type => Mime::PDF, :filename => "#{@group}-#{@week}.pdf" }
     end
   end
 

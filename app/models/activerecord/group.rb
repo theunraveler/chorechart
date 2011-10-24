@@ -39,7 +39,7 @@ class Group < ActiveRecord::Base
     return false
   end
 
-  def to_pdf(week, week_chores)
+  def to_pdf(week)
     header = users.collect(&:to_s).unshift('')
     data = []
 
@@ -49,7 +49,7 @@ class Group < ActiveRecord::Base
 
       users.each do |user|
         string = String.new
-        week_chores.select { |a| a.user == user && a.date == date }.each do |assignment|
+        assignments.select { |a| a.user == user && a.date == date }.each do |assignment|
           string << "#{assignment.chore}\n\n"
         end
         row << string
