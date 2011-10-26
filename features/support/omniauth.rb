@@ -5,6 +5,7 @@ Before('@omniauth') do
   OmniAuth.config.mock_auth[:facebook] = {
     'provider' => 'facebook',
     'uid' => '12345',
+    'user_info' => { 'email' => 'test@test.com', 'nickname' => 'test_facebook_user', 'name' => 'Facebook User' }
   }
 end
 

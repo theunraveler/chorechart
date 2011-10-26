@@ -2,7 +2,10 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new.readonly!
+    unless user
+      user = User.new
+      user.readonly!
+    end
 
     #################
     # GROUPS
@@ -43,6 +46,7 @@ class Ability
 
     # Users can update and delete their own profiles
     can :manage, User, :id => user.id
+    can :manage, Authentication, :id => user.authentication_ids
 
   end
 end

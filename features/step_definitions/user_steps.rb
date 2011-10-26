@@ -1,4 +1,4 @@
-Given /^I do not have a user account already$/ do
+Given /^I do not have a user account\s?a?l?r?e?a?d?y?$/ do
   User.delete_all
 end
 
