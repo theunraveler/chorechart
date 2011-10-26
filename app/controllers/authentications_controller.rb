@@ -11,6 +11,7 @@ class AuthenticationsController < ApplicationController
     omniauth = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'].to_s)  
     if authentication
+      flash[:notice] = I18n.t "devise.sessions.signed_in"
       sign_in_and_redirect(:user, authentication.user)
     elsif current_user  
       current_user.apply_omniauth(omniauth).save!

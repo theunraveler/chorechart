@@ -1,3 +1,7 @@
+Given /^I have no (.+)$/ do |model|
+  model.classify.constantize.delete_all
+end
+
 When /^I click o?n?\s?"([^"]*)"$/ do |link|
   When %{I follow "#{link}"} 
 end

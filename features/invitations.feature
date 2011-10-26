@@ -35,7 +35,7 @@ Feature: Invite users to groups
   Scenario: User is automatically added to a group when registering
     Given there is a pending invitation for "user-doesnt-exist@test.com" to join the group "Company Office"
 
-  @bogus @focus
+  @bogus
   Scenario: Invites must be valid email addresses
     Given I am on the new invitation page for the group "Company Office"
     When I fill in "Email" with "not-and-email"

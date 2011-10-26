@@ -20,6 +20,12 @@ module HtmlSelectorsHelpers
     when "the header"
       'header'
 
+    when 'my authentications'
+      '#my-authentications'
+
+    when 'the available services'
+      '#main .well'
+
     # This allows you to provide a quoted selector as the scope
     # for "within" steps as was previously the default for the
     # web steps:

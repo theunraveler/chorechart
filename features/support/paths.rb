@@ -13,7 +13,6 @@ module NavigationHelpers
     when /the new chores page/
       new_chores_path
 
-
     when /^the user registration page$/i
       new_user_registration_path
 
@@ -25,6 +24,9 @@ module NavigationHelpers
 
     when /^my groups page$/i
       '/groups'
+
+    when /^my authentications page$/i
+      authentications_path
 
     # Simple object pages
     when /^the (.*) page for "([^"]*)"$/i
