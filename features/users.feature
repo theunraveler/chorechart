@@ -31,9 +31,22 @@ Feature: Users
     And I should not see my username within the header
     And I should see "Log in" within the header
 
+  Scenario: Editing my profile
+    Given I am logged in as "testuser"
+    When I click on "Edit Account" within the header
+    And I fill in "Name" with "John Doe"
+    And I press "Update"
+    Then I should be on the dashboard
+    And I should see the flash message "Account details updated."
+
   Scenario: Deleting account
     Given I am logged in as "testuser"
     When I click on "Account"
     And I click on "Delete my account"
     Then I should be taken to the home page
     And my account should be deleted
+
+  Scenario: Going to the dashboard
+    Given I am logged in as "testuser"
+    When I click on "Chorechart" within the header
+    Then I should be on the dashboard

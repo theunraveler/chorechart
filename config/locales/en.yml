@@ -37,7 +37,7 @@ en:
     registrations:
       signed_up: 'Thanks for signing up! You are now logged in.'
       inactive_signed_up: 'Thanks for signing up! You will receive an email shortly to confirm your account.'
-      updated: 'You updated your account successfully.'
+      updated: 'Account details updated.'
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
       reasons:
         inactive: 'inactive'

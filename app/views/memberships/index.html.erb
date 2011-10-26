@@ -6,7 +6,7 @@
   <% @memberships.each do |membership| %>
     <tr>
       <td><%= membership.user %> (<%= membership.user.email %>)</td>
-      <td><%= membership.role.try(:capitalize) %></td>
+      <td><%= 'Admin' if membership.is_admin? %></td>
       <td>
         <% if can? :destroy, membership %>
           <%= link_to 'Remove', membership, :confirm => "Are you sure you want to remove #{membership.user} from #{@group}?", :method => :delete %>
