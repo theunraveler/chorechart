@@ -5,7 +5,12 @@ class RegistrationsController < Devise::RegistrationsController
     action_name == 'new' ? 'no_sidebar' : 'application'
   end
 
-  def create  
+  def new
+    @omniauth = session.has_key? :omniauth
+    super
+  end
+
+  def create
     super
     session[:omniauth] = nil unless @user.new_record?
   end

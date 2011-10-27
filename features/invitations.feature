@@ -31,14 +31,32 @@ Feature: Invite users to groups
     Then "user-doesnt-exist@test.com" should receive an invitation email
     And I should see "/account/register" in the email body
 
-  @wip
   Scenario: User is automatically added to a group when registering
     Given there is a pending invitation for "user-doesnt-exist@test.com" to join the group "Company Office"
+    And I am logged out
+    And I am on the new user registration page
+    When I enter "new_user", "user-doesnt-exist@test.com", and "password" as my username, email, and password
+    Then I should belong to the group "Company Office"
+    And "user-doesnt-exist@test.com" should not have an invitation for the group "Company Office"
 
   @bogus
-  Scenario: Invites must be valid email addresses
+  Scenario Outline: Invites must be valid email addresses
     Given I am on the new invitation page for the group "Company Office"
-    When I fill in "Email" with "not-and-email"
+    When I fill in "Email" with "<email>"
     And I press "Invite user"
     Then I should see "Email is not a valid email address"
-    And "not-an-email" should not have an invitation for the group "Company Office"
+    And "<email>" should not have an invitation for the group "Company Office"
+
+    Scenarios:
+      | email         |
+      | not-an-email  |
+      | something@    |
+      | thing@lala    |
+      | thing@thing.  |
+
+  Scenario: Group admins can cancel invitations
+    Given there is a pending invitation for "user-doesnt-exist@test.com" to join the group "Company Office"
+    And I am on the membership page for the group "Company Office"
+    When I click on "Cancel invitation"
+    Then I should not see "user-doesnt-exist@test.com" within the content area table
+    And "user-doesnt-exist@test.com" should not have an invitation for the group "Company Office"

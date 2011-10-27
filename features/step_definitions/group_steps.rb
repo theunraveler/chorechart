@@ -25,12 +25,6 @@ Then /^I should only see my groups$/ do
   # TODO: Check for other groups
 end
 
-When /^I (.*) the (.*) with name "([^"]*)"$/ do |action, class_name, value|
-  within(:xpath, "//table/tbody/tr[td//text()[contains(., '#{value}')]]") do
-    click_link(action.capitalize)
-  end
-end
-
 Then /^"([^"]*)" should be among my groups$/ do |group|
   Then %{I should see "#{group}" within the content area table}
 end

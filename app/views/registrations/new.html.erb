@@ -12,7 +12,7 @@
 </div>
 
 <div class="row">
-  <div class="span<%= session[:omniauth] ? '16' : '8' %>">
+  <div class="span<%= @omniauth ? '16' : '8' %>">
     <%= '<h2>you luddite</h2>'.html_safe if !session[:omniauth] %>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
@@ -46,6 +46,8 @@
           </div>
         </div>
       <% end %>
+
+      <%= f.hidden_field :name %>
       
       <div class="actions">
         <%= f.submit "Register", :class => 'btn primary' %>
@@ -54,7 +56,7 @@
     <% end %>
   </div>
 
-  <% if !session[:omniauth] %>
+  <% unless @omniauth %>
     <div class="span8">
       <h2>you social butterfly</h2>
       <%= render 'authentications/providers' %>

@@ -18,6 +18,10 @@ Given /^I am logged in as "([^"]*)"$/ do |user|
   And %{I enter my credentials}
 end
 
+Given /^I am logged out$/ do
+  click_link('Log out')
+end
+
 When /^I enter "([^"]*)", "([^"]*)", and "([^"]*)" as my username, email, and password$/ do |username, email, password|
   fill_in('Username', :with => username)
   fill_in('Email', :with => email)

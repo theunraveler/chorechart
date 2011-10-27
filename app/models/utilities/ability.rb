@@ -2,10 +2,6 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    unless user
-      user = User.new
-      user.readonly!
-    end
 
     #################
     # GROUPS

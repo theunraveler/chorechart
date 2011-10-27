@@ -6,6 +6,12 @@ When /^I click o?n?\s?"([^"]*)"$/ do |link|
   When %{I follow "#{link}"} 
 end
 
+When /^I (.*) the (.*) with name "([^"]*)"$/ do |action, class_name, value|
+  within(:xpath, "//table/tbody/tr[td//text()[contains(., '#{value}')]]") do
+    click_link(action.capitalize)
+  end
+end
+
 Then /^I should be taken to (.+)$/ do |page_name|
   Then "I should be on #{page_name}"
 end

@@ -19,3 +19,7 @@ Then /^"([^"]*)" should not have an invitation for the group "([^"]*)"$/ do |ema
   group = Group.find_by_name(group_name)
   Invitation.find_all_by_email_and_group_id(email, group.id).empty?
 end
+
+Then /^I should belong to the group "([^"]*)"$/ do |group_name|
+  @user.groups.collect(&:name).include?(group_name)
+end
