@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
-  # Setup accessible (or protected) attributes for your model
+  # Setup accessible (or protected) attributes
   attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me, :name
 
   # Validations
@@ -61,9 +61,9 @@ class User < ActiveRecord::Base
           self.name = account_details['name']
         when 'github'
           account_details = omniauth['user_info']
-          email = account_details['email']
-          username = account_details['nickname']
-          name = account_details['name']
+          self.email = account_details['email']
+          self.username = account_details['nickname']
+          self.name = account_details['name']
       end
     end
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  

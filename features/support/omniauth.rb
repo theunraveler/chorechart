@@ -1,11 +1,19 @@
 Before('@omniauth') do
   OmniAuth.config.test_mode = true
 
-  # the symbol passed to mock_auth is the same as the name of the provider set up in the initializer
-  OmniAuth.config.mock_auth[:facebook] = {
-    'provider' => 'facebook',
+  [:facebook, :github].each do |service|
+    OmniAuth.config.mock_auth[service] = {
+      'provider' => service.to_s,
+      'uid' => '12345',
+      'user_info' => { 'email' => 'test@test.com', 'nickname' => "test_#{service.to_s}_user", 'name' => "#{service.to_s.capitalize} User" }
+    }
+  end
+
+  # Do twitter separately because the don't send an email back.
+  OmniAuth.config.mock_auth[:twitter] = {
+    'provider' => 'twitter',
     'uid' => '12345',
-    'user_info' => { 'email' => 'test@test.com', 'nickname' => 'test_facebook_user', 'name' => 'Facebook User' }
+    'user_info' => { 'nickname' => 'test_twitter_user', 'name' => 'Twitter User' }
   }
 end
 
