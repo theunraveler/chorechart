@@ -27,6 +27,7 @@ class AuthenticationsController < ApplicationController
         flash[:notice] = "An account has been created for you and you are now logged in. Welcome."
         sign_in_and_redirect(:user, user)  
       else  
+        flash[:error] = user.errors
         session[:omniauth] = omniauth.except('extra')  
         session[:rebuild_user] = true
         redirect_to new_user_registration_url  

@@ -14,7 +14,7 @@ Feature: Users
     Given I do not have a user account already
     When I go to the user registration page
     And I enter "test_user", "test@test.com", and "" as my username, email, and password
-    And I should see "Password can't be blank"
+    And I should see the flash message "Password can't be blank"
 
   Scenario: Logging in
     Given I have a user account with username "test" and password "password"
