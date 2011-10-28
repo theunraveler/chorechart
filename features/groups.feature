@@ -53,3 +53,18 @@ Feature: Groups
     Then I should be taken to my groups page
     And I should see the flash message "Group Company Office deleted."
     And "Company Office" should not be among my groups
+
+  @focus
+  Scenario: I can download a PDF of my weekly chores
+    Given I am logged in as "test_user"
+    And I own the following groups:
+      | Group Name      |
+      | Company Office  |
+    And the group "Company Office" has the following chores:
+      | name    |
+      | Laundry |
+      | Dishes  |
+    And I am on the group page for "Company Office"
+    When I click on the PDF link "Print (PDF)"
+    Then I should see "Company Office for the week of"
+

@@ -11,6 +11,7 @@ factory :group do
 end
 
 factory :chore do
+  difficulty 1
 end
 
 factory :membership do
