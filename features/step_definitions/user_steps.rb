@@ -12,8 +12,16 @@ Given /^there is no user account for the (.*) "([^"]*)"$/ do |property, value|
   User.send("find_by_#{property.gsub(' ', '_')}", value).try(:delete)
 end
 
-Given /^I am logged in as "([^"]*)"$/ do |user|
-  Given %{I have a user account with username "#{user}" and password "password"}
+Given /^I am logged in as "([^"]*)"$/ do |username|
+  unless @user.nil?
+    Given %{I am logged out}
+  end
+
+  if user = User.find_by_login(username).first
+    @user = user
+  else
+    Given %{I have a user account with username "#{username}" and password "password"}
+  end
   When %{I go to the login page}
   And %{I enter my credentials}
 end

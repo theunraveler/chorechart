@@ -1,5 +1,9 @@
-Given /^the following chores:$/ do |chores|
-  Chores.create!(chores.hashes)
+Given /^I have the following chores in "([^"]*)":$/ do |group_name, chores|
+  group = Group.find_by_name(group_name)
+  chores.hashes.each do |chore|
+    chore[:group_id] = group.id
+    FactoryGirl.create(:chore, chore)
+  end
 end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) chores$/ do |pos|

@@ -20,6 +20,14 @@ Feature: Chores
     And I should see the flash message "Chore Dishes was successfully created."
     And I should see "Dishes" within the content area table
 
+  @bogus
+  Scenario: Create a new chore with bogus information
+    Given I am on the chore page for the group "Company Office"
+    When I click "Create a chore"
+    And I fill in "Name" with ""
+    And I press "Create chore"
+    Then I should see the flash message "Name can't be blank"
+
   Scenario: Creating a weekly chore with days
     Given I am on the chore page for the group "Company Office"
     When I click "Create a chore"
@@ -43,3 +51,41 @@ Feature: Chores
     And I should see the flash message "Chore Laundry was successfully created."
     And I should see "Laundry" within the content area table
     And I should see a weekly rule for today's day within the content area table
+
+  Scenario: Editing a chore as an admin
+    Given I have the following chores in "Company Office":
+      | name      |
+      | Laundry   |
+      | Dishes    |
+      | Cat boxes |
+    And I am on the chores page for the group "Company Office"
+    When I edit the chore with name "Laundry"
+    And I fill in "Name" with "Sweep the floors"
+    And I press "Save"
+    Then I should be on the chores page for the group "Company Office"
+    And I should see "Sweep the floors" within the content area table
+    And I should not see "Laundry" within the content area table
+
+  @bogus
+  Scenario: Editing a chore with bogus information
+    Given I have the following chores in "Company Office":
+      | name      |
+      | Laundry   |
+      | Dishes    |
+      | Cat boxes |
+    And I am on the chores page for the group "Company Office"
+    When I edit the chore with name "Laundry"
+    And I fill in "Name" with ""
+    And I press "Save"
+    Then I should see the flash message "Name can't be blank"
+
+  Scenario: Deleting a chore as an admin
+    Given I have the following chores in "Company Office":
+      | name      |
+      | Laundry   |
+      | Dishes    |
+      | Cat boxes |
+    And I am on the chores page for the group "Company Office"
+    When I delete the chore with name "Laundry"
+    Then I should be on the chores page for the group "Company Office"
+    And I should not see "Laundry" within the content area table
