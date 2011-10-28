@@ -32,6 +32,9 @@ module NavigationHelpers
     when /^the (.*) page for "([^"]*)"$/i
       object = $1.classify.constantize.find_by_name($2)
       self.send("#{$1}_path", object)
+    when /^the "([^"]*)" page for the (.*) "([^"]*)"$/i
+      object = $2.classify.constantize.find_by_name($3)
+      self.send("#{$1}_#{$2}_path", object)
 
     # Nested resources
     when /^the new (.*) page for the (.*) "([^"]*)"$/i

@@ -27,3 +27,7 @@ end
 Then /^I should not see an image with alt text "([^\"]*)"$/ do |alt_text|
   !has_xpath?("//img[contains(@alt,\"#{alt_text}\")]")
 end
+
+Then /^I should have (\d+) ([^\s]*)$/ do |number, model|
+  model.classify.constantize.count == number.to_i
+end

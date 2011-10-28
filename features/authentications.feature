@@ -12,7 +12,7 @@ Feature: Allow users to log in and register for the site using other services
     Then I should see the flash message "Authentication successfully added."
     And I should see "<service>" within my authentications
     And I should not see an image with alt text "<service>" within the available services
-    And I should have 1 authentication
+    And I should have 1 active authentication
 
     Scenarios:
     | service   |
@@ -42,7 +42,7 @@ Feature: Allow users to log in and register for the site using other services
     When I delete my <service> account
     Then I should be on my authentications page
     And I should see the flash message "Authentication successfully removed."
-    And I should have 0 authentications
+    And I should have 0 active authentications
     And I should see an image with alt text "<service>" within the available services
 
     Scenarios:

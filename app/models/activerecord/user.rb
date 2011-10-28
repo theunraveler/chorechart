@@ -24,7 +24,9 @@ class User < ActiveRecord::Base
   # Callbacks
   after_create :process_pending_invitations
 
+  # Named scopes
   scope :find_by_login, lambda { |login| where('username = ? OR email = ?', login.downcase, login.downcase) }
+  scope :not_in_group, lambda { |group| where('id not in (?)', group.user_ids) }
 
   def update_with_password(params={})
     params.delete(:current_password)

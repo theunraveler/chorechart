@@ -8,6 +8,6 @@ When /^I delete my (.+) account$/ do |service|
   end
 end
 
-Then /^I should have (\d+) authentications?$/ do |count|
+Then /^I should have (\d+) active authentications?$/ do |count|
   @user.authentications.count == count.to_i
 end

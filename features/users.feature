@@ -45,6 +45,14 @@ Feature: Users
     Then I should be on the dashboard
     And I should see the flash message "Account details updated."
 
+  @bogus
+  Scenario: Editing my profile with bogus data
+    Given I am logged in as "testuser"
+    When I click on "Edit Account" within the header
+    And I fill in "Email" with ""
+    And I press "Update"
+    Then I should see the flash message "Email can't be blank"
+
   Scenario: Deleting account
     Given I am logged in as "testuser"
     When I click on "Account"
