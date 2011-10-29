@@ -15,13 +15,9 @@
       <%= f.password_field :password %>
 
       <% if devise_mapping.rememberable? %>
-        <div class="clearfix">
-          <div class="input">
-            <ul class="inputs-list">
-              <li><%= f.check_box :remember_me, :pass => true %> <%= f.label :remember_me %></li>
-            </ul>
-          </div>
-        </div>
+        <%= f.check_box_set do %>
+          <%= f.check_box :remember_me %>
+        <% end %>
       <% end %>
 
       <div class="actions">

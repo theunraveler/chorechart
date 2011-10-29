@@ -1,9 +1,10 @@
-<div class="clearfix">
-  <%= label %>
-  <div class="input">
-    <%= field %>
-    <% if options[:help] %>
-      <span class="help-block"><%= options[:help] %></span>
-    <% end %>
-  </div>
+<%= label %>
+<div class="input">
+  <%= field %>
+  <% unless errors.empty? %>
+    <%= render 'shared/form_errors', :errors => errors %>
+  <% end %>
+  <% if options[:help] %>
+    <span class="help-block"><%= options[:help] %></span>
+  <% end %>
 </div>

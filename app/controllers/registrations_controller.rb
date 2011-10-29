@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
   layout :choose_layout
 
   def choose_layout
-    action_name != 'new' ? 'application' : 'no_sidebar'
+    ['new', 'create'].include?(action_name) ? 'no_sidebar' : 'application'
   end
 
   def new
