@@ -7,7 +7,7 @@ GIT
       ice_cube (>= 0.6.4)
 
 GIT
-  remote: git@github.com:theunraveler/twitter_bootstrap_form_for.git
+  remote: git://github.com/theunraveler/twitter_bootstrap_form_for.git
   revision: 6355620bf23b8c89738d79519cf05dbbb60f81ef
   specs:
     twitter_bootstrap_form_for (1.0.1)
