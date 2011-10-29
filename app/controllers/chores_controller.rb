@@ -27,7 +27,6 @@ class ChoresController < ApplicationController
       if @chore.save
         format.html { redirect_to(group_chores_path(@chore.group), :notice => "Chore <em>#{@chore}</em> was successfully created.".html_safe) }
       else
-        flash.now[:error] = @chore.errors
         format.html { render :action => "new" }
       end
     end
@@ -41,7 +40,6 @@ class ChoresController < ApplicationController
       if @chore.update_attributes(params[:chore])
         format.html { redirect_to(group_chores_path(@chore.group), :notice => 'Chore was successfully updated.') }
       else
-        flash.now[:error] = @chore.errors
         format.html { render :action => "edit" }
       end
     end

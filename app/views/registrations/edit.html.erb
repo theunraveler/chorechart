@@ -6,33 +6,38 @@
   <li class="first active"><%= link_to 'Account Info', edit_user_registration_path %></li>
   <li><%= link_to 'Third-Party Services', authentications_path %></li>
 </ul>
+<div style="clear: both;"></div>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <div class="clearfix">
+  <div class="clearfix<%= ' error' if resource.errors.on(:email) %>">
     <%= f.label :email %>
     <div class="input">
       <%= f.email_field :email, :class => 'xlarge' %>
+      <%= render 'shared/form_errors', :object => resource, :attribute => :email %>
     </div>
   </div>
 
-  <div class="clearfix">
+  <div class="clearfix<%= ' error' if resource.errors.on(:name) %>">
     <%= f.label :name %>
     <div class="input">
-      <%= f.text_field :name, :class => 'xlarge' %>
+      <%= f.text_field :username, :class => 'xlarge' %>
+      <%= render 'shared/form_errors', :object => resource, :attribute => :name %>
     </div>
   </div>
 
-  <div class="clearfix">
+  <div class="clearfix<%= ' error' if resource.errors.on(:password) %>">
     <%= f.label :password %>
     <div class="input">
       <%= f.password_field :password, :class => 'xlarge' %>
+      <%= render 'shared/form_errors', :object => resource, :attribute => :password %>
     </div>
   </div>
 
-  <div class="clearfix">
+  <div class="clearfix<%= ' error' if resource.errors.on(:password_confirmation) %>">
     <%= f.label :password_confirmation %>
     <div class="input">
       <%= f.password_field :password_confirmation, :class => 'xlarge' %>
+      <%= render 'shared/form_errors', :object => resource, :attribute => :password_confirmation %>
     </div>
   </div>
 

@@ -11,7 +11,7 @@ class Chore < ActiveRecord::Base
   def schedule_attributes=(options)
     # Weekly tasks need a day.
     has_day = false
-    Date::DAYNAMES.map(&:downcase).map(&:to_sym).each do |day|
+    Date::DAYNAMES.map { |d| d.downcase.to_sym }.each do |day|
       if options[day] === '1'
         has_day = true
       end

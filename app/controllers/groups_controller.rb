@@ -4,7 +4,6 @@ class GroupsController < ApplicationController
 
   # GET /groups
   def index
-    respond_with @groups
   end
 
   # GET /groups/1
@@ -20,7 +19,6 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    respond_with @group
   end
 
   # GET /groups/1/edit
@@ -34,7 +32,6 @@ class GroupsController < ApplicationController
         @group.add_user(current_user, 'admin')
         format.html { redirect_to(groups_url, :notice => "Group #{@group} created.") }
       else
-        flash.now[:error] = @group.errors
         format.html { render :action => "new" }
       end
     end
@@ -46,7 +43,6 @@ class GroupsController < ApplicationController
       if @group.update_attributes(params[:group])
         format.html { redirect_to(groups_url, :notice => "Group #{@group} was successfully updated.") }
       else
-        flash.now[:error] = @group.errors
         format.html { render :action => "edit" }
       end
     end

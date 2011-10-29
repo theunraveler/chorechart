@@ -1,7 +1,8 @@
-<div class="clearfix">
+<div class="clearfix<%= ' error' if @group.errors.on(:name) %>">
   <%= f.label :name %>
   <div class="input">
     <%= f.text_field :name, :class => 'text_field' %>
+    <%= render 'shared/form_errors', :object => @group, :attribute => :name %>
     <span class="help-block">Ex: Home, Office, etc.</span>
   </div>
 </div>

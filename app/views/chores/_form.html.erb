@@ -1,7 +1,8 @@
-<div class="clearfix">
+<div class="clearfix<%= ' error' if @chore.errors.on(:name) %>">
   <%= f.label :name %>
   <div class="input">
     <%= f.text_field :name, :class => 'xlarge' %>
+    <%= render 'shared/form_errors', :object => @chore, :attribute => :name %>
     <span class="help-block">Ex: Laundry</span>
   </div>
 </div>
@@ -30,7 +31,7 @@
       <label>On</label>
       <div class="input">
         <ul class="inputs-list">
-          <% Date::DAYNAMES.map(&:downcase).map(&:to_sym).each do |day| %>
+          <% Date::DAYNAMES.map { |d| d.downcase.to_sym }.each do |day| %>
             <li>
               <%= schedule.check_box day %>
               <%= schedule.label day %>

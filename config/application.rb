@@ -43,6 +43,9 @@ module Chorechart
       :defaults => %w( jquery jquery-ui jquery_ujs bootstrap/bootstrap-dropdown.js bootstrap/bootstrap-alerts.js)
     }
 
+    # Remove div.field_with_errors
+    config.action_view.field_error_proc = proc { |html, instance| html }
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 

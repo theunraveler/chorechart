@@ -1,0 +1,9 @@
+<% if object.errors.on(attribute) %>
+  <span class="help-inline">
+      <% if object.errors.on(attribute).class == Array %>
+        <%= object.errors.on(attribute).join(', ') %>
+      <% else %>
+        <%= object.errors.on(attribute) %>
+      <% end %>
+  </span>
+<% end %>
