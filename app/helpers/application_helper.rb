@@ -1,3 +1,5 @@
+ActionView::Base.default_form_builder = ChorechartFormBuilder
+
 module ApplicationHelper
 
   def avatar_image(user, size = 80)

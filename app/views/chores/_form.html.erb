@@ -1,11 +1,4 @@
-<div class="clearfix<%= ' error' if @chore.errors.on(:name) %>">
-  <%= f.label :name %>
-  <div class="input">
-    <%= f.text_field :name, :class => 'xlarge' %>
-    <%= render 'shared/form_errors', :object => @chore, :attribute => :name %>
-    <span class="help-block">Ex: Laundry</span>
-  </div>
-</div>
+<%= f.text_field :name, :help => 'Ex: Laundry' %>
 
 <div class="clearfix">
   <%= f.label :difficulty %>
@@ -23,8 +16,8 @@
     <div class="clearfix">
       <label>Every</label>
       <div class="input">
-        <%= schedule.number_field :interval, :min => 1, :class => 'mini' %> 
-        <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week']], @chore.schedule_attributes.interval_unit) %>
+        <%= schedule.number_field :interval, :min => 1, :class => 'mini', :pass => true %> 
+        <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week']], @chore.schedule_attributes.interval_unit), :pass => true %>
       </div>
     </div>
     <div id="day-selection" class="clearfix">
@@ -33,7 +26,7 @@
         <ul class="inputs-list">
           <% Date::DAYNAMES.map { |d| d.downcase.to_sym }.each do |day| %>
             <li>
-              <%= schedule.check_box day %>
+            <%= schedule.check_box day, :pass => true %>
               <%= schedule.label day %>
             </li>
           <% end %>

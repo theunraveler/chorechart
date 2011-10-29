@@ -3,15 +3,7 @@
 </div>
 
 <%= form_for @invitation, :url => group_invitations_path do |f| %>
-
-  <div class="clearfix<%= ' error' if @invitation.errors.on(:email) %>">
-    <%= f.label :email, 'Email' %>
-    <div class="input">
-      <%= f.email_field :email, :class => 'xlarge' %>
-      <%= render 'shared/form_errors', :object => @invitation, :attribute => :email %>      
-    </div>
-  </div>
-
+  <%= f.email_field :email %>
   <%= f.hidden_field :group_id, :value => @group.id %>
 
   <div class="actions">
