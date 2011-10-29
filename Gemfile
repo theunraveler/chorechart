@@ -13,7 +13,7 @@ gem 'cancan'
 gem 'foreigner'
 gem 'prawn'
 gem 'activerecord-import', '>= 0.2.0'
-gem 'twitter_bootstrap_form_for', :git => 'git@github.com:theunraveler/twitter_bootstrap_form_for.git'
+gem 'twitter_bootstrap_form_for', :git => 'git://github.com/theunraveler/twitter_bootstrap_form_for.git'
 
 group :test do
   gem 'simplecov', :require => false
