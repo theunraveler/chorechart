@@ -10,37 +10,28 @@
   </div>
 </div>
 
-<%= field_set_tag 'Schedule' do %>
+<%= f.inputs 'Schedule' do %>
   <%= f.fields_for :schedule_attributes, @chore.schedule_attributes do |schedule| %>
     <%= schedule.hidden_field :repeat, :value => 1 %>
     <div class="clearfix">
       <label>Every</label>
-      <div class="input">
-        <%= schedule.number_field :interval, :min => 1, :class => 'mini', :pass => true %> 
-        <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week']], @chore.schedule_attributes.interval_unit), :pass => true %>
-      </div>
+      <div class="input"><div class="inline-inputs">
+        <%= schedule.number_field :interval, :min => 1, :class => 'mini', :skip => true %> 
+        <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week']], @chore.schedule_attributes.interval_unit), { :skip => true } %>
+      </div></div>
     </div>
-    <div id="day-selection" class="clearfix">
-      <label>On</label>
-      <div class="input">
-        <ul class="inputs-list">
-          <% Date::DAYNAMES.map { |d| d.downcase.to_sym }.each do |day| %>
-            <li>
-            <%= schedule.check_box day, :pass => true %>
-              <%= schedule.label day %>
-            </li>
-          <% end %>
-        </ul>
-        <span class="help-block">If no days are checked, today's day will be assumed.</span>
-      </div>
-    </div>
-    </p>
+    <%= f.toggles 'On', :id => 'day-selection' do %>
+      <% Date::DAYNAMES.map { |d| d.downcase.to_sym }.each do |day| %>
+        <%= schedule.check_box day %>
+      <% end %>
+      <span class="help-block">If no days are checked, today's day will be assumed.</span>
+    <% end %>
   <% end %>
 <% end %>
 
 <%= f.hidden_field :group_id, :value => @chore.group.id %>
 
-<div class="actions">
-  <button class="btn primary" type="submit"><%= f.object.new_record? ? 'Create chore' : 'Save' %></button>
+<%= f.actions do %>
+  <%= f.submit f.object.new_record? ? 'Create chore' : 'Save' %>
 	<%= link_to "Cancel", group_chores_path(@chore.group), :class => "btn" %>
-</div>
+<% end %>

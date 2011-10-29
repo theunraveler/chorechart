@@ -15,15 +15,15 @@
       <%= f.password_field :password %>
 
       <% if devise_mapping.rememberable? %>
-        <%= f.check_box_set do %>
+        <%= f.toggles do %>
           <%= f.check_box :remember_me %>
         <% end %>
       <% end %>
 
-      <div class="actions">
-        <%= f.submit "Log in", :class => 'btn primary' %>
+      <%= f.actions do %>
+        <%= f.submit "Log in" %>
         <%= render :partial => "devise/shared/links" %>
-      </div>
+      <% end %>
     <% end %>
 
   </div>

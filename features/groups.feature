@@ -41,7 +41,7 @@ Feature: Groups
     When I go to my groups page
     And I click on "Create a group"
     And I press "Create group"
-    Then I should see the flash message "Name can't be blank"
+    Then I should see the form error "can't be blank" for "Name"
     And I should have 0 groups
 
   Scenario: Editing a group
@@ -70,7 +70,7 @@ Feature: Groups
     And I am on the "edit" page for the group "Company Office"
     When I fill in "Name" with ""
     And I press "Save"
-    Then I should see the flash message "Name can't be blank"
+    Then I should see the form error "can't be blank" for "Name"
 
   Scenario: Deleting a group
     Given I am logged in as "test_user"
@@ -85,7 +85,6 @@ Feature: Groups
     And I should see the flash message "Group Company Office deleted."
     And "Company Office" should not be among my groups
 
-  @focus
   Scenario: I can download a PDF of my weekly chores
     Given I am logged in as "test_user"
     And I own the following groups:
@@ -98,4 +97,3 @@ Feature: Groups
     And I am on the group page for "Company Office"
     When I click on the PDF link "Print (PDF)"
     Then I should see "Company Office for the week of"
-

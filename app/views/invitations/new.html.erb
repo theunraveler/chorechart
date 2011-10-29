@@ -6,8 +6,8 @@
   <%= f.email_field :email %>
   <%= f.hidden_field :group_id, :value => @group.id %>
 
-  <div class="actions">
-    <%= f.submit 'Invite user', :class => 'btn primary' %> 
-  </div>
+  <%= f.actions do %>
+    <%= f.submit 'Invite user' %> 
+  <% end %>
 
 <% end %>

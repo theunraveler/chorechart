@@ -1,5 +1,5 @@
 <%= form_for [@group, @membership] do |f| %>
-  <%= f.text_field :user_id, :class => 'xlarge' %>
+  <%= f.text_field :user_id, 'Username or email' %>
   <script type="text/javascript">
     $(document).ready(function() {
         $('#membership_user_id').autocomplete({
@@ -8,18 +8,13 @@
     });
   </script>
 
-  <div class="clearfix">
-    <%= label_tag 'Roles in group' %>
-    <div class="input">
-      <ul class="inputs-list">
-        <li><%= f.check_box :is_admin, :pass => true %><%= f.label :is_admin, 'Admin' %></li>
-      </ul>
-    </div>
-  </div>
+  <%= f.toggles 'Roles in group' do %>
+    <%= f.check_box :is_admin, 'Admin' %></li>
+  <% end %>
 
   <div class="clearfix">
     <div class="input">
-      <%= f.submit "Add user", :class => 'btn primary' %>
+      <%= f.submit "Add user" %>
     </div>
   </div>
 

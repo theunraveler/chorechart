@@ -25,10 +25,10 @@
 
       <%= f.hidden_field :name %>
       
-      <div class="actions">
-        <%= f.submit "Register", :class => 'btn primary' %>
+      <%= f.actions do %>
+        <%= f.submit "Register" %>
         <%= render :partial => "devise/shared/links" %>
-      </div>
+      <% end %>
     <% end %>
   </div>
 

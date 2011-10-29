@@ -44,7 +44,7 @@ Feature: Invite users to groups
     Given I am on the new invitation page for the group "Company Office"
     When I fill in "Email" with "<email>"
     And I press "Invite user"
-    Then I should see "Email is not a valid email address"
+    Then I should see the form error "not a valid email address" for "Email"
     And "<email>" should not have an invitation for the group "Company Office"
 
     Scenarios:

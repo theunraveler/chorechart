@@ -14,7 +14,7 @@ Feature: Users
     Given I do not have a user account already
     When I go to the user registration page
     And I enter "test_user", "test@test.com", and "" as my username, email, and password
-    And I should see the flash message "Password can't be blank"
+    And I should see the form error "can't be blank" for "Password"
 
   Scenario: Logging in
     Given I have a user account with username "test" and password "password"
@@ -51,7 +51,7 @@ Feature: Users
     When I click on "Edit Account" within the header
     And I fill in "Email" with ""
     And I press "Update"
-    Then I should see the flash message "Email can't be blank"
+    Then I should see the form error "can't be blank" for "Email"
 
   Scenario: Deleting account
     Given I am logged in as "testuser"

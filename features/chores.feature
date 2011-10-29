@@ -26,7 +26,7 @@ Feature: Chores
     When I click "Create a chore"
     And I fill in "Name" with ""
     And I press "Create chore"
-    Then I should see the flash message "Name can't be blank"
+    Then I should see the form error "can't be blank" for "Name"
 
   Scenario: Creating a weekly chore with days
     Given I am on the chore page for the group "Company Office"
@@ -77,7 +77,7 @@ Feature: Chores
     When I edit the chore with name "Laundry"
     And I fill in "Name" with ""
     And I press "Save"
-    Then I should see the flash message "Name can't be blank"
+    Then I should see the form error "can't be blank" for "Name"
 
   Scenario: Deleting a chore as an admin
     Given I have the following chores in "Company Office":
