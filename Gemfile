@@ -9,10 +9,11 @@ gem 'oa-core', :require => 'omniauth/core'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.git'
 gem 'escape_utils'
-gem "cancan"
+gem 'cancan'
 gem 'foreigner'
 gem 'prawn'
-gem "activerecord-import", ">= 0.2.0"
+gem 'activerecord-import', '>= 0.2.0'
+gem 'twitter_bootstrap_form_for'
 
 group :test do
   gem 'simplecov', :require => false
