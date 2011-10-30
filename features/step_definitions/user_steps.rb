@@ -2,6 +2,12 @@ Given /^I do not have a user account\s?a?l?r?e?a?d?y?$/ do
   User.delete_all
 end
 
+Given /^the following users:$/ do |users|
+  users.hashes.each do |user|
+    FactoryGirl.create(:user, user)
+  end
+end
+
 Given /^I have a user account with username "([^"]*)" and password "([^"]*)"$/ do |username, password|
   Given %{there is no user account for the username "#{username}"}
   @user = FactoryGirl.create(:user, :username => username, :password => password)
