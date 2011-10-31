@@ -1,5 +1,7 @@
 module ApplicationHelper
 
+  MessageTypes = { :notice => 'success', :warning => 'warning', :error => 'error' }
+
   def avatar_image(user, size = 80)
     hash = Digest::MD5.hexdigest(user.email.strip)
     url = "http://www.gravatar.com/avatar/#{hash}"
@@ -35,12 +37,7 @@ module ApplicationHelper
   end
 
   def flash_type(type)
-    types = {
-      :notice => 'success',
-      :warning => 'warning',
-      :error => 'error'
-    }
-    types[type]
+    MessageTypes[type]
   end
 
   def active_list_link(text, link)
