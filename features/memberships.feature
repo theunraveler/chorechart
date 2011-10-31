@@ -36,3 +36,12 @@ Feature: Managing group users
     When I remove the membership with name "susan"
     Then I should see the flash message "has been removed"
     And I should not see "susan (susan@test.com)" within the content area table
+
+  @wip
+  Scenario: Username/email field required when adding a member
+    Given I am on the memberships page for the group "Company Office"
+    When I press "Add user"
+    Then I should see the form error "can't be blank" for "Username or email"
+
+  # TODO: Membership permissions
+
