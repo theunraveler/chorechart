@@ -12,7 +12,7 @@ gem 'cancan'
 gem 'foreigner'
 gem 'prawn'
 gem 'activerecord-import', '>= 0.2.0'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'static'
+gem 'twitter-bootstrap-rails'
 gem 'twitter_bootstrap_form_for', :git => 'git://github.com/theunraveler/twitter_bootstrap_form_for.git'
 
 group :test do
@@ -39,5 +39,6 @@ group :production do
 end
 
 group :assets do
+  gem 'less-rails'
   gem 'uglifier'
 end
