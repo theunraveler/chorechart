@@ -12,6 +12,7 @@ gem 'cancan'
 gem 'foreigner'
 gem 'prawn'
 gem 'activerecord-import', '>= 0.2.0'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'static'
 gem 'twitter_bootstrap_form_for', :git => 'git://github.com/theunraveler/twitter_bootstrap_form_for.git'
 
 group :test do
@@ -35,4 +36,8 @@ end
 
 group :production do
   gem 'rack-google-analytics', :require => 'rack/google-analytics'
+end
+
+group :assets do
+  gem 'uglifier'
 end

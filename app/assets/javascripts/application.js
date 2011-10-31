@@ -1,3 +1,11 @@
+/* Sprockets stuff */
+//= require jquery
+//= require jquery-ui
+//= require jquery_ujs
+//= require twitter/bootstrap
+//= require_self
+//= require_tree .
+
 $(document).ready(function() {
 	// Open external links in a new window.
 	$('a.external').attr('target','_blank');

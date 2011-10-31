@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
+  revision: c08e7c33f92c9cf1aa38cb6469eb99d8bbc0faeb
+  branch: static
+  specs:
+    twitter-bootstrap-rails (1.3.1)
+      actionpack
+      railties
+
+GIT
   remote: git://github.com/theunraveler/Schedule-Attributes.git
   revision: 928c3bedfe8c07daf3d4bc7c15e8a3c16b35546c
   specs:
@@ -85,6 +94,8 @@ GEM
     erubis (2.7.0)
     escape_utils (0.2.4)
     eventmachine (0.12.10)
+    execjs (1.2.9)
+      multi_json (~> 1.0)
     factory_girl (2.2.0)
       activesupport
     factory_girl_rails (1.3.0)
@@ -206,6 +217,9 @@ GEM
       polyglot (>= 0.3.1)
     ttfunk (1.0.3)
     tzinfo (0.3.30)
+    uglifier (1.0.4)
+      execjs (>= 0.3.0)
+      multi_json (>= 1.0.2)
     warden (1.0.6)
       rack (>= 1.0)
     xpath (0.1.4)
@@ -239,4 +253,6 @@ DEPENDENCIES
   simplecov
   thin
   timecop
+  twitter-bootstrap-rails!
   twitter_bootstrap_form_for!
+  uglifier

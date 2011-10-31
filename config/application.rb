@@ -12,6 +12,12 @@ module Chorechart
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    
+    # Enable the asset pipeline
+    config.assets.enabled = true
+
+    # Version of your assets, change this to expire all assets
+    config.assets.version = '1.0'    
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
@@ -32,16 +38,6 @@ module Chorechart
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-
-    # CSS files you want as :defaults
-    config.action_view.stylesheet_expansions = {
-      :defaults => %w( jquery-ui/aristo/aristo.css bootstrap/bootstrap.css application.css )
-    }
-
-    # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions = {
-      :defaults => %w( jquery jquery-ui jquery_ujs bootstrap/bootstrap-dropdown.js bootstrap/bootstrap-alerts.js)
-    }
 
     # Remove div.field_with_errors
     config.action_view.field_error_proc = proc { |html, instance| html }
