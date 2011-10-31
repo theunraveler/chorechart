@@ -7,7 +7,7 @@ When /^I click o?n?\s?"([^"]*)"$/ do |link|
 end
 
 When /^I (.*) the (.*) with name "([^"]*)"$/ do |action, class_name, value|
-  within(:xpath, "//table/tbody/tr[td//text()[contains(., '#{value}')]]") do
+  within(:xpath, "//table//tr[td//text()[contains(., '#{value}')]]") do
     click_link(action.capitalize)
   end
 end

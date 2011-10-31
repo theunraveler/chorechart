@@ -1,4 +1,5 @@
 class MembershipsController < ApplicationController
+  load_and_authorize_resource
   respond_to :html
 
   def index
@@ -14,14 +15,13 @@ class MembershipsController < ApplicationController
   # POST /memberships.xml
   def create
     @group = Group.find(params[:group_id])
-    params[:membership][:group_id] = @group.id
     user = User.find_by_login(params[:membership][:user_id]).first
     if user
       params[:membership][:user_id] = user.id
       @membership = Membership.new(params[:membership])
       respond_to do |format|
         if @membership.save
-          format.html { redirect_to(group_memberships_url(@group), :notice => "User #{user.email} has been added to the group.") }
+          format.html { redirect_to(group_memberships_url(@group), :notice => "User #{user} has been added to the group.") }
         else
           @memberships = Membership.all
           @user_autocomplete = User.not_in_group(@group)
@@ -36,23 +36,6 @@ class MembershipsController < ApplicationController
     end
   end
 
-  # PUT /memberships/1
-  # PUT /memberships/1.xml
-  def update
-    @membership = Membership.find(params[:id])
-
-    respond_to do |format|
-      if @membership.update_attributes(params[:membership])
-        format.html { redirect_to(@membership, :notice => 'Membership was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        flash.now[:error] = @membership.errors        
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @membership.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /memberships/1
   # DELETE /memberships/1.xml
   def destroy
@@ -60,7 +43,7 @@ class MembershipsController < ApplicationController
     @membership.destroy
 
     respond_to do |format|
-      format.html { redirect_to(group_memberships_url(@membership.group)) }
+      format.html { redirect_to(group_memberships_url(@membership.group), :notice => "User #{@membership.user} has been removed from the group") }
       format.xml  { head :ok }
     end
   end

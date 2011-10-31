@@ -12,6 +12,8 @@
     <%= f.check_box :is_admin, 'Admin' %></li>
   <% end %>
 
+  <%= f.hidden_field :group_id, :value => @group.id %>
+
   <div class="clearfix">
     <div class="input">
       <%= f.submit "Add user" %>

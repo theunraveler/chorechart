@@ -30,6 +30,12 @@ class Ability
     # MEMBERSHIPS
     ###################
 
+    # Only admins can manage Memberships
+    can :manage, Membership do |membership|
+      user_membership = Membership.find_by_user_id_and_group_id(user.id, membership.group.id)
+      user_membership.is_admin?
+    end
+
     # Only admins can remove users from groups, and only if group members > 1
     can :destroy, Membership do |membership|
       user_membership = Membership.find_by_user_id_and_group_id(user.id, membership.group.id)
