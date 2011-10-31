@@ -6,8 +6,8 @@
   <% else %>
     <title>Chorechart</title>
   <% end %>
-  <%= stylesheet_link_tag :application %>
-  <%= javascript_include_tag :application %>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
   <% if content_for? :page_head %>
     <%= yield :page_head %>

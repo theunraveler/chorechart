@@ -39,6 +39,7 @@ group :production do
 end
 
 group :assets do
+  gem 'sass-rails'
   gem 'less-rails'
   gem 'uglifier'
 end
