@@ -3,7 +3,7 @@ Given /^I have no (.+)$/ do |model|
 end
 
 When /^I click o?n?\s?"([^"]*)"$/ do |link|
-  When %{I follow "#{link}"} 
+  click_link(link)
 end
 
 When /^I (.*) the (.*) with name "([^"]*)"$/ do |action, class_name, value|

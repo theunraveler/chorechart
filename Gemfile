@@ -1,8 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.10'
+gem 'rails', '3.1.1'
 
-gem 'rake', '0.8.7'
 gem 'jquery-rails'
 gem 'devise'
 gem 'oa-core', :require => 'omniauth/core'
@@ -18,7 +17,7 @@ gem 'twitter_bootstrap_form_for', :git => 'git://github.com/theunraveler/twitter
 group :test do
   gem 'simplecov', :require => false
   gem 'capybara'
-  gem 'cucumber', '1.0.3'
+  gem 'cucumber'
   gem 'email_spec'    
   gem 'launchy'
   gem 'database_cleaner'
@@ -29,7 +28,7 @@ end
 
 group :development, :test do
   gem 'thin'
-  gem 'mysql2', '< 0.3'
+  gem 'mysql2'
   gem 'rspec-rails'  
   gem 'cucumber-rails'
 end
