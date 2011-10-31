@@ -17,7 +17,9 @@ Then /^I should be taken to (.+)$/ do |page_name|
 end
 
 Then /^I should see the flash message "([^"]*)"$/ do |message|
-  Then %{I should see "#{message}" within "#flash"}
+  within '#flash' do
+    Then %{I should see "#{message}"}
+  end
 end
 
 Then /^I should see an image with alt text "([^\"]*)"$/ do |alt_text|

@@ -69,7 +69,6 @@ Feature: Allow users to log in and register for the site using other services
     And I am on the user registration page
     When I click on "Twitter"
     Then I should see "Almost there"
-    And I should see the flash message "Email can't be blank"
     And I should not see "Password"
     When I fill in "Email" with "test@test.com"
     And I press "Register"
