@@ -5,7 +5,7 @@ class AuthenticationsController < ApplicationController
   respond_to :html
 
   def index
-    @providers = @authentications.collect { |a| a.provider }
+    @providers = @authentications.collect(&:provider)
     respond_with @authentications
   end
 
@@ -18,8 +18,7 @@ class AuthenticationsController < ApplicationController
       sign_in_and_redirect(:user, authentication.user)
     elsif current_user  
       current_user.apply_omniauth(omniauth).save!
-      flash[:notice] = "Authentication successfully added."
-      redirect_to authentications_url
+      redirect_to authentications_url, :notice => "Authentication successfully added."
     else  
       user = User.new
       user.apply_omniauth(omniauth, true)
@@ -27,18 +26,16 @@ class AuthenticationsController < ApplicationController
         flash[:notice] = "An account has been created for you and you are now logged in. Welcome."
         sign_in_and_redirect(:user, user)  
       else  
-        flash[:error] = user.errors
         session[:omniauth] = omniauth.except('extra')  
         session[:rebuild_user] = true
-        redirect_to new_user_registration_url  
+        redirect_to new_user_registration_url, :flash => { :error => user.errors }  
       end
     end
   end
 
   def destroy
     @authentication.destroy
-    flash[:notice] = 'Authentication successfully removed.'
-    redirect_to authentications_url
+    redirect_to authentications_url, :notice => "Authentication successfully removed."
   end
 
 end
