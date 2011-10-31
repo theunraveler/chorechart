@@ -35,9 +35,10 @@ group :development, :test do
 end
 
 group :production do
+  gem 'activerecord-postgresql-adapter'
   gem 'rack-google-analytics', :require => 'rack/google-analytics'
 end
-
+  
 group :assets do
   gem 'sass-rails'
   gem 'less-rails'
