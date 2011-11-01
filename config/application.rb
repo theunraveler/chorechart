@@ -24,6 +24,10 @@ module Chorechart
     # Version of your assets, change this to expire all assets
     config.assets.version = '1.0'    
 
+    # Prevent whole Rails stack from loading on asset precompile (Devise, I'm
+    # looking at you)
+    config.assets.initialize_on_precompile = false
+
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]

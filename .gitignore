@@ -2,4 +2,3 @@
 coverage
 log/*.log
 tmp/
-webrat-*.html
