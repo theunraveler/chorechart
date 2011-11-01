@@ -10,18 +10,11 @@ class Ability
     # Anyone can create a group
     can :create, Group
 
+    cannot [:read, :update, :destroy, :invite], Group
+
     # Users can access groups they are part of
     can :read, Group, :id => user.group_ids
-
-    can :update, Group do |group|
-      membership = Membership.find_by_user_id_and_group_id(user.id, group.id)
-      membership.is_admin?
-    end
-    can :destroy, Group do |group|
-      membership = Membership.find_by_user_id_and_group_id(user.id, group.id)
-      membership.is_admin?
-    end
-    can :invite, Group do |group|
+    can [:update, :destroy, :invite], Group do |group|
       membership = Membership.find_by_user_id_and_group_id(user.id, group.id)
       membership.is_admin?
     end
@@ -31,7 +24,8 @@ class Ability
     ###################
 
     # Only admins can manage Memberships
-    can :manage, Membership do |membership|
+    cannot [:index, :manage], Membership
+    can [:index, :manage], Membership do |membership|
       user_membership = Membership.find_by_user_id_and_group_id(user.id, membership.group.id)
       user_membership.is_admin?
     end
@@ -40,6 +34,15 @@ class Ability
     can :destroy, Membership do |membership|
       user_membership = Membership.find_by_user_id_and_group_id(user.id, membership.group.id)
       membership.group.memberships.count != 1 && user_membership.is_admin?
+    end
+
+    ####################
+    # MISC
+    ####################
+
+    # Helper for the above permissions
+    can :admin, Group do |group|
+      can?(:update, group) || can?(:destroy, group) || can?(:invite, group)
     end
 
     ####################

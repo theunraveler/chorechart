@@ -3,7 +3,7 @@ FactoryGirl.define do
 factory :user do
   username 'test_user'
   password  'secure_password'
-  email "test-#{Random.rand(30)}@test.com"
+  email { "test-#{Random.rand(30)}@test.com" }
 end
 
 factory :group do

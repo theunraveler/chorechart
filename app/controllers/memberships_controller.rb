@@ -1,10 +1,10 @@
 class MembershipsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :group
+  load_and_authorize_resource :membership, :through => :group, :shallow => true
   respond_to :html
 
   def index
     @group = Group.find(params[:group_id])
-    @memberships = Membership.find_all_by_group_id(@group.id)
     @membership = Membership.new
     @user_autocomplete = User.not_in_group(@group)
 
@@ -14,7 +14,6 @@ class MembershipsController < ApplicationController
   # POST /memberships
   # POST /memberships.xml
   def create
-    @group = Group.find(params[:group_id])
     user = User.find_by_login(params[:membership][:user_id]).first
     if user
       params[:membership][:user_id] = user.id
@@ -39,7 +38,6 @@ class MembershipsController < ApplicationController
   # DELETE /memberships/1
   # DELETE /memberships/1.xml
   def destroy
-    @membership = Membership.find(params[:id])
     @membership.destroy
 
     respond_to do |format|

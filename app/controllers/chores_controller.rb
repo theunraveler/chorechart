@@ -1,10 +1,10 @@
 class ChoresController < ApplicationController
+  load_and_authorize_resource :group
+  load_and_authorize_resource :chore, :through => :group, :shallow => true
   respond_to :html
 
   # GET /chores
   def index
-    @group = Group.find(params[:group_id])
-    @chores = Chore.where(:group_id => @group.id)
     respond_with @chores
   end
 
@@ -16,13 +16,10 @@ class ChoresController < ApplicationController
 
   # GET /chores/1/edit
   def edit
-    @chore = Chore.find(params[:id])
   end
 
   # POST /chores
   def create
-    @chore = Chore.new(params[:chore])
-
     respond_to do |format|
       if @chore.save
         format.html { redirect_to(group_chores_path(@chore.group), :notice => "Chore <em>#{@chore}</em> was successfully created.".html_safe) }
@@ -34,8 +31,6 @@ class ChoresController < ApplicationController
 
   # PUT /chores/1
   def update
-    @chore = Chore.find(params[:id])
-
     respond_to do |format|
       if @chore.update_attributes(params[:chore])
         format.html { redirect_to(group_chores_path(@chore.group), :notice => 'Chore was successfully updated.') }
@@ -48,7 +43,6 @@ class ChoresController < ApplicationController
   # DELETE /chores/1
   # DELETE /chores/1.xml
   def destroy
-    @chore = Chore.find(params[:id])
     @chore.destroy
 
     respond_to do |format|

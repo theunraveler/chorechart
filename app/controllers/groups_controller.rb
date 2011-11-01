@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :through => :current_user
   respond_to :html
 
   # GET /groups
