@@ -1,9 +1,10 @@
 FactoryGirl.define do
 
 factory :user do
-  username 'test_user'
+  name { Faker::Name.name }
+  username { Faker::Internet.user_name(name) }
   password  'secure_password'
-  email { "test-#{Random.rand(30)}@test.com" }
+  email { Faker::Internet.email(name) }
 end
 
 factory :group do

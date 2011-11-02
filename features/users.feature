@@ -21,7 +21,6 @@ Feature: Users
     When I go to the login page
     And I enter my credentials
     Then I should be taken to the dashboard
-    And I should see "Hello, test"
     And I should see the flash message "Logged in successfully. Welcome."
     And I should see my username within the header
 

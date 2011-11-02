@@ -51,11 +51,11 @@ When /^I enter my credentials$/ do
 end
   
 Then /^I should see my username$/ do
-  step %{I should see "#{@user.username}"}
+  step %{I should see "#{@user}"}
 end
 
 Then /^I should not see my username$/ do
-  step %{I should not see "#{@user.username}"}
+  step %{I should not see "#{@user}"}
 end
 
 Then /^I should see my avatar$/ do

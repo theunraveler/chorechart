@@ -10,16 +10,35 @@ Feature: Permissioning
       | Household   |
       | Office      |
 
-  @focus
-  Scenario Outline:
+  Scenario Outline: Non-admins cannot do stuff to a group
     Given I am logged in as "susan"
     And "susan" is a member of the group "Office"
     When I go to <path>
-    Then show me the page
-    Then I should see "don't have access"
+    Then I should see the Access Denied page
 
     Scenarios:
       | path                                            |
       | the memberships page for the group "Office"     |
       | the chores page for the group "Office"          |
-      | the "edit" page for the group "Company Office"  |
+      | the "edit" page for the group "Office"          |
+
+  Scenario: Non-admins should not see the "Manage" link
+    Given I am logged in as "susan"
+    And "susan" is a member of the group "Office"
+    When I go to the group page for "Office"
+    Then I should not see the manage link
+
+  Scenario Outline: Admins cannot see or manage resources for groups they aren't in
+    Given the following groups exist:
+      | Group Name      |
+      | Shop            |
+      | Practice Space  |
+    When I go to <path>
+    Then I should see the Access Denied page
+
+    Scenarios:
+      | path                                      |
+      | the group page for "Shop"                 |
+      | the group page for "Practice Space"       |
+      | the memberships page for the group "Shop" |
+      | the chores page for the group "Shop"      |

@@ -14,16 +14,6 @@ Feature: Groups
     Then I should be on my groups page
     And I should only see my groups
 
-  Scenario: I can only view my groups
-    Given I am logged in as "test_user"
-    And the following groups exist:
-      | Group Name      |
-      | Home            |
-      | Company Office  |
-      | Art Space       |
-    When I go to the group page for "Company Office"
-    Then I should see "don't have access"
-
   Scenario: Creating a group
     Given I am logged in as "test_user"
     When I go to my groups page
