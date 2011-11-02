@@ -39,17 +39,17 @@ end
 
 Then /^I should only see my groups$/ do
   @user.groups.each do |group|
-    Then %{I should see "#{group}" within the content area table}
+    step %{I should see "#{group}" within the content area table}
   end
   (@groups - @user.groups).each do |group|
-    Then %{I should not see "#{group}" within the content area}
+    step %{I should not see "#{group}" within the content area}
   end
 end
 
 Then /^"([^"]*)" should be among my groups$/ do |group|
-  Then %{I should see "#{group}" within the content area table}
+  step %{I should see "#{group}" within the content area table}
 end
 
 Then /^"([^"]*)" should not be among my groups$/ do |group|
-  Then %{I should not see "#{group}" within the content area table}
+  step %{I should not see "#{group}" within the content area table}
 end

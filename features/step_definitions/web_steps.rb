@@ -18,19 +18,19 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "pat
 
 module WithinHelpers
   def with_scope(locator)
-    locator ? within(selector_for(locator)) { yield } : yield
+    locator ? within(*selector_for(locator)) { yield } : yield
   end
 end
 World(WithinHelpers)
 
 # Single-line step scoper
-When /^(.*) within (.*[^:])$/ do |step, parent|
-  with_scope(parent) { When step }
+When /^(.*) within (.*[^:])$/ do |the_step, parent|
+  with_scope(parent) { step the_step }
 end
 
 # Multi-line step scoper
-When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
-  with_scope(parent) { When "\#{step}:", table_or_string }
+When /^(.*) within (.*[^:]):$/ do |the_step, parent, table_or_string|
+  with_scope(parent) { step "#{the_step}:", table_or_string }
 end
 
 Given /^I am on (.+)$/ do |page_name|
@@ -59,7 +59,7 @@ end
 
 When /^I fill in the following:$/ do |fields|
   fields.rows_hash.each do |name, value|
-    When %{I fill in "#{name}" with "#{value}"}
+    step %{I fill in "#{name}" with "#{value}"}
   end
 end
 

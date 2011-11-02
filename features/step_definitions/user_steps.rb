@@ -9,7 +9,7 @@ Given /^the following users:$/ do |users|
 end
 
 Given /^I have a user account with username "([^"]*)" and password "([^"]*)"$/ do |username, password|
-  Given %{there is no user account for the username "#{username}"}
+  step %{there is no user account for the username "#{username}"}
   @user = FactoryGirl.create(:user, :username => username, :password => password)
   @password = password
 end
@@ -20,16 +20,16 @@ end
 
 Given /^I am logged in as "([^"]*)"$/ do |username|
   unless @user.nil?
-    Given %{I am logged out}
+    step %{I am logged out}
   end
 
   if user = User.find_by_login(username).first
     @user = user
   else
-    Given %{I have a user account with username "#{username}" and password "password"}
+    step %{I have a user account with username "#{username}" and password "password"}
   end
-  When %{I go to the login page}
-  And %{I enter my credentials}
+  step %{I go to the login page}
+  step %{I enter my credentials}
 end
 
 Given /^I am logged out$/ do
@@ -51,11 +51,11 @@ When /^I enter my credentials$/ do
 end
   
 Then /^I should see my username$/ do
-  Then %{I should see "#{@user.username}"}
+  step %{I should see "#{@user.username}"}
 end
 
 Then /^I should not see my username$/ do
-  Then %{I should not see "#{@user.username}"}
+  step %{I should not see "#{@user.username}"}
 end
 
 Then /^I should see my avatar$/ do

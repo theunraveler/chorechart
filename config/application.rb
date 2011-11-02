@@ -6,9 +6,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  # Bundler.require *Rails.groups(:assets => %w(development test))
+  Bundler.require *Rails.groups(:assets => %w(development test))
   # If you want your assets lazily compiled in production, use this line
-  Bundler.require(:default, :assets, Rails.env)
+  # Bundler.require(:default, :assets, Rails.env)
 end
 
 module Chorechart
@@ -22,7 +22,7 @@ module Chorechart
     config.assets.enabled = true
 
     # Version of your assets, change this to expire all assets
-    config.assets.version = '1.0'    
+    config.assets.version = '1.1'    
 
     # Prevent whole Rails stack from loading on asset precompile (Devise, I'm
     # looking at you)

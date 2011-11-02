@@ -1,10 +1,11 @@
 class MembershipsController < ApplicationController
   load_and_authorize_resource :group
-  load_and_authorize_resource :membership, :through => :group, :shallow => true
+  load_and_authorize_resource :membership, :through => :group, :shallow => true, :except => :index
   respond_to :html
 
   def index
-    @group = Group.find(params[:group_id])
+    authorize! :admin, @group
+    @memberships = @group.memberships
     @membership = Membership.new
     @user_autocomplete = User.not_in_group(@group)
 

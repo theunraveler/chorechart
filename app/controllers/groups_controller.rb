@@ -1,9 +1,11 @@
 class GroupsController < ApplicationController
-  load_and_authorize_resource :through => :current_user
+  load_and_authorize_resource :except => :index
   respond_to :html
 
   # GET /groups
   def index
+    @groups = current_user.groups
+    respond_with @groups
   end
 
   # GET /groups/1

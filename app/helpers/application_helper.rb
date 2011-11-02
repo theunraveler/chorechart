@@ -42,7 +42,9 @@ module ApplicationHelper
 
   def active_list_link(text, link)
     options = current_page?(link) ? { :class => 'active' } : {}
-    content_tag :li, link_to(text, link), options
+    content_tag :li, options do
+      link_to(text.to_s, link)
+    end
   end
 
 end

@@ -19,5 +19,5 @@ end
 
 Then /^I should see a weekly rule for today's day$/ do
   today = Date.today.strftime('%A').pluralize
-  Then %{I should see "Weekly on #{today}"}
+  step %{I should see "Weekly on #{today}"}
 end

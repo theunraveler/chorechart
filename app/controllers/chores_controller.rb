@@ -1,10 +1,12 @@
 class ChoresController < ApplicationController
   load_and_authorize_resource :group
-  load_and_authorize_resource :chore, :through => :group, :shallow => true
+  load_and_authorize_resource :chore, :through => :group, :shallow => true, :except => :index
   respond_to :html
 
   # GET /chores
   def index
+    authorize! :admin, @group
+    @chores = @group.chores
     respond_with @chores
   end
 

@@ -16,9 +16,7 @@
   </ul>
 </div>
 
-<% if can? :admin, @group %>
-  <%= render 'actions', :group => @group, :week => @week %>
-<% end %>
+<%= render 'actions', :group => @group, :week => @week %>
 
 <table id="chore-breakdown" class="zebra-striped">
   <thead>
