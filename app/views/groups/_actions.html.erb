@@ -1,6 +1,6 @@
 <div class="crud-links pull-right" data-dropdown="crud-dropdown">
   <ul class="tabs">
-    <li><%= link_to image_tag('icons/print-16.png'), group_path(group, :format => :pdf, :week => week), :title => 'Print (PDF)' %></li>
+    <li><%= link_to image_tag('icons/print-16.png'), group_path(group, :format => :pdf, :week => week), :title => 'Print PDF', :class => 'tooltip' %></li>
     <% if can? :admin, group %>
       <li class="crud-dropdown">
         <a href="#" class="dropdown-toggle">Manage</a>

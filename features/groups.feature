@@ -85,5 +85,5 @@ Feature: Groups
       | Laundry |
       | Dishes  |
     And I am on the group page for "Company Office"
-    When I click on the PDF link "Print (PDF)"
+    When I click on the PDF link "Print PDF"
     Then I should see "Company Office for the week of"
