@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
 
+gem 'thin'
 gem 'jquery-rails'
 gem 'devise'
 gem 'oa-core', :require => 'omniauth/core'
@@ -29,7 +30,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'thin'
   gem 'mysql2'
   gem 'rspec-rails'  
   gem 'cucumber-rails'
