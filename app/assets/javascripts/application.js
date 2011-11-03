@@ -2,7 +2,9 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require twitter/bootstrap-alerts.js
+//= require twitter/bootstrap-dropdown.js
+//= require twitter/bootstrap-twipsy.js
 //= require_self
 //= require_tree .
 
