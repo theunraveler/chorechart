@@ -1,6 +1,6 @@
 /*
-*= require bootstrap
-*= require aristo
+*= require twitter/bootstrap
+*= require jquery_ui/aristo
 *= require_self
 *= require_tree .
 */
