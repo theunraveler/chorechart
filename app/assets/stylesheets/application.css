@@ -39,38 +39,3 @@ th small { color: #BFBFBF; }
 
 #group-memberships .invitation td { font-style: italic; color: #808080; }
 #my-chores .label a { color: #FFFFFF; }
-
-/* Override bootstrap's borderless tables. */
-table {
-  border: 1px solid #ddd;
-  border-collapse: separate;
-  *border-collapse: collapse;
-  /* IE7, collapse table to remove spacing */
-
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-table th + th, table td + td, table th + td {
-  border-left: 1px solid #ddd;
-}
-table thead tr:first-child th:first-child, table tbody:first-child tr:first-child td:first-child {
-  -webkit-border-radius: 4px 0 0 0;
-  -moz-border-radius: 4px 0 0 0;
-  border-radius: 4px 0 0 0;
-}
-table thead tr:first-child th:last-child, table tbody:first-child tr:first-child td:last-child {
-  -webkit-border-radius: 0 4px 0 0;
-  -moz-border-radius: 0 4px 0 0;
-  border-radius: 0 4px 0 0;
-}
-table tbody tr:last-child td:first-child {
-  -webkit-border-radius: 0 0 0 4px;
-  -moz-border-radius: 0 0 0 4px;
-  border-radius: 0 0 0 4px;
-}
-table tbody tr:last-child td:last-child {
-  -webkit-border-radius: 0 0 4px 0;
-  -moz-border-radius: 0 0 4px 0;
-  border-radius: 0 0 4px 0;
-}
