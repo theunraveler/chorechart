@@ -22,7 +22,7 @@
     </div>
     <%= f.toggles 'On', :id => 'day-selection' do %>
       <% Date::DAYNAMES.map { |d| d.downcase.to_sym }.each do |day| %>
-        <%= schedule.check_box day %>
+        <%= schedule.check_box day, day.capitalize.to_s %>
       <% end %>
       <span class="help-block">If no days are checked, today's day will be assumed.</span>
     <% end %>
