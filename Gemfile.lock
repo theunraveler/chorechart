@@ -8,10 +8,11 @@ GIT
 
 GIT
   remote: git://github.com/theunraveler/twitter_bootstrap_form_for.git
-  revision: 6355620bf23b8c89738d79519cf05dbbb60f81ef
+  revision: 1ad7225cbfbae7ff89d8b01989ef92a807e618fa
   specs:
-    twitter_bootstrap_form_for (1.0.1)
-      rails (~> 3)
+    twitter_bootstrap_form_for (1.0.2)
+      actionpack (~> 3)
+      railties (~> 3)
 
 GEM
   remote: http://rubygems.org/
@@ -68,9 +69,9 @@ GEM
       gherkin (~> 2.6.0)
       json (>= 1.4.6)
       term-ansicolor (>= 1.0.6)
-    cucumber-rails (1.1.1)
+    cucumber-rails (1.2.0)
       capybara (>= 1.1.1)
-      cucumber (>= 1.1.0)
+      cucumber (>= 1.1.1)
       nokogiri (>= 1.5.0)
     daemons (1.1.4)
     database_cleaner (0.6.7)
