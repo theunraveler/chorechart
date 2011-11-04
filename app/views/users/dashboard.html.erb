@@ -8,7 +8,7 @@
     <div class="span6">
       <table class="zebra-striped bordered-table">
         <thead>
-          <tr><th colspan="2"><%= group %></th></tr>
+          <tr><th colspan="2" scope="col"><%= group %></th></tr>
         </thead>
         <tbody>
           <% grouped_assignments = group.assignments_for(Date.today, Date.today).group_by(&:user) %>
@@ -18,10 +18,10 @@
           <% end %>
           <% grouped_assignments.each do |user, assignments| %>
             <tr class="<%= cycle('odd', 'even', :name => 'rows') %>">
-              <td>
-                <div class="user-thumb"><%= avatar_image(user, 24) %></div>
+              <th scope="row">
                 <div class="user-name"><%= user == @user ? 'You' : user %></div>
-              </td>
+                <div class="user-thumb"><%= avatar_image(user, 24) %></div>
+              </th>
               <td>
                 <% if assignments.empty? %>
                   <em>None</em>

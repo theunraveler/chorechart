@@ -21,9 +21,9 @@
 <table id="chore-breakdown" class="zebra-striped bordered-table">
   <thead>
     <tr>
-      <th></th>
+      <th scope="col"></th>
       <% @group.users.each do |user| %>
-        <th>
+        <th scope="col">
           <div class="user-thumb pull-left"><%= avatar_image(user, 32) %></div>
           <div class="user-name"><%= user == current_user ? 'You' : user %></div>
           <div class="user-points"><small>Workload: <%= user_points_for_week(user, @week) %></small></div>
@@ -33,8 +33,8 @@
   <thead>
   <tbody>
     <% (@week..@week.end_of_week).each do |date| %>
-      <tr<%= ' class="today"' if Date.today == date %>>
-        <td><%= format_date(date.to_time, :style => :medium) %></td>
+      <tr>
+        <th scope="row"><%= format_date(date.to_time, :style => :medium) %></th>
         <% @group.users.each do |user| %>
           <td>
             <ul>
