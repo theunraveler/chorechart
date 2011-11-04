@@ -10,17 +10,15 @@
 html { overflow-y: auto; }
 body { padding-top: 80px; }
 th small { color: #BFBFBF; }
-.inputs-list label { display: inline; padding-left: 8px; }
 
 .topbar { position: absolute; }
-.topbar a.brand:hover { text-decoration: none; }
 .secondary-nav .user-thumb { padding-right: 7px; }
 .secondary-nav.no-user-menu { margin: 8px 8px 0 0; color: #909090; }
 .secondary-nav.no-user-menu a { display: inline; }
 
 .page-header .pull-right { margin-top: 5px; }
 .crud-links .tabs { border: none; }
-.crud-links .tabs img { padding-top: 10px; }
+.crud-links .tabs img { margin-top: 9px; }
 .crud-links .tabs > li > a { 
   border: none;
   -webkit-border-radius: 4px;
