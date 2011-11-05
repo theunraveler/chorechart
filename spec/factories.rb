@@ -8,7 +8,7 @@ factory :user do
 end
 
 factory :group do
-  name 'A New Group'
+  name { Faker::Lorem.words(2) }
 end
 
 factory :chore do
