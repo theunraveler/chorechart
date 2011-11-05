@@ -26,7 +26,7 @@
         <th>
           <div class="user-thumb pull-left"><%= avatar_image(user, 32) %></div>
           <div class="user-name"><%= user == current_user ? 'You' : user %></div>
-          <div class="user-points"><small>Workload: <%= user_points_for_week(user, @week) %></small></div>
+          <div class="user-points"><small>Workload: <%= @group.workload(user, @week) %></small></div>
         </th>
       <% end %>
     </tr>

@@ -29,6 +29,17 @@ class Group < ActiveRecord::Base
     return assigns
   end
 
+  # Get a user's workload for a certain week
+  def workload(user, week)
+    current_week = (week.beginning_of_week..week.end_of_week)
+
+    [].tap do |total|
+      assignments.select { |a| a.user == user && current_week.include?(a.date) }.each do |assignment|
+        total << assignment.chore.difficulty
+      end
+    end.sum
+  end
+
   # Determine if a group should have assignments for a given week.
   def should_have_assignments?(start, finish)
     chores.each do |chore|
