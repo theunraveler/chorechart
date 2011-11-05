@@ -28,10 +28,6 @@ class User < ActiveRecord::Base
   scope :find_by_login, lambda { |login| where('username = ? OR email = ?', login.downcase, login.downcase) }
   scope :not_in_group, lambda { |group| where('id not in (?)', group.user_ids) }
 
-  def is_admin_of?(group)
-    
-  end
-
   def update_with_password(params={})
     params.delete(:current_password)
     self.update_without_password(params)
