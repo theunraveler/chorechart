@@ -1,0 +1,5 @@
+header, footer, #sidebar, .pagination, .crud-links { display: none; }
+
+tr { page-break-inside: avoid; border-bottom: 1px solid #000; }
+.print { display: block; }
+.no-print { display: none; }

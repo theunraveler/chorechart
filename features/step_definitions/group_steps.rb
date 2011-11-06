@@ -26,17 +26,6 @@ Given /^the group "([^"]*)" has the following chores:$/ do |group_name, chores|
   end
 end
 
-When /^I click on the PDF link "([^"]*)"$/ do |label|
-  click_link(label)
-  temp_pdf = Tempfile.new('pdf')
-  temp_pdf << page.source.force_encoding('UTF-8')
-  temp_pdf.close
-  temp_txt = Tempfile.new('txt')
-  temp_txt.close
-  `pdftotext -q #{temp_pdf.path} #{temp_txt.path}`
-  page.driver.browser.instance_variable_set('@dom', Nokogiri::HTML(File.read(temp_txt.path)))
-end
-
 Then /^I should only see my groups$/ do
   @user.groups.each do |group|
     step %{I should see "#{group}" within the content area table}

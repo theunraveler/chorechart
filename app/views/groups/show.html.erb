@@ -1,8 +1,12 @@
 <% content_for :page_title, @group %>
+<% content_for :page_head do %>
+  <%= stylesheet_link_tag 'print', :media => 'print' %>
+<% end %>
 
 <div class="page-header">
   <% if @week.in_current_week? %>
-    <h1><%= @group %> for this week</h1>
+    <h1 class="no-print"><%= @group %> for this week</h1>
+    <h1 class="print"><%= @group %> for the week of <%= format_date(@week.to_time) %></h1>
   <% else %>
     <h1><%= @group %> for the week of <%= format_date(@week.to_time) %></h1>
   <% end %>
@@ -25,7 +29,7 @@
       <% @group.users.each do |user| %>
         <th scope="col">
           <div class="user-thumb pull-left"><%= avatar_image(user, 32) %></div>
-          <div class="user-name"><%= user == current_user ? 'You' : user %></div>
+          <div class="user-name"><%= user %></div>
           <div class="user-points"><small>Workload: <%= @group.workload(user, @week) %></small></div>
         </th>
       <% end %>

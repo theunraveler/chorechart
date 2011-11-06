@@ -12,11 +12,7 @@ class GroupsController < ApplicationController
   def show
     @week = params[:week] ? Date.parse(params[:week]).beginning_of_week : Date.today.beginning_of_week
     @chores = @group.assignments_for(@week, @week.end_of_week)
-
-    respond_to do |format|
-      format.html
-      format.pdf { send_data @group.to_pdf(@week), :type => Mime::PDF, :filename => "#{@group}-#{@week}.pdf" }
-    end
+    respond_with @group
   end
 
   # GET /groups/new

@@ -2,9 +2,9 @@
 *= require twitter/bootstrap
 *= require jquery_ui/aristo
 *= require_self
-*= require_tree .
 */
 
+.print { display: none; }
 .clearer { clear: both; }
 
 html { overflow-y: auto; }
