@@ -16,8 +16,8 @@
 
 <div class="row">
   <div class="span<%= @omniauth ? '16' : '8' %>">
-    <%= '<h2>you luddite</h2>'.html_safe if !session[:omniauth] %>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= '<h2>luddites</h2>'.html_safe if !session[:omniauth] %>
+    <%= form_for resource, :url => registration_path(resource_name) do |f| %>
       <%= f.text_field :username %>
       <%= f.email_field :email %>
 
@@ -37,7 +37,7 @@
 
   <% unless @omniauth %>
     <div class="span8">
-      <h2>you social butterfly</h2>
+      <h2>social butterflies</h2>
       <%= render 'authentications/providers' %>
     </div>
   <% end %>

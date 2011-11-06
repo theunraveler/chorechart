@@ -10,7 +10,7 @@
 <div class="row">
   <div class="span8">
     <h2>your Chorechart account</h2>
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <%= form_for resource, :url => session_path(resource_name) do |f| %>
       <%= f.text_field :login %>
       <%= f.password_field :password %>
 
