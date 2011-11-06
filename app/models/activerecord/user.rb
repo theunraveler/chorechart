@@ -51,20 +51,22 @@ class User < ActiveRecord::Base
 
   def apply_omniauth(omniauth, overwrite = false)
     if overwrite
+      account_details = omniauth['info']
       case omniauth['provider']
         when 'twitter'
-          account_details = omniauth['user_info']
           self.username = account_details['nickname']
           self.name = account_details['name']
         when 'facebook'
-          account_details = omniauth['user_info']
           self.email = account_details['email']
           self.username = account_details['nickname']
           self.name = account_details['name']
         when 'github'
-          account_details = omniauth['user_info']
           self.email = account_details['email']
           self.username = account_details['nickname']
+          self.name = account_details['name']
+        when 'google_oauth2'
+          self.email = account_details['email']
+          self.username = account_details['email']
           self.name = account_details['name']
       end
     end

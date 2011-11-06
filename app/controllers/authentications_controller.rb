@@ -28,7 +28,7 @@ class AuthenticationsController < ApplicationController
       else  
         session[:omniauth] = omniauth.except('extra')  
         session[:rebuild_user] = true
-        redirect_to new_user_registration_url, :flash => { :error => user.errors }  
+        redirect_to new_user_registration_url
       end
     end
   end

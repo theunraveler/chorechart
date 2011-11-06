@@ -15,5 +15,10 @@
       <%= image_tag 'services/github_64.png', :size => '64x64', :alt => 'Github' %>
     </a>  
   <% end %>
+  <% if !providers.include?('google_oauth2') %>        
+    <a href="/auth/google_oauth2" class="auth_provider">  
+      <%= image_tag 'services/google_64.png', :size => '64x64', :alt => 'Google' %>
+    </a>  
+  <% end %>
   <div class="clearer"></div>
 </div>
