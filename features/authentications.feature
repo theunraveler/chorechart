@@ -19,21 +19,22 @@ Feature: Allow users to log in and register for the site using other services
     | Facebook  |
     | Twitter   |
     | Github    |
+    | Google    |
 
   Scenario Outline: Existing users can log in with an existing service
     Given I have a user account with username "test_user" and password "password"
     And I have attached my <service> account
     And I am on the login page
-    When I click on "<service>"
+    When I log in with "<service>"
     Then I should see the flash message "Logged in successfully. Welcome."
     And I should be on the dashboard
     And I should see my username within the header
 
     Scenarios:
-    | service   |
-    | Facebook  |
-    | Twitter   |
-    | Github    |
+    | service       |
+    | Facebook      |
+    | Twitter       |
+    | Github        |
     
   Scenario Outline: Users can delete an existing authentication
     Given I am logged in as "test_user"
@@ -46,10 +47,11 @@ Feature: Allow users to log in and register for the site using other services
     And I should see an image with alt text "<service>" within the available services
 
     Scenarios:
-    | service   |
-    | Facebook  |
-    | Twitter   |
-    | Github    |
+    | service       |
+    | Facebook      |
+    | Twitter       |
+    | Github        |
+    | google_oauth2 |
 
   Scenario Outline: Creating an account with a service where everything is provided
     Given I do not have a user account already

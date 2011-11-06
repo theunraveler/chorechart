@@ -15,6 +15,12 @@ Before('@omniauth') do
     'uid' => '12345',
     'info' => { 'nickname' => 'test_twitter_user', 'name' => 'Twitter User' }
   }
+
+  OmniAuth.config.mock_auth[:google_oauth2] = {
+    'provider' => 'google_oauth2',
+    'uid' => 'test@test.com',
+    'info' => { 'name' => 'Twitter User', 'email' => 'test@test.com' }
+  }
 end
 
 After('@omniauth') do

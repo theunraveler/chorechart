@@ -11,12 +11,6 @@ class Group < ActiveRecord::Base
 
   validates_presence_of :name
 
-  # Add a user to the group
-  def add_user(user, role = "")
-    role = "is_#{role}".to_sym
-    memberships.create({ :user_id => user.id, :group_id => id, role => true })
-  end
-
   # Get a list of chores for the day
   def assignments_for(start = Date.today, finish = Date.today, includes = [])
     assigns = assignments.find_all_by_date(start..finish, :include => includes)

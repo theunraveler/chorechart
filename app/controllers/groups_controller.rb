@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
   def create
     respond_to do |format|
       if @group.save
-        @group.add_user(current_user, 'admin')
+        @group.memberships.create(:user => current_user, :is_admin => true)
         format.html { redirect_to(groups_url, :notice => "Group #{@group} created.") }
       else
         format.html { render :action => "new" }
