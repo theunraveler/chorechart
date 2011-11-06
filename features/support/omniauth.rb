@@ -1,11 +1,11 @@
 Before('@omniauth') do
   OmniAuth.config.test_mode = true
 
-  [:facebook, :github].each do |service|
+  [:facebook, :github, :google_oauth2].each do |service|
     OmniAuth.config.mock_auth[service] = {
       'provider' => service.to_s,
       'uid' => '12345',
-      'user_info' => { 'email' => 'test@test.com', 'nickname' => "test_#{service.to_s}_user", 'name' => "#{service.to_s.capitalize} User" }
+      'info' => { 'email' => 'test@test.com', 'nickname' => "test_#{service.to_s}_user", 'name' => "#{service.to_s.capitalize} User" }
     }
   end
 
@@ -13,7 +13,7 @@ Before('@omniauth') do
   OmniAuth.config.mock_auth[:twitter] = {
     'provider' => 'twitter',
     'uid' => '12345',
-    'user_info' => { 'nickname' => 'test_twitter_user', 'name' => 'Twitter User' }
+    'info' => { 'nickname' => 'test_twitter_user', 'name' => 'Twitter User' }
   }
 end
 
