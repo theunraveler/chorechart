@@ -12,6 +12,7 @@ factory :group do
 end
 
 factory :chore do
+  name { Faker::Lorem.words(3) }
   difficulty 1
 end
 
@@ -19,6 +20,7 @@ factory :membership do
 end
 
 factory :invitation do
+  email { Faker::Internet.email }
 end
 
 end

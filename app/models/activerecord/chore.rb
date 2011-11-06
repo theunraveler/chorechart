@@ -7,6 +7,14 @@ class Chore < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => {:scope => :group_id}
   validates_inclusion_of :difficulty, :in => 1..5
 
+  DIFFICULTY_IN_WORDS = {
+    1 => 'Easy',
+    2 => 'Meh.',
+    3 => 'Kind of hard',
+    4 => 'Hard',
+    5 => 'Really hard'
+  }
+
   # Overridden from ScheduleAttributes
   def schedule_attributes=(options)
     # Weekly tasks need a day.
@@ -22,6 +30,10 @@ class Chore < ActiveRecord::Base
     end
 
     super(options)
+  end
+
+  def difficulty_in_words
+    DIFFICULTY_IN_WORDS[self.difficulty]
   end
 
   def to_s

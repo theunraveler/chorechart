@@ -32,10 +32,6 @@ module ApplicationHelper
     return format_date(date)
   end
 
-  def in_current_week?(date)
-    date.beginning_of_week == Date.today.beginning_of_week
-  end
-
   def flash_type(type)
     MessageTypes[type]
   end

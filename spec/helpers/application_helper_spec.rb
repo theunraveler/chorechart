@@ -50,14 +50,4 @@ describe ApplicationHelper do
     end
   end
 
-  describe 'in current week' do
-    it 'should return true if given a date in the current week' do
-      helper.in_current_week?(Date.today).should be_true
-    end
-
-    it 'should return false otherwise' do
-      helper.in_current_week?(Date.today.advance(:days => 10)).should be_false
-    end
-  end
-
 end

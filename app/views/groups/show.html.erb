@@ -1,7 +1,7 @@
 <% content_for :page_title, @group %>
 
 <div class="page-header">
-  <% if in_current_week?(@week) %>
+  <% if @week.in_current_week? %>
     <h1><%= @group %> for this week</h1>
   <% else %>
     <h1><%= @group %> for the week of <%= format_date(@week.to_time) %></h1>
@@ -11,7 +11,7 @@
 <div class="pagination pull-left">
   <ul>
     <li class="previous-week prev"><%= link_to '« Previous week', group_path(@group, :week => @week.advance(:weeks => -1)), :class => 'prev' %></li>
-    <li class="this-week<%= ' disabled' if in_current_week?(@week) %>"><%= link_to 'This week', group_path(@group) %></li>
+    <li class="this-week<%= ' disabled' if @week.in_current_week? %>"><%= link_to 'This week', group_path(@group) %></li>
     <li class="next-week next"><%= link_to 'Next week »', group_path(@group, :week => @week.next_week), :class => 'next' %></li>
   </ul>
 </div>
