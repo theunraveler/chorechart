@@ -5,13 +5,16 @@ gem 'rails', '3.1.1'
 gem 'thin'
 gem 'jquery-rails'
 gem 'devise'
-gem 'oa-core', :require => 'omniauth/core'
-gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.git'
 gem 'cancan'
 gem 'foreigner'
 gem 'activerecord-import', '>= 0.2.0'
 gem 'twitter_bootstrap_form_for', :git => 'git://github.com/theunraveler/twitter_bootstrap_form_for.git'
+
+gem 'omniauth-contrib', :git => 'git://github.com/intridea/omniauth-contrib.git'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
 
 group :test do
   gem 'simplecov', :require => false
