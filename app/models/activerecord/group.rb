@@ -12,7 +12,7 @@ class Group < ActiveRecord::Base
   validates_presence_of :name
 
   # Get a list of chores for the day
-  def assignments_for(start = Date.today, finish = Date.today, includes = [])
+  def assignments_for(start = Time.current.to_date, finish = Time.current.to_date, includes = [])
     assigns = assignments.find_all_by_date(start..finish, :include => includes)
     if assigns.empty? && should_have_assignments?(start, finish)
       Assigner.create_schedule_for(self, start, finish)

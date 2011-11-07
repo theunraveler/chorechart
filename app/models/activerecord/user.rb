@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   # Setup accessible (or protected) attributes
-  attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me, :name
+  attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me, :name, :time_zone
 
   # Validations
   validates_presence_of :username, :email
@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
     name.split.last unless name.nil?
   end
 
-  def assignments_for(start = Date.today, finish = Date.today)
+  def assignments_for(start = Time.current.to_date, finish = Time.current.to_date)
     assigns = []
     groups.each do |group|
       assigns += group.assignments_for(start, finish, [:user])

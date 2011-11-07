@@ -25,7 +25,7 @@ class Chore < ActiveRecord::Base
       end
     end
     if !has_day
-      today = Date.today.strftime('%A').downcase.to_sym
+      today = Time.current.strftime('%A').downcase.to_sym
       options[today] = '1'
     end
 
