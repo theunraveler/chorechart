@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031054019) do
+ActiveRecord::Schema.define(:version => 20111107184330) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "chore_id",                       :null => false
@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(:version => 20111031054019) do
 
   create_table "chores", :force => true do |t|
     t.integer  "group_id"
-    t.string   "name",                                :default => "", :null => false
-    t.integer  "difficulty",                                          :null => false
-    t.text     "schedule_yaml", :limit => 2147483647
+    t.string   "name",          :null => false
+    t.integer  "difficulty",    :null => false
+    t.text     "schedule_yaml"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(:version => 20111031054019) do
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "name"
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                                :null => false
+    t.string   "encrypted_password",     :limit => 128,                :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -100,22 +100,11 @@ ActiveRecord::Schema.define(:version => 20111031054019) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "time_zone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
-
-  add_foreign_key "assignments", "chores", :name => "assignments_chore_id_fk", :dependent => :delete
-  add_foreign_key "assignments", "users", :name => "assignments_user_id_fk", :dependent => :delete
-
-  add_foreign_key "authentications", "users", :name => "authentications_user_id_fk", :dependent => :delete
-
-  add_foreign_key "chores", "groups", :name => "chores_group_id_fk", :dependent => :delete
-
-  add_foreign_key "invitations", "groups", :name => "invitations_group_id_fk", :dependent => :delete
-
-  add_foreign_key "memberships", "groups", :name => "memberships_group_id_fk", :dependent => :delete
-  add_foreign_key "memberships", "users", :name => "memberships_user_id_fk", :dependent => :delete
 
 end

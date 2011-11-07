@@ -64,4 +64,12 @@ describe User do
     end
   end
 
+  describe 'time zone handling' do
+    it 'should allow me to set my time zone' do
+      Time.zone.to_s.should eq('(GMT-06:00) Central Time (US & Canada)')
+      @user.time_zone = 'Pacific Time (US & Canada)'
+      Time.zone.should eq('Pacific Time (US & Canada)')
+    end
+  end
+
 end
