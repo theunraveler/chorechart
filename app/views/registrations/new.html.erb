@@ -24,6 +24,9 @@
       <% if @user.password_required? %>
         <%= f.password_field :password %>
         <%= f.password_field :password_confirmation %>
+      <% else %>
+        <%= f.hidden_field :password %>
+        <%= f.hidden_field :password_confirmation %>
       <% end %>
 
       <%= f.hidden_field :name %>

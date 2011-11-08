@@ -73,8 +73,13 @@ class User < ActiveRecord::Base
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
   end
 
+  def generate_password
+    generated_password = Devise.friendly_token.first(6)
+    self.password, self.password_confirmation = generated_password
+  end
+
   def password_required?  
-    (authentications.empty? || !password.blank?) && super  
+    (authentications.empty? || !new_record?) && super  
   end 
 
   def to_s

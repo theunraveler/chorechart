@@ -21,6 +21,7 @@ class AuthenticationsController < ApplicationController
       redirect_to authentications_url, :notice => "Authentication successfully added."
     else  
       user = User.new
+      user.generate_password
       user.apply_omniauth(omniauth, true)
       if user.save
         flash[:notice] = "An account has been created for you and you are now logged in. Welcome."
