@@ -28,7 +28,8 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         @group.memberships.create(:user => current_user, :is_admin => true)
-        format.html { redirect_to(groups_url, :notice => "Group #{@group} created.") }
+        notice = render_to_string(:partial => "success", :locals => { :group => @group }).html_safe
+        format.html { redirect_to(groups_url, :notice => notice) }
       else
         format.html { render :action => "new" }
       end
@@ -39,7 +40,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update_attributes(params[:group])
-        format.html { redirect_to(groups_url, :notice => "Group #{@group} was successfully updated.") }
+        format.html { redirect_to(groups_url, :notice => "Group <em>#{@group}</em> was successfully updated.".html_safe) }
       else
         format.html { render :action => "edit" }
       end
@@ -51,7 +52,7 @@ class GroupsController < ApplicationController
     @group.destroy
 
     respond_to do |format|
-      format.html { redirect_to(groups_url, :notice => "Group #{@group.name} deleted.") }
+      format.html { redirect_to(groups_url, :notice => "Group <em>#{@group.name}</em> deleted.".html_safe) }
     end
   end
 end
