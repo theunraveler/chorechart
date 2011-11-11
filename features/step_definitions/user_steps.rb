@@ -36,6 +36,11 @@ Given /^I am logged out$/ do
   click_link('Log out')
 end
 
+Given /^my time zone is set to "([^"]*)"$/ do |zone|
+  @user.time_zone = zone
+  @user.save!
+end
+
 When /^I enter "([^"]*)", "([^"]*)", and "([^"]*)" as my username, email, and password$/ do |username, email, password|
   fill_in('Username', :with => username)
   fill_in('Email', :with => email)
@@ -48,6 +53,10 @@ When /^I enter my credentials$/ do
   fill_in('Email', :with => @user.email) 
   fill_in('Password', :with => @password) 
   click_button('Log in')
+end
+
+When /^I change my time zone to "([^"]*)"$/ do |zone|
+  step %{my time zone is set to "#{zone}"}
 end
   
 Then /^I should see my username$/ do

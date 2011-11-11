@@ -89,3 +89,17 @@ Feature: Chores
     When I delete the chore with name "Laundry"
     Then I should be on the chores page for the group "Company Office"
     And I should not see "Laundry" within the content area table
+
+  @focus
+  Scenario: Sidebar chore listing time zone stuff
+    Given I have the following chores in "Company Office":
+      | name      | interval  | interval_unit |
+      | Laundry   | 2         | day           |
+    And my time zone is set to "Central Time (US & Canada)"
+    And I am on the dashboard
+    When I go to the group page for "Company Office"
+    Then I should see "Laundry" as my chore for today
+    And I should have no chores tomorrow
+    When I change my time zone to "Tokyo"
+    Then I should have no chores today
+    And I should see "Laundry" as my chore for tomorrow

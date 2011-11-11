@@ -21,3 +21,21 @@ Then /^I should see a weekly rule for today's day$/ do
   today = Date.today.strftime('%A').pluralize
   step %{I should see "Weekly on #{today}"}
 end
+
+Then /^I should see "([^"]*)" as my chore for (.+)$/ do |chore, day|
+  group = Group.find_by_name('Company Office')
+  puts group.chores.inspect
+  map = { 'today' => 1, 'tomorrow' => 2 }
+  position = map[day]
+  within("#my-chores div.chore-day:nth-child(#{position})") do
+    page.should have_content(chore)
+  end
+end
+
+Then /^I should have no chores (.+)$/ do |day|
+  map = { 'today' => 1, 'tomorrow' => 2 }
+  position = map[day]
+  within("#my-chores div.chore-day:nth-child(#{position})") do
+    page.should have_content('Nothing')
+  end
+end

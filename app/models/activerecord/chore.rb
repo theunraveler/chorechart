@@ -17,16 +17,18 @@ class Chore < ActiveRecord::Base
 
   # Overridden from ScheduleAttributes
   def schedule_attributes=(options)
-    # Weekly tasks need a day.
-    has_day = false
-    Date::DAYNAMES.map { |d| d.downcase.to_sym }.each do |day|
-      if options[day] === '1'
-        has_day = true
+    if options[:interval_unit] == 'week'
+      # Weekly tasks need a day.
+      has_day = false
+      Date::DAYNAMES.map { |d| d.downcase.to_sym }.each do |day|
+        if options[day] === '1'
+          has_day = true
+        end
       end
-    end
-    if !has_day
-      today = Time.current.strftime('%A').downcase.to_sym
-      options[today] = '1'
+      if !has_day
+        today = Time.current.strftime('%A').downcase.to_sym
+        options[today] = '1'
+      end
     end
 
     super(options)
