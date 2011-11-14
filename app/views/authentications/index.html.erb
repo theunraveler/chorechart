@@ -17,7 +17,7 @@
           <div class="pull-left">
             <%= image_tag "services/#{authentication.provider.downcase}_64.png", :size => '64x64', :alt => authentication.provider %>
           </div>
-          <div class="provider"><%= authentication.provider.titleize %></div>
+          <div class="provider"><%= authentication.provider_name %></div>
           <span class="help-block"><%= authentication.uid %></span>
           <div class="clearer"></div>
         </div></div>
