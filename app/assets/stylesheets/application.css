@@ -1,6 +1,7 @@
 /*
 *= require twitter/bootstrap
 *= require jquery_ui/aristo
+*= require slimbox/slimbox2
 *= require_self
 */
 
@@ -37,3 +38,6 @@ th small { color: #BFBFBF; }
 
 #group-memberships .invitation td { font-style: italic; color: #808080; }
 #my-chores .label a { color: #FFFFFF; }
+
+#features-listing .row { padding: 10px 0; border-bottom: 1px solid #EEEEEE; }
+#features-listing img { border: 1px solid #909090; }

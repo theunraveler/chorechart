@@ -5,6 +5,7 @@
 //= require twitter/bootstrap-alerts.js
 //= require twitter/bootstrap-dropdown.js
 //= require twitter/bootstrap-twipsy.js
+//= require slimbox/slimbox2.js
 //= require_self
 //= require_tree .
 
