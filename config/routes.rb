@@ -29,7 +29,6 @@ Chorechart::Application.routes.draw do
   # Marketing pages.
   root :to => 'pages#index'
   get 'faq' => 'pages#faq'
-  get 'pricing' => 'pages#pricing'
   get 'features' => 'pages#features'
 
 end

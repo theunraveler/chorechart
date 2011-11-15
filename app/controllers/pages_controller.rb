@@ -12,9 +12,6 @@ class PagesController < ApplicationController
   def faq
   end
 
-  def pricing
-  end
-
   def features
   end
 
