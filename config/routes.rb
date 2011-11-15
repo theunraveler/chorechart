@@ -26,6 +26,10 @@ Chorechart::Application.routes.draw do
     resources :authentications
   end
 
-  root :to => "pages#index"
+  # Marketing pages.
+  root :to => 'pages#index'
+  get 'faq' => 'pages#faq'
+  get 'pricing' => 'pages#pricing'
+  get 'features' => 'pages#features'
 
 end

@@ -9,4 +9,13 @@ class PagesController < ApplicationController
     end
   end
 
+  def faq
+  end
+
+  def pricing
+  end
+
+  def features
+  end
+
 end
