@@ -33,6 +33,11 @@ group :development, :test do
   gem 'mysql2'
   gem 'rspec-rails'  
   gem 'cucumber-rails'
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'growl', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-bundler'
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
 end
 
 group :production do

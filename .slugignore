@@ -1,6 +1,7 @@
-test
-scripts
-spec
-features
 development
 doc
+features
+Guardfile
+scripts
+spec
+test
