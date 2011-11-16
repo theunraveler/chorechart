@@ -1,0 +1,24 @@
+Wed, 16 Nov 2011 11:12:05 -0600
+doc/README_FOR_APP	Mon, 25 Jul 2011 11:13:21 -0500
+app/controllers/application_controller.rb	Wed, 16 Nov 2011 01:31:28 -0600
+app/controllers/authentications_controller.rb	Wed, 16 Nov 2011 01:31:28 -0600
+app/controllers/chores_controller.rb	Wed, 16 Nov 2011 01:31:28 -0600
+app/controllers/groups_controller.rb	Wed, 16 Nov 2011 01:31:28 -0600
+app/controllers/invitations_controller.rb	Wed, 16 Nov 2011 01:31:28 -0600
+app/controllers/memberships_controller.rb	Wed, 16 Nov 2011 01:31:28 -0600
+app/controllers/pages_controller.rb	Wed, 16 Nov 2011 01:31:28 -0600
+app/controllers/registrations_controller.rb	Wed, 16 Nov 2011 01:31:28 -0600
+app/controllers/sessions_controller.rb	Wed, 16 Nov 2011 01:31:28 -0600
+app/controllers/users_controller.rb	Wed, 16 Nov 2011 01:31:28 -0600
+app/helpers/application_helper.rb	Mon, 14 Nov 2011 18:16:03 -0600
+app/mailers/notifier.rb	Wed, 02 Nov 2011 18:55:29 -0500
+app/models/ability.rb	Wed, 02 Nov 2011 18:55:29 -0500
+app/models/assigner.rb	Wed, 02 Nov 2011 18:55:29 -0500
+app/models/assignment.rb	Mon, 14 Nov 2011 20:19:36 -0600
+app/models/authentication.rb	Mon, 14 Nov 2011 18:16:03 -0600
+app/models/chore.rb	Mon, 14 Nov 2011 18:16:03 -0600
+app/models/group.rb	Mon, 14 Nov 2011 20:10:57 -0600
+app/models/invitation.rb	Wed, 02 Nov 2011 18:55:29 -0500
+app/models/membership.rb	Wed, 02 Nov 2011 18:55:29 -0500
+app/models/user.rb	Wed, 16 Nov 2011 01:31:28 -0600
+lib/email_validator.rb	Wed, 02 Nov 2011 18:55:29 -0500
