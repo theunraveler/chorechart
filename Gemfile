@@ -33,11 +33,16 @@ group :development, :test do
   gem 'mysql2'
   gem 'rspec-rails'  
   gem 'cucumber-rails'
+  gem 'rb-fsevent', :require => false
+  gem 'growl', :require => false
+  gem 'guard-bundler'
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
 end
 
 group :production do
   gem 'pg'
-  gem 'rack-google-analytics'
+  gem 'rack-google-analytics', :require => 'rack/google-analytics'
 end
   
 group :assets do

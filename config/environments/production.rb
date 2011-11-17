@@ -2,9 +2,7 @@ Chorechart::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Google Analytics
-  if defined? Rack::GoogleAnalytics
-    config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-26335505-1'
-  end
+  config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-26335505-1'
 
   # Compress JavaScript and CSS
   config.assets.compress = true

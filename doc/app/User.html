@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>Class: User</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/user.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-find_for_database_authentication">::find_for_database_authentication</a>
+    
+    <li><a href="#method-i-apply_omniauth">#apply_omniauth</a>
+    
+    <li><a href="#method-i-assignments_for">#assignments_for</a>
+    
+    <li><a href="#method-i-first_name">#first_name</a>
+    
+    <li><a href="#method-i-generate_password">#generate_password</a>
+    
+    <li><a href="#method-i-last_name">#last_name</a>
+    
+    <li><a href="#method-i-password_required-3F">#password_required?</a>
+    
+    <li><a href="#method-i-process_pending_invitations">#process_pending_invitations</a>
+    
+    <li><a href="#method-i-to_s">#to_s</a>
+    
+    <li><a href="#method-i-update_with_password">#update_with_password</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Assigner.html">Assigner</a>
+  
+    <li><a href="./Assignment.html">Assignment</a>
+  
+    <li><a href="./Authentication.html">Authentication</a>
+  
+    <li><a href="./AuthenticationsController.html">AuthenticationsController</a>
+  
+    <li><a href="./Chore.html">Chore</a>
+  
+    <li><a href="./ChoresController.html">ChoresController</a>
+  
+    <li><a href="./EmailValidator.html">EmailValidator</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./GroupsController.html">GroupsController</a>
+  
+    <li><a href="./Invitation.html">Invitation</a>
+  
+    <li><a href="./InvitationsController.html">InvitationsController</a>
+  
+    <li><a href="./Membership.html">Membership</a>
+  
+    <li><a href="./MembershipsController.html">MembershipsController</a>
+  
+    <li><a href="./Notifier.html">Notifier</a>
+  
+    <li><a href="./PagesController.html">PagesController</a>
+  
+    <li><a href="./RegistrationsController.html">RegistrationsController</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class User</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-login" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">login</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="protected-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Protected Class Methods</h3>
+
+    
+      <div id="method-c-find_for_database_authentication" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find_for_database_authentication</span><span
+            class="method-args">(warden_conditions)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="find_for_database_authentication-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_for_database_authentication</span>(<span class="ruby-identifier">warden_conditions</span>)
+  <span class="ruby-identifier">conditions</span> = <span class="ruby-identifier">warden_conditions</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">login</span> = <span class="ruby-identifier">conditions</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:login</span>)
+  <span class="ruby-identifier">where</span>(<span class="ruby-identifier">conditions</span>).<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">login</span>).<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- find_for_database_authentication-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- find_for_database_authentication-method -->
+
+    
+    </section><!-- protected-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-apply_omniauth" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">apply_omniauth</span><span
+            class="method-args">(omniauth, overwrite = false)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="apply_omniauth-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_omniauth</span>(<span class="ruby-identifier">omniauth</span>, <span class="ruby-identifier">overwrite</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">overwrite</span>
+    <span class="ruby-identifier">account_details</span> = <span class="ruby-identifier">omniauth</span>[<span class="ruby-string">'info'</span>]
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">omniauth</span>[<span class="ruby-string">'provider'</span>]
+      <span class="ruby-keyword">when</span> <span class="ruby-string">'twitter'</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">username</span> = <span class="ruby-identifier">account_details</span>[<span class="ruby-string">'nickname'</span>]
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> = <span class="ruby-identifier">account_details</span>[<span class="ruby-string">'name'</span>]
+      <span class="ruby-keyword">when</span> <span class="ruby-string">'facebook'</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">email</span> = <span class="ruby-identifier">account_details</span>[<span class="ruby-string">'email'</span>]
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">username</span> = <span class="ruby-identifier">account_details</span>[<span class="ruby-string">'nickname'</span>]
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> = <span class="ruby-identifier">account_details</span>[<span class="ruby-string">'name'</span>]
+      <span class="ruby-keyword">when</span> <span class="ruby-string">'github'</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">email</span> = <span class="ruby-identifier">account_details</span>[<span class="ruby-string">'email'</span>]
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">username</span> = <span class="ruby-identifier">account_details</span>[<span class="ruby-string">'nickname'</span>]
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> = <span class="ruby-identifier">account_details</span>[<span class="ruby-string">'name'</span>]
+      <span class="ruby-keyword">when</span> <span class="ruby-string">'google_oauth2'</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">email</span> = <span class="ruby-identifier">account_details</span>[<span class="ruby-string">'email'</span>]
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">username</span> = <span class="ruby-identifier">account_details</span>[<span class="ruby-string">'email'</span>]
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> = <span class="ruby-identifier">account_details</span>[<span class="ruby-string">'name'</span>]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">authentications</span>.<span class="ruby-identifier">build</span>(<span class="ruby-value">:provider</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">omniauth</span>[<span class="ruby-string">'provider'</span>], <span class="ruby-value">:uid</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">omniauth</span>[<span class="ruby-string">'uid'</span>])  
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- apply_omniauth-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- apply_omniauth-method -->
+
+    
+      <div id="method-i-assignments_for" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">assignments_for</span><span
+            class="method-args">(start = Time.current.to_date, finish = Time.current.to_date)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="assignments_for-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assignments_for</span>(<span class="ruby-identifier">start</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">to_date</span>, <span class="ruby-identifier">finish</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">to_date</span>)
+  <span class="ruby-identifier">assigns</span> = []
+  <span class="ruby-identifier">groups</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">group</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">assigns</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">group</span>.<span class="ruby-identifier">assignments_for</span>(<span class="ruby-identifier">start</span>, <span class="ruby-identifier">finish</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">assigns</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">user</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- assignments_for-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- assignments_for-method -->
+
+    
+      <div id="method-i-first_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">first_name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="first_name-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">first_name</span>
+  <span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- first_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- first_name-method -->
+
+    
+      <div id="method-i-generate_password" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">generate_password</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="generate_password-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generate_password</span>
+  <span class="ruby-identifier">generated_password</span> = <span class="ruby-constant">Devise</span>.<span class="ruby-identifier">friendly_token</span>.<span class="ruby-identifier">first</span>(<span class="ruby-value">6</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">password</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">password_confirmation</span> = <span class="ruby-identifier">generated_password</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- generate_password-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- generate_password-method -->
+
+    
+      <div id="method-i-last_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">last_name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="last_name-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">last_name</span>
+  <span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>.<span class="ruby-identifier">last</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- last_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- last_name-method -->
+
+    
+      <div id="method-i-password_required-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">password_required?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="password_required-3F-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">password_required?</span>  
+  (<span class="ruby-identifier">authentications</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">new_record?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">super</span>  
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- password_required-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- password_required-3F-method -->
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+  <span class="ruby-identifier">first_name</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">username</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_s-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_s-method -->
+
+    
+      <div id="method-i-update_with_password" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_with_password</span><span
+            class="method-args">(params={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update_with_password-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_with_password</span>(<span class="ruby-identifier">params</span>={})
+  <span class="ruby-identifier">params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:current_password</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">update_without_password</span>(<span class="ruby-identifier">params</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update_with_password-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update_with_password-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+     <section id="protected-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Protected Instance Methods</h3>
+
+    
+      <div id="method-i-process_pending_invitations" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_pending_invitations</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_pending_invitations-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_pending_invitations</span>
+  <span class="ruby-identifier">invites</span> = <span class="ruby-constant">Invitation</span>.<span class="ruby-identifier">find_all_by_email</span>(<span class="ruby-identifier">email</span>)
+  <span class="ruby-identifier">invites</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">invite</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">memberships</span>.<span class="ruby-identifier">create</span>({<span class="ruby-value">:group_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">invite</span>.<span class="ruby-identifier">group_id</span>})
+    <span class="ruby-identifier">invite</span>.<span class="ruby-identifier">destroy</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_pending_invitations-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_pending_invitations-method -->
+
+    
+    </section><!-- protected-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
