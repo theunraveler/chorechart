@@ -1,5 +1,5 @@
 <%= f.text_field :name, :help => 'Ex: Home, Office, etc.' %>
-        
+
 <%= f.actions do %>
   <%= f.submit f.object.new_record? ? "Create group" : "Save" %>
   <%= link_to "Cancel", @group, :class => "btn" %>

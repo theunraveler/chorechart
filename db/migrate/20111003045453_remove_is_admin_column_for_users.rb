@@ -4,6 +4,6 @@ class RemoveIsAdminColumnForUsers < ActiveRecord::Migration
   end
 
   def self.down
-    add_column :users, :is_admin, :boolean, :default => false, :after => :email    
+    add_column :users, :is_admin, :boolean, :default => false, :after => :email
   end
 end

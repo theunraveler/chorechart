@@ -3,8 +3,8 @@
   <script type="text/javascript">
     $(document).ready(function() {
         $('#membership_user_id').autocomplete({
-          source: <%= @user_autocomplete.collect(&:email).to_s.html_safe %>  
-        });    
+          source: <%= @user_autocomplete.collect(&:email).to_s.html_safe %>
+        });
     });
   </script>
 

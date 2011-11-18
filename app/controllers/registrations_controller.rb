@@ -10,7 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  private  
+  private
 
   def build_resource(*args)
     super
@@ -18,6 +18,6 @@ class RegistrationsController < Devise::RegistrationsController
       resource.apply_omniauth(session[:omniauth], session[:rebuild_user] || false)
       resource.generate_password
       session[:rebuild_user] = false
-    end  
+    end
   end
 end

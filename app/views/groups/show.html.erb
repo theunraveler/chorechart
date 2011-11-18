@@ -42,7 +42,7 @@
         <% @group.users.each do |user| %>
           <td>
             <ul>
-            <% @chores.select { |a| a.user == user && a.date == date }.each do |assignment| %> 
+            <% @chores.select { |a| a.user == user && a.date == date }.each do |assignment| %>
               <li><%= assignment.chore %></li>
             <% end %>
             </ul>

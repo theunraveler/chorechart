@@ -60,5 +60,5 @@ en:
 
   activerecord:
     attributes:
-      user:  
+      user:
         login: "Username or Email"

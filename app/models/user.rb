@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
           self.name = account_details['name']
       end
     end
-    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
   end
 
   def generate_password
@@ -78,9 +78,9 @@ class User < ActiveRecord::Base
     self.password, self.password_confirmation = generated_password
   end
 
-  def password_required?  
-    (authentications.empty? || !new_record?) && super  
-  end 
+  def password_required?
+    (authentications.empty? || !new_record?) && super
+  end
 
   def to_s
     first_name || username
