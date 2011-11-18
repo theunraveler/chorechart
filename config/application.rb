@@ -22,7 +22,7 @@ module Chorechart
     config.assets.enabled = true
 
     # Version of your assets, change this to expire all assets
-    config.assets.version = '1.1.6'
+    config.assets.version = '1.1.7'
 
     # Prevent whole Rails stack from loading on asset precompile (Devise, I'm
     # looking at you)
