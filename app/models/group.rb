@@ -29,7 +29,7 @@ class Group < ActiveRecord::Base
 
     [].tap do |total|
       assignments.select { |a| a.user == user && current_week.include?(a.date) }.each do |assignment|
-        total << assignment.chore.difficulty
+        total << assignment.difficulty
       end
     end.sum
   end

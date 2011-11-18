@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
         notice = render_to_string(:partial => "success", :locals => { :group => @group }).html_safe
         format.html { redirect_to(groups_url, :notice => notice) }
       else
-        format.html { render :action => "new" }
+        format.html { render :new }
       end
     end
   end
@@ -42,7 +42,7 @@ class GroupsController < ApplicationController
       if @group.update_attributes(params[:group])
         format.html { redirect_to(groups_url, :notice => "Group <em>#{@group}</em> was successfully updated.".html_safe) }
       else
-        format.html { render :action => "edit" }
+        format.html { render :edit }
       end
     end
   end

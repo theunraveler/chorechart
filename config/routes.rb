@@ -1,7 +1,7 @@
 Chorechart::Application.routes.draw do
 
-  resources :groups, :shallow => true do 
-    resources :memberships, :only => [:index, :create, :update, :destroy]
+  resources :groups, :shallow => true do
+    resources :memberships, :only => [:index, :create, :destroy]
     resources :chores, :except => :show
     resources :invitations, :only => [:new, :create, :destroy]
   end
@@ -23,7 +23,7 @@ Chorechart::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'authentications#create'
   scope '/account' do 
-    resources :authentications
+    resources :authentications, :only => [:index, :create, :destroy]
   end
 
   root :to => "pages#index"

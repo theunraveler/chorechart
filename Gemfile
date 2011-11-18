@@ -38,6 +38,7 @@ group :development, :test do
   gem 'guard-bundler'
   gem 'guard-cucumber'
   gem 'guard-rspec'
+  gem 'rails_best_practices'
 end
 
 group :production do

@@ -33,5 +33,5 @@
 
 <%= f.actions do %>
   <%= f.submit f.object.new_record? ? 'Create chore' : 'Save' %>
-	<%= link_to "Cancel", group_chores_path(@chore.group), :class => "btn" %>
+  <%= link_to "Cancel", group_chores_path(@chore.group), :class => "btn" %>
 <% end %>

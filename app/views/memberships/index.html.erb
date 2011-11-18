@@ -5,7 +5,7 @@
 <table id="group-memberships" class="zebra-striped">
   <% @memberships.each do |membership| %>
     <tr>
-      <td><%= membership.user %> (<%= membership.user.email %>)</td>
+      <td><%= membership.user %> (<%= membership.email %>)</td>
       <td><%= 'Admin' if membership.is_admin? %></td>
       <td>
         <% if can? :destroy, membership %>

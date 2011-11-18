@@ -1,5 +1,6 @@
 .bundle
 coverage
+rails_best_practices_output.html
 log/*.log
 rerun.txt
 tmp/

@@ -25,7 +25,7 @@ class MembershipsController < ApplicationController
         else
           @memberships = Membership.all
           @user_autocomplete = User.not_in_group(@group)
-          format.html { render :action => "index" }
+          format.html { render :index }
         end
       end
     else
@@ -40,11 +40,8 @@ class MembershipsController < ApplicationController
   # DELETE /memberships/1.xml
   def destroy
     @membership.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(group_memberships_url(@membership.group), :notice => "User #{@membership.user} has been removed from the group") }
-      format.xml  { head :ok }
-    end
+    flash[:notice] = "<em>#{@membership.user}</em> has been removed from <em>#{@membership.group}</em>".html_safe
+    respond_with @membership, :location => group_memberships_url(@membership.group)
   end
 
 end

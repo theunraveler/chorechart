@@ -32,7 +32,7 @@
         <% end %>
       </div>
     </div>
-  </header>    
+  </header>
   <div id="wrapper" class="container">
     <div class="row">
       <div id="main" class="span12">
@@ -47,7 +47,7 @@
         <%= yield :sidebar %>
         <% if user_signed_in? %>
           <div class="well">
-            <%= render 'shared/user_chores' %>
+            <%= render 'shared/user_chores', :chores => @user_chores %>
           </div>
         <% end %>
       </div>
