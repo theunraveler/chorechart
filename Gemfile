@@ -30,6 +30,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'timecop'
   gem 'faker'
+  gem 'mocha'
   gem 'database_cleaner'
   gem 'no_peeping_toms'
 end

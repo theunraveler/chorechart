@@ -14,7 +14,7 @@ class Group < ActiveRecord::Base
   # Get a list of chores for the day
   def assignments_for(start = Time.current.to_date, finish = Time.current.to_date)
     assigns = assignments.find_all_by_date(start..finish)
-    if assigns.empty? && should_have_assignments?(start, finish)
+    if assigns.empty? && chore_occurrences_between(start, finish).any?
       Assigner.create_schedule_for(self, start, finish)
       # Reload data from the DB so we don't get stale data
       reload
@@ -26,22 +26,22 @@ class Group < ActiveRecord::Base
   # Get a user's workload for a certain week
   def workload(user, week)
     current_week = (week.beginning_of_week..week.end_of_week)
-
-    [].tap do |total|
-      assignments.select { |a| a.user == user && current_week.include?(a.date) }.each do |assignment|
-        total << assignment.difficulty
-      end
-    end.sum
+    assignments.select { |a| a.user == user && current_week.include?(a.date) }.collect(&:difficulty)
   end
 
-  # Determine if a group should have assignments for a given week.
-  def should_have_assignments?(start, finish)
-    chores.each do |chore|
-      unless chore.schedule.occurrences_between(start.to_time, finish.advance(:days => 1).to_time).empty?
-        return true
+  # Get chore occurrences within date range
+  # TODO: Still kind of ugly.
+  def chore_occurrences_between(start, finish)
+    [].tap do |occurrences|
+      chores.each do |chore|
+        chore.schedule.occurrences_between(start.to_time, finish.advance(:days => 1).to_time).each do |occurrence|
+          occurrences << {
+            :date => occurrence.to_date,
+            :chore => chore
+          }
+        end
       end
     end
-    return false
   end
 
   def to_s

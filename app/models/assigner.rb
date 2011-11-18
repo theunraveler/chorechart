@@ -17,22 +17,12 @@ class Assigner < ActiveRecord::Observer
     Assignment.delete_all(:chore_id => group.chore_ids)
   end
 
-  # Needs some refactoring.
+  # TODO: Needs some refactoring.
   def self.create_schedule_for(group, start, finish)
     users = group.users
     points = {}
     users.each { |u| points[u.id] = 0 }
-    chores = group.chores
-    occurrences = []
-
-    chores.each do |chore|
-      chore.schedule.occurrences_between(start.to_time, finish.advance(:days => 1).to_time).each do |occurrence|
-        occurrences << {
-          :date => occurrence.to_date,
-          :chore => chore
-        }
-      end
-    end
+    occurrences = group.chore_occurrences_between(start, finish)
 
     assignments = []
     occurrences.shuffle.each do |occurrence|
