@@ -14,7 +14,7 @@ class Assigner < ActiveRecord::Observer
   end
 
   def self.destroy_assignments_for_group(group)
-    Assignment.delete_all(:chore_id => group.chores.collect(&:id))
+    Assignment.delete_all(:chore_id => group.chore_ids)
   end
 
   # Needs some refactoring.

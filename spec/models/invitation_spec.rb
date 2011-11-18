@@ -4,8 +4,7 @@ describe Invitation do
 
   describe 'to string' do
     before do
-      group = FactoryGirl.create(:group)
-      @invitation = FactoryGirl.create(:invitation, :group_id => group.id)
+      @invitation = FactoryGirl.build(:invitation)
     end
 
     it 'should be the email address' do

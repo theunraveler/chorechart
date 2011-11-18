@@ -37,7 +37,7 @@ class Group < ActiveRecord::Base
   # Determine if a group should have assignments for a given week.
   def should_have_assignments?(start, finish)
     chores.each do |chore|
-      if !chore.schedule.occurrences_between(start.to_time, finish.advance(:days => 1).to_time).empty?
+      unless chore.schedule.occurrences_between(start.to_time, finish.advance(:days => 1).to_time).empty?
         return true
       end
     end

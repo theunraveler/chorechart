@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   
   before do
-    @user = FactoryGirl.create(:user, :name => 'Benjamin Franklin')
+    @user = FactoryGirl.build(:user, :name => 'Benjamin Franklin')
   end
 
   describe "first name" do
@@ -29,7 +29,7 @@ describe User do
   end
 
   describe 'apply omniauth' do
-    ['github', 'facebook'].each do |provider|
+    ['github', 'facebook', 'google_oauth2'].each do |provider|
       it "should assign the proper user attributes if they exist (#{provider})" do
         auth_hash = {
           'provider' => provider,
@@ -50,6 +50,34 @@ describe User do
       @user.apply_omniauth(auth_hash, true)
       @user.name.should eq(auth_hash['info']['name'])
       @user.username.should eq(auth_hash['info']['nickname'])
+    end
+  end
+
+  describe 'generate password' do
+    it 'should generate a six-character password' do
+      @user.generate_password
+      @user.password.length.should eq(6)
+    end
+
+    it 'should set the password and password confirmation attributes' do
+      @user.generate_password
+      @user.password.should eq(@user.password_confirmation)
+    end
+  end
+
+  describe 'find for database authentication' do
+    it 'should return the proper record for username' do
+      @user.username = Faker::Internet.user_name
+      @user.save
+      db_user = User.find_for_database_authentication(:login => @user.username)
+      db_user.should eq(@user)
+    end
+
+    it 'should return the proper record for email' do
+      @user.email = Faker::Internet.email
+      @user.save
+      db_user = User.find_for_database_authentication(:login => @user.email)
+      db_user.should eq(@user)
     end
   end
 

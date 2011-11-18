@@ -53,21 +53,13 @@ class User < ActiveRecord::Base
     if overwrite
       account_details = omniauth['info']
       case omniauth['provider']
-        when 'twitter'
-          self.username = account_details['nickname']
-          self.name = account_details['name']
-        when 'facebook'
-          self.email = account_details['email']
-          self.username = account_details['nickname']
-          self.name = account_details['name']
-        when 'github'
-          self.email = account_details['email']
-          self.username = account_details['nickname']
-          self.name = account_details['name']
-        when 'google_oauth2'
-          self.email = account_details['email']
-          self.username = account_details['email']
-          self.name = account_details['name']
+      when 'twitter'
+        self.username = account_details['nickname']
+        self.name = account_details['name']
+      else
+        self.email = account_details['email']
+        self.username = account_details['nickname']
+        self.name = account_details['name']
       end
     end
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
@@ -75,7 +67,7 @@ class User < ActiveRecord::Base
 
   def generate_password
     generated_password = Devise.friendly_token.first(6)
-    self.password, self.password_confirmation = generated_password
+    self.password, self.password_confirmation = generated_password, generated_password
   end
 
   def password_required?

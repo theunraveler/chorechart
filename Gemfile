@@ -31,6 +31,7 @@ group :test do
   gem 'timecop'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'no_peeping_toms'
 end
 
 group :development, :test do
