@@ -26,6 +26,6 @@ Chorechart::Application.routes.draw do
     resources :authentications, :only => [:index, :create, :destroy]
   end
 
-  root :to => "pages#index"
+  root :to => "pages#homepage"
 
 end

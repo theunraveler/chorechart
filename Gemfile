@@ -16,6 +16,10 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 
+group :development do
+  gem 'bullet', :git => 'git://github.com/flyerhzm/bullet.git'
+end
+
 group :test do
   gem 'simplecov', :require => false
   gem 'capybara'

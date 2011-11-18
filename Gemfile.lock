@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/flyerhzm/bullet.git
+  revision: a7ddd69203a16be727031ac5407c98abfaffe204
+  specs:
+    bullet (2.0.2)
+      uniform_notifier (~> 1.0.0)
+
+GIT
   remote: git://github.com/theunraveler/Schedule-Attributes.git
   revision: c6cdff7fea2ca2cc407ca05b01c87e1b727eed65
   specs:
@@ -240,6 +247,7 @@ GEM
     uglifier (1.1.0)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    uniform_notifier (1.0.1)
     warden (1.1.0)
       rack (>= 1.0)
     xpath (0.1.4)
@@ -250,6 +258,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-import (>= 0.2.0)
+  bullet!
   cancan
   capybara
   cucumber
