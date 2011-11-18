@@ -26,7 +26,7 @@ class Group < ActiveRecord::Base
   # Get a user's workload for a certain week
   def workload(user, week)
     current_week = (week.beginning_of_week..week.end_of_week)
-    assignments.select { |a| a.user == user && current_week.include?(a.date) }.collect(&:difficulty)
+    assignments.select { |a| a.user == user && current_week.include?(a.date) }.collect(&:difficulty).sum
   end
 
   # Get chore occurrences within date range
