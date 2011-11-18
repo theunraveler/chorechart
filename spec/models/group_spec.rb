@@ -21,6 +21,8 @@ describe Group do
     end
 
     it 'should not give me the same result for each of my groups' do
+      @g1_workload.should be_a(Integer)
+      @g2_workload.should be_a(Integer)
       @g1_workload.should_not eq(@g2_workload)
     end
   end
