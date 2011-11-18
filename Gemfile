@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.1.2'
 
 gem 'thin'
 gem 'jquery-rails'
@@ -8,7 +8,7 @@ gem 'devise'
 gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.git'
 gem 'cancan'
 gem 'foreigner'
-gem 'activerecord-import', '>= 0.2.0'
+gem 'activerecord-import'
 gem 'twitter_bootstrap_form_for', :git => 'git://github.com/theunraveler/twitter_bootstrap_form_for.git'
 
 gem 'omniauth-twitter'
