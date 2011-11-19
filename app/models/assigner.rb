@@ -19,12 +19,10 @@ class Assigner < ActiveRecord::Observer
 
   # TODO: Needs some refactoring.
   def self.create_schedule_for(group, start, finish)
-    users = group.users
-    points = {}
+    users, points, assignments = group.users, {}, []
     users.each { |u| points[u.id] = 0 }
     occurrences = group.chore_occurrences_between(start, finish)
 
-    assignments = []
     occurrences.shuffle.each do |occurrence|
       if points.values.all? { |p| p == 0 }
         lowest_user = users.sample
