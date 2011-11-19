@@ -37,10 +37,6 @@ class User < ActiveRecord::Base
     name.split.first unless name.nil?
   end
 
-  def last_name
-    name.split.last unless name.nil?
-  end
-
   def assignments_for(start = Time.current.to_date, finish = Time.current.to_date)
     assigns = []
     groups.each do |group|
@@ -72,6 +68,10 @@ class User < ActiveRecord::Base
 
   def password_required?
     (authentications.empty? || !new_record?) && super
+  end
+
+  def hashed_email
+    Digest::MD5.hexdigest(email.strip)
   end
 
   def to_s

@@ -1,5 +1,5 @@
 class PagesController < ActionController::Base
-  protect_from_forgery  
+  protect_from_forgery
   respond_to :html
   layout 'no_sidebar'
 

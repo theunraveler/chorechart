@@ -17,17 +17,6 @@ describe User do
     end
   end
 
-  describe "last name" do
-    it "should display the user's last name if one exists" do
-      @user.last_name.should eq('Franklin')
-    end
-
-    it "should return nil if the user has no name" do
-      @user.name = ''
-      @user.last_name.should be_nil
-    end
-  end
-
   describe 'apply omniauth' do
     ['github', 'facebook', 'google_oauth2'].each do |provider|
       it "should assign the proper user attributes if they exist (#{provider})" do

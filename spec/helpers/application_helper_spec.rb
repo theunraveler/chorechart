@@ -2,6 +2,25 @@ require 'spec_helper'
 
 describe ApplicationHelper do
 
+  describe 'avatar image' do
+    before do
+      @user = FactoryGirl.build(:user)
+    end
+
+    it 'should contain the users hashed email' do
+      hashed_email = Digest::MD5.hexdigest(@user.email.strip)
+      helper.avatar_image(@user).should =~ /#{hashed_email}/
+    end
+
+    it 'should output an image tag' do
+      helper.avatar_image(@user).should =~ /<img/
+    end
+
+    it 'should request a size if specified' do
+      helper.avatar_image(@user, 25).should =~ /\?s=25/
+    end
+  end
+
   describe "format date" do
     before do
       @date = Date.civil(2001, 8, 11)
@@ -55,6 +74,24 @@ describe ApplicationHelper do
       it "should output the corresponding type (#{orig.to_s})" do
         helper.flash_type(orig).should eq(rewrite)
       end
+    end
+  end
+
+  describe 'active list link' do
+    it 'should return true if the page is the current page' do
+      helper.stubs(:current_page?).returns(true)
+      helper.active_list_link('Test', '/test').should =~ /active/
+    end
+
+    it 'should return false otherwise' do
+      helper.stubs(:current_page?).returns(false)
+      helper.active_list_link('Test', '/test').should_not =~ /active/
+    end
+
+    it 'should return a link wrapped in an li' do
+      link = helper.active_list_link('Test', '/test')
+      link.should =~ /<a href/
+      link.should =~ /<li/
     end
   end
 
