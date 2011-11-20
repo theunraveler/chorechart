@@ -1,20 +1,12 @@
 class Assigner < ActiveRecord::Observer
   observe :chore, :membership
 
-  def after_create(object)
-    self.class.destroy_assignments_for_group(object.group)
-  end
-
-  def after_update(object)
-    self.class.destroy_assignments_for_group(object.group)
+  def after_save(object)
+    object.group.delete_assignments
   end
 
   def after_destroy(object)
-    self.class.destroy_assignments_for_group(object.group)
-  end
-
-  def self.destroy_assignments_for_group(group)
-    Assignment.delete_all(:chore_id => group.chore_ids)
+    object.group.delete_assignments
   end
 
   # TODO: Needs some refactoring.

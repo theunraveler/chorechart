@@ -13,13 +13,12 @@ class Group < ActiveRecord::Base
 
   # Get a list of chores for the day
   def assignments_for(start = Time.current.to_date, finish = Time.current.to_date)
-    [].tap do |assigns|
-      assigns.concat find_assignments_by_date(start, finish)
-      if assigns.empty? && chore_occurrences_between(start, finish).any?
-        Assigner.create_schedule_for(self, start.beginning_of_week, finish.end_of_week)
-        assigns.concat find_assignments_by_date(start, finish, true)
-      end
+    assigns = [].concat find_assignments_by_date(start, finish)
+    if assigns.empty? && chore_occurrences_between(start, finish).any?
+      Assigner.create_schedule_for(self, start.beginning_of_week, finish.end_of_week)
+      assigns.concat find_assignments_by_date(start, finish, true)
     end
+    assigns
   end
 
   # Same as above, but grouped by date
@@ -49,6 +48,10 @@ class Group < ActiveRecord::Base
         occurrences.concat items.collect { |i| { :date => i.to_date, :chore => chore } }
       end
     end
+  end
+
+  def delete_assignments
+    assignments.delete_all
   end
 
   def to_s
