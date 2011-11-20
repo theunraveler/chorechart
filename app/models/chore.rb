@@ -2,10 +2,12 @@ class Chore < ActiveRecord::Base
   include ScheduleAttributes
 
   belongs_to :group
-  has_many :assignments, :dependent => :destroy
+  has_many :assignments, :dependent => :delete_all
 
   validates :name, :presence => true, :uniqueness => {:scope => :group_id}
   validates_inclusion_of :difficulty, :in => 1..5
+
+  delegate :delete_assignments, :to => :group
 
   DIFFICULTY_IN_WORDS = {
     1 => 'Easy',
