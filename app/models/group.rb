@@ -22,6 +22,13 @@ class Group < ActiveRecord::Base
     end
   end
 
+  # Same as above, but grouped by date
+  def assignments_for_grouped(start = Time.current.to_date, finish = Time.current.to_date)
+    assignments = assignments_for(start, finish).group_by(&:date)
+    ((start..finish).to_a - assignments.keys).each { |date| assignments.update({date => []}) }
+    Hash[assignments.sort]
+  end
+
   def find_assignments_by_date(start, finish, clear = false)
     ActiveRecord::Base.clear_cache! if clear 
     assignments.find_all_by_date(start..finish)
@@ -34,7 +41,6 @@ class Group < ActiveRecord::Base
   end
 
   # Get chore occurrences within date range
-  # TODO: Still kind of ugly.
   def chore_occurrences_between(start, finish)
     start, finish = start.to_time, finish.advance(:days => 1).to_time
     [].tap do |occurrences|

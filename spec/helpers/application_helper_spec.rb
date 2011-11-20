@@ -79,12 +79,12 @@ describe ApplicationHelper do
 
   describe 'active list link' do
     it 'should return true if the page is the current page' do
-      helper.stubs(:current_page?).returns(true)
+      helper.stub!(:current_page?).and_return(true)
       helper.active_list_link('Test', '/test').should =~ /active/
     end
 
     it 'should return false otherwise' do
-      helper.stubs(:current_page?).returns(false)
+      helper.stub!(:current_page?).and_return(false)
       helper.active_list_link('Test', '/test').should_not =~ /active/
     end
 

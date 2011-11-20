@@ -34,4 +34,20 @@ describe Group do
     end
   end
 
+  describe 'find assignments by date' do
+    before do
+      @group = FactoryGirl.build(:group)
+    end
+
+    it 'should clear the ActiveRecord query cache if specified' do
+      ActiveRecord::Base.should_receive(:clear_cache!)
+      @group.find_assignments_by_date(Date.today, Date.today, true)
+    end
+
+    it 'should not clear the ActiveRecord query cache otherwise' do
+      ActiveRecord::Base.should_not_receive(:clear_cache!)
+      @group.find_assignments_by_date(Date.today, Date.today)
+    end
+  end
+
 end

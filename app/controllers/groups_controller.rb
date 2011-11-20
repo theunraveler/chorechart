@@ -1,17 +1,15 @@
 class GroupsController < ApplicationController
-  load_and_authorize_resource :except => :index
+  load_and_authorize_resource
   respond_to :html
 
   # GET /groups
   def index
-    @groups = current_user.groups
-    respond_with @groups
   end
 
   # GET /groups/1
   def show
     @week = params[:week] ? Date.parse(params[:week]).beginning_of_week : Date.today.beginning_of_week
-    @chores = @group.assignments_for(@week, @week.end_of_week)
+    @assignments = @group.assignments_for_grouped(@week, @week.end_of_week)
     respond_with @group
   end
 
@@ -25,34 +23,25 @@ class GroupsController < ApplicationController
 
   # POST /groups
   def create
-    respond_to do |format|
-      if @group.save
-        @group.memberships.create(:user => current_user, :is_admin => true)
-        notice = render_to_string(:partial => "success", :locals => { :group => @group }).html_safe
-        format.html { redirect_to(groups_url, :notice => notice) }
-      else
-        format.html { render :new }
-      end
+    if @group.save
+      @group.memberships.create(:user => current_user, :is_admin => true)
+      flash[:notice] = render_to_string(:partial => "success", :locals => { :group => @group }).html_safe
     end
+    respond_with @group, :location => groups_url
   end
 
   # PUT /groups/1
   def update
-    respond_to do |format|
-      if @group.update_attributes(params[:group])
-        format.html { redirect_to(groups_url, :notice => "Group <em>#{@group}</em> was successfully updated.".html_safe) }
-      else
-        format.html { render :edit }
-      end
+    if @group.update_attributes(params[:group])
+      flash[:notice] = "Group <em>#{@group}</em> was successfully updated.".html_safe
     end
+    respond_with @group, :location => groups_url
   end
 
   # DELETE /groups/1
   def destroy
     @group.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(groups_url, :notice => "Group <em>#{@group.name}</em> deleted.".html_safe) }
-    end
+    flash[:notice] = "Group <em>#{@group.name}</em> deleted.".html_safe
+    respond_with @group
   end
 end
