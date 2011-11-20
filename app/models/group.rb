@@ -16,7 +16,7 @@ class Group < ActiveRecord::Base
     [].tap do |assigns|
       assigns.concat find_assignments_by_date(start, finish)
       if assigns.empty? && chore_occurrences_between(start, finish).any?
-        Assigner.create_schedule_for(self, start, finish)
+        Assigner.create_schedule_for(self, start.beginning_of_week, finish.end_of_week)
         assigns.concat find_assignments_by_date(start, finish, true)
       end
     end
@@ -30,7 +30,7 @@ class Group < ActiveRecord::Base
   end
 
   def find_assignments_by_date(start, finish, clear = false)
-    ActiveRecord::Base.clear_cache! if clear 
+    ActiveRecord::Base.clear_cache! if clear
     assignments.find_all_by_date(start..finish)
   end
 
