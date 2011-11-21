@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
 
-gem 'thin'
 gem 'jquery-rails'
 gem 'devise'
 gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.git'
@@ -45,9 +44,11 @@ group :development, :test do
   gem 'guard-cucumber'
   gem 'guard-rspec'
   gem 'rails_best_practices'
+  gem 'thin'
 end
 
 group :production do
+  gem 'unicorn'
   gem 'pg'
   gem 'rack-google-analytics', :require => 'rack/google-analytics'
 end
