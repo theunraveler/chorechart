@@ -3,22 +3,22 @@
   <% if !providers.include?('twitter') %>
     <a href="/auth/twitter" class="auth_provider">
       <%= image_tag 'services/twitter_64.png', :size => '64x64', :alt => 'Twitter' %>
-    </a>  
+    </a>
   <% end %>
   <% if !providers.include?('facebook') %>
-    <a href="/auth/facebook" class="auth_provider">  
+    <a href="/auth/facebook" class="auth_provider">
       <%= image_tag 'services/facebook_64.png', :size => '64x64', :alt => 'Facebook' %>
-    </a>  
+    </a>
   <% end %>
-  <% if !providers.include?('github') %>        
-    <a href="/auth/github" class="auth_provider">  
+  <% if !providers.include?('github') %>
+    <a href="/auth/github" class="auth_provider">
       <%= image_tag 'services/github_64.png', :size => '64x64', :alt => 'Github' %>
-    </a>  
+    </a>
   <% end %>
-  <% if !providers.include?('google_oauth2') %>        
-    <a href="/auth/google_oauth2" class="auth_provider">  
+  <% if !providers.include?('google_oauth2') %>
+    <a href="/auth/google_oauth2" class="auth_provider">
       <%= image_tag 'services/google_oauth2_64.png', :size => '64x64', :alt => 'Google' %>
-    </a>  
+    </a>
   <% end %>
   <div class="clearer"></div>
 </div>

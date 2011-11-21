@@ -3,11 +3,11 @@
   <% (Time.current.to_date..Time.current.to_date.advance(:days => 4)).each do |date| %>
     <div class="chore-day">
       <div class="page-header"><p><%= fuzzy_date(date) %></p></div>
-      <% if !@user_chores.has_key?(date) || @user_chores[date].empty? %>
+      <% if !chores.has_key?(date) || chores[date].empty? %>
         <p class="help-inline"><em>Nothing! Enjoy your day off!</em></p>
       <% else %>
         <ul>
-          <% @user_chores[date].each do |assignment| %>
+          <% chores[date].each do |assignment| %>
             <li><%= assignment.chore %> <span class="label"><%= link_to assignment.group, assignment.group %></span></li>
           <% end %>
         </ul>

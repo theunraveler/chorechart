@@ -14,9 +14,9 @@
 
 <div class="pagination pull-left">
   <ul>
-    <li class="previous-week prev"><%= link_to '« Previous week', group_path(@group, :week => @week.advance(:weeks => -1)), :class => 'prev' %></li>
-    <li class="this-week<%= ' disabled' if @week.in_current_week? %>"><%= link_to 'This week', group_path(@group) %></li>
-    <li class="next-week next"><%= link_to 'Next week »', group_path(@group, :week => @week.next_week), :class => 'next' %></li>
+    <li><%= link_to '« Previous week', group_path(@group, :week => @week.advance(:weeks => -1)) %></li>
+    <li<%= ' class=disabled' if @week.in_current_week? %>><%= link_to 'This week', group_path(@group) %></li>
+    <li><%= link_to 'Next week »', group_path(@group, :week => @week.next_week) %></li>
   </ul>
 </div>
 
@@ -26,7 +26,7 @@
   <thead>
     <tr>
       <th scope="col"></th>
-      <% @group.users.each do |user| %>
+      <% @group.users.all.each do |user| %>
         <th scope="col">
           <div class="user-thumb pull-left"><%= avatar_image(user, 32) %></div>
           <div class="user-name"><%= user %></div>
@@ -36,17 +36,15 @@
     </tr>
   <thead>
   <tbody>
-    <% (@week..@week.end_of_week).each do |date| %>
+    <% @assignments.each do |date, assigns| %>
       <tr>
         <th scope="row"><%= format_date(date.to_time, :style => :medium) %></th>
-        <% @group.users.each do |user| %>
-          <td>
-            <ul>
-            <% @chores.select { |a| a.user == user && a.date == date }.each do |assignment| %> 
+        <% @group.users.all.each do |user| %>
+          <td><ul>
+            <% assigns.select { |a| a.user_id == user.id }.each do |assignment| %>
               <li><%= assignment.chore %></li>
             <% end %>
-            </ul>
-          </td>
+          </ul></td>
         <% end %>
       </tr>
     <% end %>

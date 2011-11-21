@@ -16,7 +16,7 @@ class InvitationsController < ApplicationController
         Notifier.invite(@invitation.email, @group, current_user).deliver
         format.html { redirect_to(group_memberships_path(@group), :notice => "<em>#{@invitation.email}</em> has been invited to join your group <em>#{@group}</em>.".html_safe) }
       else
-        format.html { render :action => "new" }
+        format.html { render :new }
       end
     end
   end

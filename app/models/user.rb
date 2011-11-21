@@ -37,10 +37,6 @@ class User < ActiveRecord::Base
     name.split.first unless name.nil?
   end
 
-  def last_name
-    name.split.last unless name.nil?
-  end
-
   def assignments_for(start = Time.current.to_date, finish = Time.current.to_date)
     assigns = []
     groups.each do |group|
@@ -53,34 +49,30 @@ class User < ActiveRecord::Base
     if overwrite
       account_details = omniauth['info']
       case omniauth['provider']
-        when 'twitter'
-          self.username = account_details['nickname']
-          self.name = account_details['name']
-        when 'facebook'
-          self.email = account_details['email']
-          self.username = account_details['nickname']
-          self.name = account_details['name']
-        when 'github'
-          self.email = account_details['email']
-          self.username = account_details['nickname']
-          self.name = account_details['name']
-        when 'google_oauth2'
-          self.email = account_details['email']
-          self.username = account_details['email']
-          self.name = account_details['name']
+      when 'twitter'
+        self.username = account_details['nickname']
+        self.name = account_details['name']
+      else
+        self.email = account_details['email']
+        self.username = account_details['nickname']
+        self.name = account_details['name']
       end
     end
-    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
   end
 
   def generate_password
     generated_password = Devise.friendly_token.first(6)
-    self.password, self.password_confirmation = generated_password
+    self.password, self.password_confirmation = generated_password, generated_password
   end
 
-  def password_required?  
-    (authentications.empty? || !new_record?) && super  
-  end 
+  def password_required?
+    (authentications.empty? || !new_record?) && super
+  end
+
+  def hashed_email
+    Digest::MD5.hexdigest(email.strip)
+  end
 
   def to_s
     first_name || username

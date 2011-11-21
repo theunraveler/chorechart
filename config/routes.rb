@@ -1,18 +1,18 @@
 Chorechart::Application.routes.draw do
 
-  resources :groups, :shallow => true do 
-    resources :memberships, :only => [:index, :create, :update, :destroy]
+  resources :groups, :shallow => true do
+    resources :memberships, :only => [:index, :create, :destroy]
     resources :chores, :except => :show
     resources :invitations, :only => [:new, :create, :destroy]
   end
 
-  devise_for :users, 
-    :path => '', 
-    :path_names => { 
-      :sign_in => 'login', 
-      :sign_out => 'logout', 
-      :registration => 'account', 
-      :sign_up => 'register' 
+  devise_for :users,
+    :path => '',
+    :path_names => {
+      :sign_in => 'login',
+      :sign_out => 'logout',
+      :registration => 'account',
+      :sign_up => 'register'
     },
     :controllers => {
       :sessions => 'sessions',
@@ -22,12 +22,12 @@ Chorechart::Application.routes.draw do
   end
 
   match '/auth/:provider/callback' => 'authentications#create'
-  scope '/account' do 
-    resources :authentications
+  scope '/account' do
+    resources :authentications, :only => [:index, :create, :destroy]
   end
 
   # Marketing pages.
-  root :to => 'pages#index'
+  root :to => "pages#homepage"
   get 'faq' => 'pages#faq'
   get 'features' => 'pages#features'
 

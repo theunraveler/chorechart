@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe Assigner do
+  before :all do
+    ActiveRecord::Observer.enable_observers
+  end
   
   describe "callbacks" do
     before do
@@ -15,7 +18,7 @@ describe Assigner do
 
     it "should delete all assignments when a chore is added" do
       @group.assignments.count.should_not eq(0)
-      FactoryGirl.create(:chore, :group_id => @group)
+      FactoryGirl.create(:chore, :group_id => @group.id)
       @group.assignments.count.should eq(0)
     end
 
@@ -51,4 +54,7 @@ describe Assigner do
 
   end
 
+  after :all do
+    ActiveRecord::Observer.enable_observers
+  end  
 end

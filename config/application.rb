@@ -17,12 +17,12 @@ module Chorechart
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
     # Version of your assets, change this to expire all assets
-    config.assets.version = '1.1.5'
+    config.assets.version = '1.1.8'
 
     # Prevent whole Rails stack from loading on asset precompile (Devise, I'm
     # looking at you)

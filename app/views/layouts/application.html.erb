@@ -16,7 +16,7 @@
 <body>
   <header class="topbar" data-dropdown="dropdown">
     <div class="fill">
-      <div class="container-fluid">
+      <div class="container">
         <a class="brand" href="/">Chorechart</a>
         <% if user_signed_in? %>
           <nav id="main-navigation">
@@ -32,7 +32,7 @@
         <% end %>
       </div>
     </div>
-  </header>    
+  </header>
   <div id="wrapper" class="container">
     <div class="row">
       <div id="main" class="span12">
@@ -47,7 +47,7 @@
         <%= yield :sidebar %>
         <% if user_signed_in? %>
           <div class="well">
-            <%= render 'shared/user_chores' %>
+            <%= render 'shared/user_chores', :chores => @user_chores %>
           </div>
         <% end %>
       </div>
@@ -56,11 +56,11 @@
       <div class="container">
         <p class="pull-right"><a href="#">&uarr; Back to top</a></p>
         <p>
-          Copyright &copy; <%= Time.now.year %> <a class="external" href="http://theunraveler.com">theunraveler</a> | 
+          Copyright &copy; <%= Time.now.year %> <a class="external" href="http://theunraveler.com">theunraveler</a> |
           <a href="mailto:jake@theunraveler.com">Feedback</a>
         </p>
       </div>
     </footer>
-  </div>    
+  </div>
 </body>
 </html>

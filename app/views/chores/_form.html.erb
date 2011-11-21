@@ -16,7 +16,7 @@
     <div class="clearfix">
       <label>Every</label>
       <div class="input"><div class="inline-inputs">
-        <%= schedule.number_field :interval, :min => 1, :class => 'mini', :skip => true %> 
+        <%= schedule.number_field :interval, :min => 1, :class => 'mini', :skip => true %>
         <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week'], ['month(s)', 'month']], @chore.schedule_attributes.interval_unit), { :skip => true } %>
       </div></div>
     </div>
@@ -33,5 +33,5 @@
 
 <%= f.actions do %>
   <%= f.submit f.object.new_record? ? 'Create chore' : 'Save' %>
-	<%= link_to "Cancel", group_chores_path(@chore.group), :class => "btn" %>
+  <%= link_to "Cancel", group_chores_path(@chore.group), :class => "btn" %>
 <% end %>

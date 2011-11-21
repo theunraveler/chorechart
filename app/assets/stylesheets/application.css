@@ -20,13 +20,13 @@ th small { color: #BFBFBF; }
 .page-header .pull-right { margin-top: 5px; }
 .crud-links .tabs { border: none; }
 .crud-links .tabs img { margin-top: 9px; }
-.crud-links .tabs > li > a { 
+.crud-links .tabs > li > a {
   border: none;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.crud-links .tabs > li.open > a { 
+.crud-links .tabs > li.open > a {
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
