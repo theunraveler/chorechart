@@ -29,6 +29,7 @@ describe Group do
 
   describe 'assignments_for_grouped' do
     it 'should basically be a wrapper for assignments_for' do
+      @group.stub!(:assignments_for).and_return([])
       @group.should_receive(:assignments_for)
       @group.assignments_for_grouped
     end

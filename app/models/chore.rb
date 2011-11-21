@@ -27,10 +27,7 @@ class Chore < ActiveRecord::Base
           has_day = true
         end
       end
-      if !has_day
-        today = Time.current.strftime('%A').downcase.to_sym
-        options[today] = '1'
-      end
+      options.merge(assign_todays_date) unless has_day
     end
 
     super(options)
@@ -43,4 +40,12 @@ class Chore < ActiveRecord::Base
   def to_s
     name
   end
+
+  private
+
+  def assign_todays_date
+    today = Time.current.strftime('%A').downcase
+    Hash[today.to_sym, 1]
+  end
+  
 end
