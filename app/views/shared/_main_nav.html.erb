@@ -1,5 +1,5 @@
 <ul class="nav">
-  <%= active_list_link 'Dashboard', user_root_path %>
+  <%= active_list_link 'Dashboard', user_root_path, :class => 'icon home' %>
   <% current_user.groups.take(3).each do |group| %>
     <%= active_list_link group, group %>
   <% end %>
