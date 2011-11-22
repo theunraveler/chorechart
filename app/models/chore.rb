@@ -21,11 +21,8 @@ class Chore < ActiveRecord::Base
   def schedule_attributes=(options)
     if options[:interval_unit] == 'week'
       # Weekly tasks need a day.
-      has_day = false
-      Date::DAYNAMES.map { |d| d.downcase.to_sym }.each do |day|
-        has_day = true if options[day] === '1'
-      end
-      options.merge!(assign_todays_date) unless has_day
+      days = Date::DAYNAMES.map { |d| d.downcase.to_sym }
+      options.merge!(assign_todays_date) if days.none? { |day| options[day] === '1'}
     end
 
     super(options)

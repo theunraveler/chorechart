@@ -24,7 +24,7 @@ class Ability
     ###################
 
     # Only admins can manage Memberships
-    can :manage, [Membership, Chore] do |object|
+    can :manage, [Membership, Chore, Invitation] do |object|
       Membership.find_by_user_id_and_group_id(user.id, object.group.id).is_admin?
     end
 
