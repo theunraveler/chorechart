@@ -21,5 +21,6 @@
         <text>Log%20in%20-%3E</text>
       </controlProperties>
     </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::HRule" x="21" y="349" w="1043" h="-1" measuredW="100" measuredH="5" zOrder="5" locked="false" isInGroup="-1"/>
   </controls>
 </mockup>

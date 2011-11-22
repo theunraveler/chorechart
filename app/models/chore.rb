@@ -23,11 +23,9 @@ class Chore < ActiveRecord::Base
       # Weekly tasks need a day.
       has_day = false
       Date::DAYNAMES.map { |d| d.downcase.to_sym }.each do |day|
-        if options[day] === '1'
-          has_day = true
-        end
+        has_day = true if options[day] === '1'
       end
-      options.merge(assign_todays_date) unless has_day
+      options.merge!(assign_todays_date) unless has_day
     end
 
     super(options)
@@ -44,8 +42,8 @@ class Chore < ActiveRecord::Base
   private
 
   def assign_todays_date
-    today = Time.current.strftime('%A').downcase
-    Hash[today.to_sym, 1]
+    today = Time.current.strftime('%A').downcase.to_sym
+    { today => '1' }
   end
   
 end
