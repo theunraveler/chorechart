@@ -2,22 +2,22 @@
 <div class="auth_providers">
   <% if !providers.include?('twitter') %>
     <a href="/auth/twitter" class="auth_provider">
-      <%= image_tag 'services/twitter_64.png', :size => '64x64', :alt => 'Twitter' %>
+      <span class="icon twitter inline">Twitter</span>
     </a>
   <% end %>
   <% if !providers.include?('facebook') %>
     <a href="/auth/facebook" class="auth_provider">
-      <%= image_tag 'services/facebook_64.png', :size => '64x64', :alt => 'Facebook' %>
+      <span class="icon facebook inline">Facebook</span>
     </a>
   <% end %>
   <% if !providers.include?('github') %>
     <a href="/auth/github" class="auth_provider">
-      <%= image_tag 'services/github_64.png', :size => '64x64', :alt => 'Github' %>
+      <span class="icon github inline">Github</span>
     </a>
   <% end %>
   <% if !providers.include?('google_oauth2') %>
     <a href="/auth/google_oauth2" class="auth_provider">
-      <%= image_tag 'services/google_oauth2_64.png', :size => '64x64', :alt => 'Google' %>
+      <span class="icon google_oauth2 inline">Google</span>      
     </a>
   <% end %>
   <div class="clearer"></div>

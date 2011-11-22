@@ -7,6 +7,21 @@
 .print { display: none; }
 .clearer { clear: both; }
 
+.icon {
+  background-image: url(/assets/images/icons.png);
+  width: 64px;
+  height: 64px;
+  display: block;
+  text-indent: -9999px;
+}
+.icon.inline { display: inline-block; }
+.icon.github { background-position: 0px -64px; }
+.icon.facebook { background-position: 0px 0px; }
+.icon.google_oauth2 { background-position: 0px -128px; }
+.icon.openid { background-position: 0px -192px; }
+.icon.twitter { background-position: 0px -256px; }
+.icon.print { background-position: 0px -320px; width: 16px; height: 16px; }
+
 html { overflow-y: auto; }
 body { padding-top: 80px; }
 th small { color: #BFBFBF; }
@@ -18,7 +33,7 @@ th small { color: #BFBFBF; }
 
 .page-header .pull-right { margin-top: 5px; }
 .crud-links .tabs { border: none; }
-.crud-links .tabs img { margin-top: 9px; }
+.crud-links .tabs span.icon { margin-top: 9px; }
 .crud-links .tabs > li > a {
   border: none;
   -webkit-border-radius: 4px;

@@ -5,16 +5,16 @@ describe Authentication do
     @authentication = FactoryGirl.build(:authentication)
   end
 
-  describe 'provider name' do
+  describe 'to string' do
     it 'should return "Google" for the provider "google_oauth2"' do
       @authentication.provider = 'google_oauth2'
-      @authentication.provider_name.should eq('Google')
+      @authentication.to_s.should eq('Google')
     end
 
     ['hello', 'twitter', 'test string', 'Test-string'].each do |term|
       it "should return a titlized string for all others (#{term})" do
         @authentication.provider = term
-        @authentication.provider_name.should eq(term.titleize)
+        @authentication.to_s.should eq(term.titleize)
       end
     end
   end
