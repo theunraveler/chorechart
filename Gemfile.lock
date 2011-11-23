@@ -160,7 +160,7 @@ GEM
     omniauth-github (1.0.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
-    omniauth-google-oauth2 (0.1.4)
+    omniauth-google-oauth2 (0.1.6)
       omniauth (~> 1.0)
       omniauth-oauth2
     omniauth-oauth (1.0.0)
