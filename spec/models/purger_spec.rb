@@ -36,10 +36,16 @@ describe Purger do
       membership.destroy
     end
 
-    it 'should delete all assignments for the group' do
+    it 'should delete all assignments for the group when an item is created' do
       chore = FactoryGirl.build(:chore)
       chore.should_receive(:delete_assignments)
       @obs.after_save(chore)
+    end
+
+    it 'should delete all assignments for the group when an item is created' do
+      chore = FactoryGirl.build(:chore)
+      chore.should_receive(:delete_assignments)
+      @obs.after_destroy(chore)
     end
   end
 

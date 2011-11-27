@@ -38,11 +38,11 @@ class User < ActiveRecord::Base
   end
 
   def assignments_for(start = Time.current.to_date, finish = Time.current.to_date)
-    assigns = []
-    groups.each do |group|
-      assigns += group.assignments_for(start, finish)
-    end
-    assigns.select { |a| a.user == self }
+    [].tap do |assigns|
+      groups.each do |group|
+        assigns += group.assignments_for(start, finish)
+      end
+    end.select { |a| a.user == self }
   end
 
   def apply_omniauth(omniauth, overwrite = false)
@@ -85,6 +85,8 @@ class User < ActiveRecord::Base
     login = conditions.delete(:login)
     where(conditions).find_by_login(login).first
   end
+
+  private
 
   def process_pending_invitations
     invites = Invitation.find_all_by_email(email)
