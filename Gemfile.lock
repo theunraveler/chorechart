@@ -134,7 +134,6 @@ GEM
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.6.2)
-    json_pure (1.6.2)
     kgio (2.6.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
@@ -233,10 +232,10 @@ GEM
       railties (~> 3.0)
       rspec (~> 2.7.0)
     rubyzip (0.9.5)
-    selenium-webdriver (2.13.0)
+    selenium-webdriver (2.14.0)
       childprocess (>= 0.2.1)
       ffi (~> 1.0.9)
-      json_pure
+      multi_json (~> 1.0.4)
       rubyzip
     sexp_processor (3.0.8)
     simplecov (0.5.4)
