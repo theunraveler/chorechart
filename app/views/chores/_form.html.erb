@@ -13,14 +13,11 @@
 <%= f.inputs 'Schedule' do %>
   <%= f.fields_for :schedule_attributes, @chore.schedule_attributes do |schedule| %>
     <%= schedule.hidden_field :repeat, :value => 1 %>
-    <div class="clearfix">
-      <label>Every</label>
-      <div class="input"><div class="inline-inputs">
-        <%= schedule.number_field :interval, :min => 1, :class => 'mini', :skip => true %>
-        <%= schedule.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week'], ['month(s)', 'month']], @chore.schedule_attributes.interval_unit), { :skip => true } %>
-      </div></div>
-    </div>
-    <%= f.toggles 'On', :id => 'day-selection' do %>
+    <%= schedule.inline 'Every' do |inline| %>
+      <%= inline.number_field :interval, :min => 1, :class => 'mini' %>
+      <%= inline.select :interval_unit, options_for_select([['day(s)', 'day'], ['week(s)', 'week'], ['month(s)', 'month']], @chore.schedule_attributes.interval_unit) %>
+    <% end %>
+    <%= f.toggles 'On' do %>
       <% Date::DAYNAMES.map { |d| d.downcase.to_sym }.each do |day| %>
         <%= schedule.check_box day, day.capitalize.to_s %>
       <% end %>

@@ -13,14 +13,6 @@ GIT
       activesupport
       ice_cube (>= 0.6.4)
 
-GIT
-  remote: git://github.com/theunraveler/twitter_bootstrap_form_for.git
-  revision: bb8749667c3e77853c8c711a8d2d09c2fe5470a5
-  specs:
-    twitter_bootstrap_form_for (1.0.3)
-      actionpack (~> 3)
-      railties (~> 3)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -258,6 +250,9 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    twitter_bootstrap_form_for (1.0.5)
+      actionpack (~> 3)
+      railties (~> 3)
     tzinfo (0.3.31)
     uglifier (1.1.0)
       execjs (>= 0.3.0)
@@ -294,6 +289,8 @@ DEPENDENCIES
   guard-rspec
   heroku
   jquery-rails
+  json
+  json_pure
   launchy
   mocha
   mysql2
@@ -312,6 +309,6 @@ DEPENDENCIES
   simplecov
   thin
   timecop
-  twitter_bootstrap_form_for!
+  twitter_bootstrap_form_for
   uglifier
   unicorn

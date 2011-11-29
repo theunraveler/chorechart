@@ -8,12 +8,15 @@ gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.
 gem 'cancan'
 gem 'foreigner'
 gem 'activerecord-import'
-gem 'twitter_bootstrap_form_for', :git => 'git://github.com/theunraveler/twitter_bootstrap_form_for.git'
+gem 'twitter_bootstrap_form_for'
 
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
+
+gem 'json_pure'
+gem 'json'
 
 group :development do
   gem 'bullet', :git => 'git://github.com/flyerhzm/bullet.git'
