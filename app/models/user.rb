@@ -38,11 +38,11 @@ class User < ActiveRecord::Base
   end
 
   def assignments_for(start = Time.current.to_date, finish = Time.current.to_date)
-    [].tap do |assigns|
-      groups.each do |group|
-        assigns += group.assignments_for(start, finish)
-      end
-    end.select { |a| a.user == self }
+    assigns = []
+    groups.each do |group|
+      assigns += group.assignments_for(start, finish)
+    end
+    assigns.select { |a| a.user == self }
   end
 
   def apply_omniauth(omniauth, overwrite = false)
