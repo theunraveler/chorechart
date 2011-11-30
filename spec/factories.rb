@@ -17,9 +17,17 @@ factory :chore do
   difficulty 1
 end
 
+factory :assignment do
+  association :user
+  association :chore
+  date { Time.current.to_date }
+  is_complete 0
+end
+
 factory :membership do
   association :user
   association :group
+  is_admin false
 end
 
 factory :invitation do
