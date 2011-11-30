@@ -8,6 +8,7 @@ factory :user do
 end
 
 factory :group do
+  id nil
   name { Faker::Lorem.words(2).join(' ') }
 end
 
