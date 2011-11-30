@@ -7,6 +7,7 @@
 .print { display: none; }
 .clearer { clear: both; }
 
+.brand img { position: relative; top: 1px; }
 .icon {
   background-image: url(<%= asset_path 'icons.png' %>);
   width: 64px;
@@ -22,14 +23,6 @@
 .icon.twitter { background-position: 0px -256px; }
 .icon.print { background-position: 0px -320px; width: 16px; height: 16px; }
 .icon.print:hover { background-position: 0px -336px; }
-.icon.home { 
-  background-position: 0px -352px;
-  width: 20px;
-  height: 16px; 
-  margin: 12px 10px 11px;
-  padding: 0;
-}
-.icon.home:hover, .active .icon.home { background-position: 0px -336px; }
 .icon.info { background-position: 0px -352px; width: 16px; height: 16px; }
 .icon.info:hover { background-position: 0px -368px; }
 

@@ -17,7 +17,10 @@
   <header class="topbar" data-dropdown="dropdown">
     <div class="fill">
       <div class="container">
-        <a class="brand" href="/">Chorechart</a>
+        <a class="brand" href="/">
+          <%= image_tag 'home.png' %>
+          Chorechart
+        </a>
         <% if user_signed_in? %>
           <nav id="main-navigation">
             <%= render 'shared/main_nav' %>
