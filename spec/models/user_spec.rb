@@ -6,7 +6,20 @@ describe User do
     @user = FactoryGirl.build(:user, :name => 'Benjamin Franklin')
   end
 
-  describe "first name" do
+  describe 'update with password' do
+    it 'should call update_without_password on itself' do
+      @user.should_receive(:update_without_password)
+      @user.update_with_password
+    end
+
+    it 'should remove the current_password parameter' do
+      params = { :current_password => 'Hello', :test_param => 'Test Param' }
+      @user.should_receive(:update_without_password).with(hash_not_including(:current_password => 'Hello'))
+      @user.update_with_password(params)
+    end
+  end
+
+  describe 'first name' do
     it "should display the user's first name if one exists" do
       @user.first_name.should eq('Benjamin')
     end
@@ -15,6 +28,10 @@ describe User do
       @user.name = ''
       @user.first_name.should be_nil
     end
+  end
+
+  describe 'assignments for' do
+    it 'should call assignments_for for each group'
   end
 
   describe 'apply omniauth' do
@@ -67,6 +84,13 @@ describe User do
       @user.save
       db_user = User.find_for_database_authentication(:login => @user.email)
       db_user.should eq(@user)
+    end
+  end
+
+  describe 'hashed email' do
+    it 'should return an md5 of the the user\'s email' do
+      @user.email = Faker::Internet.email
+      @user.hashed_email.should eq(Digest::MD5.hexdigest(@user.email))
     end
   end
 

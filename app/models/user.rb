@@ -86,6 +86,8 @@ class User < ActiveRecord::Base
     where(conditions).find_by_login(login).first
   end
 
+  private
+
   def process_pending_invitations
     invites = Invitation.find_all_by_email(email)
     invites.each do |invite|

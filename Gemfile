@@ -45,6 +45,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'rails_best_practices'
   gem 'thin'
+  gem 'heroku'
 end
 
 group :production do

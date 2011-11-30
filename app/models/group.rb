@@ -28,7 +28,7 @@ class Group < ActiveRecord::Base
     end
     Assignment.import assignments
   end
-  
+
   # Get a list of chores for the day
   def assignments_for(start = Time.current.to_date, finish = Time.current.to_date)
     assigns = [].concat find_assignments_by_date(start, finish)

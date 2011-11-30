@@ -1,5 +1,7 @@
 <div class="page-header">
-  <h1>Your Account</h1>
+  <h1 class="pull-left">Your Account</h1>
+  <span class="icon info tooltip pull-right" title="Linking other accounts to your Chorechart account allows you to sign in to Chorechart without entering your username or password.">?</span>
+  <div class="clearer"></div>
 </div>
 
 <ul class="tabs">
@@ -7,9 +9,9 @@
   <li class="active last"><%= link_to 'Linked Accounts', authentications_path %></li>
 </ul>
 
-<% if !@authentications.empty? %>
+<% if @authentications.any? %>
   <% unless @authentications.empty? %>
-    <h3>You can sign in to Chorechart using:</h3>
+    <h3>You can sign in to Chorechart using</h3>
     <div id="my-authentications" class="row">
       <% @authentications.each do |authentication| %>
         <div class="span4"><div class="breadcrumb">
@@ -24,11 +26,11 @@
       <% end %>
     </div>
   <% end %>
-  <h3>Link your accounts:</h3>
-<% else %>
-  <h3>Sign in through one of these services:</h3>
 <% end %>
 
-<div class="well">
-  <%= render 'providers', :providers => @providers %>
-</div>
+<% unless @authentications.count == 4 %>
+  <h3>Link your accounts</h3>
+  <div class="well">
+    <%= render 'providers', :providers => @providers %>
+  </div>
+<% end %>

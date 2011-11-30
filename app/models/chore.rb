@@ -42,5 +42,5 @@ class Chore < ActiveRecord::Base
     today = Time.current.strftime('%A').downcase.to_sym
     { today => '1' }
   end
-  
+
 end
