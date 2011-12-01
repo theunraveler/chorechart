@@ -7,7 +7,6 @@
 .print { display: none; }
 .clearer { clear: both; }
 
-.brand img { position: relative; top: 1px; }
 .icon {
   background-image: url(<%= asset_path 'icons.png' %>);
   width: 64px;
@@ -25,6 +24,15 @@
 .icon.print:hover { background-position: 0px -336px; }
 .icon.info { background-position: 0px -352px; width: 16px; height: 16px; }
 .icon.info:hover { background-position: 0px -368px; }
+
+.brand:before {
+  content: "";
+  background: url(<%= asset_path 'icons.png' %>) 0px -384px;
+  width: 17px;
+  height: 16px;
+  float: left;
+  margin: 3px 5px 0 0;
+}
 
 html { overflow-y: auto; }
 body { padding-top: 80px; }
