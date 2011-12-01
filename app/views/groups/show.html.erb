@@ -37,7 +37,7 @@
   <thead>
   <tbody>
     <% @assignments.each do |date, assigns| %>
-      <tr>
+      <tr <%= 'class=today' if date == Time.current.to_date %>>
         <th scope="row"><%= format_date(date.to_time, :style => :medium) %></th>
         <% @group.users.all.each do |user| %>
           <td><ul>
