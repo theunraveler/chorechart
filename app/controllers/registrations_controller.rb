@@ -16,7 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
     super
     if session[:omniauth]
       resource.apply_omniauth(session[:omniauth], session[:rebuild_user] || false)
-      resource.generate_password
+      resource.fill_password
       session[:rebuild_user] = false
     end
   end

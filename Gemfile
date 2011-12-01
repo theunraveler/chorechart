@@ -31,7 +31,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'timecop'
-  gem 'faker'
+  gem 'ffaker'
   gem 'mocha'
   gem 'database_cleaner'
   gem 'no_peeping_toms'

@@ -35,10 +35,12 @@ module ApplicationHelper
     MessageTypes[type]
   end
 
-  def active_list_link(text, link)
-    options = current_page?(link) ? { :class => 'active' } : {}
+  def active_list_link(text, link, *args)
+    options = { :class => '' }.merge(args.extract_options!)
+    options[:class] << ' active' if current_page?(link)
+    link_options = options.has_key?(:link_options) ? options.delete(:link_options) : {}
     content_tag :li, options do
-      link_to(text.to_s, link)
+      link_to(text.to_s, link, link_options)
     end
   end
 
