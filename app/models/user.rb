@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   end
   has_many :groups, :through => :memberships, :include => [:users]
   has_many :chores, :through => :assignments
+  has_many :groupmates, :through => :groups, :source => :users, :uniq => true
 
   attr_accessor :login
 
