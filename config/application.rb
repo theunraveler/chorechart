@@ -20,7 +20,7 @@ module Chorechart
     config.assets.enabled = true
 
     # Version of your assets, change this to expire all assets
-    config.assets.version = '1.1.11'
+    config.assets.version = '1.1.12'
 
     # Prevent whole Rails stack from loading on asset precompile (Devise, I'm
     # looking at you)
@@ -35,7 +35,7 @@ module Chorechart
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
+    config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
@@ -46,9 +46,6 @@ module Chorechart
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
-
-    # Time zone
-    config.time_zone = "Central Time (US & Canada)"
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
