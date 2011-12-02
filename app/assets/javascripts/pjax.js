@@ -2,7 +2,7 @@
 //= require jquery.pjax
 
 $(document).ready(function() {
-	$('.pagination a').pjax('#main', {
+	$('#main a').pjax('#main', {
 		fragment: '#main'
 	})
 	
