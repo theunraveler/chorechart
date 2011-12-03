@@ -1,0 +1,77 @@
+/*
+*= require twitter/bootstrap
+*= require jquery_ui/aristo
+*= require_self
+*/
+
+.print { display: none; }
+.clearer { clear: both; }
+
+.icon {
+  background-image: url(<%= asset_path 'icons.png' %>);
+  width: 64px;
+  height: 64px;
+  display: block;
+  text-indent: -9999px;
+}
+.icon.inline { display: inline-block; }
+.icon.github { background-position: 0px -64px; }
+.icon.facebook { background-position: 0px 0px; }
+.icon.google_oauth2 { background-position: 0px -128px; }
+.icon.openid { background-position: 0px -192px; }
+.icon.twitter { background-position: 0px -256px; }
+.icon.print { background-position: 0px -320px; width: 16px; height: 16px; }
+.icon.print:hover { background-position: 0px -336px; }
+.icon.info { background-position: 0px -352px; width: 16px; height: 16px; }
+.icon.info:hover { background-position: 0px -368px; }
+
+.brand:before {
+  content: "";
+  background: url(<%= asset_path 'icons.png' %>) 0px -384px;
+  width: 17px;
+  height: 16px;
+  float: left;
+  margin: 3px 5px 0 0;
+}
+
+html { overflow-y: auto; }
+body { padding-top: 80px; }
+th small { color: #BFBFBF; }
+
+.topbar { position: absolute; z-index: 0; }
+.secondary-nav .user-thumb { padding-right: 7px; }
+.secondary-nav.no-user-menu { margin: 8px 8px 0 0; color: #909090; }
+.secondary-nav.no-user-menu a { display: inline; }
+
+.page-header .pull-right { margin-top: 5px; }
+.page-header .pull-right.icon { margin-top: 14px; }
+.crud-links .tabs { border: none; }
+.crud-links .tabs span.icon { margin-top: 9px; }
+.crud-links .tabs > li > a {
+  border: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.crud-links .tabs > li.open > a {
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+}
+.crud-links .tabs > li.open > a:hover { color: #808080; }
+
+.pagination.pull-left { margin-top: 0; }
+#chore-breakdown .user-thumb { padding-right: 10px; padding-top: 2px; }
+tbody tr.today,
+tbody tr.today:hover td,
+tbody tr.today:hover th {
+  background-color: #FEE9CC;
+}
+
+#group-memberships .invitation td { font-style: italic; color: #808080; }
+#my-chores .label a { color: #FFFFFF; }
+
+.row.ruled { padding: 10px 0; border-bottom: 1px solid #DDD; }
+.row.ruled:last-child { border-bottom: none; }
+
+img.bordered { border: 1px solid #DDD }

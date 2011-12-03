@@ -1,20 +1,22 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.2'
+gem 'rails', '3.1.3'
 
-gem 'thin'
 gem 'jquery-rails'
 gem 'devise'
 gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.git'
 gem 'cancan'
 gem 'foreigner'
 gem 'activerecord-import'
-gem 'twitter_bootstrap_form_for', :git => 'git://github.com/theunraveler/twitter_bootstrap_form_for.git'
+gem 'twitter_bootstrap_form_for'
 
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
+
+gem 'json_pure'
+gem 'json'
 
 group :development do
   gem 'bullet', :git => 'git://github.com/flyerhzm/bullet.git'
@@ -29,7 +31,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'timecop'
-  gem 'faker'
+  gem 'ffaker'
   gem 'mocha'
   gem 'database_cleaner'
   gem 'no_peeping_toms'
@@ -45,9 +47,12 @@ group :development, :test do
   gem 'guard-cucumber'
   gem 'guard-rspec'
   gem 'rails_best_practices'
+  gem 'thin'
+  gem 'heroku'
 end
 
 group :production do
+  gem 'unicorn'
   gem 'pg'
   gem 'rack-google-analytics', :require => 'rack/google-analytics'
 end

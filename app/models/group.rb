@@ -11,15 +11,32 @@ class Group < ActiveRecord::Base
 
   validates_presence_of :name
 
+  # TODO: Needs some refactoring.
+  def create_schedule_for(start, finish)
+    points, assignments = {}, []
+    users.each { |u| points[u.id] = 0 }
+
+    chore_occurrences_between(start, finish).shuffle.each do |occurrence|
+      if points.values.all? { |p| p == 0 }
+        lowest_user = users.sample
+      else
+        lowest_points = points.key(points.values.min)
+        lowest_user = users.select { |u| u.id = lowest_points }.first
+      end
+      points[lowest_user.id] += occurrence[:chore].difficulty
+      assignments << Assignment.new(:chore => occurrence[:chore], :user => lowest_user, :date => occurrence[:date])
+    end
+    Assignment.import assignments
+  end
+
   # Get a list of chores for the day
   def assignments_for(start = Time.current.to_date, finish = Time.current.to_date)
-    [].tap do |assigns|
-      assigns.concat find_assignments_by_date(start, finish)
-      if assigns.empty? && chore_occurrences_between(start, finish).any?
-        Assigner.create_schedule_for(self, start.beginning_of_week, finish.end_of_week)
-        assigns.concat find_assignments_by_date(start, finish, true)
-      end
+    assigns = [].concat find_assignments_by_date(start, finish)
+    if assigns.empty? && chore_occurrences_between(start, finish).any?
+      create_schedule_for(start.beginning_of_week, finish.end_of_week)
+      assigns.concat find_assignments_by_date(start, finish, true)
     end
+    assigns
   end
 
   # Same as above, but grouped by date
@@ -49,6 +66,10 @@ class Group < ActiveRecord::Base
         occurrences.concat items.collect { |i| { :date => i.to_date, :chore => chore } }
       end
     end
+  end
+
+  def delete_assignments
+    chores.each { |chore| chore.assignments.clear }
   end
 
   def to_s

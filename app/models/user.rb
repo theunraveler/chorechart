@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   end
   has_many :groups, :through => :memberships, :include => [:users]
   has_many :chores, :through => :assignments
+  has_many :groupmates, :through => :groups, :source => :users, :uniq => true
 
   attr_accessor :login
 
@@ -61,7 +62,7 @@ class User < ActiveRecord::Base
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
   end
 
-  def generate_password
+  def fill_password
     generated_password = Devise.friendly_token.first(6)
     self.password, self.password_confirmation = generated_password, generated_password
   end
@@ -85,6 +86,8 @@ class User < ActiveRecord::Base
     login = conditions.delete(:login)
     where(conditions).find_by_login(login).first
   end
+
+  private
 
   def process_pending_invitations
     invites = Invitation.find_all_by_email(email)

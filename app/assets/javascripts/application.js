@@ -12,7 +12,7 @@
 $(document).ready(function() {
 	// Open external links in a new window.
 	$('a.external').attr('target','_blank');
-	$('a.tooltip').twipsy({ live: true });
+	$('.tooltip').twipsy({ live: true });
 
 	// Other behaviors.
 	choreFormConditional();

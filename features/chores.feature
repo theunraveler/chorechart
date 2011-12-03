@@ -90,11 +90,11 @@ Feature: Chores
     Then I should be on the chores page for the group "Company Office"
     And I should not see "Laundry" within the content area table
 
-  @focus @wip
+  @focus
   Scenario: Sidebar chore listing time zone stuff
     Given I have the following chores in "Company Office":
-      | name      | interval  | interval_unit |
-      | Laundry   | 2         | day           |
+      | name      | schedule      |
+      | Laundry   | every 2 days  |
     And my time zone is set to "Central Time (US & Canada)"
     And I am on the dashboard
     When I go to the group page for "Company Office"

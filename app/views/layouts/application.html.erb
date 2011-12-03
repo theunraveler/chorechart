@@ -1,66 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <% if content_for? :page_title %>
-    <title><%= yield :page_title %> | Chorechart</title>
-  <% else %>
-    <title>Chorechart</title>
-  <% end %>
-  <%= stylesheet_link_tag 'application' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tag %>
-  <% if content_for? :page_head %>
-    <%= yield :page_head %>
-  <% end %>
-</head>
-<body>
-  <header class="topbar" data-dropdown="dropdown">
-    <div class="fill">
-      <div class="container">
-        <a class="brand" href="/">Chorechart</a>
-        <% if user_signed_in? %>
-          <nav id="main-navigation">
-            <%= render 'shared/app_nav' %>
-          </nav>
-          <nav id="user-navigation">
-            <%= render 'shared/user_nav' %>
-          </nav>
-        <% else %>
-          <nav id="user-navigation">
-            <%= render 'shared/anon_nav' %>
-          </nav>
-        <% end %>
-      </div>
+<%= render 'shared/header' %>
+<%= render 'shared/topbar' %>
+
+<div id="wrapper" class="container">
+  <div class="row">
+    <div id="main" class="span12">
+      <% unless flash.empty? %>
+        <div id="flash">
+          <%= render 'shared/flash', :flash => flash %>
+        </div>
+      <% end %>
+      <%= yield %>
     </div>
-  </header>
-  <div id="wrapper" class="container">
-    <div class="row">
-      <div id="main" class="span12">
-        <% if !flash.empty? %>
-          <div id="flash">
-            <%= render 'shared/flash', :flash => flash %>
-          </div>
-        <% end %>
-        <%= yield %>
-      </div>
-      <div id="sidebar" class="span4">
-        <%= yield :sidebar %>
-        <% if user_signed_in? %>
-          <div class="well">
-            <%= render 'shared/user_chores', :chores => @user_chores %>
-          </div>
-        <% end %>
-      </div>
+    <div id="sidebar" class="span4">
+      <%= yield :sidebar %>
+      <% if user_signed_in? %>
+        <div class="well">
+          <%= render 'shared/user_chores', :chores => @user_chores %>
+        </div>
+      <% end %>
     </div>
-    <footer>
-      <div class="container">
-        <p class="pull-right"><a href="#">&uarr; Back to top</a></p>
-        <p>
-          Copyright &copy; <%= Time.now.year %> <a class="external" href="http://theunraveler.com">theunraveler</a> |
-          <a href="mailto:jake@theunraveler.com">Feedback</a>
-        </p>
-      </div>
-    </footer>
   </div>
-</body>
-</html>
+  <%= render 'shared/footer' %>
+</div>
+
+<%= render 'shared/closure' %>

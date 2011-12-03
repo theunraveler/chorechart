@@ -5,10 +5,8 @@ require 'rails/all'
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
 if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
+  # Precompile assets before deploying to production
   Bundler.require *Rails.groups(:assets => %w(development test))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
 end
 
 module Chorechart
@@ -22,7 +20,7 @@ module Chorechart
     config.assets.enabled = true
 
     # Version of your assets, change this to expire all assets
-    config.assets.version = '1.1.8'
+    config.assets.version = '1.1.12'
 
     # Prevent whole Rails stack from loading on asset precompile (Devise, I'm
     # looking at you)
@@ -32,16 +30,12 @@ module Chorechart
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += Dir[Rails.root.join('lib')]
 
-    # Only load the plugins named here, in the order given (default is alphabetical).
-    # :all can be used as a placeholder for all plugins not explicitly named.
-    # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
-
     # Activate observers that should always be running.
-    config.active_record.observers = :assigner
+    config.active_record.observers = :purger
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
+    config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
@@ -52,9 +46,6 @@ module Chorechart
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
-
-    # Time zone
-    config.time_zone = "Central Time (US & Canada)"
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]

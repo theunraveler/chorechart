@@ -1,34 +1,36 @@
 <div class="page-header">
-  <h1>Your Account</h1>
+  <h1 class="pull-left">Your Account</h1>
+  <span class="icon info tooltip pull-right" title="Linking other accounts to your Chorechart account allows you to sign in to Chorechart without entering your username or password.">?</span>
+  <div class="clearer"></div>
 </div>
 
 <ul class="tabs">
   <li class="first"><%= link_to 'Account Info', edit_user_registration_path %></li>
-  <li class="active last"><%= link_to 'Third-Party Services', authentications_path %></li>
+  <li class="active last"><%= link_to 'Linked Accounts', authentications_path %></li>
 </ul>
 
-<% if !@authentications.empty? %>
+<% if @authentications.any? %>
   <% unless @authentications.empty? %>
-    <h3>You can sign in to this account using:</h3>
+    <h3>You can sign in to Chorechart using</h3>
     <div id="my-authentications" class="row">
       <% @authentications.each do |authentication| %>
         <div class="span4"><div class="breadcrumb">
-          <%= link_to "x", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "close" %>
+          <%= link_to "x", authentication, :confirm => 'Are you sure you want to remove this linked account?', :method => :delete, :class => "close" %>
           <div class="pull-left">
-            <%= image_tag "services/#{authentication.provider.downcase}_64.png", :size => '64x64', :alt => authentication.provider %>
+            <span class="icon <%= authentication.provider %>"></span>
           </div>
-          <div class="provider"><%= authentication.provider_name %></div>
+          <div class="provider"><%= authentication %></div>
           <span class="help-block"><%= authentication.uid %></span>
           <div class="clearer"></div>
         </div></div>
       <% end %>
     </div>
   <% end %>
-  <h3>Add another service to sign in with:</h3>
-<% else %>
-  <h3>Sign in through one of these services:</h3>
 <% end %>
 
-<div class="well">
-  <%= render 'providers', :providers => @providers %>
-</div>
+<% unless @authentications.count == 4 %>
+  <h3>Link your accounts</h3>
+  <div class="well">
+    <%= render 'providers', :providers => @providers %>
+  </div>
+<% end %>

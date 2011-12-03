@@ -30,7 +30,7 @@ Chorechart::Application.configure do
 
   # Bullet
   config.after_initialize do
-    Bullet.enable = true
+    Bullet.enable = false
     Bullet.rails_logger = true
     Bullet.disable_browser_cache = true
   end

@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1
   def show
-    @week = params[:week] ? Date.parse(params[:week]).beginning_of_week : Date.today.beginning_of_week
+    @week = params[:week] ? Date.parse(params[:week]).beginning_of_week : Time.current.to_date.beginning_of_week
     @assignments = @group.assignments_for_grouped(@week, @week.end_of_week)
     respond_with @group
   end

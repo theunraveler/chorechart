@@ -9,7 +9,7 @@ Chorechart::Application.configure do
 
   # Don't fallback to assets pipeline
   config.assets.compile = false
-  config.assets.precompile += %w( print.css )
+  config.assets.precompile += ['print.css']
 
   # Generate digests for assets URLs
   config.assets.digest = true

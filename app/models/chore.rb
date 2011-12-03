@@ -2,10 +2,12 @@ class Chore < ActiveRecord::Base
   include ScheduleAttributes
 
   belongs_to :group
-  has_many :assignments, :dependent => :destroy
+  has_many :assignments, :dependent => :delete_all
 
   validates :name, :presence => true, :uniqueness => {:scope => :group_id}
   validates_inclusion_of :difficulty, :in => 1..5
+
+  delegate :delete_assignments, :to => :group
 
   DIFFICULTY_IN_WORDS = {
     1 => 'Easy',
@@ -19,16 +21,8 @@ class Chore < ActiveRecord::Base
   def schedule_attributes=(options)
     if options[:interval_unit] == 'week'
       # Weekly tasks need a day.
-      has_day = false
-      Date::DAYNAMES.map { |d| d.downcase.to_sym }.each do |day|
-        if options[day] === '1'
-          has_day = true
-        end
-      end
-      if !has_day
-        today = Time.current.strftime('%A').downcase.to_sym
-        options[today] = '1'
-      end
+      days = Date::DAYNAMES.map { |d| d.downcase.to_sym }
+      options.merge!(assign_todays_date) if days.none? { |day| options[day] === '1'}
     end
 
     super(options)
@@ -41,4 +35,12 @@ class Chore < ActiveRecord::Base
   def to_s
     name
   end
+
+  private
+
+  def assign_todays_date
+    today = Time.current.strftime('%A').downcase.to_sym
+    { today => '1' }
+  end
+
 end
