@@ -6,7 +6,7 @@ module ApplicationHelper
     url = "http://www.gravatar.com/avatar/#{user.hashed_email}"
     url << "?s=#{size}"
     url << "&default=#{CGI::escape('http://placekitten.com/' + size.to_s + '/' + size.to_s)}"
-    image_tag(url, :alt => user.name || user.username)
+    image_tag(url, :alt => user)
   end
 
   def format_date(date, options = {})
