@@ -1,8 +1,20 @@
-<div class="hero-unit">
-  <h1>Get your shit in order</h1>
-  <p>Chorechart is not a silly little chore chart to keep kids on top of their chores (though it could be used for that, I guess). Rather, Chorechart is a sophisticated chore manager for groups of adults to manage collective responsibilities.</p>
-  <p><%= link_to "Register Now!", new_user_registration_path, :class => 'btn primary large' %></p>
-</div>
+<% content_for :full_length do %>
+  <div class="hero-unit">
+    <div class="container">
+      <div class="row">
+        <div class="span8">
+          <p class="speech-bubble left span5">You said you'd take out the trash!</p>
+          <p class="speech-bubble right span5">But I took out the trash last time! It's your turn!</p>
+        </div>
+        <div class="span8">
+          <h1>Sound familiar?</h1>
+          <p>Chorechart is not a silly little chore chart to keep kids on top of their chores (though it could be used for that, I guess). Rather, Chorechart is a sophisticated chore manager for groups of adults to manage collective responsibilities.</p>
+          <p><%= link_to "Register Now!", new_user_registration_path, :class => 'btn primary large' %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <div class="row">
   <div class="span-one-third">
