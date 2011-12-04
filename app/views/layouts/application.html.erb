@@ -14,9 +14,7 @@
     <div id="sidebar" class="span4">
       <%= yield :sidebar %>
       <% if user_signed_in? %>
-        <div class="well">
-          <%= render 'shared/user_chores', :chores => @user_chores %>
-        </div>
+        <%= render 'shared/user_chores', :chores => @user_chores %>
       <% end %>
     </div>
   </div>
