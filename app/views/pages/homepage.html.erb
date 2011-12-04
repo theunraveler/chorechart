@@ -1,3 +1,5 @@
+<% content_for :body_classes, 'front' %>
+
 <% content_for :full_length do %>
   <div class="hero-unit">
     <div class="container">
@@ -9,7 +11,6 @@
         <div class="span8">
           <h1>Sound familiar?</h1>
           <p>Chorechart is not a silly little chore chart to keep kids on top of their chores (though it could be used for that, I guess). Rather, Chorechart is a sophisticated chore manager for groups of adults to manage collective responsibilities.</p>
-          <p><%= link_to "Register Now!", new_user_registration_path, :class => 'btn primary large' %></p>
         </div>
       </div>
     </div>
@@ -32,7 +33,9 @@
   </div>
 
   <div class="span-one-third">
-    <h3>Something Else</h3>
+    <h3>Enough with the marketing</h3>
+    <p>Yeah, I know; I hate it too. Let's move on to the signing up part.</p>
+    <p><%= link_to "Register Now!", new_user_registration_path, :class => 'btn primary large' %></p>
 
   </div>
 </div>

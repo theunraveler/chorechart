@@ -36,6 +36,7 @@
 
 html { overflow-y: auto; }
 body { padding-top: 80px; }
+body.front { padding-top: 40px; }
 th small { color: #BFBFBF; }
 
 .topbar { position: absolute; z-index: 0; }
@@ -79,51 +80,35 @@ img.bordered { border: 1px solid #DDD }
 /*************************
 * SPEECH BUBBLES
 *************************/
-.speech-bubble:before,
+.speech-bubble {
+  background-image: -moz-linear-gradient(center top , #049CDB, #0064CD);
+  background-repeat: repeat-x;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 10px 10px 10px 10px;
+  margin: 0 0 1em;
+  padding: 15px;
+  position: relative;
+}
 .speech-bubble:after {
-  background: none repeat scroll 0 0 transparent;
-  border-color: #000;
+  border-color: #0064CD transparent;
   border-style: solid;
-  bottom: -40px;
+  border-width: 20px 0 0 20px;
+  bottom: -20px;
   content: "";
   display: block;
-  height: 30px;
   position: absolute;
-  width: 20px;
-  z-index: 1000;
+  width: 0;
 }
-.speech-bubble:before {
-  width: 50px;
-}
-.speech-bubble.left:before {
-  border-width: 0 5px 5px 0;
-  border-bottom-right-radius: 80px 50px;
-  left: 50px;  
-}
-.speech-bubble.left:after {
-  border-width: 0 5px 5px 0;
-  border-bottom-right-radius: 40px 50px;
-  left: 50px;  
-}
-.speech-bubble.right:before {
-  border-width: 0 0 5px 5px;
-  border-bottom-left-radius: 80px 50px;
-  right: 50px;
-}
-.speech-bubble.right:after {
-  border-width: 0 0 5px 5px;
-  border-bottom-left-radius: 40px 50px;
-  right: 50px;
-}
-.speech-bubble {
-  background: none repeat scroll 0 0 #FFFFFF;
-  border: 5px solid #000;
-  border-radius: 20px 20px 20px 20px;
-  color: #333333;
-  margin: 1em 0 3em;
-  padding: 50px 15px;
-  position: relative;
-  text-align: center;
-}
+.hero-unit .speech-bubble:first-child { margin-top: 10px; }
 .speech-bubble.left { float: left; }
+.speech-bubble.left:after {
+  border-width: 20px 20px 0 0;
+  left: 50px;
+}
 .speech-bubble.right { float: right; }
+.speech-bubble.right:after {
+  border-width: 20px 0 0 20px;
+  right: 50px;
+}
