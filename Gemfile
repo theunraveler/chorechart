@@ -19,7 +19,7 @@ gem 'json_pure'
 gem 'json'
 
 group :development do
-  gem 'bullet', :git => 'git://github.com/flyerhzm/bullet.git'
+  gem 'query_reviewer'
 end
 
 group :test do

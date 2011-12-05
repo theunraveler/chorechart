@@ -76,4 +76,8 @@ class Group < ActiveRecord::Base
     name
   end
 
+  # Memoization
+  extend ActiveSupport::Memoizable
+  memoize :assignments_for, :assignments_for_grouped, :chore_occurrences_between, :workload
+
 end

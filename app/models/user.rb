@@ -79,6 +79,10 @@ class User < ActiveRecord::Base
     first_name || username
   end
 
+  # Memoization
+  extend ActiveSupport::Memoizable
+  memoize :assignments_for
+
   protected
 
   def self.find_for_database_authentication(warden_conditions)
