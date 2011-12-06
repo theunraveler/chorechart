@@ -8,6 +8,7 @@ gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.
 gem 'cancan'
 gem 'foreigner'
 gem 'activerecord-import'
+gem 'css-bootstrap-rails', '0.0.6'
 gem 'twitter_bootstrap_form_for'
 
 gem 'omniauth-twitter'
