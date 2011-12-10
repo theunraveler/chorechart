@@ -4,6 +4,7 @@ gem 'rails', '3.1.3'
 
 gem 'jquery-rails'
 gem 'devise'
+gem 'ice_cube', '0.6.14'
 gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.git'
 gem 'cancan'
 gem 'foreigner'
@@ -18,6 +19,8 @@ gem 'omniauth-github'
 
 gem 'json_pure'
 gem 'json'
+
+gem 'rack-pjax'
 
 group :development do
   gem 'query_reviewer'
