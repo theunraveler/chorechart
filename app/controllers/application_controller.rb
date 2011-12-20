@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :get_current_user_chores, :authenticate_user!
   around_filter :set_time_zone
+  layout lambda { |c| c.user_signed_in? ? 'application' : 'no_sidebar' }
 
   rescue_from CanCan::AccessDenied do |exception|
     render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
