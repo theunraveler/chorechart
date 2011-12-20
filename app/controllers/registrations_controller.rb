@@ -1,9 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-  layout :choose_layout
-
-  def choose_layout
-    action_name == 'new' ? 'no_sidebar' : 'application'
-  end
 
   def new
     @omniauth = session.has_key? :omniauth
