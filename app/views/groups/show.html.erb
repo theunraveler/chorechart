@@ -30,7 +30,7 @@
         <th scope="col">
           <div class="user-thumb pull-left"><%= avatar_image(user, 32) %></div>
           <div class="user-name"><%= user %></div>
-          <div class="user-points"><small>Workload: <%= @group.workload(user, @week) %></small></div>
+          <div class="user-points"><small>Workload: <%= @group.workload(user, @week).to_i %></small></div>
         </th>
       <% end %>
     </tr>

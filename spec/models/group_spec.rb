@@ -7,6 +7,8 @@ describe Group do
   end
   
   describe "workload" do
+    it 'should filter by the specified week'
+    it 'should return an integer'
   end
 
   describe 'to string' do
@@ -33,7 +35,28 @@ describe Group do
       @group.should_receive(:assignments_for)
       @group.assignments_for_grouped
     end
-    
   end
 
+  describe '#chore_occurrences_between' do
+    before do
+      Chore.stub_chain(:schedule, :occurrences_between).and_return([
+        Time.parse('25/01/2010'), 
+        Time.parse('26/01/2010'),
+        Time.parse('29/01/2010')
+      ])
+      5.times { @group.chores.build }
+    end
+
+    it 'should return an array of occurrences' do
+      occurrences = @group.chore_occurrences_between(Time.parse('24/01/2010').to_date, Time.parse('30/01/2010').to_date)
+      occurrences.should be_an(Array)
+      # occurrences.count.should eq(3)
+    end
+
+    it 'should not return occurrences outside of the specified range'
+  end
+
+  describe '#delete_assignments' do
+    it 'should call #assignments.clear for each chore'
+  end
 end
