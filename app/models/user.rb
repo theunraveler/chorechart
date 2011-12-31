@@ -94,8 +94,7 @@ class User < ActiveRecord::Base
   private
 
   def process_pending_invitations
-    invites = Invitation.find_all_by_email(email)
-    invites.each do |invite|
+    Invitation.find_all_by_email(email).each do |invite|
       memberships.create({:group_id => invite.group_id})
       invite.destroy
     end
