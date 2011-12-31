@@ -31,7 +31,7 @@ var choreFormConditional = function() {
 	}
 
 	// Hide or show on change.
-	selectField.change(function() {
+	selectField.live('change', function() {
 		if ($(this).val() == 'week') {
 			dayContainer.show();
 		} else {

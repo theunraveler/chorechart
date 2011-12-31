@@ -11,11 +11,11 @@
 </div>
 
 <%= f.inputs 'Schedule' do %>
-  <%= f.fields_for :schedule_attributes, @chore.schedule_attributes do |schedule| %>
+  <%= f.fields_for :schedule_attributes, f.object.schedule_attributes do |schedule| %>
     <%= schedule.hidden_field :repeat, :value => 1 %>
     <%= schedule.inline 'Every' do |inline| %>
       <%= inline.number_field :interval, :min => 1, :class => 'mini' %>
-      <%= inline.select :interval_unit, interval_select(@chore.schedule_attributes.interval_unit) %>
+      <%= inline.select :interval_unit, interval_select(f.object.schedule_attributes.interval_unit) %>
     <% end %>
     <%= f.toggles 'On', :id => 'day-selection' do %>
       <% Date::DAYNAMES.each do |day| %>
@@ -26,9 +26,9 @@
   <% end %>
 <% end %>
 
-<%= f.hidden_field :group_id, :value => @chore.group.id %>
+<%= f.hidden_field :group_id, :value => f.object.group.id %>
 
 <%= f.actions do %>
   <%= f.submit f.object.new_record? ? 'Create chore' : 'Save' %>
-  <%= link_to "Cancel", group_chores_path(@chore.group), :class => "btn" %>
+  <%= link_to "Cancel", group_chores_path(f.object.group), :class => "btn" %>
 <% end %>
