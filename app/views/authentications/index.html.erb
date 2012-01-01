@@ -13,9 +13,7 @@
   <% unless @authentications.empty? %>
     <h3>You can sign in to Chorechart using</h3>
     <div id="my-authentications" class="row">
-      <% @authentications.each do |authentication| %>
-        <%= render authentication %>
-      <% end %>
+      <%= render @authentications %>
     </div>
   <% end %>
 <% end %>
