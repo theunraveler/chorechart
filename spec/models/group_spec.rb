@@ -6,18 +6,18 @@ describe Group do
     @group = FactoryGirl.build(:group)
   end
   
-  describe "workload" do
+  describe "#workload" do
     it 'should filter by the specified week'
     it 'should return an integer'
   end
 
-  describe 'to string' do
+  describe '#to_s' do
     it 'should be the group name' do
       @group.to_s.should eq(@group.name)
     end
   end
 
-  describe 'find assignments by date' do
+  describe '#find_assignments_by_date' do
     it 'should clear the ActiveRecord query cache if specified' do
       ActiveRecord::Base.should_receive(:clear_cache!)
       @group.find_assignments_by_date(Date.today, Date.today, true)
@@ -29,7 +29,7 @@ describe Group do
     end
   end
 
-  describe 'assignments_for_grouped' do
+  describe '#assignments_for_grouped' do
     it 'should basically be a wrapper for assignments_for' do
       @group.stub!(:assignments_for).and_return([])
       @group.should_receive(:assignments_for)
