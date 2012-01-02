@@ -23,7 +23,7 @@ gem 'json'
 gem 'rack-pjax'
 
 group :development do
-  gem 'query_reviewer'
+  gem 'flog'
 end
 
 group :test do

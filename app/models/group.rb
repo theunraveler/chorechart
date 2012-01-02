@@ -59,10 +59,9 @@ class Group < ActiveRecord::Base
 
   # Get chore occurrences within date range
   def chore_occurrences_between(start, finish)
-    start, finish = start.to_time, finish.advance(:days => 1).to_time
     [].tap do |occurrences|
       chores.each do |chore|
-        items = chore.schedule.occurrences_between(start, finish)
+        items = chore.schedule.occurrences_between(start.to_time, finish.advance(:days => 1).to_time)
         occurrences.concat items.collect { |i| { :date => i.to_date, :chore => chore } }
       end
     end
