@@ -20,10 +20,6 @@ gem 'omniauth-github'
 gem 'json_pure'
 gem 'json'
 
-group :development do
-  gem 'flog'
-end
-
 group :test do
   gem 'simplecov', :require => false
   gem 'capybara'

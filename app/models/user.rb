@@ -11,11 +11,9 @@ class User < ActiveRecord::Base
   end
   has_many :groups, :through => :memberships, :include => [:users]
   has_many :chores, :through => :assignments
-  has_many :groupmates, :through => :groups, :source => :users, :uniq => true
-
-  attr_accessor :login
 
   # Setup accessible (or protected) attributes
+  attr_accessor :login
   attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me, :name, :time_zone
 
   # Validations
@@ -28,6 +26,9 @@ class User < ActiveRecord::Base
   # Named scopes
   scope :find_by_login, lambda { |login| where('username = ? OR email = ?', login.downcase, login.downcase) }
   scope :not_in_group, lambda { |group| where('id not in (?)', group.user_ids) }
+
+  # Constants
+  OMNIAUTH_MAPPING = { 'email' => 'email', 'nickname' => 'username', 'name' => 'name' }
 
   def update_with_password(params={})
     params.delete(:current_password)
@@ -49,15 +50,7 @@ class User < ActiveRecord::Base
   def apply_omniauth(omniauth, overwrite = false)
     if overwrite
       account_details = omniauth['info']
-      case omniauth['provider']
-      when 'twitter'
-        self.username = account_details['nickname']
-        self.name = account_details['name']
-      else
-        self.email = account_details['email']
-        self.username = account_details['nickname']
-        self.name = account_details['name']
-      end
+      OMNIAUTH_MAPPING.each { |key, attribute| self.send("#{attribute}=", account_details[key]) if account_details.has_key?(key) }
     end
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
     return self
