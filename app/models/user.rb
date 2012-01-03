@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :chores, :through => :assignments
 
   # Setup accessible (or protected) attributes
+  alias_attribute :nickname, :username
   attr_accessor :login
   attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me, :name, :time_zone
 
@@ -26,9 +27,6 @@ class User < ActiveRecord::Base
   # Named scopes
   scope :find_by_login, lambda { |login| where('username = ? OR email = ?', login.downcase, login.downcase) }
   scope :not_in_group, lambda { |group| where('id not in (?)', group.user_ids) }
-
-  # Constants
-  OMNIAUTH_MAPPING = { 'email' => 'email', 'nickname' => 'username', 'name' => 'name' }
 
   def update_with_password(params={})
     params.delete(:current_password)
@@ -48,10 +46,7 @@ class User < ActiveRecord::Base
   end
 
   def apply_omniauth(omniauth, overwrite = false)
-    if overwrite
-      account_details = omniauth['info']
-      OMNIAUTH_MAPPING.each { |key, attribute| self.send("#{attribute}=", account_details[key]) if account_details.has_key?(key) }
-    end
+    ['email', 'nickname', 'name'].each { |attr| self.send("#{attr}=", omniauth['info'].try(:[], attr)) } if overwrite
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
     return self
   end
@@ -67,11 +62,11 @@ class User < ActiveRecord::Base
   end
 
   def hashed_email
-    Digest::MD5.hexdigest(email.strip)
+    Digest::MD5.hexdigest(self.email.strip)
   end
 
   def to_s
-    first_name || username
+    self.first_name || self.username
   end
 
   # Memoization

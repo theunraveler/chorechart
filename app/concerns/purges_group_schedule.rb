@@ -25,7 +25,7 @@ module PurgesGroupSchedule
 
   def schedule_clearing_attribute_changed?
     self.changed_attributes.keys.any? do |attribute|
-      self.class.schedule_clearing_attributes.include? attribute.to_sym
+      attribute.to_sym.in? self.class.schedule_clearing_attributes
     end
   end
 end
