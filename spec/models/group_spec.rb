@@ -56,7 +56,11 @@ describe Group do
     it 'should not return occurrences outside of the specified range'
   end
 
-  describe '#delete_assignments' do
-    it 'should call #assignments.clear for each chore'
+  describe '#clear_schedule' do
+    it 'should delete assignments for each chore' do
+      @group.stub(:chore_ids).and_return([1, 2, 3])
+      Assignment.should_receive(:destroy_all).with({:chore_id => [1, 2, 3]}).once
+      @group.clear_schedule
+    end
   end
 end

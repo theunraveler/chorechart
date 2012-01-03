@@ -6,7 +6,6 @@
 //= require bootstrap/dropdown
 //= require bootstrap/twipsy
 //= require_self
-//= require_tree .
 
 $(document).ready(function() {
 	// Open external links in a new window.

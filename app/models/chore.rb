@@ -1,13 +1,12 @@
 class Chore < ActiveRecord::Base
   include ScheduleAttributes
+  include PurgesGroupSchedule
 
   belongs_to :group
   has_many :assignments, :dependent => :delete_all
 
   validates :name, :presence => true, :uniqueness => {:scope => :group_id}
   validates_inclusion_of :difficulty, :in => 1..5
-
-  delegate :delete_assignments, :to => :group
 
   DIFFICULTY_IN_WORDS = {
     1 => 'Easy',
@@ -16,6 +15,8 @@ class Chore < ActiveRecord::Base
     4 => 'Hard',
     5 => 'Really hard'
   }
+
+  clear_schedule_on_change :difficulty, :schedule_yaml
 
   # Overridden from ScheduleAttributes
   def schedule_attributes=(options)

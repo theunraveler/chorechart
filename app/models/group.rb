@@ -67,8 +67,8 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def delete_assignments
-    chores.each { |chore| chore.assignments.clear }
+  def clear_schedule
+    Assignment.destroy_all :chore_id => chore_ids
   end
 
   def to_s

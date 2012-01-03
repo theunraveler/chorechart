@@ -20,8 +20,6 @@ gem 'omniauth-github'
 gem 'json_pure'
 gem 'json'
 
-gem 'rack-pjax'
-
 group :development do
   gem 'flog'
 end
