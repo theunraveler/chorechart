@@ -90,7 +90,7 @@ Feature: Chores
     Then I should be on the chores page for the group "Company Office"
     And I should not see "Laundry" within the content area table
 
-  @focus
+  @focus @wip
   Scenario: Sidebar chore listing time zone stuff
     Given I have the following chores in "Company Office":
       | name      | schedule      |
