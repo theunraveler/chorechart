@@ -4,18 +4,18 @@
 <% end %>
 
 <div class="page-header">
-  <% if @week.in_current_week? %>
+  <% if @week.this_week? %>
     <h1 class="no-print"><%= @group %> for this week</h1>
-    <h1 class="print"><%= @group %> for the week of <%= format_date(@week.to_time) %></h1>
+    <h1 class="print"><%= @group %> for the week of <%= format_date(@week) %></h1>
   <% else %>
-    <h1><%= @group %> for the week of <%= format_date(@week.to_time) %></h1>
+    <h1><%= @group %> for the week of <%= format_date(@week) %></h1>
   <% end %>
 </div>
 
 <div class="pagination pull-left">
   <ul>
-    <li><%= link_to '« Previous week', group_path(@group, :week => @week.advance(:weeks => -1)) %></li>
-    <li<%= ' class=disabled' if @week.in_current_week? %>><%= link_to 'This week', group_path(@group) %></li>
+    <li><%= link_to '« Previous week', group_path(@group, :week => @week.prev_week) %></li>
+    <li<%= ' class=disabled' if @week.this_week? %>><%= link_to 'This week', group_path(@group) %></li>
     <li><%= link_to 'Next week »', group_path(@group, :week => @week.next_week) %></li>
   </ul>
 </div>
@@ -37,8 +37,8 @@
   <thead>
   <tbody>
     <% @assignments.each do |date, assigns| %>
-      <tr <%= 'class=today' if date == Time.current.to_date %>>
-        <th scope="row"><%= format_date(date.to_time, :style => :medium) %></th>
+      <tr <%= 'class=today' if date == Date.current %>>
+        <th scope="row"><%= format_date(date, :style => :medium) %></th>
         <% @group.users.all.each do |user| %>
           <td><ul>
             <% assigns.select { |a| a.user_id == user.id }.each do |assignment| %>

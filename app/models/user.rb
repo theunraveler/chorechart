@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
     name.split.first unless name.nil?
   end
 
-  def assignments_for(start = Time.current.to_date, finish = Time.current.to_date)
+  def assignments_for(start = Date.current, finish = Date.current)
     assigns = []
     groups.each do |group|
       assigns += group.assignments_for(start, finish)

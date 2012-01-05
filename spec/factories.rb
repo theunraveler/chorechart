@@ -21,7 +21,7 @@ end
 factory :assignment do
   association :user
   association :chore
-  date { Time.current.to_date }
+  date { Date.current }
   is_complete 0
 end
 

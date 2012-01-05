@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def get_current_user_chores
     if user_signed_in?
-      @user_chores = current_user.assignments_for(Time.current.to_date, Time.current.to_date.advance(:days => 4)).group_by(&:date)
+      @user_chores = current_user.assignments_for(Date.current, Date.current.advance(:days => 4)).group_by(&:date)
     end
   end
 

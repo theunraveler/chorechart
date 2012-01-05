@@ -4,7 +4,7 @@ describe "groups/show.html.erb" do
   before(:each) do
     @group = FactoryGirl.create(:group)
     assign :group, @group
-    assign :week, Time.current.to_date.beginning_of_week
+    assign :week, Date.current.beginning_of_week
     assign :assignments, {}
     stub_template "groups/_actions.html.erb" => ""
   end

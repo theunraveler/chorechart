@@ -22,8 +22,7 @@ class Chore < ActiveRecord::Base
   def schedule_attributes=(options)
     if options[:interval_unit] == 'week'
       # Weekly tasks need a day.
-      days = Date::DAYNAMES.map { |d| d.downcase.to_sym }
-      options.merge!(assign_todays_date) if days.none? { |day| options[day] === '1'}
+      options[Date.today_as_sym] = '1' if Date::DAYS_INTO_WEEK.keys.none? { |day| options[day] === '1'}
     end
 
     super(options)
@@ -38,10 +37,5 @@ class Chore < ActiveRecord::Base
   end
 
   private
-
-  def assign_todays_date
-    today = Time.current.strftime('%A').downcase.to_sym
-    { today => '1' }
-  end
 
 end

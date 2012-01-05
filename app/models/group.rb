@@ -30,7 +30,7 @@ class Group < ActiveRecord::Base
   end
 
   # Get a list of chores for the day
-  def assignments_for(start = Time.current.to_date, finish = Time.current.to_date)
+  def assignments_for(start = Date.current, finish = Date.current)
     assigns = [].concat find_assignments_by_date(start, finish)
     if assigns.empty? && chore_occurrences_between(start, finish).any?
       create_schedule_for(start.beginning_of_week, finish.end_of_week)
@@ -40,7 +40,7 @@ class Group < ActiveRecord::Base
   end
 
   # Same as above, but grouped by date
-  def assignments_for_grouped(start = Time.current.to_date, finish = Time.current.to_date)
+  def assignments_for_grouped(start = Date.current, finish = Date.current)
     assignments = assignments_for(start, finish).group_by(&:date)
     ((start..finish).to_a - assignments.keys).each { |date| assignments.update({date => []}) }
     Hash[assignments.sort]
