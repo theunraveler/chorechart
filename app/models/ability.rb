@@ -16,7 +16,7 @@ class Ability
     # Users can access groups they are part of
     can :read, Group, :id => user.group_ids
     can [:update, :destroy, :invite, :admin], Group do |group|
-      Membership.find_by_user_id_and_group_id(user.id, group.id).is_admin?
+      is_admin_in_group? user.id, group.id
     end
 
     ###################
@@ -25,13 +25,12 @@ class Ability
 
     # Only admins can manage Memberships
     can :manage, [Membership, Chore, Invitation] do |object|
-      Membership.find_by_user_id_and_group_id(user.id, object.group.id).is_admin?
+      is_admin_in_group? user.id, object.group.id
     end
 
     # Only admins can remove users from groups, and only if group members > 1
     can :destroy, Membership do |membership|
-      user_membership = Membership.find_by_user_id_and_group_id(user.id, membership.group.id)
-      membership.group.memberships.count > 1 && user_membership.is_admin?
+      membership.group.memberships.count > 1 && is_admin_in_group?(user.id, membership.group_id)
     end
 
     ####################
@@ -42,5 +41,9 @@ class Ability
     can :manage, User, :id => user.id
     can :manage, Authentication, :id => user.authentication_ids
 
+  end
+
+  def is_admin_in_group?(user_id, group_id)
+    Membership.find_by_user_id_and_group_id(user_id, group_id).is_admin?
   end
 end

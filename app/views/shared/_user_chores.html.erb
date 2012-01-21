@@ -1,6 +1,6 @@
 <div id="my-chores" class="well">
   <h3>Your Chores</h3>
-  <% (Time.current.to_date..Time.current.to_date.advance(:days => 4)).each do |date| %>
+  <% (Date.current..Date.current.advance(:days => 4)).each do |date| %>
     <div class="chore-day">
       <div class="page-header"><p><%= fuzzy_date(date) %></p></div>
       <% if !chores.has_key?(date) || chores[date].empty? %>

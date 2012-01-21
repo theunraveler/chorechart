@@ -1,4 +1,6 @@
 class Membership < ActiveRecord::Base
+  include PurgesGroupSchedule
+
   belongs_to :user
   belongs_to :group
 
@@ -6,5 +8,6 @@ class Membership < ActiveRecord::Base
   validates_presence_of :user_id, :group_id
 
   delegate :email, :name, :username, :to => :user
-  delegate :delete_assignments, :to => :group
+
+  clear_schedule_on_change
 end

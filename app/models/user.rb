@@ -11,11 +11,10 @@ class User < ActiveRecord::Base
   end
   has_many :groups, :through => :memberships, :include => [:users]
   has_many :chores, :through => :assignments
-  has_many :groupmates, :through => :groups, :source => :users, :uniq => true
-
-  attr_accessor :login
 
   # Setup accessible (or protected) attributes
+  alias_attribute :nickname, :username
+  attr_accessor :login
   attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me, :name, :time_zone
 
   # Validations
@@ -38,7 +37,7 @@ class User < ActiveRecord::Base
     name.split.first unless name.nil?
   end
 
-  def assignments_for(start = Time.current.to_date, finish = Time.current.to_date)
+  def assignments_for(start = Date.current, finish = Date.current)
     assigns = []
     groups.each do |group|
       assigns += group.assignments_for(start, finish)
@@ -47,24 +46,15 @@ class User < ActiveRecord::Base
   end
 
   def apply_omniauth(omniauth, overwrite = false)
-    if overwrite
-      account_details = omniauth['info']
-      case omniauth['provider']
-      when 'twitter'
-        self.username = account_details['nickname']
-        self.name = account_details['name']
-      else
-        self.email = account_details['email']
-        self.username = account_details['nickname']
-        self.name = account_details['name']
-      end
-    end
+    ['email', 'nickname', 'name'].each { |attr| self.send("#{attr}=", omniauth['info'].try(:[], attr)) } if overwrite
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+    return self
   end
 
   def fill_password
     generated_password = Devise.friendly_token.first(6)
     self.password, self.password_confirmation = generated_password, generated_password
+    return self
   end
 
   def password_required?
@@ -72,16 +62,12 @@ class User < ActiveRecord::Base
   end
 
   def hashed_email
-    Digest::MD5.hexdigest(email.strip)
+    Digest::MD5.hexdigest(self.email.strip)
   end
 
   def to_s
-    first_name || username
+    self.first_name || self.username
   end
-
-  # Memoization
-  extend ActiveSupport::Memoizable
-  memoize :assignments_for
 
   protected
 
@@ -94,8 +80,7 @@ class User < ActiveRecord::Base
   private
 
   def process_pending_invitations
-    invites = Invitation.find_all_by_email(email)
-    invites.each do |invite|
+    Invitation.find_all_by_email(email).each do |invite|
       memberships.create({:group_id => invite.group_id})
       invite.destroy
     end

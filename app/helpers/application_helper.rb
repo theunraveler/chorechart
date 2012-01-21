@@ -23,10 +23,10 @@ module ApplicationHelper
   end
 
   def fuzzy_date(date)
-    days = (date.to_date - Time.current.to_date).to_i
+    days = (date.to_date - Date.current).to_i
     return 'Today' if days >= 0 and days < 1
     return 'Tomorrow' if days >= 1 and days < 2
-    return (Time.current.to_date + days.days).strftime('%A') if days < 7
+    return (Date.current + days.days).strftime('%A') if days < 7
     return "In #{days} days" if days < 14
     return format_date(date)
   end

@@ -7,7 +7,6 @@
 //= require bootstrap/twipsy
 //= require slimbox/slimbox2.js
 //= require_self
-//= require_tree .
 
 $(document).ready(function() {
 	// Open external links in a new window.
@@ -32,7 +31,7 @@ var choreFormConditional = function() {
 	}
 
 	// Hide or show on change.
-	selectField.change(function() {
+	selectField.live('change', function() {
 		if ($(this).val() == 'week') {
 			dayContainer.show();
 		} else {

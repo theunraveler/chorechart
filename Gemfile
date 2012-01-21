@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
+gem 'rails', '3.2'
 
 gem 'jquery-rails'
 gem 'devise'
@@ -19,12 +19,6 @@ gem 'omniauth-github'
 
 gem 'json_pure'
 gem 'json'
-
-gem 'rack-pjax'
-
-group :development do
-  gem 'query_reviewer'
-end
 
 group :test do
   gem 'simplecov', :require => false

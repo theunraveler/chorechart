@@ -29,7 +29,7 @@ class MembershipsController < ApplicationController
         end
       end
     else
-      notice = render_to_string(:partial => "invite_user", :locals => { :user => params[:membership][:user_id], :group => @group }).html_safe
+      notice = render_to_string(:partial => "invite", :locals => { :user => params[:membership][:user_id], :group => @group }).html_safe
       respond_to do |format|
         format.html { redirect_to(group_memberships_url(@group), :flash => { :warning => notice }) }
       end

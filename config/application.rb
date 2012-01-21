@@ -17,13 +17,12 @@ module Chorechart
     # -- all .rb files in that directory are automatically loaded.
 
     # Middleware
-    config.middleware.use Rack::Pjax
 
     # Enable the asset pipeline
     config.assets.enabled = true
 
     # Version of your assets, change this to expire all assets
-    config.assets.version = '1.1.12'
+    config.assets.version = '1.1.13'
 
     # Prevent whole Rails stack from loading on asset precompile (Devise, I'm
     # looking at you)
@@ -32,9 +31,9 @@ module Chorechart
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += Dir[Rails.root.join('lib')]
+    config.autoload_paths += Dir[Rails.root.join('app', 'concerns')]
 
     # Activate observers that should always be running.
-    config.active_record.observers = :purger
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
