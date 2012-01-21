@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "groups/show.html.erb" do
+describe "groups/show" do
   before(:each) do
     @group = FactoryGirl.create(:group)
     assign :group, @group
