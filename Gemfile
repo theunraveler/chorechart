@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2'
+gem 'rails', '3.2.1'
 
 gem 'jquery-rails'
-gem 'devise'
+gem 'devise', '1.5.3'
 gem 'ice_cube', '0.6.14'
 gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.git'
 gem 'cancan'
@@ -30,9 +30,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'timecop'
   gem 'ffaker'
-  gem 'mocha'
   gem 'database_cleaner'
-  gem 'no_peeping_toms'
 end
 
 group :development, :test do
