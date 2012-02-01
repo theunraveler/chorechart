@@ -3,7 +3,7 @@
 
 <div id="wrapper" class="container">
   <div class="row">
-    <div id="main" class="span12">
+    <div id="main" class="span9">
       <% unless flash.empty? %>
         <div id="flash">
           <%= render 'shared/flash', :flash => flash %>
@@ -11,7 +11,7 @@
       <% end %>
       <%= yield %>
     </div>
-    <div id="sidebar" class="span4">
+    <div id="sidebar" class="span3">
       <%= yield :sidebar %>
       <% if user_signed_in? %>
         <%= render 'shared/user_chores', :chores => @user_chores %>

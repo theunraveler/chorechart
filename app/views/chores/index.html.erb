@@ -3,7 +3,7 @@
 <div class="page-header">
   <h1 class="pull-left">Chores for <%= @group %></h1>
   <div class="pull-right">
-    <%= link_to 'Create a chore', new_group_chore_path(@group), :class => 'btn primary' %>
+    <%= link_to 'Create a chore', new_group_chore_path(@group), :class => 'btn btn-primary' %>
   </div>
   <div class="clearer"></div>
 </div>
@@ -11,7 +11,7 @@
 <% if @chores.empty? %>
   <p>This group has no chores. <%= link_to "Add a new chore", new_group_chore_path(@group) %>.</p>
 <% else %>
-  <table class="zebra-striped">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col"></th>

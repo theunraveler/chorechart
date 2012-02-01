@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  MessageTypes = { :notice => 'success', :warning => 'warning', :error => 'error' }
+  MessageTypes = { :notice => 'alert-success', :warning => '', :error => 'alert-error' }
 
   def avatar_image(user, size = 80)
     url = "http://www.gravatar.com/avatar/#{user.hashed_email}"

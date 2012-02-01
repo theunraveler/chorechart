@@ -3,7 +3,7 @@
 <div class="page-header">
   <h1 class="pull-left">Your Groups</h1>
   <div class="pull-right">
-    <%= link_to 'Create a group', new_group_path, :class => 'btn primary' %>
+    <%= link_to 'Create a group', new_group_path, :class => 'btn btn-primary' %>
   </div>
   <div class="clearer"></div>
 </div>
@@ -11,7 +11,7 @@
 <% if @groups.empty? %>
   <p>You currently have no groups. <%= link_to "Create a new group", new_group_path, :class => 'btn primary' %></p>
 <% else %>
-  <table class="zebra-striped">
+  <table class="table table-striped">
     <tbody>
       <% @groups.each do |group| -%>
       <tr>

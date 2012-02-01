@@ -1,25 +1,36 @@
-<div class="crud-links pull-right" data-dropdown="crud-dropdown">
-  <ul class="tabs">
-    <li><a href="javascript:print();" title="Print chore list" class="tooltip"><span class="icon print">Print</span></a></li>
-    <% if can? :admin, group %>
-      <li class="crud-dropdown">
-        <a href="#" class="dropdown-toggle">Manage</a>
-        <ul class="dropdown-menu">
-          <% if can? :edit, group %>
-            <li><%= link_to 'Edit Group', edit_group_path(group) %></li>
-          <% end %>
-          <% if can? :destroy, group %>
-            <li><%= link_to 'Delete Group', group_path(group), :method => :delete, :confirm => "Are you sure you want to delete #{group}?" %></li>
-          <% end %>
-          <li class="divider"></li>
-          <% if can? :edit, group %>
-            <li><%= link_to 'Manage Chores', group_chores_path(group) %></li>
-          <% end %>
-          <% if can? :invite, group %>
-            <li><%= link_to 'Manage Users', group_memberships_path(group) %></li>
-          <% end %>
-        </ul>
-      </li>
+<div class="btn-toolbar">
+  <div class="btn-group">
+    <%= link_to '« Previous week', group_path(@group, :week => @week.prev_week), :class => 'btn' %>
+    <% if @week.this_week? %>
+      <span class="btn btn-disabled">This week</span>
+    <% else %>
+      <%= link_to 'This week', group_path(@group), :class => 'btn' %>
     <% end %>
-  </ul>
+    <%= link_to 'Next week »', group_path(@group, :week => @week.next_week), :class => 'btn' %>
+  </div>
+
+  <div class="btn-group pull-right">
+    <% if can? :admin, group %>
+      <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">Manage<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <% if can? :edit, group %>
+          <li><%= link_to 'Edit Group', edit_group_path(group) %></li>
+        <% end %>
+        <% if can? :destroy, group %>
+          <li><%= link_to 'Delete Group', group_path(group), :method => :delete, :confirm => "Are you sure you want to delete #{group}?" %></li>
+        <% end %>
+        <li class="divider"></li>
+        <% if can? :edit, group %>
+          <li><%= link_to 'Manage Chores', group_chores_path(group) %></li>
+        <% end %>
+        <% if can? :invite, group %>
+          <li><%= link_to 'Manage Users', group_memberships_path(group) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class="btn-group pull-right">
+    <a href="javascript:print();" title="Print chore list" class="btn">Print</a>
+  </div>
 </div>

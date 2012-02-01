@@ -2,9 +2,7 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require bootstrap/alerts
-//= require bootstrap/dropdown
-//= require bootstrap/twipsy
+//= require bootstrap/bootstrap
 //= require_self
 
 $(document).ready(function() {

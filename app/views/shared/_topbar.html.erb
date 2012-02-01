@@ -1,5 +1,5 @@
-<header class="topbar" data-dropdown="dropdown">
-  <div class="fill">
+<header class="navbar" data-dropdown="dropdown">
+  <div class="navbar-inner">
     <div class="container">
       <a class="brand" href="/">Chorechart</a>
       <% if user_signed_in? %>
@@ -10,7 +10,7 @@
           <%= render 'shared/user_nav' %>
         </nav>
       <% else %>
-        <nav id="user-navigation">
+        <nav id="user-navigation" class="nav-collapse">
           <%= render 'shared/anon_nav' %>
         </nav>
       <% end %>

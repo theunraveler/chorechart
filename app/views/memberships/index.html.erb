@@ -2,7 +2,7 @@
   <h1>Manage Users for <%= @group %></h1>
 </div>
 
-<table id="group-memberships" class="zebra-striped">
+<table id="group-memberships" class="table table-striped">
   <% @memberships.each do |membership| %>
     <tr>
       <td><%= membership.user %> (<%= membership.email %>)</td>

@@ -12,17 +12,9 @@
   <% end %>
 </div>
 
-<div class="pagination pull-left">
-  <ul>
-    <li><%= link_to '« Previous week', group_path(@group, :week => @week.prev_week) %></li>
-    <li<%= ' class=disabled' if @week.this_week? %>><%= link_to 'This week', group_path(@group) %></li>
-    <li><%= link_to 'Next week »', group_path(@group, :week => @week.next_week) %></li>
-  </ul>
-</div>
-
 <%= render 'actions', :group => @group, :week => @week %>
 
-<table id="chore-breakdown" class="zebra-striped bordered-table">
+<table id="chore-breakdown" class="table table-striped table-bordered">
   <thead>
     <tr>
       <th scope="col"></th>
