@@ -1,4 +1,4 @@
-<ul class="tabs">
+<ul class="nav nav-tabs">
   <li class="first"><%= link_to 'Log in', new_user_session_path %></li>
   <li class="last active"><%= link_to 'Register', new_user_registration_path %></li>
 </ul>
@@ -15,7 +15,7 @@
 </div>
 
 <div class="row">
-  <div class="span<%= @omniauth ? '16' : '8' %>">
+  <div class="span<%= @omniauth ? '12' : '6' %>">
     <%= '<h2>luddites</h2>'.html_safe if !session[:omniauth] %>
     <%= form_for resource, :url => registration_path(resource_name) do |f| %>
       <%= f.text_field :username %>
@@ -39,7 +39,7 @@
   </div>
 
   <% unless @omniauth %>
-    <div class="span8">
+    <div class="span6">
       <h2>social butterflies</h2>
       <%= render 'authentications/providers' %>
     </div>
