@@ -16,7 +16,7 @@ Chorechart::Application.routes.draw do
     },
     :controllers => {
       :registrations => 'registrations'
-    } 
+    }
   devise_scope :users do
     get 'dashboard', :to => 'users#dashboard', :as => :user_root
   end
