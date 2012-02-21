@@ -32,7 +32,7 @@ describe InvitationsController do
       post :create, :group_id => 1
       assigns(:invitation).should_not be_new_record
       flash[:notice].should_not be_nil
-      response.should redirect_to(group_memberships_path(@group))
+      response.should redirect_to(group_memberships_path(@group.id))
     end
 
     it 'should not create flash on failed save' do

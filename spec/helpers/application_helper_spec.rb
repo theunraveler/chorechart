@@ -70,7 +70,7 @@ describe ApplicationHelper do
   end
 
   describe 'flash types' do
-    { :notice => 'success', :warning => 'warning', :error => 'error' }.each do |orig, rewrite|
+    { :notice => 'alert-success', :warning => '', :error => 'alert-error' }.each do |orig, rewrite|
       it "should output the corresponding type (#{orig.to_s})" do
         helper.flash_type(orig).should eq(rewrite)
       end

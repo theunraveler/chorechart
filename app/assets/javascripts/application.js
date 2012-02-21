@@ -8,7 +8,6 @@
 $(document).ready(function() {
 	// Open external links in a new window.
 	$('a.external').attr('target','_blank');
-	$('.tooltip').twipsy({ live: true });
 
 	// Other behaviors.
 	choreFormConditional();
@@ -48,7 +47,7 @@ var choreFormDifficultySlider = function() {
 		3: 'Kind of hard',
 		4: 'Hard',
 		5: 'Really hard'
-	}
+	};
 	var difficultyText = $('#difficulty-text');
 	var difficultyField = $('input[name="chore[difficulty]"]');
 	difficultyText.text(difficultyTextOptions[difficultyField.val() || 1]);

@@ -9,7 +9,7 @@ gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.
 gem 'cancan'
 gem 'foreigner'
 gem 'activerecord-import'
-gem 'twitter_bootstrap_form_for'
+gem 'twitter_bootstrap_form_for', :git => 'git://github.com/tzeskimo/twitter_bootstrap_form_for.git'
 
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'

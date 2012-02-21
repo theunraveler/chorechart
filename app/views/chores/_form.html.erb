@@ -15,7 +15,7 @@
     <%= schedule.hidden_field :repeat, :value => 1 %>
     <%= schedule.inline 'Every' do |inline| %>
       <%= inline.number_field :interval, :min => 1, :class => 'mini' %>
-      <%= inline.select :interval_unit, '', interval_select(f.object.schedule_attributes.interval_unit) %>
+      <%= inline.select :interval_unit, interval_select(f.object.schedule_attributes.interval_unit) %>
     <% end %>
     <%= f.toggles 'On', :id => 'day-selection' do %>
       <% Date::DAYNAMES.each do |day| %>
