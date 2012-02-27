@@ -1,10 +1,10 @@
 GIT
   remote: git://github.com/theunraveler/Schedule-Attributes.git
-  revision: 90623d78d6e50d0ff982778ad8b528228940141e
+  revision: de0c72929fdcaee352529b5c270b89d1d660eec7
   specs:
     schedule_atts (0.0.1)
       activesupport
-      ice_cube (= 0.6.14)
+      ice_cube (> 0.7)
 
 GEM
   remote: http://rubygems.org/
@@ -117,7 +117,7 @@ GEM
       term-ansicolor (~> 1.0.5)
     hike (1.2.1)
     i18n (0.6.0)
-    ice_cube (0.6.14)
+    ice_cube (0.7.8)
     journey (1.0.3)
     jquery-rails (2.0.0)
       railties (>= 3.2.0.beta, < 5.0)
@@ -276,7 +276,7 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   heroku
-  ice_cube (= 0.6.14)
+  ice_cube
   jquery-rails
   json
   json_pure
