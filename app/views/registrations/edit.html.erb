@@ -8,16 +8,16 @@
 </ul>
 <div style="clear: both;"></div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
   <%= f.email_field :email %>
   <%= f.text_field :name %>
   <%= f.password_field :password %>
   <%= f.password_field :password_confirmation %>
   <%= f.time_zone_select :time_zone, 'Time zone', ActiveSupport::TimeZone.us_zones %>
 
-  <div class="clearfix">
-    <%= label_tag 'Image' %>
-    <div class="input">
+  <div class="clearfix control-group">
+    <%= label_tag 'Image', nil, :class => 'control-label' %>
+    <div class="input controls">
       <%= avatar_image resource %><br />
       <div class="help-block">
         <a class="external" href="http://gravatar.com/emails">Click here to change your Gravatar</a>

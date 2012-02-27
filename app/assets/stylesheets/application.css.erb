@@ -94,3 +94,14 @@ img.bordered { border: 1px solid #DDD }
   border-width: 20px 0 0 20px;
   right: 50px;
 }
+
+/*******************************
+* OVERRIDES FOR BOOTSTRAP ICONS
+*******************************/
+[class^="icon-"], [class*=" icon-"] {
+  background-image: url(<%= asset_path 'bootstrap/glyphicons-halflings.png' %>);
+}
+.icon-white {
+  background-image: url(<%= asset_path 'bootstrap/glyphicons-halflings-white.png' %>);
+}
+

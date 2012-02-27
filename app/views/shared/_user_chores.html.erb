@@ -8,7 +8,7 @@
             <li><em>Nothing! Enjoy your day off!</em></li>
           <% else %>
             <% chores[date].each do |assignment| %>
-              <li><%= assignment.chore %> <span class="label"><%= link_to assignment.group, assignment.group %></span></li>
+              <li><%= assignment.chore %> <span class="label label-info"><%= link_to assignment.group, assignment.group %></span></li>
             <% end %>
           <% end %>
         </ul>

@@ -14,6 +14,8 @@ $(document).ready(function() {
 	choreFormConditional();
 	choreFormDifficultySlider();
 
+	// Tooltips
+	$('.tooltip').tooltip();
 });
 
 /**
