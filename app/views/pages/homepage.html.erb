@@ -1,5 +1,38 @@
-<div class="hero-unit">
-  <h1>Get your shit in order</h1>
-  <p>Chorechart is not a silly little chore chart to keep kids on top of their chores (though it could be used for that, I guess). Rather, Chorechart is a sophisticated chore manager for groups of adults to manage collective responsibilities.</p>
-  <p><%= link_to "Register Now!", new_user_registration_path, :class => 'btn btn-primary btn-large' %></p>
+<% content_for :body_classes, 'front' %>
+
+<% content_for :full_length do %>
+  <div class="hero-unit">
+    <div class="container">
+      <div class="row">
+        <div class="span8">
+          <p class="speech-bubble left span5">You said you'd take out the trash!</p>
+          <p class="speech-bubble right span5">But I took out the trash last time! It's your turn!</p>
+        </div>
+        <div class="span8">
+          <h1>Sound familiar?</h1>
+          <p>Keeping on top of the chores is tough. Chorechart makes it easier.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="span-one-third">
+    <h3>Even things out</h3>
+    <p>Just enter the chores that need to be done, and Chorechart will split them up evenly among housemates.</p>
+    <p><a class="btn" href="/features">Check out the features</a></p>
+  </div>
+
+  <div class="span-one-third">
+    <h3>Variety is the spice of life</h3>
+    <p>Chorechart randomizes the chore schedule so that you don't get stuck doing the same chore over and over.</p>
+    <p><a class="btn" href="/features#feature-evenly">Check out the features</a></p>
+  </div>
+
+  <div class="span-one-third">
+    <h3>Think Chorechart can help?</h3>
+    <p>You can register with a Facebook, Twitter, Google, or Github account. Or just a regular old username and password.</p>
+    <p><%= link_to "Register Now!", new_user_registration_path, :class => 'btn btn-primary btn-large' %></p>
+  </div>
 </div>

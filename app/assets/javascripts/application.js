@@ -3,6 +3,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require bootstrap/bootstrap
+//= require slimbox/slimbox2.js
 //= require_self
 
 $(document).ready(function() {

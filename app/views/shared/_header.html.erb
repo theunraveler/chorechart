@@ -13,4 +13,9 @@
     <%= yield :page_head %>
   <% end %>
 </head>
-<body>
+
+<% if content_for? :body_classes %>
+  <body class="<%= content_for :body_classes %>">
+<% else %>
+  <body>
+<% end %>
