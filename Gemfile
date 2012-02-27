@@ -20,6 +20,9 @@ gem 'omniauth-github'
 gem 'json_pure'
 gem 'json'
 
+# User psych for YAML parsing
+gem 'psych'
+
 group :test do
   gem 'simplecov', :require => false
   gem 'capybara'
