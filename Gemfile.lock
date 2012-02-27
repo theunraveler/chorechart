@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/theunraveler/Schedule-Attributes.git
-  revision: 8819f656ae707acad66f95bffc6b2d091fa79bd8
+  revision: 977f50b5bdcf28016f7b6b1c11647324d1305672
   specs:
     schedule_atts (0.0.1)
       activesupport
