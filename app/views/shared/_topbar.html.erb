@@ -10,6 +10,9 @@
           <%= render 'shared/user_nav' %>
         </nav>
       <% else %>
+        <nav id="main-navigation">
+          <%= render 'shared/static_nav' %>
+        </nav>
         <nav id="user-navigation">
           <%= render 'shared/anon_nav' %>
         </nav>
