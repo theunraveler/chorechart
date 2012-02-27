@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2'
+gem 'rails', '3.2.1'
 
 gem 'jquery-rails'
 gem 'devise'
@@ -30,9 +30,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'timecop'
   gem 'ffaker'
-  gem 'mocha'
   gem 'database_cleaner'
-  gem 'no_peeping_toms'
 end
 
 group :development, :test do

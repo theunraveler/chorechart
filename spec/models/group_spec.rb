@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'mocha'
 
 describe Group do
   before(:all) do

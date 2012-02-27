@@ -29,7 +29,6 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
-    ActiveRecord::Observer.disable_observers
   end
 
   config.before(:each) do
