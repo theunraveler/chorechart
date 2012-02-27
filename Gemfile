@@ -4,7 +4,7 @@ gem 'rails', '3.2.1'
 
 gem 'jquery-rails'
 gem 'devise'
-gem 'ice_cube', '0.6.14'
+gem 'ice_cube'
 gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.git'
 gem 'cancan'
 gem 'foreigner'
@@ -18,6 +18,9 @@ gem 'omniauth-github'
 
 gem 'json_pure'
 gem 'json'
+
+# User psych for YAML parsing
+gem 'psych'
 
 group :test do
   gem 'simplecov', :require => false

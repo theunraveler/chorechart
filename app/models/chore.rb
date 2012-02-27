@@ -35,7 +35,4 @@ class Chore < ActiveRecord::Base
   def to_s
     name
   end
-
-  private
-
 end
