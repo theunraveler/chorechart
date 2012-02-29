@@ -19,6 +19,8 @@ gem 'omniauth-github'
 gem 'json_pure'
 gem 'json'
 
+gem 'psych', :require => false
+
 group :test do
   gem 'simplecov', :require => false
   gem 'capybara'
