@@ -6,7 +6,7 @@ module TwitterBootstrapFormFor
       options = args.extract_options!
       options[:class] = options.include?(:class) ? options[:class] + ' clearfix control-group' : 'clearfix control-group'
       template.content_tag(:div, options) do
-        template.concat template.content_tag(:label, label)
+        template.concat template.content_tag(:label, label, :class => 'control-label')
         template.concat template.content_tag(:div, :class => "input controls") { block.call }
       end
     end

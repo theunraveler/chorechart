@@ -1,8 +1,8 @@
 <%= f.text_field :name, :help => 'Ex: Laundry' %>
 
-<div class="clearfix">
-  <%= f.label :difficulty %>
-  <div class="input">
+<div class="control-group">
+  <%= f.label :difficulty, :class => 'control-label' %>
+  <div class="input controls">
     <div id="difficulty-slider" class="input-xlarge"></div>
     <div id="difficulty-text"></div>
     <span class="help-block">Difficulty can correspond to the length of time a chore takes or the undesirability/inconvenience of a chore. This ensures that, when chores are being assigned, "Feeding the cats" does not bear the same weight as "Cleaning the toilet", for instance.</span>

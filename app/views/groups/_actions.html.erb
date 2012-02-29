@@ -1,23 +1,27 @@
 <div class="btn-toolbar">
   <div class="btn-group">
-    <%= link_to '« Previous week', group_path(@group, :week => @week.prev_week), :class => 'btn' %>
+    <%= link_to group_path(@group, :week => @week.prev_week), :class => 'btn' do %>
+      <i class="icon-arrow-left"></i> Previous Week
+    <% end %>
     <% if @week.this_week? %>
       <span class="btn btn-disabled">This week</span>
     <% else %>
       <%= link_to 'This week', group_path(@group), :class => 'btn' %>
     <% end %>
-    <%= link_to 'Next week »', group_path(@group, :week => @week.next_week), :class => 'btn' %>
+    <%= link_to group_path(@group, :week => @week.next_week), :class => 'btn' do %>
+      Next Week <i class="icon-arrow-right"></i>
+    <% end %>
   </div>
 
   <div class="pull-right">
     <div class="btn-group">
-      <a href="javascript:print();" title="Print chore list" class="btn tooltip">
+      <a href="javascript:print();" title="Print chore list" class="btn">
         <i class="icon-print"></i>
       </a>
-    </div>
-    <div class="btn-group">
       <% if can? :admin, group %>
-        <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">Manage<span class="caret"></span></a>
+        <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
+          Manage <span class="caret"></span>
+        </a>
         <ul class="dropdown-menu">
           <% if can? :edit, group %>
             <li><%= link_to 'Edit Group', edit_group_path(group) %></li>

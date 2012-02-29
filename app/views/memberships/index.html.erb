@@ -27,7 +27,7 @@
   <% end %>
   <tr>
     <td colspan="3">
-      <%= form_for [@group, @membership] do |f| %>
+      <%= form_for [@group, @membership], :html => {:class => 'form-horizontal'} do |f| %>
         <%= render 'form', :f => f, :group => @group, :autocomplete => @user_autocomplete %>
       <% end %>
     </td>
