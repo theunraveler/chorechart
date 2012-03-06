@@ -6,8 +6,18 @@ describe Group do
   end
   
   describe "#workload" do
-    it 'should filter by the specified week'
-    it 'should return an integer'
+    it 'should filter by the specified week' do
+      dates = Date.today.beginning_of_week..Date.today.end_of_week
+      @group.stub_chain(:assignments, :where).and_return([])
+      @group.assignments.should_receive(:where).with(hash_including(:date => dates))
+      @group.workload(FactoryGirl.build(:user), Date.today)
+    end
+
+    it 'should return an integer' do
+      dates = Date.today.beginning_of_week..Date.today.end_of_week
+      @group.stub_chain(:assignments, :where, :sum).and_return(5)
+      @group.workload(FactoryGirl.build(:user), Date.today).should be_a(Integer)
+    end
   end
 
   describe '#to_s' do
@@ -36,23 +46,22 @@ describe Group do
     end
   end
 
+  # TODO: Test this better
   describe '#chore_occurrences_between' do
     before do
-      Chore.stub_chain(:schedule, :occurrences_between).and_return([
+      Chore.any_instance.stub_chain(:schedule, :occurrences_between).and_return([
         Time.parse('25/01/2010'), 
         Time.parse('26/01/2010'),
         Time.parse('29/01/2010')
       ])
-      5.times { @group.chores.build }
+      @group.chores.build
     end
 
     it 'should return an array of occurrences' do
-      occurrences = @group.chore_occurrences_between(Time.parse('24/01/2010').to_date, Time.parse('30/01/2010').to_date)
+      occurrences = @group.chore_occurrences_between(Date.parse('24/01/2010'), Date.parse('30/01/2010'))
       occurrences.should be_an(Array)
-      # occurrences.count.should eq(3)
+      occurrences.count.should eq(3)
     end
-
-    it 'should not return occurrences outside of the specified range'
   end
 
   describe '#clear_schedule' do

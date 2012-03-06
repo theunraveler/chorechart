@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   layout lambda { |c| c.user_signed_in? ? 'application' : 'no_sidebar' }
 
   rescue_from CanCan::AccessDenied do |exception|
-    render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
+    render :file => "#{Rails.root}/public/403", :formats => [:html], :status => 403, :layout => false
   end
 
   private
