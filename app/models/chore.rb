@@ -8,6 +8,8 @@ class Chore < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => {:scope => :group_id}
   validates_inclusion_of :difficulty, :in => 1..5
 
+  attr_accessible :name, :group_id, :difficulty, :schedule_attributes
+
   DIFFICULTY_IN_WORDS = {
     1 => 'Easy',
     2 => 'Meh.',

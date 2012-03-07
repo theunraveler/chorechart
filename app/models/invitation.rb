@@ -2,6 +2,8 @@ class Invitation < ActiveRecord::Base
   # Associations
   belongs_to :group
 
+  attr_accessible :group_id, :email
+
   # Validations
   validates :email, :presence => true,
                     :email => true,

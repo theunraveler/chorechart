@@ -1,14 +1,14 @@
 <div class="btn-toolbar">
   <div class="btn-group">
-    <%= link_to group_path(@group, :week => @week.prev_week), :class => 'btn' do %>
+    <%= link_to group_path(group, :week => week.prev_week), :class => 'btn' do %>
       <i class="icon-arrow-left"></i> Previous Week
     <% end %>
-    <% if @week.this_week? %>
+    <% if week.this_week? %>
       <span class="btn btn-disabled">This week</span>
     <% else %>
-      <%= link_to 'This week', group_path(@group), :class => 'btn' %>
+      <%= link_to 'This week', group_path(group), :class => 'btn' %>
     <% end %>
-    <%= link_to group_path(@group, :week => @week.next_week), :class => 'btn' do %>
+    <%= link_to group_path(group, :week => week.next_week), :class => 'btn' do %>
       Next Week <i class="icon-arrow-right"></i>
     <% end %>
   </div>

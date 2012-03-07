@@ -17,7 +17,7 @@ module TwitterBootstrapFormFor
         template.concat template.content_tag(:div, :class => "control-group") { block.call }
       end
     end
-  
+
   end
 end
 

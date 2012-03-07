@@ -9,9 +9,10 @@ class Group < ActiveRecord::Base
   end
   has_many :users, :through => :memberships
 
+  attr_accessible :name
+
   validates_presence_of :name
 
-  # TODO: Needs some refactoring.
   def create_schedule_for(start, finish)
     points, assignments = {}, []
     users.each { |u| points[u.id] = 0 }
@@ -26,6 +27,7 @@ class Group < ActiveRecord::Base
       points[lowest_user.id] += occurrence[:chore].difficulty
       assignments << Assignment.new(:chore => occurrence[:chore], :user => lowest_user, :date => occurrence[:date])
     end
+
     Assignment.import assignments
   end
 
