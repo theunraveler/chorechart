@@ -22,7 +22,7 @@ gem 'json'
 group :test do
   gem 'simplecov', :require => false
   gem 'capybara'
-  gem 'cucumber'
+  gem 'cucumber-rails'
   gem 'email_spec'    
   gem 'launchy'
   gem 'database_cleaner'
@@ -35,7 +35,6 @@ end
 group :development, :test do
   gem 'mysql2'
   gem 'rspec-rails'  
-  gem 'cucumber-rails'
   gem 'rb-fsevent', :require => false
   gem 'growl', :require => false
   gem 'guard-bundler'
