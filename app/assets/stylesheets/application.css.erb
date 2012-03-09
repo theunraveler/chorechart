@@ -105,3 +105,7 @@ img.bordered { border: 1px solid #DDD }
   background-image: url(<%= asset_path 'bootstrap/glyphicons-halflings-white.png' %>);
 }
 
+/*******************************************************
+* FIX FOR LINE BREAKS IN LABELS (WILL BE FIXED IN 2.0.2)
+ *******************************************************/
+.label { white-space: nowrap; }
