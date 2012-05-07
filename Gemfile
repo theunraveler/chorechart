@@ -22,7 +22,7 @@ gem 'json'
 group :test do
   gem 'simplecov', :require => false
   gem 'capybara'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'email_spec'    
   gem 'launchy'
   gem 'database_cleaner'
