@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 
 gem 'jquery-rails'
 gem 'devise'
+gem 'devise-encryptable'
 gem 'ice_cube'
 gem 'schedule_atts', :git => 'git://github.com/theunraveler/Schedule-Attributes.git'
 gem 'cancan'
@@ -43,6 +44,7 @@ group :development, :test do
   gem 'rails_best_practices'
   gem 'thin'
   gem 'heroku'
+  gem 'brakeman'
 end
 
 group :production do
