@@ -41,10 +41,8 @@ group :development, :test do
   gem 'guard-bundler'
   gem 'guard-cucumber'
   gem 'guard-rspec'
-  gem 'rails_best_practices'
   gem 'thin'
   gem 'heroku'
-  gem 'brakeman'
 end
 
 group :production do
