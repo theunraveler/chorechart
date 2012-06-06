@@ -16,31 +16,35 @@
   <%= render 'actions', :group => @group, :week => @week %>
 </div>
 
-<table id="chore-breakdown" class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <% @group.users.all.each do |user| %>
-        <th scope="col">
-          <div class="user-thumb pull-left"><%= avatar_image(user, 32) %></div>
-          <div class="user-name"><%= user %></div>
-          <div class="user-points"><small>Workload: <%= @group.workload(user, @week).to_i %></small></div>
-        </th>
-      <% end %>
-    </tr>
-  <thead>
-  <tbody>
-    <% @assignments.each do |date, assigns| %>
-      <tr <%= 'class=today' if date == Date.current %>>
-        <th scope="row"><%= format_date(date, :style => :medium) %></th>
+<% if @group.chores.empty? && can?(:admin, @group) %>
+  <p>This group has no chores. <%= link_to 'Add a new chore', new_group_chore_path(@group) %>.</p>
+<% else %>
+  <table id="chore-breakdown" class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col"></th>
         <% @group.users.all.each do |user| %>
-          <td><ul>
-            <% assigns.select { |a| a.user_id == user.id }.each do |assignment| %>
-              <li><%= assignment.chore %></li>
-            <% end %>
-          </ul></td>
+          <th scope="col">
+            <div class="user-thumb pull-left"><%= avatar_image(user, 32) %></div>
+            <div class="user-name"><%= user %></div>
+            <div class="user-points"><small>Workload: <%= @group.workload(user, @week).to_i %></small></div>
+          </th>
         <% end %>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    <thead>
+    <tbody>
+      <% @assignments.each do |date, assigns| %>
+        <tr <%= 'class=today' if date == Date.current %>>
+          <th scope="row"><%= format_date(date, :style => :medium) %></th>
+          <% @group.users.all.each do |user| %>
+            <td><ul>
+              <% assigns.select { |a| a.user_id == user.id }.each do |assignment| %>
+                <li><%= assignment.chore %></li>
+              <% end %>
+            </ul></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
