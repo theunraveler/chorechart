@@ -1,5 +1,5 @@
 <div class="span3"><div class="breadcrumb">
-  <%= link_to "&times;".html_safe, authentication, :confirm => 'Are you sure you want to remove this linked account?', :method => :delete, :class => "close" %>
+  <%= link_to "&times;".html_safe, authentication, :data => { :confirm => 'Are you sure you want to remove this linked account?' }, :method => :delete, :class => "close" %>
   <div class="pull-left">
     <span class="icon <%= authentication.provider %>"></span>
   </div>

@@ -30,7 +30,7 @@
         <td><%= fuzzy_date(chore.schedule.next_occurrence) %></td>
         <td class="last">
           <%= link_to "Edit", edit_chore_path(chore) %> |
-          <%= link_to "Delete", chore_path(chore), :method => :delete, :confirm => "Are you sure you want to delete this chore?" %>
+          <%= link_to "Delete", chore_path(chore), :method => :delete, :data => { :confirm => "Are you sure you want to delete this chore?" } %>
         </td>
       </tr>
       <% end -%>
