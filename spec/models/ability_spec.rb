@@ -27,10 +27,9 @@ describe Ability do
     end
 
     describe 'managing group assets' do
-      actions = [:create, :edit, :destroy]
       [:chore, :invitation].each do |klass|
         object = FactoryGirl.build(klass, :group => @group)
-        actions.each do |action|
+        [:create, :edit, :destroy].each do |action|
           it "should allow admins to #{action} #{klass.to_s.pluralize}" do
             @ability.should be_able_to(action, object)
           end
