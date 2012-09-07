@@ -26,26 +26,15 @@ describe Ability do
       end
     end
 
-    describe 'managing group assets' do
-      [:chore, :invitation].each do |klass|
-        object = FactoryGirl.build(klass, :group => @group)
-        [:create, :edit, :destroy].each do |action|
-          it "should allow admins to #{action} #{klass.to_s.pluralize}" do
-            @ability.should be_able_to(action, object)
-          end
-        end
+    describe 'deleting memberships' do
+      before do
+        @membership = FactoryGirl.build(:membership, :group => @group)
+        @membership.stub_chain(:group, :id).and_return(1)
       end
 
-      describe 'deleting memberships' do
-        before do
-          @membership = FactoryGirl.build(:membership, :group => @group)
-          @membership.stub_chain(:group, :id).and_return(1)
-        end
-
-        it 'should allow admins to remove membership if > 1' do
-          @membership.stub_chain(:group, :memberships, :count).and_return(2)
-          @ability.should be_able_to(:destroy, @membership)
-        end
+      it 'should allow admins to remove membership if > 1' do
+        @membership.stub_chain(:group, :memberships, :count).and_return(2)
+        @ability.should be_able_to(:destroy, @membership)
       end
     end
   end

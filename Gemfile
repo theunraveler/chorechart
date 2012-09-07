@@ -36,7 +36,6 @@ end
 group :development, :test do
   gem 'mysql2'
   gem 'rspec-rails'  
-  gem 'rspec-mocks', '2.11.1'
   gem 'rb-fsevent', :require => false
   gem 'growl', :require => false
   gem 'guard-bundler'
