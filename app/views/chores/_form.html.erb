@@ -17,12 +17,23 @@
       <%= inline.number_field :interval, :min => 1, :class => 'mini' %>
       <%= inline.select :interval_unit, interval_select(f.object.schedule_attributes.interval_unit) %>
     <% end %>
-    <%= f.toggles 'On', :id => 'day-selection' do %>
-      <% Date::DAYNAMES.each do |day| %>
-        <%= schedule.check_box day.downcase.to_sym, day %>
-      <% end %>
-      <span class="help-block">If no days are checked, today's day will be assumed.</span>
-    <% end %>
+    <table id="day-selection" class="table table-condensed table-bordered">
+      <thead>
+        <tr>
+          <% Date::DAYNAMES.each do |day| %>
+            <th><%= day %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% Date::DAYNAMES.each do |day| %>
+            <td><%= schedule.check_box day.downcase.to_sym %></td>
+          <% end %>
+        </tr>
+      </tbody>
+      <caption>If no days are selected, today's day will be assumed.</caption>
+    </table>
   <% end %>
 <% end %>
 
