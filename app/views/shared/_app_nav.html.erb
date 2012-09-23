@@ -5,7 +5,7 @@
 
   <% if current_user.groups.count > 4 %>
     <li class="groups-dropdown">
-      <a href="javascript:void(0);" class="dropdown-toggle">More...</a>
+      <a href="#" class="dropdown-toggle">More...</a>
       <ul class="dropdown-menu">
         <% current_user.groups[3..-1].each do |group| %>
           <%= active_list_link group, group %>
