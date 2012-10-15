@@ -18,7 +18,7 @@ Then /^I should see the following chores:$/ do |expected_chores_table|
 end
 
 Then /^I should see a weekly rule for today's day$/ do
-  today = Date.today.strftime('%A').pluralize
+  today = Date.current.strftime('%A').pluralize
   step %{I should see "Weekly on #{today}"}
 end
 

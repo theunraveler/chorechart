@@ -42,7 +42,6 @@ group :development, :test do
   gem 'guard-cucumber'
   gem 'guard-rspec'
   gem 'thin'
-  gem 'heroku'
 end
 
 group :production do
